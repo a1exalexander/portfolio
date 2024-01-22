@@ -634,7 +634,7 @@ export default function Home() {
       </Work>
       <h2 className={styles.heading}>my pet-projects 🚀</h2>
       <Paragraph>
-        Projects that he made for himself, friends or relatives on a free basis.
+        Projects that I made for myself, friends, relatives and world on a free basis.
         My pet-projects are a blend of personal passion and skill development.
         Explore more on my{' '}
         <Tag
