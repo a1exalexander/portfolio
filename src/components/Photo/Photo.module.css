@@ -1,0 +1,36 @@
+.figure {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.single {
+  margin: 3rem auto 3rem;
+  max-width: 80%;
+}
+
+@media screen and (min-width: 500px) {
+  .single {
+    max-width: 60%;
+  }
+}
+
+.image {
+  overflow: hidden;
+  border-radius: 16px;
+  position: relative;
+  width: 100%;
+  height: 0;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.caption {
+  margin-top: 0.5rem;
+  text-align: center;
+  font-size: 1rem;
+  color: var(--N400);
+}
+
+.vertical .image {
+  height: 100%;
+}

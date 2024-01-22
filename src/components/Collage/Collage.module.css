@@ -1,0 +1,24 @@
+.collage {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-gap: 3rem;
+  max-width: 90%;
+  width: 100%;
+  align-items: stretch;
+}
+
+.s-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.s-3 {
+  grid-template-columns: 2fr 1fr 2fr;
+}
+
+.s-4 {
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}

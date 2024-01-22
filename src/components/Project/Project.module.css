@@ -1,0 +1,118 @@
+.item {
+  position: relative;
+  flex: 1 1 auto;
+  display: inline-flex;
+  flex-direction: column;
+  font-size: 1.4rem;
+  padding: 2rem 1.4rem 1rem 1.4rem;
+  border: 1px solid var(--N100);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.status {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 0.2rem 0.4rem;
+  font-size: 0.9rem;
+  border-radius: 0 0 4px 0;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.production {
+  border-color: var(--G100);
+}
+
+.production:hover {
+  border-color: var(--G200);
+}
+
+.production .status {
+  background-color: var(--G100);
+}
+
+.development {
+  border-color: var(--T100);
+}
+
+.development:hover {
+  border-color: var(--T200);
+}
+
+.development .status {
+  background-color: var(--T100);
+}
+
+.demo {
+  border-color: var(--T100);
+}
+
+.demo:hover {
+  border-color: var(--T200);
+}
+
+.demo .status {
+  background-color: var(--T100);
+}
+
+.offline {
+  border-color: var(--Y200);
+}
+
+.offline:hover {
+  border-color: var(--Y300);
+}
+
+.offline .status {
+  background-color: var(--Y200);
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.4rem;
+}
+
+.title {
+  cursor: pointer;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  color: var(--N700);
+}
+
+.title:hover,
+.title:hover .arrow,
+.title:focus,
+.title:focus .arrow {
+  color: var(--N900);
+}
+
+.time {
+  font-size: 1.2rem;
+  color: var(--N200);
+}
+
+.description {
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--N400);
+  margin-bottom: 0.6rem;
+}
+
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.arrow {
+  font-size: 1.4rem;
+  color: var(--N60);
+  transition: color 0.2s ease-in-out;
+  margin-left: 0.6rem;
+  transform: translateY(-1px);
+}

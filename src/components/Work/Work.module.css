@@ -1,0 +1,38 @@
+.title {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-right: 0.6rem;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  margin-bottom: 0.4rem;
+  cursor: pointer;
+}
+
+.link:hover .arrow, .link:focus .arrow {
+  color: black;
+}
+
+.description {
+  font-size: 1.4rem;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--N400);
+  margin-bottom: 1.2rem;
+}
+
+.icon {
+  border-radius: 50%;
+  overflow: hidden;
+  display: inline-flex;
+  margin-right: 0.6rem;
+}
+
+.arrow {
+  font-size: 1.4rem;
+  color: var(--N60);
+  transition: color 0.2s ease-in-out;
+}

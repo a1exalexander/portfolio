@@ -1,0 +1,36 @@
+.tag {
+  position: relative;
+  font-size: 1.4rem;
+  display: inline-flex;
+  align-items: baseline;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  background-color: var(--N10);
+  color: var(--N900);
+  border: 1px solid var(--N50);
+  line-height: 1.25rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.tag:hover {
+  border-color: var(--N900);
+}
+
+
+.iconWrapper {
+  align-self: stretch;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-size: 1.4rem;
+  width: 1.2rem;
+  margin-right: 0.4rem;
+}
+
+.icon {
+  position: absolute;
+  display: inline-flex;
+  font-size: 1.4rem;
+}
