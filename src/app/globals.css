@@ -104,3 +104,10 @@ body {
   font-size: 1.6rem;
   color: var(--N900);
 }
+
+/* full size image */
+.medium-zoom-image--opened {
+  cursor: zoom-out;
+  width: 90% !important;
+  height: auto !important;
+}
