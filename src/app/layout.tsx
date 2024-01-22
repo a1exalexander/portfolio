@@ -1,4 +1,5 @@
 import { GeistSans } from 'geist/font/sans';
+import { PHProvider } from './providers';
 import { Footer } from '../components';
 import './globals.css';
 
@@ -9,10 +10,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={GeistSans.className}>
-        {children}
-        <Footer />
-      </body>
+      <PHProvider>
+        <body className={GeistSans.className}>
+          {children}
+          <Footer />
+        </body>
+      </PHProvider>
     </html>
   );
 }
