@@ -41,6 +41,7 @@ export const Photo = function Photo({
         }}
       >
         <Image
+          data-zoomable
           src={src}
           alt={alt || caption}
           style={{ objectFit: 'cover', objectPosition: 'center' }}

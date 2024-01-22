@@ -39,13 +39,13 @@ import {
   Work,
 } from '../components';
 import styles from './page.module.css';
-import photo1 from '../images/a3.jpg';
-import photo2 from '../images/b1.jpg';
-import photo3 from '../images/c1.jpg';
-import photo4 from '../images/e1.jpg';
-import photo5 from '../images/h1.jpeg';
-import photo6 from '../images/h2.jpg';
-import photo7 from '../images/h3.jpg';
+import photo1 from '../images/a00008.jpg';
+import photo2 from '../images/a00002.jpeg';
+import photo3 from '../images/a00004.jpeg';
+import photo4 from '../images/a00003.jpeg';
+import photo5 from '../images/a00006.jpeg';
+import photo6 from '../images/a00001.jpeg';
+import photo7 from '../images/a00005.jpeg';
 import merge from '../images/merge.png';
 import mergeAcademy from '../images/merge-academy.ico';
 import wisealpha from '../images/wisealpha.jpg';
@@ -98,7 +98,7 @@ export default function Home() {
         lens 📸, riding a bicycle 🚴, perfecting my pizza recipe 🍕, or
         embarking on tourist trips with a tent 🏕️.
       </Paragraph>
-      <Photo src={photo4} test caption="somewhere in the Carpathians" />
+      <Photo src={photo4} caption="somewhere in the Carpathians" />
       <Paragraph>
         At home, I have to two red cats 🐈🐈, though one is not quite as red as
         a desert, like Desert Eagle.
