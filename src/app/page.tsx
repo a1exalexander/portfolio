@@ -18,6 +18,7 @@ import {
   SiStrapi,
   SiRemix,
   SiDecapcms,
+  SiInstagram,
   SiAuth0,
   SiRollupdotjs,
   SiGraphql,
@@ -96,7 +97,14 @@ export default function Home() {
       <Paragraph>
         When I&apos;m not coding, you might find me capturing life through a
         lens 📸, riding a bicycle 🚴, perfecting my pizza recipe 🍕, or
-        embarking on tourist trips with a tent 🏕️.
+        embarking on tourist trips with a tent 🏕️. Check out my photography {' '}
+        <Tag
+          iconColor="#e1306c"
+          Icon={SiInstagram}
+          href="https://www.instagram.com/sashko.i.photoaparat/"
+        >
+          Instagram
+        </Tag>.
       </Paragraph>
       <Photo src={photo4} caption="somewhere in the Carpathians" />
       <Paragraph>
@@ -634,9 +642,9 @@ export default function Home() {
       </Work>
       <h2 className={styles.heading}>my pet-projects 🚀</h2>
       <Paragraph>
-        Projects that I made for myself, friends, relatives and world on a free basis.
-        My pet-projects are a blend of personal passion and skill development.
-        Explore more on my{' '}
+        Projects that I made for myself, friends, relatives and world on a free
+        basis. My pet-projects are a blend of personal passion and skill
+        development. Explore more on my{' '}
         <Tag
           href="https://github.com/a1exalexander"
           Icon={SiGithub}

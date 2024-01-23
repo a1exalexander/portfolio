@@ -1,4 +1,4 @@
-import { SiGithub,SiLinkedin } from 'react-icons/si';
+import { SiGithub, SiLinkedin, SiInstagram } from 'react-icons/si';
 import { Tag } from '../Tag';
 import styles from './Footer.module.css';
 
@@ -6,8 +6,8 @@ export const Footer = function Footer() {
   return (
     <footer className={styles.container}>
       <Tag
-        textColor='white'
-        backgroundColor='black'
+        textColor="white"
+        backgroundColor="black"
         iconColor="white"
         Icon={SiGithub}
         href="https://github.com/a1exalexander"
@@ -15,13 +15,22 @@ export const Footer = function Footer() {
         Github
       </Tag>
       <Tag
-        textColor='white'
-        backgroundColor='#0277b5'
+        textColor="white"
+        backgroundColor="#0277b5"
         iconColor="white"
         Icon={SiLinkedin}
         href="https://www.linkedin.com/in/alexander-ratushnyi/"
       >
         LinkedIn
+      </Tag>
+      <Tag
+        textColor="white"
+        backgroundColor="#e1306c"
+        iconColor="white"
+        Icon={SiInstagram}
+        href="https://www.instagram.com/a1exalexander/"
+      >
+        Instagram
       </Tag>
     </footer>
   );
