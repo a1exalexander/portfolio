@@ -200,7 +200,7 @@ export default function Home() {
             title="ForwardLane"
             time="2023"
             description="AI insights engine for data signal analysis"
-            status="development"
+            status="offline"
             stack={[
               {
                 name: 'React',
