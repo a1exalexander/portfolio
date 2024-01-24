@@ -11,6 +11,7 @@ interface ITagProps {
   dark?: boolean;
   backgroundColor?: string;
   textColor?: string;
+  download?: boolean;
 }
 
 export const Tag = function Tag({
@@ -20,14 +21,20 @@ export const Tag = function Tag({
   backgroundColor,
   textColor,
   iconColor,
+  download,
   href,
   dark,
 }: ITagProps) {
   return (
     <a
+      download={download}
       href={href}
       target="_blank"
-      style={{ color: textColor, backgroundColor, borderColor: backgroundColor }}
+      style={{
+        color: textColor,
+        backgroundColor,
+        borderColor: backgroundColor,
+      }}
       className={clsx(styles.tag, { [styles.dark]: dark }, className)}
     >
       {Icon ? (

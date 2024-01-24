@@ -1,37 +1,42 @@
 import { SiGithub, SiLinkedin, SiInstagram } from 'react-icons/si';
+import { HiOutlineMail } from 'react-icons/hi';
+import { RiPagesLine } from 'react-icons/ri';
+
 import { Tag } from '../Tag';
 import styles from './Footer.module.css';
 
 export const Footer = function Footer() {
   return (
     <footer className={styles.container}>
-      <Tag
-        textColor="white"
-        backgroundColor="black"
-        iconColor="white"
-        Icon={SiGithub}
-        href="https://github.com/a1exalexander"
-      >
-        Github
-      </Tag>
-      <Tag
-        textColor="white"
-        backgroundColor="#0277b5"
-        iconColor="white"
-        Icon={SiLinkedin}
-        href="https://www.linkedin.com/in/alexander-ratushnyi/"
-      >
-        LinkedIn
-      </Tag>
-      <Tag
-        textColor="white"
-        backgroundColor="#e1306c"
-        iconColor="white"
-        Icon={SiInstagram}
-        href="https://www.instagram.com/a1exalexander/"
-      >
-        Instagram
-      </Tag>
+      <h2 className={styles.heading}>my links 🔗</h2>
+      <div className={styles.list}>
+        <Tag
+          Icon={RiPagesLine}
+          href="/Oleksandr_Ratushnyi_CV_2024.pdf"
+        >
+          my cv
+        </Tag>
+        <Tag Icon={HiOutlineMail} href="mailto:alexander.ratushnyi@gmail.com">
+          alexander.ratushnyi@gmail.com
+        </Tag>
+        <Tag Icon={SiGithub} href="https://github.com/a1exalexander">
+          GitHub
+        </Tag>
+        <Tag
+          iconColor="#0277b5"
+          Icon={SiLinkedin}
+          href="https://www.linkedin.com/in/alexander-ratushnyi/"
+        >
+          LinkedIn
+        </Tag>
+        <Tag
+          iconColor="#e1306c"
+          Icon={SiInstagram}
+          href="https://www.instagram.com/a1exalexander/"
+        >
+          Instagram
+        </Tag>
+      </div>
     </footer>
   );
 };
