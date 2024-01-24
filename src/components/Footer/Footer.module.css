@@ -1,5 +1,5 @@
 .container {
-  padding: 64px 16px;
+  padding: 6rem 16px;
   max-width: 800px;
   margin: 0 auto;
   position: relative;
@@ -9,11 +9,11 @@
   display: block;
   font-size: 2.2rem;
   font-weight: 700;
-  /* margin-top: 5rem; */
   margin-bottom: 1.5rem;
 }
 
 .list {
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
 }
