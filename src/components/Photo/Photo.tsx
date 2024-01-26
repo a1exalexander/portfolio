@@ -14,6 +14,8 @@ interface IPhotoProps {
   test?: boolean;
   grid?: boolean;
   className?: string;
+  loading?: 'lazy' | 'eager';
+  priority?: boolean;
 }
 
 export const Photo = function Photo({
@@ -25,6 +27,8 @@ export const Photo = function Photo({
   test,
   grid,
   className,
+  loading = 'lazy',
+  priority
 }: IPhotoProps) {
   return (
     <figure
@@ -49,6 +53,8 @@ export const Photo = function Photo({
           style={{ objectFit: 'cover', objectPosition: 'center' }}
           fill
           placeholder="blur"
+          loading={loading}
+          priority={priority}
         />
       </div>
       <figcaption className={styles.caption}>{caption}</figcaption>

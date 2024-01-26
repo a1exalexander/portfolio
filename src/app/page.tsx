@@ -79,7 +79,11 @@ export default function Home() {
         . My specialization in web development, system design, team management
         and development processes.
       </Paragraph>
-      <Photo src={photo1} caption="Me in the cafe is posing for a photo" />
+      <Photo
+        loading="eager"
+        src={photo1}
+        caption="Me in the cafe is posing for a photo"
+      />
       <Paragraph>
         I have experience in teaching and creating courses in front-end
         development. I have successfully released three groups of students in
