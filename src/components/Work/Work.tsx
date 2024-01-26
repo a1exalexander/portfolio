@@ -36,7 +36,7 @@ export const Work = function Work({
               height={18}
               style={{ objectFit: 'cover', objectPosition: 'center' }}
               src={icon}
-              alt={title}
+              alt={`icon ${title}`}
             />
           ) : null}
           {Icon ? <Icon /> : null}

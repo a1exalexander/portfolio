@@ -3,6 +3,8 @@ import Image from 'next/image';
 import styles from './Photo.module.css';
 import clsx from 'clsx';
 
+export const getAlt = (text: string) => `Oleksandr Ratushnyi ${text}`;
+
 interface IPhotoProps {
   src: string | StaticImport;
   alt?: string;
@@ -43,7 +45,7 @@ export const Photo = function Photo({
         <Image
           data-zoomable
           src={src}
-          alt={alt || caption}
+          alt={getAlt(alt || caption)}
           style={{ objectFit: 'cover', objectPosition: 'center' }}
           fill
           placeholder="blur"
