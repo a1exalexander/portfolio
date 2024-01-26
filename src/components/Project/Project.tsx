@@ -23,14 +23,15 @@ export const Project = function Project({
   className,
   status = 'offline',
 }: IProjectProps) {
+  const CustomTag = href ? 'a' : 'div';
   return (
     <li className={clsx(styles.item, status ? styles[status] : '', className)}>
       <span className={styles.status}>{status}</span>
       <div className={styles.head}>
-        <a target="_blank" href={href} className={styles.title}>
+        <CustomTag target="_blank" href={href} className={styles.title}>
           {title}
           {href ? <LuExternalLink className={styles.arrow} /> : null}
-        </a>
+        </CustomTag>
         <span className={styles.time}>{time}</span>
       </div>
       <p className={styles.description}>{description}</p>

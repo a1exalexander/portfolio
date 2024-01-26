@@ -26,9 +26,10 @@ export const Work = function Work({
   icon,
   Icon,
 }: IWorkProps) {
+  const CustomTag = href ? 'a' : 'div';
   return (
     <div className={clsx(styles.container, className)}>
-      <a target='_blank' className={clsx(styles.link)} href={href}>
+      <CustomTag target='_blank' className={clsx(styles.link)} href={href}>
         <div className={styles.icon}>
           {icon ? (
             <Image
@@ -43,7 +44,7 @@ export const Work = function Work({
         </div>
         <h3 className={styles.title}>{title}</h3>
         {href ? <LuExternalLink className={styles.arrow} /> : null}
-      </a>
+      </CustomTag>
       <p className={styles.description}>
         <span className={styles.job}>{job}</span>,{' '}
         <span className={styles.time}>{time}</span>
