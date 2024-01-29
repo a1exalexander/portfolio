@@ -105,6 +105,10 @@ body {
   color: var(--N900);
 }
 
+a, button {
+  cursor: pointer;
+}
+
 /* full size image */
 .medium-zoom-image--opened {
   cursor: zoom-out;

@@ -77,7 +77,6 @@
 }
 
 .title {
-  cursor: pointer;
   font-weight: 500;
   display: inline-flex;
   align-items: center;

@@ -9,10 +9,10 @@
   align-items: center;
   text-decoration: none;
   margin-bottom: 0.4rem;
-  cursor: pointer;
 }
 
-.link:hover .arrow, .link:focus .arrow {
+.link:hover .arrow,
+.link:focus .arrow {
   color: black;
 }
 
