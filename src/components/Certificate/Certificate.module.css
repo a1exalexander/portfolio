@@ -1,0 +1,23 @@
+.wrapper {
+  border-radius: 16px;
+  border: 2px solid black;
+}
+
+.inner {
+  border-radius: 16px;
+  border: 8px solid white;
+  position: relative;
+  height: 200px;
+  width: clamp(276px, 70vw, 281px);
+  background-color: white;
+}
+
+@media screen and (min-width: 768px) {
+  .inner {
+    width: clamp(276px, 40vw, 281px);
+  }
+}
+
+.image {
+  border-radius: 8px;
+}

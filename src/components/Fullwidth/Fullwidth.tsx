@@ -1,20 +1,29 @@
 import clsx from 'clsx';
-import { GrProjects } from "react-icons/gr";
 import styles from './Fullwidth.module.css';
+import { IconType } from 'react-icons';
 
 interface IFullwidthProps {
   className?: string;
+  title?: string;
   children: React.ReactNode;
+  Icon?: IconType;
+  isList?: boolean;
 }
 
 export const Fullwidth = function Fullwidth({
   children,
   className,
+  title,
+  Icon,
 }: IFullwidthProps) {
   return (
     <div className={clsx(styles.container, className)}>
-      <p className={styles.caption}><GrProjects className={styles.icon} /> Projects </p>
-      <ul className={styles.list}>{children}</ul>
+      {Icon && title ? (
+        <p className={styles.caption}>
+          <Icon className={styles.icon} /> {title}
+        </p>
+      ) : null}
+      {children}
     </div>
   );
 };

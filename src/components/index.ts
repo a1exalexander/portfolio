@@ -7,3 +7,4 @@ export * from './Work';
 export * from './Project';
 export * from './Fullwidth';
 export * from './Footer';
+export * from './Certificate';

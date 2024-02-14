@@ -43,3 +43,39 @@
 .section {
   padding-top: 6rem;
 }
+
+.projectsList {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.certsList {
+  left: -16px;
+  width: 100vw;
+  max-width: 100vw;
+  position: relative;
+  overflow-x: scroll;
+  display: flex;
+  gap: 3rem;
+  scroll-snap-type: mandatory;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: max(28px, calc((100vw - 800px) / 2 + 28px));
+}
+
+.certsList::-webkit-scrollbar {
+  display: none;
+}
+
+.certItem {
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+  flex-shrink: 0;
+}
+
+.certPadding {
+  flex-shrink: 0;
+  width: 70vw;
+}

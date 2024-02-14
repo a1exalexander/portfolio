@@ -2,6 +2,7 @@ import { BiLogoTypescript, BiLogoReact } from 'react-icons/bi';
 import { ImNpm } from 'react-icons/im';
 import { FaWix } from 'react-icons/fa';
 import { DiBackbone, DiStylus, DiRedis } from 'react-icons/di';
+import { GrProjects } from 'react-icons/gr';
 import { RiSupabaseFill } from 'react-icons/ri';
 import { GoWorkflow } from 'react-icons/go';
 import {
@@ -10,6 +11,7 @@ import {
   TbBrandOpenai,
   TbEPassport,
   TbBrandRedux,
+  TbCertificate,
 } from 'react-icons/tb';
 import { BsStripe } from 'react-icons/bs';
 import { IoLogoVue, IoLogoFirebase, IoLogoNodejs } from 'react-icons/io5';
@@ -30,6 +32,7 @@ import {
 } from 'react-icons/si';
 import { LuBird } from 'react-icons/lu';
 import {
+  Certificate,
   Collage,
   Divider,
   Fullwidth,
@@ -38,6 +41,7 @@ import {
   Project,
   Tag,
   Work,
+  getAlt,
 } from '../components';
 import styles from './page.module.css';
 import photo1 from '../images/a00008.jpg';
@@ -47,6 +51,9 @@ import photo4 from '../images/a00003.jpeg';
 import photo5 from '../images/a00006.jpeg';
 import photo6 from '../images/a00001.jpeg';
 import photo7 from '../images/a00005.jpeg';
+import cert1 from '../images/c1.png';
+import cert2 from '../images/c2.png';
+import cert3 from '../images/c3.png';
 import merge from '../images/merge.png';
 import mergeAcademy from '../images/merge-academy.ico';
 import wisealpha from '../images/wisealpha.jpg';
@@ -145,315 +152,317 @@ export default function Home() {
             technology solutions and user-centric SaaS platforms, contributing
             significantly to the tech landscape.
           </Paragraph>
-          <Fullwidth>
-            <Project
-              title="Promtify"
-              time="2023"
-              description="AI templates builder"
-              href="https://app.promtify.ai"
-              status="production"
-              stack={[
-                {
-                  name: 'Next.js',
-                  Icon: TbBrandNextjs,
-                  color: '#080808',
-                  href: 'https://nextjs.org/',
-                },
-                {
-                  name: 'OpenAI',
-                  Icon: TbBrandOpenai,
-                  color: '#0d0d0d',
-                  href: 'https://openai.com/blog/openai-api',
-                },
-                {
-                  name: 'Supabase',
-                  Icon: RiSupabaseFill,
-                  color: '#37ac76',
-                  href: 'https://supabase.com/',
-                },
-                {
-                  name: 'Stripe',
-                  Icon: BsStripe,
-                  color: '#6c76e6',
-                  href: 'https://stripe.com/',
-                },
-              ]}
-            />
+          <Fullwidth Icon={GrProjects} title="Projects">
+            <ul className={styles.projectsList}>
+              <Project
+                title="Promtify"
+                time="2023"
+                description="AI templates builder"
+                href="https://app.promtify.ai"
+                status="production"
+                stack={[
+                  {
+                    name: 'Next.js',
+                    Icon: TbBrandNextjs,
+                    color: '#080808',
+                    href: 'https://nextjs.org/',
+                  },
+                  {
+                    name: 'OpenAI',
+                    Icon: TbBrandOpenai,
+                    color: '#0d0d0d',
+                    href: 'https://openai.com/blog/openai-api',
+                  },
+                  {
+                    name: 'Supabase',
+                    Icon: RiSupabaseFill,
+                    color: '#37ac76',
+                    href: 'https://supabase.com/',
+                  },
+                  {
+                    name: 'Stripe',
+                    Icon: BsStripe,
+                    color: '#6c76e6',
+                    href: 'https://stripe.com/',
+                  },
+                ]}
+              />
 
-            <Project
-              title="RealayPay"
-              time="2023"
-              description="Crypto payment solution"
-              href="https://relaypay.io/"
-              status="production"
-              stack={[
-                {
-                  name: 'Next.js',
-                  Icon: TbBrandNextjs,
-                  color: '#080808',
-                  href: 'https://nextjs.org/',
-                },
-                {
-                  name: 'Onfido',
-                  Icon: TbEPassport,
-                  color: '#3c46f6',
-                  href: 'https://onfido.com/',
-                },
-              ]}
-            />
+              <Project
+                title="RealayPay"
+                time="2023"
+                description="Crypto payment solution"
+                href="https://relaypay.io/"
+                status="production"
+                stack={[
+                  {
+                    name: 'Next.js',
+                    Icon: TbBrandNextjs,
+                    color: '#080808',
+                    href: 'https://nextjs.org/',
+                  },
+                  {
+                    name: 'Onfido',
+                    Icon: TbEPassport,
+                    color: '#3c46f6',
+                    href: 'https://onfido.com/',
+                  },
+                ]}
+              />
 
-            <Project
-              title="ForwardLane"
-              time="2023"
-              description="AI insights engine for data signal analysis"
-              status="offline"
-              stack={[
-                {
-                  name: 'React',
-                  Icon: BiLogoReact,
-                  color: '#68dbfb',
-                  href: 'https://react.dev',
-                },
-                {
-                  name: 'React Flow',
-                  Icon: GoWorkflow,
-                  color: '#ff0072',
-                  href: 'https://reactflow.dev/',
-                },
-              ]}
-            />
+              <Project
+                title="ForwardLane"
+                time="2023"
+                description="AI insights engine for data signal analysis"
+                status="offline"
+                stack={[
+                  {
+                    name: 'React',
+                    Icon: BiLogoReact,
+                    color: '#68dbfb',
+                    href: 'https://react.dev',
+                  },
+                  {
+                    name: 'React Flow',
+                    Icon: GoWorkflow,
+                    color: '#ff0072',
+                    href: 'https://reactflow.dev/',
+                  },
+                ]}
+              />
 
-            <Project
-              title="Merge Academy"
-              time="2022"
-              description="Web academy platform"
-              href="https://merge.academy/"
-              status="production"
-              stack={[
-                {
-                  name: 'Remix',
-                  Icon: SiRemix,
-                  color: '#080808',
-                  href: 'https://remix.run/',
-                },
-                {
-                  name: 'Decap CMS',
-                  Icon: SiDecapcms,
-                  color: '#ff0082',
-                  href: 'https://decapcms.org/',
-                },
-              ]}
-            />
+              <Project
+                title="Merge Academy"
+                time="2022"
+                description="Web academy platform"
+                href="https://merge.academy/"
+                status="production"
+                stack={[
+                  {
+                    name: 'Remix',
+                    Icon: SiRemix,
+                    color: '#080808',
+                    href: 'https://remix.run/',
+                  },
+                  {
+                    name: 'Decap CMS',
+                    Icon: SiDecapcms,
+                    color: '#ff0082',
+                    href: 'https://decapcms.org/',
+                  },
+                ]}
+              />
 
-            <Project
-              title="Ember"
-              time="2022"
-              description="Finance management app"
-              href="https://ember.co/"
-              status="production"
-              stack={[
-                {
-                  name: 'Next.js',
-                  Icon: TbBrandNextjs,
-                  color: '#080808',
-                  href: 'https://nextjs.org/',
-                },
-                {
-                  name: 'React Native',
-                  Icon: TbBrandReactNative,
-                  color: '#61dafb',
-                  href: 'https://reactnative.dev/',
-                },
-                {
-                  name: 'Prisma',
-                  Icon: SiPrisma,
-                  color: '#2c3e50',
-                  href: 'https://www.prisma.io/',
-                },
-                {
-                  name: 'GraphQL',
-                  Icon: SiGraphql,
-                  color: '#e53ead',
-                  href: 'https://graphql.org/',
-                },
-              ]}
-            />
-            <Project
-              title="Spiral Blue"
-              time="2021"
-              description="Space tech project"
-              status="offline"
-              stack={[
-                {
-                  name: 'Next.js',
-                  Icon: TbBrandNextjs,
-                  color: '#080808',
-                  href: 'https://nextjs.org/',
-                },
-                {
-                  name: 'Strapi CMS',
-                  Icon: SiStrapi,
-                  color: '#8c4bff',
-                  href: 'https://strapi.io/',
-                },
-              ]}
-            />
+              <Project
+                title="Ember"
+                time="2022"
+                description="Finance management app"
+                href="https://ember.co/"
+                status="production"
+                stack={[
+                  {
+                    name: 'Next.js',
+                    Icon: TbBrandNextjs,
+                    color: '#080808',
+                    href: 'https://nextjs.org/',
+                  },
+                  {
+                    name: 'React Native',
+                    Icon: TbBrandReactNative,
+                    color: '#61dafb',
+                    href: 'https://reactnative.dev/',
+                  },
+                  {
+                    name: 'Prisma',
+                    Icon: SiPrisma,
+                    color: '#2c3e50',
+                    href: 'https://www.prisma.io/',
+                  },
+                  {
+                    name: 'GraphQL',
+                    Icon: SiGraphql,
+                    color: '#e53ead',
+                    href: 'https://graphql.org/',
+                  },
+                ]}
+              />
+              <Project
+                title="Spiral Blue"
+                time="2021"
+                description="Space tech project"
+                status="offline"
+                stack={[
+                  {
+                    name: 'Next.js',
+                    Icon: TbBrandNextjs,
+                    color: '#080808',
+                    href: 'https://nextjs.org/',
+                  },
+                  {
+                    name: 'Strapi CMS',
+                    Icon: SiStrapi,
+                    color: '#8c4bff',
+                    href: 'https://strapi.io/',
+                  },
+                ]}
+              />
 
-            <Project
-              title="Noviscient"
-              time="2021"
-              description="Wealth management platform"
-              href="https://www.noviscient.com/"
-              status="production"
-              stack={[
-                {
-                  name: 'React',
-                  Icon: BiLogoReact,
-                  color: '#68dbfb',
-                  href: 'https://react.dev',
-                },
-                {
-                  name: 'Redux',
-                  Icon: TbBrandRedux,
-                  color: '#764abc',
-                  href: 'https://react-redux.js.org/',
-                },
-                {
-                  name: 'Auth0',
-                  Icon: SiAuth0,
-                  color: '#eb5424',
-                  href: 'https://auth0.com/',
-                },
-              ]}
-            />
+              <Project
+                title="Noviscient"
+                time="2021"
+                description="Wealth management platform"
+                href="https://www.noviscient.com/"
+                status="production"
+                stack={[
+                  {
+                    name: 'React',
+                    Icon: BiLogoReact,
+                    color: '#68dbfb',
+                    href: 'https://react.dev',
+                  },
+                  {
+                    name: 'Redux',
+                    Icon: TbBrandRedux,
+                    color: '#764abc',
+                    href: 'https://react-redux.js.org/',
+                  },
+                  {
+                    name: 'Auth0',
+                    Icon: SiAuth0,
+                    color: '#eb5424',
+                    href: 'https://auth0.com/',
+                  },
+                ]}
+              />
 
-            <Project
-              title="Spotlyt"
-              time="2021"
-              description="Components library for data scientists"
-              status="offline"
-              stack={[
-                {
-                  name: 'React',
-                  Icon: BiLogoReact,
-                  color: '#61dafb',
-                  href: 'https://react.dev',
-                },
-                {
-                  name: 'Rollup',
-                  Icon: SiRollupdotjs,
-                  color: '#f23132',
-                  href: 'https://rollupjs.org/',
-                },
-                {
-                  name: 'NPM',
-                  Icon: ImNpm,
-                  color: '#cd3f3e',
-                  href: 'https://www.npmjs.com/',
-                },
-              ]}
-            />
+              <Project
+                title="Spotlyt"
+                time="2021"
+                description="Components library for data scientists"
+                status="offline"
+                stack={[
+                  {
+                    name: 'React',
+                    Icon: BiLogoReact,
+                    color: '#61dafb',
+                    href: 'https://react.dev',
+                  },
+                  {
+                    name: 'Rollup',
+                    Icon: SiRollupdotjs,
+                    color: '#f23132',
+                    href: 'https://rollupjs.org/',
+                  },
+                  {
+                    name: 'NPM',
+                    Icon: ImNpm,
+                    color: '#cd3f3e',
+                    href: 'https://www.npmjs.com/',
+                  },
+                ]}
+              />
 
-            <Project
-              title="Vamp"
-              time="2020"
-              description="Kubernetes manager tool"
-              status="offline"
-              stack={[
-                {
-                  name: 'React',
-                  Icon: BiLogoReact,
-                  color: '#61dafb',
-                  href: 'https://react.dev',
-                },
-                {
-                  name: 'GraphQL',
-                  Icon: SiGraphql,
-                  color: '#e53ead',
-                  href: 'https://graphql.org/',
-                },
-                {
-                  name: 'Antd',
-                  Icon: SiAntdesign,
-                  color: '#0170fe',
-                  href: 'https://ant.design/',
-                },
-              ]}
-            />
+              <Project
+                title="Vamp"
+                time="2020"
+                description="Kubernetes manager tool"
+                status="offline"
+                stack={[
+                  {
+                    name: 'React',
+                    Icon: BiLogoReact,
+                    color: '#61dafb',
+                    href: 'https://react.dev',
+                  },
+                  {
+                    name: 'GraphQL',
+                    Icon: SiGraphql,
+                    color: '#e53ead',
+                    href: 'https://graphql.org/',
+                  },
+                  {
+                    name: 'Antd',
+                    Icon: SiAntdesign,
+                    color: '#0170fe',
+                    href: 'https://ant.design/',
+                  },
+                ]}
+              />
 
-            <Project
-              title="Merge"
-              time="2020"
-              description="Agency website"
-              status="production"
-              href="https://merge.rocks/"
-              stack={[
-                {
-                  name: 'Next.js',
-                  Icon: TbBrandNextjs,
-                  color: '#080808',
-                  href: 'https://nextjs.org/',
-                },
-                {
-                  name: 'Decap CMS',
-                  Icon: SiDecapcms,
-                  color: '#ff0082',
-                  href: 'https://decapcms.org/',
-                },
-              ]}
-            />
+              <Project
+                title="Merge"
+                time="2020"
+                description="Agency website"
+                status="production"
+                href="https://merge.rocks/"
+                stack={[
+                  {
+                    name: 'Next.js',
+                    Icon: TbBrandNextjs,
+                    color: '#080808',
+                    href: 'https://nextjs.org/',
+                  },
+                  {
+                    name: 'Decap CMS',
+                    Icon: SiDecapcms,
+                    color: '#ff0082',
+                    href: 'https://decapcms.org/',
+                  },
+                ]}
+              />
 
-            <Project
-              title="Evello"
-              time="2020"
-              status="offline"
-              description="Video intelligence software platform"
-              stack={[
-                {
-                  name: 'Vue 2',
-                  Icon: IoLogoVue,
-                  color: '#41b883',
-                  href: 'https://v2.vuejs.org/',
-                },
-              ]}
-            />
+              <Project
+                title="Evello"
+                time="2020"
+                status="offline"
+                description="Video intelligence software platform"
+                stack={[
+                  {
+                    name: 'Vue 2',
+                    Icon: IoLogoVue,
+                    color: '#41b883',
+                    href: 'https://v2.vuejs.org/',
+                  },
+                ]}
+              />
 
-            <Project
-              title="TokenPlace"
-              time="2019"
-              status="offline"
-              description="Ultimate crypto trading tool"
-              stack={[
-                {
-                  name: 'Vue 2',
-                  Icon: IoLogoVue,
-                  color: '#41b883',
-                  href: 'https://v2.vuejs.org/',
-                },
-              ]}
-            />
+              <Project
+                title="TokenPlace"
+                time="2019"
+                status="offline"
+                description="Ultimate crypto trading tool"
+                stack={[
+                  {
+                    name: 'Vue 2',
+                    Icon: IoLogoVue,
+                    color: '#41b883',
+                    href: 'https://v2.vuejs.org/',
+                  },
+                ]}
+              />
 
-            <Project
-              title="FundPlatform"
-              time="2018"
-              status="demo"
-              description="Hedge funds wealth management system"
-              href="https://fundplatform.netlify.app/"
-              stack={[
-                {
-                  name: 'Vue 2',
-                  Icon: IoLogoVue,
-                  color: '#41b883',
-                  href: 'https://v2.vuejs.org/',
-                },
-                {
-                  name: 'Stripe',
-                  Icon: BsStripe,
-                  color: '#6c76e6',
-                  href: 'https://stripe.com/',
-                },
-              ]}
-            />
+              <Project
+                title="FundPlatform"
+                time="2018"
+                status="demo"
+                description="Hedge funds wealth management system"
+                href="https://fundplatform.netlify.app/"
+                stack={[
+                  {
+                    name: 'Vue 2',
+                    Icon: IoLogoVue,
+                    color: '#41b883',
+                    href: 'https://v2.vuejs.org/',
+                  },
+                  {
+                    name: 'Stripe',
+                    Icon: BsStripe,
+                    color: '#6c76e6',
+                    href: 'https://stripe.com/',
+                  },
+                ]}
+              />
+            </ul>
           </Fullwidth>
         </Work>
         <Divider />
@@ -536,114 +545,116 @@ export default function Home() {
             in project management, client communication, and staying ahead of
             the curve in rapidly evolving tech trends.
           </Paragraph>
-          <Fullwidth>
-            <Project
-              title="Generator"
-              time="2021"
-              status="offline"
-              description="Website generator tool"
-              stack={[
-                {
-                  name: 'Node.js',
-                  Icon: IoLogoNodejs,
-                  color: '#539e43',
-                  href: 'https://nodejs.org/',
-                },
-                {
-                  name: 'Fastify',
-                  Icon: SiFastify,
-                  color: '#000000',
-                  href: 'https://fastify.dev/',
-                },
-                {
-                  name: 'Nuxt',
-                  Icon: SiNuxtdotjs,
-                  color: '#00dc82',
-                  href: 'https://nuxt.com/',
-                },
-                {
-                  name: 'Redis',
-                  Icon: DiRedis,
-                  color: '#dc382d',
-                  href: 'https://redis.io/',
-                },
-              ]}
-            />
+          <Fullwidth Icon={GrProjects} title="Projects">
+            <ul className={styles.projectsList}>
+              <Project
+                title="Generator"
+                time="2021"
+                status="offline"
+                description="Website generator tool"
+                stack={[
+                  {
+                    name: 'Node.js',
+                    Icon: IoLogoNodejs,
+                    color: '#539e43',
+                    href: 'https://nodejs.org/',
+                  },
+                  {
+                    name: 'Fastify',
+                    Icon: SiFastify,
+                    color: '#000000',
+                    href: 'https://fastify.dev/',
+                  },
+                  {
+                    name: 'Nuxt',
+                    Icon: SiNuxtdotjs,
+                    color: '#00dc82',
+                    href: 'https://nuxt.com/',
+                  },
+                  {
+                    name: 'Redis',
+                    Icon: DiRedis,
+                    color: '#dc382d',
+                    href: 'https://redis.io/',
+                  },
+                ]}
+              />
 
-            <Project
-              title="Captains Club"
-              time="2020"
-              status="production"
-              href="https://app.captains.club/apply"
-              description="Golf club mobile app"
-              stack={[
-                {
-                  name: 'React Native',
-                  Icon: TbBrandReactNative,
-                  color: '#61dafb',
-                  href: 'https://reactnative.dev/',
-                },
-                {
-                  name: 'Expo',
-                  Icon: SiExpo,
-                  color: '#000020',
-                  href: 'https://expo.dev/',
-                },
-              ]}
-            />
+              <Project
+                title="Captains Club"
+                time="2020"
+                status="production"
+                href="https://app.captains.club/apply"
+                description="Golf club mobile app"
+                stack={[
+                  {
+                    name: 'React Native',
+                    Icon: TbBrandReactNative,
+                    color: '#61dafb',
+                    href: 'https://reactnative.dev/',
+                  },
+                  {
+                    name: 'Expo',
+                    Icon: SiExpo,
+                    color: '#000020',
+                    href: 'https://expo.dev/',
+                  },
+                ]}
+              />
 
-            <Project
-              title="CircleOf"
-              time="2020"
-              href="https://circleof.com/"
-              status="production"
-              description="Family caregiving mobile app"
-              stack={[
-                {
-                  name: 'React Native',
-                  Icon: TbBrandReactNative,
-                  color: '#61dafb',
-                  href: 'https://reactnative.dev/',
-                },
-                {
-                  name: 'Expo',
-                  Icon: SiExpo,
-                  color: '#000020',
-                  href: 'https://expo.dev/',
-                },
-              ]}
-            />
+              <Project
+                title="CircleOf"
+                time="2020"
+                href="https://circleof.com/"
+                status="production"
+                description="Family caregiving mobile app"
+                stack={[
+                  {
+                    name: 'React Native',
+                    Icon: TbBrandReactNative,
+                    color: '#61dafb',
+                    href: 'https://reactnative.dev/',
+                  },
+                  {
+                    name: 'Expo',
+                    Icon: SiExpo,
+                    color: '#000020',
+                    href: 'https://expo.dev/',
+                  },
+                ]}
+              />
 
-            <Project
-              title="Wambla"
-              time="2019"
-              status="offline"
-              description="Real estate purchase/sale platform"
-              stack={[
-                {
-                  name: 'Nuxt',
-                  Icon: SiNuxtdotjs,
-                  color: '#00dc82',
-                  href: 'https://nuxt.com/',
-                },
-              ]}
-            />
+              <Project
+                title="Wambla"
+                time="2019"
+                status="offline"
+                description="Real estate purchase/sale platform"
+                stack={[
+                  {
+                    name: 'Nuxt',
+                    Icon: SiNuxtdotjs,
+                    color: '#00dc82',
+                    href: 'https://nuxt.com/',
+                  },
+                ]}
+              />
 
-            <Project
-              title="Merge Place"
-              time="2017"
-              status="production"
-              href="https://www.merge.place/"
-              description="Coworking website"
-              stack={[
-                {
-                  name: 'Vue 2',
-                  Icon: IoLogoVue,
-                  color: '#41b883',
-                  href: 'https://v2.vuejs.org/',
-                },
-              ]}
-            />
+              <Project
+                title="Merge Place"
+                time="2017"
+                status="production"
+                href="https://www.merge.place/"
+                description="Coworking website"
+                stack={[
+                  {
+                    name: 'Vue 2',
+                    Icon: IoLogoVue,
+                    color: '#41b883',
+                    href: 'https://v2.vuejs.org/',
+                  },
+                ]}
+              />
+            </ul>
           </Fullwidth>
         </Work>
       </section>
@@ -662,82 +673,111 @@ export default function Home() {
           </Tag>
           .
         </Paragraph>
+        <Fullwidth Icon={GrProjects} title="Projects">
+          <ul className={styles.projectsList}>
+            <Project
+              title="Exchanger"
+              time="2021"
+              status="production"
+              href="https://exchanger.in.ua"
+              description="Hryvnia to other currencies converter"
+              stack={[
+                {
+                  name: 'React',
+                  Icon: BiLogoReact,
+                  color: '#68dbfb',
+                  href: 'https://react.dev',
+                },
+                {
+                  name: 'Redux',
+                  Icon: TbBrandRedux,
+                  color: '#764abc',
+                  href: 'https://react-redux.js.org/',
+                },
+              ]}
+            />
+
+            <Project
+              title="Elevendogs"
+              time="2021"
+              status="production"
+              href="https://elevendogs.com.ua"
+              description="Barbershop website"
+              stack={[
+                {
+                  name: 'Next.js',
+                  Icon: TbBrandNextjs,
+                  color: '#080808',
+                  href: 'https://nextjs.org/',
+                },
+              ]}
+            />
+
+            <Project
+              title="School 23"
+              time="2020"
+              status="production"
+              href="https://school23.vercel.app/"
+              description="Kremenchuk school website"
+              stack={[
+                {
+                  name: 'Next.js',
+                  Icon: TbBrandNextjs,
+                  color: '#080808',
+                  href: 'https://nextjs.org/',
+                },
+                {
+                  name: 'Firebase',
+                  Icon: IoLogoFirebase,
+                  color: '#ffa82c',
+                  href: 'https://firebase.google.com/',
+                },
+              ]}
+            />
+
+            <Project
+              title="Keenly"
+              time="2020"
+              status="production"
+              href="https://keenly.shop/"
+              description="Online shop"
+              stack={[
+                {
+                  name: 'Wix',
+                  Icon: FaWix,
+                  color: '#000000',
+                  href: 'https://wix.com',
+                },
+              ]}
+            />
+          </ul>
+        </Fullwidth>
+      </section>
+      <section className={styles.section}>
+        <h2 className={styles.heading}>course certificates 🎓</h2>
+        <Paragraph>
+          Here are some of the courses and certifications I&apos;ve completed.
+        </Paragraph>
         <Fullwidth>
-          <Project
-            title="Exchanger"
-            time="2021"
-            status="production"
-            href="https://exchanger.in.ua"
-            description="Hryvnia to other currencies converter"
-            stack={[
-              {
-                name: 'React',
-                Icon: BiLogoReact,
-                color: '#68dbfb',
-                href: 'https://react.dev',
-              },
-              {
-                name: 'Redux',
-                Icon: TbBrandRedux,
-                color: '#764abc',
-                href: 'https://react-redux.js.org/',
-              },
-            ]}
-          />
-
-          <Project
-            title="Elevendogs"
-            time="2021"
-            status="production"
-            href="https://elevendogs.com.ua"
-            description="Barbershop website"
-            stack={[
-              {
-                name: 'Next.js',
-                Icon: TbBrandNextjs,
-                color: '#080808',
-                href: 'https://nextjs.org/',
-              },
-            ]}
-          />
-
-          <Project
-            title="School 23"
-            time="2020"
-            status="production"
-            href="https://school23.vercel.app/"
-            description="Kremenchuk school website"
-            stack={[
-              {
-                name: 'Next.js',
-                Icon: TbBrandNextjs,
-                color: '#080808',
-                href: 'https://nextjs.org/',
-              },
-              {
-                name: 'Firebase',
-                Icon: IoLogoFirebase,
-                color: '#ffa82c',
-                href: 'https://firebase.google.com/',
-              },
-            ]}
-          />
-
-          <Project
-            title="Keenly"
-            time="2020"
-            status="production"
-            href="https://keenly.shop/"
-            description="Online shop"
-            stack={[
-              {
-                name: 'Wix',
-                Icon: FaWix,
-                color: '#000000',
-                href: 'https://wix.com',
-              },
-            ]}
-          />
+          <div className={styles.certsList}>
+            <div className={styles.certPadding} />
+            <Certificate
+              className={styles.certItem}
+              src={cert2}
+              alt={getAlt('SQL Projector')}
+            />
+            <Certificate
+              className={styles.certItem}
+              src={cert3}
+              alt={getAlt('CTO Projector')}
+            />
+            <Certificate
+              className={styles.certItem}
+              src={cert1}
+              alt={getAlt('Sololearn SQL')}
+            />
+            <div className={styles.certPadding} />
+          </div>
         </Fullwidth>
       </section>
     </main>
