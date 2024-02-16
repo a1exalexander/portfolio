@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-Disallow: /files/
 Sitemap: https://sashkoratushnyi.com/sitemap.xml
