@@ -4,21 +4,27 @@
   display: inline-flex;
   flex-direction: column;
   font-size: 1.4rem;
-  padding: 2rem 1.4rem 1rem 1.4rem;
+  padding: 2.2rem 1.4rem 1rem 1.4rem;
   border: 1px solid var(--N100);
   border-radius: 8px;
   overflow: hidden;
   transition: border-color 0.2s ease-in-out;
+  max-width: 400px;
 }
 
-.status {
+.tagList {
   position: absolute;
   left: 0;
   top: 0;
-  padding: 0.2rem 0.4rem;
-  font-size: 0.9rem;
+  display: flex;
+}
+
+.tagList .tagItem:last-child {
   border-radius: 0 0 4px 0;
-  transition: background-color 0.2s ease-in-out;
+}
+
+.tagItem {
+  border-radius: 0;
 }
 
 .production {
@@ -114,4 +120,26 @@
   transition: color 0.2s ease-in-out;
   margin-left: 0.6rem;
   transform: translateY(-1px);
+}
+
+.projectTag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.4rem;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.projectTagIcon {
+  margin-right: 2px;
+}
+
+.github {
+  color: var(--N0);
+  background-color: var(--N00);
+}
+
+.npm {
+  color: var(--N0);
+  background-color: var(--R400);
 }

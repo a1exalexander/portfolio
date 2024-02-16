@@ -11,7 +11,6 @@ import {
   TbBrandOpenai,
   TbEPassport,
   TbBrandRedux,
-  TbCertificate,
 } from 'react-icons/tb';
 import { BsStripe } from 'react-icons/bs';
 import { IoLogoVue, IoLogoFirebase, IoLogoNodejs } from 'react-icons/io5';
@@ -29,6 +28,7 @@ import {
   SiNuxtdotjs,
   SiExpo,
   SiGithub,
+  SiJavascript,
 } from 'react-icons/si';
 import { LuBird } from 'react-icons/lu';
 import {
@@ -676,6 +676,30 @@ export default function Home() {
         <Fullwidth Icon={GrProjects} title="Projects">
           <ul className={styles.projectsList}>
             <Project
+              github="https://github.com/a1exalexander/svg-to-react"
+              title="svg-to-react"
+              time="2024"
+              npm="https://www.npmjs.com/package/@onlyredcats/svg-to-react"
+              status="production"
+              href="https://www.npmjs.com/package/@onlyredcats/svg-to-react"
+              description="CLI tool for generating React icons from SVG files"
+              stack={[
+                {
+                  name: 'Node.js',
+                  Icon: IoLogoNodejs,
+                  color: '#539e43',
+                  href: 'https://nodejs.org/',
+                },
+                {
+                  name: 'Javascript',
+                  Icon: SiJavascript,
+                  color: '#f7df1e',
+                  href: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
+                },
+              ]}
+            />
+            <Project
+              github="https://github.com/a1exalexander/exchanger"
               title="Exchanger"
               time="2021"
               status="production"
@@ -698,6 +722,7 @@ export default function Home() {
             />
 
             <Project
+              github="https://github.com/a1exalexander/elevendogs"
               title="Elevendogs"
               time="2021"
               status="production"
@@ -714,6 +739,7 @@ export default function Home() {
             />
 
             <Project
+              github="https://github.com/a1exalexander/school23"
               title="School 23"
               time="2020"
               status="production"

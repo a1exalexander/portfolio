@@ -17,13 +17,13 @@ export const Fullwidth = function Fullwidth({
   Icon,
 }: IFullwidthProps) {
   return (
-    <div className={clsx(styles.container, className)}>
+    <>
       {Icon && title ? (
         <p className={styles.caption}>
           <Icon className={styles.icon} /> {title}
         </p>
       ) : null}
-      {children}
-    </div>
+      <div className={clsx(styles.container, className)}>{children}</div>
+    </>
   );
 };
