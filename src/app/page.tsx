@@ -128,24 +128,24 @@ export default function Home() {
           .
         </Paragraph>
         <Collage>
-          <Photo src={photo4} grid caption="Somewhere in the Carpathians" />
+          <Photo src={photo4} grid caption="Hoverla, Carpathian mountains" />
           <Photo
             src={photoCarpathians2}
             grid
             vertical
-            caption="Somewhere in the Carpathians"
+            caption="Kostrycha, Carpathian mountains"
           />
           <Photo
             src={photoCarpathians3}
             grid
             vertical
-            caption="Somewhere in the Carpathians"
+            caption="Kostrycha, Carpathian mountains"
           />
           <Photo
             src={photoCarpathians5}
             vertical
             grid
-            caption="Somewhere in the Carpathians"
+            caption="Kostrycha, Carpathian mountains"
           />
         </Collage>
 
