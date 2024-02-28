@@ -1,6 +1,5 @@
 .item {
   position: relative;
-  flex: 1 1 clamp(100px, auto, 500px);
   display: inline-flex;
   flex-direction: column;
   font-size: 1.4rem;
@@ -9,8 +8,17 @@
   border-radius: 8px;
   overflow: hidden;
   transition: border-color 0.2s ease-in-out;
-  min-width: 120px;
+  flex: 1 1 auto;
+  min-width: initial;
   max-width: 500px;
+}
+
+@media (min-width: 768px) {
+  .item {
+    flex: 1 1 clamp(100px, auto, 500px);
+    min-width: 120px;
+    max-width: 500px;
+  }
 }
 
 .tagList {
