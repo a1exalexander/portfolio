@@ -4,12 +4,12 @@ import { FaWix } from 'react-icons/fa';
 import { DiBackbone, DiStylus, DiRedis } from 'react-icons/di';
 import { GrProjects } from 'react-icons/gr';
 import { RiSupabaseFill } from 'react-icons/ri';
-import { GoWorkflow } from 'react-icons/go';
 import {
   TbBrandNextjs,
   TbBrandReactNative,
   TbBrandOpenai,
   TbEPassport,
+  TbTriangle,
   TbBrandRedux,
 } from 'react-icons/tb';
 import { BsStripe } from 'react-icons/bs';
@@ -29,6 +29,9 @@ import {
   SiExpo,
   SiGithub,
   SiJavascript,
+  SiStorybook,
+  SiHiveBlockchain,
+  SiNestjs
 } from 'react-icons/si';
 import { LuBird } from 'react-icons/lu';
 import {
@@ -208,6 +211,12 @@ export default function Home() {
                       href: 'https://nextjs.org/',
                     },
                     {
+                      name: 'Storybook',
+                      Icon: SiStorybook,
+                      color: '#ff4785',
+                      href: 'https://storybook.js.org/',
+                    },
+                    {
                       name: 'OpenAI',
                       Icon: TbBrandOpenai,
                       color: '#0d0d0d',
@@ -229,7 +238,7 @@ export default function Home() {
                 />
 
                 <Project
-                  title="RealayPay"
+                  title="RelayPay"
                   time="2023"
                   description="Crypto payment solution"
                   href="https://relaypay.io/"
@@ -242,31 +251,22 @@ export default function Home() {
                       href: 'https://nextjs.org/',
                     },
                     {
+                      name: 'Storybook',
+                      Icon: SiStorybook,
+                      color: '#ff4785',
+                      href: 'https://storybook.js.org/',
+                    },
+                    {
+                      name: 'web3-onboard',
+                      Icon: SiHiveBlockchain,
+                      color: '#6370e5',
+                      href: 'https://onboard.blocknative.com/',
+                    },
+                    {
                       name: 'Onfido',
                       Icon: TbEPassport,
                       color: '#3c46f6',
                       href: 'https://onfido.com/',
-                    },
-                  ]}
-                />
-
-                <Project
-                  title="ForwardLane"
-                  time="2023"
-                  description="AI insights engine for data signal analysis"
-                  status="offline"
-                  stack={[
-                    {
-                      name: 'React',
-                      Icon: BiLogoReact,
-                      color: '#68dbfb',
-                      href: 'https://react.dev',
-                    },
-                    {
-                      name: 'React Flow',
-                      Icon: GoWorkflow,
-                      color: '#ff0072',
-                      href: 'https://reactflow.dev/',
                     },
                   ]}
                 />
@@ -285,11 +285,29 @@ export default function Home() {
                       href: 'https://remix.run/',
                     },
                     {
-                      name: 'Decap CMS',
+                      name: 'Storybook',
+                      Icon: SiStorybook,
+                      color: '#ff4785',
+                      href: 'https://storybook.js.org/',
+                    },
+                    {
+                      name: 'Fondy',
+                      Icon: TbTriangle,
+                      color: '#32af4a',
+                      href: 'https://fondy.ua/uk/',
+                    },
+                    {
+                      name: 'Decap',
                       Icon: SiDecapcms,
                       color: '#ff0082',
                       href: 'https://decapcms.org/',
                     },
+                    {
+                      name: 'NestJS',
+                      Icon: SiNestjs,
+                      color: '#e0234e',
+                      href: 'https://nestjs.com/',
+                    }
                   ]}
                 />
 
@@ -339,7 +357,13 @@ export default function Home() {
                       href: 'https://nextjs.org/',
                     },
                     {
-                      name: 'Strapi CMS',
+                      name: 'Storybook',
+                      Icon: SiStorybook,
+                      color: '#ff4785',
+                      href: 'https://storybook.js.org/',
+                    },
+                    {
+                      name: 'Strapi',
                       Icon: SiStrapi,
                       color: '#8c4bff',
                       href: 'https://strapi.io/',
@@ -372,6 +396,12 @@ export default function Home() {
                       color: '#eb5424',
                       href: 'https://auth0.com/',
                     },
+                    {
+                      name: 'Storybook',
+                      Icon: SiStorybook,
+                      color: '#ff4785',
+                      href: 'https://storybook.js.org/',
+                    }
                   ]}
                 />
 
@@ -379,7 +409,8 @@ export default function Home() {
                   title="Spotlyt"
                   time="2021"
                   description="Components library for data scientists"
-                  status="offline"
+                  status="demo"
+                  href="https://storybook-spotlyt.netlify.app/"
                   stack={[
                     {
                       name: 'React',
@@ -392,6 +423,12 @@ export default function Home() {
                       Icon: SiRollupdotjs,
                       color: '#f23132',
                       href: 'https://rollupjs.org/',
+                    },
+                    {
+                      name: 'Storybook',
+                      Icon: SiStorybook,
+                      color: '#ff4785',
+                      href: 'https://storybook.js.org/',
                     },
                     {
                       name: 'NPM',
@@ -443,10 +480,16 @@ export default function Home() {
                       href: 'https://nextjs.org/',
                     },
                     {
-                      name: 'Decap CMS',
-                      Icon: SiDecapcms,
-                      color: '#ff0082',
-                      href: 'https://decapcms.org/',
+                      name: 'Storybook',
+                      Icon: SiStorybook,
+                      color: '#ff4785',
+                      href: 'https://storybook.js.org/',
+                    },
+                    {
+                      name: 'Strapi',
+                      Icon: SiStrapi,
+                      color: '#8c4bff',
+                      href: 'https://strapi.io/',
                     },
                   ]}
                 />
@@ -454,8 +497,9 @@ export default function Home() {
                 <Project
                   title="Evello"
                   time="2020"
-                  status="offline"
-                  description="Video intelligence software platform"
+                  status="demo"
+                  href="https://media-scout.netlify.app/"
+                  description="Video intelligence software platform. (Any login and password)"
                   stack={[
                     {
                       name: 'Vue 2',
@@ -463,6 +507,12 @@ export default function Home() {
                       color: '#41b883',
                       href: 'https://v2.vuejs.org/',
                     },
+                    {
+                      name: 'Storybook',
+                      Icon: SiStorybook,
+                      color: '#ff4785',
+                      href: 'https://storybook.js.org/',
+                    }
                   ]}
                 />
 
@@ -477,7 +527,7 @@ export default function Home() {
                       Icon: IoLogoVue,
                       color: '#41b883',
                       href: 'https://v2.vuejs.org/',
-                    },
+                    }
                   ]}
                 />
 

@@ -1,6 +1,6 @@
 .item {
   position: relative;
-  flex: 1 1 auto;
+  flex: 1 1 clamp(100px, auto, 500px);
   display: inline-flex;
   flex-direction: column;
   font-size: 1.4rem;
@@ -9,7 +9,8 @@
   border-radius: 8px;
   overflow: hidden;
   transition: border-color 0.2s ease-in-out;
-  max-width: 400px;
+  min-width: 120px;
+  max-width: 500px;
 }
 
 .tagList {
@@ -99,6 +100,7 @@
 .time {
   font-size: 1.2rem;
   color: var(--N200);
+  margin-left: 1.6rem;
 }
 
 .description {
@@ -106,6 +108,7 @@
   font-weight: 400;
   color: var(--N400);
   margin-bottom: 0.6rem;
+  flex-grow: 1;
 }
 
 .stack {
