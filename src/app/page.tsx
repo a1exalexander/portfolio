@@ -82,95 +82,97 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
-      <main id="about me 👋" className={styles.main}>
-        <h1 className={styles.title}>
-          hey, I&apos;m Oleksandr Ratushnyi 👋
-        </h1>
-        <Paragraph>
-          I&apos;m <strong>front-end developer</strong> from Ukraine. My 🫶 stack
-          is{' '}
-          <Tag href="https://react.dev" iconColor="#68dbfb" Icon={BiLogoReact}>
-            React
-          </Tag>{' '}
-          +{' '}
-          <Tag
-            href="https://www.typescriptlang.org"
-            iconColor="#387cc8"
-            Icon={BiLogoTypescript}
-          >
-            TypeScript
-          </Tag>
-          . I also experienced in{' '}
-          <Tag
-            href="https://nodejs.org"
-            iconColor="#539e43"
-            Icon={IoLogoNodejs}
-          >
-            Node.js
-          </Tag>{' '}
-          development, so I&apos;m actually a <strong>full-stack</strong>, but
-          at heart I&apos;m a front-end.
-        </Paragraph>
-        <Photo
-          loading="eager"
-          src={photo1}
-          caption="I'm in the cafe posing for a photo"
-        />
-        <Paragraph>
-          I have experience in teaching and creating courses in front-end
-          development. I have successfully released three groups of students in
-          front-end development. Additionally, I crafted my own course for the
-          Merge Academy.
-        </Paragraph>
+      <main className={styles.main}>
+        <section id="about me 👋">
+          <h1 className={styles.title}>hey, I&apos;m Oleksandr Ratushnyi 👋</h1>
+          <Paragraph>
+            I&apos;m <strong>front-end developer</strong> from Ukraine. My 🫶
+            stack is{' '}
+            <Tag
+              href="https://react.dev"
+              iconColor="#68dbfb"
+              Icon={BiLogoReact}
+            >
+              React
+            </Tag>{' '}
+            +{' '}
+            <Tag
+              href="https://www.typescriptlang.org"
+              iconColor="#387cc8"
+              Icon={BiLogoTypescript}
+            >
+              TypeScript
+            </Tag>
+            . I also experienced in{' '}
+            <Tag
+              href="https://nodejs.org"
+              iconColor="#539e43"
+              Icon={IoLogoNodejs}
+            >
+              Node.js
+            </Tag>{' '}
+            development, so I&apos;m actually a <strong>full-stack</strong>, but
+            at heart I&apos;m a front-end.
+          </Paragraph>
+          <Photo
+            loading="eager"
+            src={photo1}
+            caption="I'm in the cafe posing for a photo"
+          />
+          <Paragraph>
+            I have experience in teaching and creating courses in front-end
+            development. I have successfully released three groups of students
+            in front-end development. Additionally, I crafted my own course for
+            the Merge Academy.
+          </Paragraph>
 
-        <Paragraph>
-          When I&apos;m not coding, you might find me capturing life through a
-          lens 📸, riding a bicycle 🚴, perfecting my pizza recipe 🍕, or
-          embarking on tourist trips with a tent 🏕️. Check out my photography{' '}
-          <Tag
-            iconColor="#e1306c"
-            Icon={SiInstagram}
-            href="https://www.instagram.com/sashko.i.photoaparat/"
-          >
-            Instagram
-          </Tag>
-          .
-        </Paragraph>
-        <Collage>
-          <Photo src={photo4} grid caption="Hoverla, Carpathian mountains" />
-          <Photo
-            src={photoCarpathians2}
-            grid
-            vertical
-            caption="Kostrycha, Carpathian mountains"
-          />
-          <Photo
-            src={photoCarpathians3}
-            grid
-            vertical
-            caption="Kostrycha, Carpathian mountains"
-          />
-          <Photo
-            src={photoCarpathians5}
-            vertical
-            grid
-            caption="Kostrycha, Carpathian mountains"
-          />
-        </Collage>
+          <Paragraph>
+            When I&apos;m not coding, you might find me capturing life through a
+            lens 📸, riding a bicycle 🚴, perfecting my pizza recipe 🍕, or
+            embarking on tourist trips with a tent 🏕️. Check out my photography{' '}
+            <Tag
+              iconColor="#e1306c"
+              Icon={SiInstagram}
+              href="https://www.instagram.com/sashko.i.photoaparat/"
+            >
+              Instagram
+            </Tag>
+            .
+          </Paragraph>
+          <Collage>
+            <Photo src={photo4} grid caption="Hoverla, Carpathian mountains" />
+            <Photo
+              src={photoCarpathians2}
+              grid
+              vertical
+              caption="Kostrycha, Carpathian mountains"
+            />
+            <Photo
+              src={photoCarpathians3}
+              grid
+              vertical
+              caption="Kostrycha, Carpathian mountains"
+            />
+            <Photo
+              src={photoCarpathians5}
+              vertical
+              grid
+              caption="Kostrycha, Carpathian mountains"
+            />
+          </Collage>
 
-        <Paragraph>
-          At home, I have to two red cats 🐈🐈, though one is not quite as red
-          as a desert.
-        </Paragraph>
-        <Collage>
-          <Photo src={photo5} grid caption="I'm working with Platon" />
-          <Photo src={photo6} vertical grid caption="Lastick & Platon" />
-          <Photo src={photo7} grid caption="Lastick is waiting for work" />
-        </Collage>
+          <Paragraph>
+            At home, I have to two red cats 🐈🐈, though one is not quite as red
+            as a desert.
+          </Paragraph>
+          <Collage>
+            <Photo src={photo5} grid caption="I'm working with Platon" />
+            <Photo src={photo6} vertical grid caption="Lastick & Platon" />
+            <Photo src={photo7} grid caption="Lastick is waiting for work" />
+          </Collage>
+        </section>
         <section id="my work 🗂️" className={styles.section}>
-          <h2 className={styles.heading}>
-            my work 🗂️
-          </h2>
+          <h2 className={styles.heading}>my work 🗂️</h2>
           <Paragraph>
             I began my journey as a front-end engineer in early 2018 and rapidly
             advanced from a junior role to become a CTO, showcasing my growth
@@ -863,9 +865,7 @@ export default function Home() {
           </Work>
         </section>
         <section id="my projects 🚀" className={styles.section}>
-          <h2 className={styles.heading}>
-            my projects 🚀
-          </h2>
+          <h2 className={styles.heading}>my projects 🚀</h2>
           <Paragraph>
             Projects that I made for myself, friends, relatives and world on a
             free basis. My pet-projects are a blend of personal passion and
@@ -1004,9 +1004,7 @@ export default function Home() {
           </Fullwidth>
         </section>
         <section id="course certificates 🎓" className={styles.section}>
-          <h2 className={styles.heading}>
-            course certificates 🎓
-          </h2>
+          <h2 className={styles.heading}>course certificates 🎓</h2>
           <Paragraph>
             Here are some of the courses and certifications I&apos;ve completed.
           </Paragraph>
