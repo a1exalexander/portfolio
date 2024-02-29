@@ -72,6 +72,7 @@ export const Project = function Project({
               className={styles.tag}
               key={name}
               Icon={Icon}
+              size="small"
               iconColor={color}
               href={href}
             >

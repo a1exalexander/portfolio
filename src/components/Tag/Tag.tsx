@@ -12,6 +12,7 @@ interface ITagProps {
   backgroundColor?: string;
   textColor?: string;
   download?: boolean;
+  size?: 'small' | 'medium';
 }
 
 export const Tag = function Tag({
@@ -24,6 +25,7 @@ export const Tag = function Tag({
   download,
   href,
   dark,
+  size = 'medium',
 }: ITagProps) {
   return (
     <a
@@ -35,7 +37,7 @@ export const Tag = function Tag({
         backgroundColor,
         borderColor: backgroundColor,
       }}
-      className={clsx(styles.tag, { [styles.dark]: dark }, className)}
+      className={clsx(styles.tag, { [styles.dark]: dark }, className, styles[size])}
     >
       {Icon ? (
         <span className={styles.iconWrapper}>

@@ -31,7 +31,13 @@ import {
   SiJavascript,
   SiStorybook,
   SiHiveBlockchain,
-  SiNestjs
+  SiNestjs,
+  SiTailwindcss,
+  SiCssmodules,
+  SiSass,
+  SiCsswizardry,
+  SiStyledcomponents,
+  SiMui,
 } from 'react-icons/si';
 import { LuBird } from 'react-icons/lu';
 import {
@@ -234,6 +240,12 @@ export default function Home() {
                       color: '#6c76e6',
                       href: 'https://stripe.com/',
                     },
+                    {
+                      name: 'CSS modules',
+                      Icon: SiCssmodules,
+                      href: 'https://github.com/css-modules/css-modules',
+                      color: '#000',
+                    },
                   ]}
                 />
 
@@ -267,6 +279,12 @@ export default function Home() {
                       Icon: TbEPassport,
                       color: '#3c46f6',
                       href: 'https://onfido.com/',
+                    },
+                    {
+                      name: 'Tailwind',
+                      Icon: SiTailwindcss,
+                      color: '#38b2ac',
+                      href: 'https://tailwindcss.com/',
                     },
                   ]}
                 />
@@ -307,7 +325,13 @@ export default function Home() {
                       Icon: SiNestjs,
                       color: '#e0234e',
                       href: 'https://nestjs.com/',
-                    }
+                    },
+                    {
+                      name: 'SCSS',
+                      Icon: SiSass,
+                      color: '#c69',
+                      href: 'https://sass-lang.com/',
+                    },
                   ]}
                 />
 
@@ -342,6 +366,12 @@ export default function Home() {
                       color: '#e53ead',
                       href: 'https://graphql.org/',
                     },
+                    {
+                      name: 'CSS',
+                      Icon: SiCsswizardry,
+                      color: '#1572b6',
+                      href: 'https://developer.mozilla.org/en-US/docs/Web/CSS',
+                    },
                   ]}
                 />
                 <Project
@@ -367,6 +397,12 @@ export default function Home() {
                       Icon: SiStrapi,
                       color: '#8c4bff',
                       href: 'https://strapi.io/',
+                    },
+                    {
+                      name: 'SCSS',
+                      Icon: SiSass,
+                      color: '#c69',
+                      href: 'https://sass-lang.com/',
                     },
                   ]}
                 />
@@ -401,7 +437,13 @@ export default function Home() {
                       Icon: SiStorybook,
                       color: '#ff4785',
                       href: 'https://storybook.js.org/',
-                    }
+                    },
+                    {
+                      name: 'SCSS',
+                      Icon: SiSass,
+                      color: '#c69',
+                      href: 'https://sass-lang.com/',
+                    },
                   ]}
                 />
 
@@ -435,6 +477,12 @@ export default function Home() {
                       Icon: ImNpm,
                       color: '#cd3f3e',
                       href: 'https://www.npmjs.com/',
+                    },
+                    {
+                      name: 'Styled-components',
+                      Icon: SiStyledcomponents,
+                      color: '#db7093',
+                      href: 'https://styled-components.com/',
                     },
                   ]}
                 />
@@ -491,6 +539,12 @@ export default function Home() {
                       color: '#8c4bff',
                       href: 'https://strapi.io/',
                     },
+                    {
+                      name: 'SCSS',
+                      Icon: SiSass,
+                      color: '#c69',
+                      href: 'https://sass-lang.com/',
+                    },
                   ]}
                 />
 
@@ -512,7 +566,13 @@ export default function Home() {
                       Icon: SiStorybook,
                       color: '#ff4785',
                       href: 'https://storybook.js.org/',
-                    }
+                    },
+                    {
+                      name: 'SCSS',
+                      Icon: SiSass,
+                      color: '#c69',
+                      href: 'https://sass-lang.com/',
+                    },
                   ]}
                 />
 
@@ -527,7 +587,13 @@ export default function Home() {
                       Icon: IoLogoVue,
                       color: '#41b883',
                       href: 'https://v2.vuejs.org/',
-                    }
+                    },
+                    {
+                      name: 'SCSS',
+                      Icon: SiSass,
+                      color: '#c69',
+                      href: 'https://sass-lang.com/',
+                    },
                   ]}
                 />
 
@@ -549,6 +615,12 @@ export default function Home() {
                       Icon: BsStripe,
                       color: '#6c76e6',
                       href: 'https://stripe.com/',
+                    },
+                    {
+                      name: 'SCSS',
+                      Icon: SiSass,
+                      color: '#c69',
+                      href: 'https://sass-lang.com/',
                     },
                   ]}
                 />
@@ -679,6 +751,12 @@ export default function Home() {
                       color: '#dc382d',
                       href: 'https://redis.io/',
                     },
+                    {
+                      name: 'MUI',
+                      Icon: SiMui,
+                      color: '#0081cb',
+                      href: 'https://material-ui.com/',
+                    },
                   ]}
                 />
 
@@ -700,6 +778,12 @@ export default function Home() {
                       Icon: SiExpo,
                       color: '#000020',
                       href: 'https://expo.dev/',
+                    },
+                    {
+                      name: 'CSS',
+                      Icon: SiCsswizardry,
+                      color: '#1572b6',
+                      href: 'https://developer.mozilla.org/en-US/docs/Web/CSS',
                     },
                   ]}
                 />
@@ -723,6 +807,12 @@ export default function Home() {
                       color: '#000020',
                       href: 'https://expo.dev/',
                     },
+                    {
+                      name: 'CSS',
+                      Icon: SiCsswizardry,
+                      color: '#1572b6',
+                      href: 'https://developer.mozilla.org/en-US/docs/Web/CSS',
+                    },
                   ]}
                 />
 
@@ -737,6 +827,12 @@ export default function Home() {
                       Icon: SiNuxtdotjs,
                       color: '#00dc82',
                       href: 'https://nuxt.com/',
+                    },
+                    {
+                      name: 'SCSS',
+                      Icon: SiSass,
+                      color: '#c69',
+                      href: 'https://sass-lang.com/',
                     },
                   ]}
                 />
@@ -753,6 +849,12 @@ export default function Home() {
                       Icon: IoLogoVue,
                       color: '#41b883',
                       href: 'https://v2.vuejs.org/',
+                    },
+                    {
+                      name: 'SCSS',
+                      Icon: SiSass,
+                      color: '#c69',
+                      href: 'https://sass-lang.com/',
                     },
                   ]}
                 />
@@ -822,6 +924,12 @@ export default function Home() {
                     color: '#764abc',
                     href: 'https://react-redux.js.org/',
                   },
+                  {
+                    name: 'CSS modules',
+                    Icon: SiCssmodules,
+                    href: 'https://github.com/css-modules/css-modules',
+                    color: '#000',
+                  },
                 ]}
               />
 
@@ -838,6 +946,12 @@ export default function Home() {
                     Icon: TbBrandNextjs,
                     color: '#080808',
                     href: 'https://nextjs.org/',
+                  },
+                  {
+                    name: 'CSS modules',
+                    Icon: SiCssmodules,
+                    href: 'https://github.com/css-modules/css-modules',
+                    color: '#000',
                   },
                 ]}
               />
@@ -861,6 +975,12 @@ export default function Home() {
                     Icon: IoLogoFirebase,
                     color: '#ffa82c',
                     href: 'https://firebase.google.com/',
+                  },
+                  {
+                    name: 'SCSS',
+                    Icon: SiSass,
+                    color: '#c69',
+                    href: 'https://sass-lang.com/',
                   },
                 ]}
               />
