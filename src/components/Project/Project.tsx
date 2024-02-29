@@ -30,6 +30,11 @@ export const Project = function Project({
   npm,
 }: IProjectProps) {
   const CustomTag = href ? 'a' : 'div';
+  const customProps: { href?: string; target?: string } = {};
+  if (CustomTag === 'a') {
+    customProps.href = href;
+    customProps.target = '_blank';
+  }
   return (
     <li className={clsx(styles.item, status ? styles[status] : '', className)}>
       <div className={styles.tagList}>
@@ -58,7 +63,7 @@ export const Project = function Project({
         ) : null}
       </div>
       <div className={styles.head}>
-        <CustomTag target="_blank" href={href} className={styles.title}>
+        <CustomTag {...customProps} className={styles.title}>
           {title}
           {href ? <LuExternalLink className={styles.arrow} /> : null}
         </CustomTag>

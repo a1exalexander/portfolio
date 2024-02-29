@@ -83,7 +83,7 @@ export default function Home() {
   return (
     <>
       <main className={styles.main}>
-        <section id="about me 👋">
+        <section id="about-me">
           <h1 className={styles.title}>hey, I&apos;m Oleksandr Ratushnyi 👋</h1>
           <Paragraph>
             I&apos;m <strong>front-end developer</strong> from Ukraine. My 🫶
@@ -171,7 +171,7 @@ export default function Home() {
             <Photo src={photo7} grid caption="Lastick is waiting for work" />
           </Collage>
         </section>
-        <section id="my work 🗂️" className={styles.section}>
+        <section id="my-work" className={styles.section}>
           <h2 className={styles.heading}>my work 🗂️</h2>
           <Paragraph>
             I began my journey as a front-end engineer in early 2018 and rapidly
@@ -864,7 +864,7 @@ export default function Home() {
             </Fullwidth>
           </Work>
         </section>
-        <section id="my projects 🚀" className={styles.section}>
+        <section id="my-projects" className={styles.section}>
           <h2 className={styles.heading}>my projects 🚀</h2>
           <Paragraph>
             Projects that I made for myself, friends, relatives and world on a
@@ -1003,7 +1003,7 @@ export default function Home() {
             </ul>
           </Fullwidth>
         </section>
-        <section id="course certificates 🎓" className={styles.section}>
+        <section id="course-certificates" className={styles.section}>
           <h2 className={styles.heading}>course certificates 🎓</h2>
           <Paragraph>
             Here are some of the courses and certifications I&apos;ve completed.
