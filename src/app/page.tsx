@@ -83,7 +83,7 @@ export default function Home() {
   return (
     <>
       <main id="about me 👋" className={styles.main}>
-        <h1 data-aside="about me 👋" className={styles.title}>
+        <h1 className={styles.title}>
           hey, I&apos;m Oleksandr Ratushnyi 👋
         </h1>
         <Paragraph>
@@ -168,7 +168,7 @@ export default function Home() {
           <Photo src={photo7} grid caption="Lastick is waiting for work" />
         </Collage>
         <section id="my work 🗂️" className={styles.section}>
-          <h2 data-aside className={styles.heading}>
+          <h2 className={styles.heading}>
             my work 🗂️
           </h2>
           <Paragraph>
@@ -863,7 +863,7 @@ export default function Home() {
           </Work>
         </section>
         <section id="my projects 🚀" className={styles.section}>
-          <h2 data-aside className={styles.heading}>
+          <h2 className={styles.heading}>
             my projects 🚀
           </h2>
           <Paragraph>
@@ -1004,7 +1004,7 @@ export default function Home() {
           </Fullwidth>
         </section>
         <section id="course certificates 🎓" className={styles.section}>
-          <h2 data-aside className={styles.heading}>
+          <h2 className={styles.heading}>
             course certificates 🎓
           </h2>
           <Paragraph>
