@@ -79,3 +79,53 @@
   flex-shrink: 0;
   width: 70vw;
 }
+
+.stickerJs {
+  left: 5%;
+  top: 10%;
+  transform: rotate(20deg);
+  width: 180px;
+  height: 180px;
+}
+
+.stickerTs {
+  left: 10%;
+  top: 55%;
+  transform: rotate(-25deg);
+}
+
+.stickerReact {
+  left: 10%;
+  top: 75%;
+  transform: rotate(30deg);
+}
+
+.stickerNodejs {
+  right: 10%;
+  top: 30%;
+  transform: rotate(20deg);
+}
+
+.stickerPostgreqsl {
+  right: 10%;
+  top: 60%;
+  transform: rotate(-25deg);
+}
+
+.stickerSass {
+  right: 10%;
+  top: 90%;
+  transform: rotate(30deg);
+}
+
+.stickerNpm {
+  left: 10%;
+  top: 25%;
+  transform: rotate(20deg);
+}
+
+.stickerVue {
+  left: 10%;
+  top: 50%;
+  transform: rotate(-25deg);
+}

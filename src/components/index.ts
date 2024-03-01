@@ -8,3 +8,4 @@ export * from './Project';
 export * from './Fullwidth';
 export * from './Footer';
 export * from './Certificate';
+export * from './Sticker';

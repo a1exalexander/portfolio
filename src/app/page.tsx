@@ -3,6 +3,7 @@ import { ImNpm } from 'react-icons/im';
 import { FaWix } from 'react-icons/fa';
 import { DiBackbone, DiStylus, DiRedis } from 'react-icons/di';
 import { GrProjects } from 'react-icons/gr';
+import { Metadata } from 'next';
 import { RiSupabaseFill } from 'react-icons/ri';
 import {
   TbBrandNextjs,
@@ -48,6 +49,7 @@ import {
   Paragraph,
   Photo,
   Project,
+  Sticker,
   Tag,
   Work,
   getAlt,
@@ -72,7 +74,15 @@ import merge from '../images/merge.png';
 import mergeAcademy from '../images/merge-academy.ico';
 import wisealpha from '../images/wisealpha.jpg';
 import beetroot from '../images/beetroot.png';
-import { Metadata } from 'next';
+import stickerVue from '../images/stickers/vue.png';
+import stickerGraphql from '../images/stickers/graphql.png';
+import stickerJs from '../images/stickers/js.png';
+import stickerNpm from '../images/stickers/npm.png';
+import stickerSass from '../images/stickers/sass.png';
+import stickerTs from '../images/stickers/ts.png';
+import stickerPostgresql from '../images/stickers/postgresql.png';
+import stickerReact from '../images/stickers/react.png';
+import stickerNodejs from '../images/stickers/nodejs.png';
 
 export const metadata: Metadata = {
   title: 'Oleksandr Ratushnyi',
@@ -82,6 +92,31 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
+      <Sticker src={stickerJs} alt="js" className={styles.stickerJs} />
+      <Sticker src={stickerTs} alt="ts" className={styles.stickerTs} />
+      <Sticker src={stickerReact} alt="react" className={styles.stickerReact} />
+      {/* <Sticker
+        src={stickerNodejs}
+        alt="nodejs"
+        className={styles.stickerNodejs}
+      />
+      <Sticker src={stickerVue} alt="vue" className={styles.stickerVue} />
+      <Sticker
+        src={stickerGraphql}
+        alt="graphql"
+        className={styles.stickerGraphql}
+      />
+
+      <Sticker src={stickerNpm} alt="npm" className={styles.stickerNpm} />
+      <Sticker src={stickerSass} alt="sass" className={styles.stickerSass} />
+
+      <Sticker
+        src={stickerPostgresql}
+        alt="postgresql"
+        className={styles.stickerPostgresql}
+      />
+       */}
+
       <main className={styles.main}>
         <section id="about-me">
           <h1 className={styles.title}>hey, I&apos;m Oleksandr Ratushnyi 👋</h1>
