@@ -1,5 +1,5 @@
 .container {
-  padding: 6rem 16px;
+  padding: var(--SECTION_OFFSET) 16px;
   max-width: 800px;
   margin: 0 auto;
   position: relative;

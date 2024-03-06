@@ -1,5 +1,5 @@
 .main {
-  padding: 64px 16px 0;
+  padding: 4rem 16px 0;
   max-width: 800px;
   margin: 0 auto;
   position: relative;
@@ -41,7 +41,7 @@
 }
 
 .section {
-  padding-top: 8rem;
+  padding-top: var(--SECTION_OFFSET);
 }
 
 .projectsList {

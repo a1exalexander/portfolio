@@ -8,8 +8,7 @@
 }
 
 .container {
-  position: absolute;
-  z-index: 2;
+  position: relative;
   top: 0;
   width: 100vw;
   left: 0;
