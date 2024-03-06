@@ -49,6 +49,7 @@ import {
   Photo,
   Project,
   Tag,
+  Ticker,
   Work,
   getAlt,
 } from '../components';
@@ -79,15 +80,27 @@ export const metadata: Metadata = {
   description: 'Front-end Developer from Ukraine',
 };
 
+const getNumberOfMonthsFromMay2022 = () => {
+  const may2022 = new Date('2022-05-01');
+  const now = new Date();
+  const diff = now.getTime() - may2022.getTime();
+  return Math.floor(diff / (1000 * 60 * 60 * 24 * 30));
+};
+
 export default function Home() {
   return (
     <>
+      <Ticker href="https://www.savedefenders.info/">
+        For <strong>{getNumberOfMonthsFromMay2022()} months</strong>, Russia has
+        been hiding the condition and location of 1600 captured defenders of
+        <strong> Azovstal and Mariupol</strong>
+      </Ticker>
       <main className={styles.main}>
         <section id="about-me">
           <h1 className={styles.title}>hey, I&apos;m Oleksandr Ratushnyi 👋</h1>
           <Paragraph>
-            I&apos;m <strong>front-end developer</strong> from Ukraine. My 🫶
-            stack is{' '}
+            I&apos;m <strong>front-end developer</strong> from 🇺🇦{' '}
+            <strong>Ukraine</strong>. My 🫶 stack is{' '}
             <Tag
               href="https://react.dev"
               iconColor="#68dbfb"

@@ -1,0 +1,44 @@
+@keyframes Ticker {
+  0% {
+    transform: translate(calc(100vw));
+  }
+  100% {
+    transform: translate(-100%);
+  }
+}
+
+.container {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  width: 100vw;
+  left: 0;
+  overflow: hidden;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+}
+
+.animate {
+  justify-content: flex-start;
+}
+
+.ticker {
+  display: inline;
+  font-size: 1.6rem;
+  white-space: nowrap;
+  color: #fff;
+  background: #000;
+  margin: 0 1rem;
+  will-change: transform;
+}
+
+.animate .ticker {
+  animation: Ticker 15s linear infinite;
+}
+
+.ticker strong {
+  color: #78ff1c;
+}
