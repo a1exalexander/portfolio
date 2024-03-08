@@ -80,6 +80,8 @@ export const metadata: Metadata = {
   description: 'Front-end Developer from Ukraine',
 };
 
+export const revalidate = 60 * 60 * 24 * 7; // 1 week
+
 const getNumberOfMonthsFromMay2022 = () => {
   const may2022 = new Date('2022-05-01');
   const now = new Date();
