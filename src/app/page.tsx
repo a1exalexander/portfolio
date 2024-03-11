@@ -69,6 +69,7 @@ import photoMerge2 from '../images/m2.jpg';
 import cert1 from '../images/c1.png';
 import cert2 from '../images/c2.png';
 import cert3 from '../images/c3.png';
+import cert4 from '../images/PR3.png';
 import merge from '../images/merge.png';
 import mergeAcademy from '../images/merge-academy.ico';
 import wisealpha from '../images/wisealpha.jpg';
@@ -1028,18 +1029,26 @@ export default function Home() {
               <div className={styles.certPadding} />
               <Certificate
                 className={styles.certItem}
+                src={cert4}
+                backgroundColor='#3548fe'
+                alt={getAlt('Projector: Engineering Discovery')}
+              />
+              <Certificate
+                className={styles.certItem}
                 src={cert2}
-                alt={getAlt('SQL Projector')}
+                backgroundColor='#100f14'
+                alt={getAlt('Projector: SQL')}
               />
               <Certificate
                 className={styles.certItem}
                 src={cert3}
-                alt={getAlt('CTO Projector')}
+                backgroundColor='#100f14'
+                alt={getAlt('Projector: CTO')}
               />
               <Certificate
                 className={styles.certItem}
                 src={cert1}
-                alt={getAlt('Sololearn SQL')}
+                alt={getAlt('Sololearn: SQL')}
               />
               <div className={styles.certPadding} />
             </div>

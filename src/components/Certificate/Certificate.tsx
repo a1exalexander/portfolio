@@ -7,21 +7,26 @@ interface CertificateProps {
   className?: string;
   src: string | StaticImport;
   alt: string;
+  backgroundColor?: string;
 }
 
 export const Certificate = function Certificate({
   src,
   alt,
   className,
+  backgroundColor,
 }: CertificateProps) {
   return (
     <div className={styles.wrapper}>
-      <div className={styles.inner}>
+      <div className={styles.inner} style={{ backgroundColor }}>
         <Image
           data-zoomable
           src={src}
           alt={alt}
-          style={{ objectFit: 'cover', objectPosition: 'center' }}
+          style={{
+            objectFit: backgroundColor ? 'contain' : 'cover',
+            objectPosition: 'center',
+          }}
           fill
           placeholder="blur"
           loading="lazy"
