@@ -67,7 +67,7 @@ import photoCarpathians5 from '../images/carpathians/c5.jpeg';
 import photoMerge1 from '../images/m1.jpeg';
 import photoMerge2 from '../images/m2.jpg';
 import cert1 from '../images/c1.png';
-import cert2 from '../images/c2.png';
+import cert2 from '../images/PRJCTR_SQL.png';
 import cert3 from '../images/c3.png';
 import cert4 from '../images/PR3.png';
 import merge from '../images/merge.png';
@@ -1019,10 +1019,10 @@ export default function Home() {
             </ul>
           </Fullwidth>
         </section>
-        <section id="course-certificates" className={styles.section}>
-          <h2 className={styles.heading}>course certificates 🎓</h2>
+        <section id="my-certificates" className={styles.section}>
+          <h2 className={styles.heading}>my certificates 🎓</h2>
           <Paragraph>
-            Here are some of the courses and certifications I&apos;ve completed.
+            Here are some of the course and worshop certifications I&apos;ve completed.
           </Paragraph>
           <Fullwidth>
             <div className={styles.certsList}>
