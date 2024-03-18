@@ -16,6 +16,7 @@ interface IProjectProps {
   github?: string;
   npm?: string;
   stack: { Icon: IconType; name: string; color?: string; href: string }[];
+  maxWidth?: number;
 }
 
 export const Project = function Project({
@@ -28,6 +29,7 @@ export const Project = function Project({
   status = 'offline',
   github,
   npm,
+  maxWidth,
 }: IProjectProps) {
   const CustomTag = href ? 'a' : 'div';
   const customProps: { href?: string; target?: string } = {};
@@ -35,8 +37,12 @@ export const Project = function Project({
     customProps.href = href;
     customProps.target = '_blank';
   }
+
   return (
-    <li className={clsx(styles.item, status ? styles[status] : '', className)}>
+    <li
+      
+      className={clsx(styles.item, status ? styles[status] : '', className)}
+    >
       <div className={styles.tagList}>
         <Project.Tag className={clsx(styles.status, styles.tagItem)}>
           {status}
@@ -69,7 +75,7 @@ export const Project = function Project({
         </CustomTag>
         <span className={styles.time}>{time}</span>
       </div>
-      <p className={styles.description}>{description}</p>
+      <p style={{ maxWidth: maxWidth ? `${maxWidth}px` : undefined }} className={styles.description}>{description}</p>
       <p className={styles.stack}>
         {stack.map(({ Icon, name, color, href }) => {
           return (

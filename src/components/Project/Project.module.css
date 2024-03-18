@@ -2,23 +2,12 @@
   position: relative;
   display: inline-flex;
   flex-direction: column;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   padding: 2.6rem 1.4rem 1rem 1.4rem;
   border: 1px solid var(--N100);
   border-radius: 8px;
   overflow: hidden;
   transition: border-color 0.2s ease-in-out;
-  flex: 1 1 auto;
-  min-width: initial;
-  max-width: 500px;
-}
-
-@media (min-width: 768px) {
-  .item {
-    flex: 1 1 clamp(100px, auto, 500px);
-    min-width: 120px;
-    max-width: 500px;
-  }
 }
 
 .tagList {
@@ -117,6 +106,12 @@
   color: var(--N400);
   margin-bottom: 0.6rem;
   flex-grow: 1;
+}
+
+@media (max-width: 768px) {
+  .description {
+    max-width: 100% !important;
+  }
 }
 
 .stack {

@@ -203,13 +203,13 @@ export default function Home() {
             icon={merge}
           >
             <Paragraph>
-              At Merge, my role extends beyond mere development; it&apos;s about
-              envisioning and creating cutting-edge web applications in the
-              fintech and SaaS sectors. I lead a team of talented developers,
-              setting strategic directions, and fostering a culture of
-              innovation. We&apos;ve turned numerous ambitious ideas into
-              successful financial technology solutions and user-centric SaaS
-              platforms, contributing significantly to the tech landscape.
+              At Merge, my role extends beyond mere development. I am
+              responsible for development proccesses in the agancy, development
+              team management, technical strategy for agancy, clients
+              communication, development discovery and development itself. I
+              have been involved in the development of a wide range of projects
+              as a front-end developer, back-end developer and also as a team
+              leader.
             </Paragraph>
             <Collage>
               <Photo src={photoMerge1} grid caption="I am in my office" />
@@ -222,11 +222,13 @@ export default function Home() {
             <Fullwidth Icon={GrProjects} title="Projects">
               <ul className={styles.projectsList}>
                 <Project
+                  className={styles.project}
                   title="Promtify"
                   time="2023"
-                  description="AI templates builder"
+                  description="AI templates builder. It's in-house project for Merge team. The development is conducted only by me."
                   href="https://app.promtify.ai"
                   status="production"
+                  maxWidth={310}
                   stack={[
                     {
                       name: 'Next.js',
@@ -268,11 +270,13 @@ export default function Home() {
                 />
 
                 <Project
+                  className={styles.project}
                   title="RelayPay"
                   time="2023"
-                  description="Crypto payment solution"
+                  description="Crypto payment solution. Worked as a small team. I was involved in architecture, management and development of complex issues."
                   href="https://relaypay.io/"
                   status="production"
+                  maxWidth={400}
                   stack={[
                     {
                       name: 'Next.js',
@@ -308,11 +312,13 @@ export default function Home() {
                 />
 
                 <Project
+                  className={styles.project}
                   title="Merge Academy"
                   time="2022"
-                  description="Web academy platform"
+                  description="Web academy platform of Merge. I was involved in the development of the platform and also as a course author and teacher."
                   href="https://merge.academy/"
                   status="production"
+                  maxWidth={420}
                   stack={[
                     {
                       name: 'Remix',
@@ -354,11 +360,13 @@ export default function Home() {
                 />
 
                 <Project
+                  className={styles.project}
                   title="Ember"
                   time="2022"
-                  description="Finance management app"
+                  description="UK based finance management app. Worked in the client's team as a full-stack developer. Developed features and refactored a lot."
                   href="https://ember.co/"
                   status="production"
+                  maxWidth={400}
                   stack={[
                     {
                       name: 'Next.js',
@@ -393,10 +401,12 @@ export default function Home() {
                   ]}
                 />
                 <Project
+                  className={styles.project}
                   title="Spiral Blue"
                   time="2021"
-                  description="Space tech project"
+                  description="Website for Australian based space tech company. I was involved in setting up the entire project, fully backend, partially frontend and also leading the team."
                   status="offline"
+                  maxWidth={470}
                   stack={[
                     {
                       name: 'Next.js',
@@ -426,11 +436,13 @@ export default function Home() {
                 />
 
                 <Project
+                  className={styles.project}
                   title="Noviscient"
                   time="2021"
-                  description="Wealth management platform"
+                  description="Singapore based wealth management platform. I was engaged in frontend development independently, communicating directly with the backend (Python) dev."
                   href="https://www.noviscient.com/"
                   status="production"
+                  maxWidth={510}
                   stack={[
                     {
                       name: 'React',
@@ -466,11 +478,13 @@ export default function Home() {
                 />
 
                 <Project
+                  className={styles.project}
                   title="Spotlyt"
                   time="2021"
-                  description="Components library for data scientists"
+                  description="Components library for data scientists form Poland based company BrytLyt. I worked in the client's team and independently developed a UI library for their applications."
                   status="demo"
                   href="https://storybook-spotlyt.netlify.app/"
+                  maxWidth={520}
                   stack={[
                     {
                       name: 'React',
@@ -506,10 +520,12 @@ export default function Home() {
                 />
 
                 <Project
+                  className={styles.project}
                   title="Vamp"
                   time="2020"
-                  description="Kubernetes manager tool"
+                  description="Kubernetes manager tool. I was involved as a frontend developer to add some new features."
                   status="offline"
+                  maxWidth={280}
                   stack={[
                     {
                       name: 'React',
@@ -533,11 +549,13 @@ export default function Home() {
                 />
 
                 <Project
+                  className={styles.project}
                   title="Merge"
                   time="2020"
-                  description="Agency website"
+                  description="Website for the Merge agancy. Actually, it's the 3 or 4 version of the website."
                   status="production"
                   href="https://merge.rocks/"
+                  maxWidth={260}
                   stack={[
                     {
                       name: 'Next.js',
@@ -567,11 +585,13 @@ export default function Home() {
                 />
 
                 <Project
+                  className={styles.project}
                   title="Evello"
                   time="2020"
                   status="demo"
                   href="https://media-scout.netlify.app/"
-                  description="Video intelligence software platform. (Any login and password)"
+                  description="Video intelligence software platform. You can use any creds for login. We did this project together with Volodymyr Mazurets."
+                  maxWidth={390}
                   stack={[
                     {
                       name: 'Vue 2',
@@ -595,10 +615,12 @@ export default function Home() {
                 />
 
                 <Project
+                  className={styles.project}
                   title="TokenPlace"
                   time="2019"
                   status="offline"
-                  description="Ultimate crypto trading tool"
+                  description="Ultimate crypto trading tool. I did all the UI part, but without connecting the API because the client had its own development team."
+                  maxWidth={420}
                   stack={[
                     {
                       name: 'Vue 2',
@@ -616,11 +638,13 @@ export default function Home() {
                 />
 
                 <Project
+                  className={styles.project}
                   title="FundPlatform"
                   time="2018"
                   status="demo"
-                  description="Hedge funds wealth management system"
+                  description="Hedge funds wealth management system. It's the first project of Merge. I was the only developer in the company and on the project as a front-end developer."
                   href="https://fundplatform.netlify.app/"
+                  maxWidth={480}
                   stack={[
                     {
                       name: 'Vue 2',
@@ -740,10 +764,12 @@ export default function Home() {
             <Fullwidth Icon={GrProjects} title="Projects">
               <ul className={styles.projectsList}>
                 <Project
+                  className={styles.project}
                   title="Generator"
                   time="2021"
                   status="offline"
-                  description="Website generator tool"
+                  description="Blog website builder. I worked independently as a full-stack. It was the main backend which runs a static generator and generated an archive with a ready blog static blog. Also an admin app and the templates."
+                  maxWidth={630}
                   stack={[
                     {
                       name: 'Node.js',
@@ -779,11 +805,13 @@ export default function Home() {
                 />
 
                 <Project
+                  className={styles.project}
                   title="Captains Club"
                   time="2020"
                   status="production"
                   href="https://app.captains.club/apply"
-                  description="Golf club mobile app"
+                  description="Golf club mobile app. I was involved as a front-end developer to develop a mobile application from scratch based on an already existing web application."
+                  maxWidth={470}
                   stack={[
                     {
                       name: 'React Native',
@@ -807,11 +835,13 @@ export default function Home() {
                 />
 
                 <Project
+                  className={styles.project}
                   title="CircleOf"
                   time="2020"
                   href="https://circleof.com/"
                   status="production"
-                  description="Family caregiving mobile app"
+                  description="Family caregiving mobile app. I worked in a team and was engaged in fixes and feature development."
+                  maxWidth={350}
                   stack={[
                     {
                       name: 'React Native',
@@ -835,10 +865,12 @@ export default function Home() {
                 />
 
                 <Project
+                  className={styles.project}
                   title="Wambla"
                   time="2019"
                   status="offline"
-                  description="Real estate purchase/sale platform"
+                  description="Netherland based real estate purchase/sale platform. Engaged in frontend development by contacting the backend developer and designer independently."
+                  maxWidth={480}
                   stack={[
                     {
                       name: 'Nuxt',
@@ -856,11 +888,13 @@ export default function Home() {
                 />
 
                 <Project
+                  className={styles.project}
                   title="Merge Place"
                   time="2017"
                   status="production"
                   href="https://www.merge.place/"
-                  description="Coworking website"
+                  description="My first website that I made by myself for a co-working in Kremenchuk, Ukraine."
+                  maxWidth={250}
                   stack={[
                     {
                       name: 'Vue 2',
@@ -898,6 +932,7 @@ export default function Home() {
           <Fullwidth Icon={GrProjects} title="Projects">
             <ul className={styles.projectsList}>
               <Project
+                className={styles.project}
                 github="https://github.com/a1exalexander/svg-to-react"
                 title="svg-to-react"
                 time="2024"
@@ -921,6 +956,7 @@ export default function Home() {
                 ]}
               />
               <Project
+                className={styles.project}
                 github="https://github.com/a1exalexander/exchanger"
                 title="Exchanger"
                 time="2021"
@@ -950,6 +986,7 @@ export default function Home() {
               />
 
               <Project
+                className={styles.project}
                 github="https://github.com/a1exalexander/elevendogs"
                 title="Elevendogs"
                 time="2021"
@@ -973,6 +1010,7 @@ export default function Home() {
               />
 
               <Project
+                className={styles.project}
                 github="https://github.com/a1exalexander/school23"
                 title="School 23"
                 time="2020"
@@ -1002,6 +1040,7 @@ export default function Home() {
               />
 
               <Project
+                className={styles.project}
                 title="Keenly"
                 time="2020"
                 status="production"
@@ -1022,7 +1061,8 @@ export default function Home() {
         <section id="my-certificates" className={styles.section}>
           <h2 className={styles.heading}>my certificates 🎓</h2>
           <Paragraph>
-            Here are some of the course and worshop certifications I&apos;ve completed.
+            Here are some of the course and worshop certifications I&apos;ve
+            completed.
           </Paragraph>
           <Fullwidth>
             <div className={styles.certsList}>
@@ -1030,19 +1070,19 @@ export default function Home() {
               <Certificate
                 className={styles.certItem}
                 src={cert4}
-                backgroundColor='#3548fe'
+                backgroundColor="#3548fe"
                 alt={getAlt('Projector: Engineering Discovery')}
               />
               <Certificate
                 className={styles.certItem}
                 src={cert2}
-                backgroundColor='#100f14'
+                backgroundColor="#100f14"
                 alt={getAlt('Projector: SQL')}
               />
               <Certificate
                 className={styles.certItem}
                 src={cert3}
-                backgroundColor='#100f14'
+                backgroundColor="#100f14"
                 alt={getAlt('Projector: CTO')}
               />
               <Certificate
