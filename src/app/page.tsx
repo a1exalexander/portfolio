@@ -751,7 +751,7 @@ export default function Home() {
           <Work
             title="Freelance"
             job="Front-end developer"
-            time="2017 – 2021"
+            time="2018 – 2021"
             Icon={LuBird}
           >
             <Paragraph>
@@ -890,7 +890,7 @@ export default function Home() {
                 <Project
                   className={styles.project}
                   title="Merge Place"
-                  time="2017"
+                  time="2018"
                   status="production"
                   href="https://www.merge.place/"
                   description="My first website that I made by myself for a co-working in Kremenchuk, Ukraine."
