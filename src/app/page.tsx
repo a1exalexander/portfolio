@@ -35,7 +35,7 @@ import {
   SiTailwindcss,
   SiCssmodules,
   SiSass,
-  SiCsswizardry,
+  SiPostgresql,
   SiStyledcomponents,
   SiMui,
 } from 'react-icons/si';
@@ -102,7 +102,7 @@ export default function Home() {
         <section id="about-me">
           <h1 className={styles.title}>hey, I&apos;m Oleksandr Ratushnyi 👋</h1>
           <Paragraph>
-            I&apos;m <strong>front-end developer</strong> from 🇺🇦{' '}
+            I&apos;m <strong>fullstack developer</strong> from 🇺🇦{' '}
             <strong>Ukraine</strong>. My 🫶 stack is{' '}
             <Tag
               href="https://react.dev"
@@ -110,25 +110,20 @@ export default function Home() {
               Icon={BiLogoReact}
             >
               React
-            </Tag>{' '}
-            +{' '}
-            <Tag
-              href="https://www.typescriptlang.org"
-              iconColor="#387cc8"
-              Icon={BiLogoTypescript}
-            >
-              TypeScript
             </Tag>
-            . I also experienced in{' '}
-            <Tag
-              href="https://nodejs.org"
-              iconColor="#539e43"
-              Icon={IoLogoNodejs}
-            >
-              Node.js
+            , {''}
+            <Tag href="https://nestjs.com" iconColor="#e0234e" Icon={SiNestjs}>
+              NestJS
             </Tag>{' '}
-            development, so I&apos;m actually a <strong>full-stack</strong>, but
-            at heart I&apos;m a front-end.
+            and{' '}
+            <Tag
+              href="https://www.postgresql.org"
+              iconColor="#336791"
+              Icon={SiPostgresql}
+            >
+              PostgreSQL
+            </Tag>
+            .
           </Paragraph>
           <Photo
             loading="eager"
@@ -339,22 +334,16 @@ export default function Home() {
                       href: 'https://fondy.ua/uk/',
                     },
                     {
-                      name: 'Decap',
-                      Icon: SiDecapcms,
-                      color: '#ff0082',
-                      href: 'https://decapcms.org/',
-                    },
-                    {
                       name: 'NestJS',
                       Icon: SiNestjs,
                       color: '#e0234e',
                       href: 'https://nestjs.com/',
                     },
                     {
-                      name: 'SCSS',
-                      Icon: SiSass,
-                      color: '#c69',
-                      href: 'https://sass-lang.com/',
+                      name: 'PostgreSQL',
+                      Icon: SiPostgresql,
+                      color: '#336791',
+                      href: 'https://www.postgresql.org/',
                     },
                   ]}
                 />
@@ -393,10 +382,10 @@ export default function Home() {
                       href: 'https://graphql.org/',
                     },
                     {
-                      name: 'CSS',
-                      Icon: SiCsswizardry,
-                      color: '#1572b6',
-                      href: 'https://developer.mozilla.org/en-US/docs/Web/CSS',
+                      name: 'PostgreSQL',
+                      Icon: SiPostgresql,
+                      color: '#336791',
+                      href: 'https://www.postgresql.org/',
                     },
                   ]}
                 />
