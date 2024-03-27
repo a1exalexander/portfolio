@@ -199,7 +199,7 @@ export default function Home() {
           <Work
             title="Merge"
             job="Full-stack developer, CTO and co-founder"
-            time="2018 – present"
+            time="Dec 2018 — present"
             href="https://merge.rocks"
             icon={merge}
           >
@@ -674,7 +674,7 @@ export default function Home() {
           <Work
             title="Merge Academy"
             job="Course author and teacher"
-            time="2022 – 2023"
+            time="Apr 2022 — Apr 2023"
             href="https://merge.academy/"
             icon={mergeAcademy}
           >
@@ -692,7 +692,7 @@ export default function Home() {
           <Work
             title="Beetroot Academy"
             job="Front-end teacher"
-            time="2019 – present"
+            time="Jul 2020 — Present"
             href="https://beetroot.academy/"
             icon={beetroot}
           >
@@ -720,7 +720,7 @@ export default function Home() {
           <Work
             title="WiseAlpha"
             job="Front-end developer"
-            time="2022"
+            time="Jul 2020 – Oct 2020"
             href="https://wisealpha.com/"
             icon={wisealpha}
           >
