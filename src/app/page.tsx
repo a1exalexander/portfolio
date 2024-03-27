@@ -39,7 +39,6 @@ import {
   SiStyledcomponents,
   SiMui,
 } from 'react-icons/si';
-import { LuBird } from 'react-icons/lu';
 import {
   Certificate,
   Collage,
