@@ -74,6 +74,7 @@ import merge from '../images/merge.png';
 import mergeAcademy from '../images/merge-academy.ico';
 import wisealpha from '../images/wisealpha.jpg';
 import beetroot from '../images/beetroot.png';
+import mavinx from '../images/mavinx.png';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -687,6 +688,35 @@ export default function Home() {
             </Paragraph>
           </Work>
           <Divider />
+
+          <Work
+            title="Beetroot Academy"
+            job="Front-end teacher"
+            time="2019 – present"
+            href="https://beetroot.academy/"
+            icon={beetroot}
+          >
+            <Paragraph>
+              As a teacher at Beetroot Academy, I not only taught front-end
+              development but also played a crucial role in guiding two student
+              groups to success. My teaching extended beyond the classroom, as I
+              actively supported students in their practical projects, helping
+              them to apply theoretical knowledge to real-world scenarios.
+            </Paragraph>
+            <Collage>
+              <Photo
+                src={photo2}
+                grid
+                caption="I present certificates to students in 2020"
+              />
+              <Photo
+                src={photo3}
+                grid
+                caption="Some performance about academy"
+              />
+            </Collage>
+          </Work>
+          <Divider />
           <Work
             title="WiseAlpha"
             job="Front-end developer"
@@ -721,45 +751,17 @@ export default function Home() {
           </Work>
           <Divider />
           <Work
-            title="Beetroot Academy"
-            job="Front-end teacher"
-            time="2019 – 2021"
-            href="https://beetroot.academy/"
-            icon={beetroot}
+            title="Mavinx"
+            job="Fullstack developer (part-time)"
+            time="2019 – 2020"
+            href="https://mavinx.com/"
+            icon={mavinx}
           >
             <Paragraph>
-              As a teacher at Beetroot Academy, I not only taught front-end
-              development but also played a crucial role in guiding two student
-              groups to success. My teaching extended beyond the classroom, as I
-              actively supported students in their practical projects, helping
-              them to apply theoretical knowledge to real-world scenarios.
-            </Paragraph>
-            <Collage>
-              <Photo
-                src={photo2}
-                grid
-                caption="I present certificates to students in 2020"
-              />
-              <Photo
-                src={photo3}
-                grid
-                caption="Some performance about academy"
-              />
-            </Collage>
-          </Work>
-          <Divider />
-          <Work
-            title="Freelance"
-            job="Front-end developer"
-            time="2018 – 2021"
-            Icon={LuBird}
-          >
-            <Paragraph>
-              My freelance journey was marked by diversity and adaptability. I
-              worked on various projects, leveraging a wide array of
-              technologies to deliver tailored front-end solutions. This period
-              honed my skills in project management, client communication, and
-              staying ahead of the curve in rapidly evolving tech trends.
+              These companies are my friends and you have cooperated from time
+              to time. I helped them with the development of some web projects,
+              consulted on issues related to the frontend, and there with the
+              hiring of frontend developers.
             </Paragraph>
             <Fullwidth Icon={GrProjects} title="Projects">
               <ul className={styles.projectsList}>
@@ -806,66 +808,6 @@ export default function Home() {
 
                 <Project
                   className={styles.project}
-                  title="Captains Club"
-                  time="2020"
-                  status="production"
-                  href="https://app.captains.club/apply"
-                  description="Golf club mobile app. I was involved as a front-end developer to develop a mobile application from scratch based on an already existing web application."
-                  maxWidth={470}
-                  stack={[
-                    {
-                      name: 'React Native',
-                      Icon: TbBrandReactNative,
-                      color: '#61dafb',
-                      href: 'https://reactnative.dev/',
-                    },
-                    {
-                      name: 'Expo',
-                      Icon: SiExpo,
-                      color: '#000020',
-                      href: 'https://expo.dev/',
-                    },
-                    {
-                      name: 'CSS',
-                      Icon: SiCsswizardry,
-                      color: '#1572b6',
-                      href: 'https://developer.mozilla.org/en-US/docs/Web/CSS',
-                    },
-                  ]}
-                />
-
-                <Project
-                  className={styles.project}
-                  title="CircleOf"
-                  time="2020"
-                  href="https://circleof.com/"
-                  status="production"
-                  description="Family caregiving mobile app. I worked in a team and was engaged in fixes and feature development."
-                  maxWidth={350}
-                  stack={[
-                    {
-                      name: 'React Native',
-                      Icon: TbBrandReactNative,
-                      color: '#61dafb',
-                      href: 'https://reactnative.dev/',
-                    },
-                    {
-                      name: 'Expo',
-                      Icon: SiExpo,
-                      color: '#000020',
-                      href: 'https://expo.dev/',
-                    },
-                    {
-                      name: 'CSS',
-                      Icon: SiCsswizardry,
-                      color: '#1572b6',
-                      href: 'https://developer.mozilla.org/en-US/docs/Web/CSS',
-                    },
-                  ]}
-                />
-
-                <Project
-                  className={styles.project}
                   title="Wambla"
                   time="2019"
                   status="offline"
@@ -877,30 +819,6 @@ export default function Home() {
                       Icon: SiNuxtdotjs,
                       color: '#00dc82',
                       href: 'https://nuxt.com/',
-                    },
-                    {
-                      name: 'SCSS',
-                      Icon: SiSass,
-                      color: '#c69',
-                      href: 'https://sass-lang.com/',
-                    },
-                  ]}
-                />
-
-                <Project
-                  className={styles.project}
-                  title="Merge Place"
-                  time="2018"
-                  status="production"
-                  href="https://www.merge.place/"
-                  description="My first website that I made by myself for a co-working in Kremenchuk, Ukraine."
-                  maxWidth={250}
-                  stack={[
-                    {
-                      name: 'Vue 2',
-                      Icon: IoLogoVue,
-                      color: '#41b883',
-                      href: 'https://v2.vuejs.org/',
                     },
                     {
                       name: 'SCSS',
@@ -992,7 +910,7 @@ export default function Home() {
                 time="2021"
                 status="production"
                 href="https://elevendogs.com.ua"
-                description="Barbershop website"
+                description="Barbershop website for my friend's business"
                 stack={[
                   {
                     name: 'Next.js',
@@ -1016,7 +934,7 @@ export default function Home() {
                 time="2020"
                 status="production"
                 href="https://school23.vercel.app/"
-                description="Kremenchuk school website"
+                description="Kremenchuk school website for my mom, who is a director"
                 stack={[
                   {
                     name: 'Next.js',
@@ -1045,13 +963,37 @@ export default function Home() {
                 time="2020"
                 status="production"
                 href="https://keenly.shop/"
-                description="Online shop"
+                description="Online store for my aunt's business"
                 stack={[
                   {
                     name: 'Wix',
                     Icon: FaWix,
                     color: '#000000',
                     href: 'https://wix.com',
+                  },
+                ]}
+              />
+
+              <Project
+                className={styles.project}
+                title="Merge Place"
+                time="2018"
+                status="production"
+                href="https://www.merge.place/"
+                description="My first website that I made by myself for a co-working in Kremenchuk, Ukraine."
+                maxWidth={250}
+                stack={[
+                  {
+                    name: 'Vue 2',
+                    Icon: IoLogoVue,
+                    color: '#41b883',
+                    href: 'https://v2.vuejs.org/',
+                  },
+                  {
+                    name: 'SCSS',
+                    Icon: SiSass,
+                    color: '#c69',
+                    href: 'https://sass-lang.com/',
                   },
                 ]}
               />

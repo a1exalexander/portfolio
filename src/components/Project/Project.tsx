@@ -6,8 +6,10 @@ import { SiNpm } from 'react-icons/si';
 import { ImGithub } from 'react-icons/im';
 import { LuExternalLink } from 'react-icons/lu';
 
+type ProjectStatusType = 'production' | 'demo' | 'offline' | 'development';
+
 interface IProjectProps {
-  status?: 'production' | 'demo' | 'offline' | 'development';
+  status?: ProjectStatusType;
   className?: string;
   title: string;
   time: string;
@@ -17,6 +19,13 @@ interface IProjectProps {
   npm?: string;
   stack: { Icon: IconType; name: string; color?: string; href: string }[];
   maxWidth?: number;
+}
+
+const statusText: Record<ProjectStatusType, string> = {
+  demo: 'Demo',
+  production: 'Live',
+  development: 'In progress',
+  offline: 'Not available',
 }
 
 export const Project = function Project({
@@ -45,7 +54,7 @@ export const Project = function Project({
     >
       <div className={styles.tagList}>
         <Project.Tag className={clsx(styles.status, styles.tagItem)}>
-          {status}
+          {statusText[status]}
         </Project.Tag>
         {github ? (
           <Project.Tag
