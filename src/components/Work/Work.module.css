@@ -2,13 +2,28 @@
   font-size: 1.8rem;
   font-weight: 500;
   margin-right: 0.6rem;
+  line-height: 1;
+  bottom: -1px;
+  position: relative;
+}
+
+.titles {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 0.8rem;
+  row-gap: 0.6rem;
+  column-gap: 1.6rem;
 }
 
 .link {
   display: inline-flex;
   align-items: center;
   text-decoration: none;
-  margin-bottom: 0.4rem;
+}
+
+.link:not(:first-of-type) .title {
+  font-size: 1.4rem;
+  color: var(--N600);
 }
 
 .link:hover .arrow,
@@ -21,7 +36,7 @@
   line-height: 1.5;
   font-weight: 400;
   color: var(--N400);
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.4rem;
 }
 
 .icon {
@@ -29,6 +44,7 @@
   overflow: hidden;
   display: inline-flex;
   margin-right: 0.6rem;
+  flex-shrink: 0;
 }
 
 .arrow {

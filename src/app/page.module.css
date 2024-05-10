@@ -95,3 +95,7 @@
     max-width: 100% !important;
   }
 }
+
+.singleVerticalImage {
+  max-width: 25%;
+}

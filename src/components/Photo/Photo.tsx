@@ -23,7 +23,7 @@ export const Photo = function Photo({
   src,
   vertical,
   caption,
-  paddingHack = 66.7,
+  paddingHack,
   test,
   grid,
   className,
@@ -42,7 +42,7 @@ export const Photo = function Photo({
       <div
         className={styles.image}
         style={{
-          paddingBottom: `${vertical ? 100 : paddingHack}%`,
+          paddingBottom: `${vertical ? paddingHack || 100 : paddingHack || 66.7}%`,
           backgroundColor: test ? 'red' : 'transparent',
         }}
       >

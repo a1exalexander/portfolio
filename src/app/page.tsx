@@ -1,5 +1,6 @@
-import { BiLogoTypescript, BiLogoReact } from 'react-icons/bi';
+import { BiLogoReact } from 'react-icons/bi';
 import { ImNpm } from 'react-icons/im';
+import { Metadata } from 'next';
 import { FaWix } from 'react-icons/fa';
 import { DiBackbone, DiStylus, DiRedis } from 'react-icons/di';
 import { GrProjects } from 'react-icons/gr';
@@ -18,7 +19,6 @@ import {
   SiPrisma,
   SiStrapi,
   SiRemix,
-  SiDecapcms,
   SiInstagram,
   SiAuth0,
   SiRollupdotjs,
@@ -69,12 +69,14 @@ import cert1 from '../images/c1.png';
 import cert2 from '../images/PRJCTR_SQL.png';
 import cert3 from '../images/c3.png';
 import cert4 from '../images/PR3.png';
+import namecheap1 from '../images/nc1.jpeg';
 import merge from '../images/merge.png';
 import mergeAcademy from '../images/merge-academy.ico';
 import wisealpha from '../images/wisealpha.jpg';
 import beetroot from '../images/beetroot.png';
 import mavinx from '../images/mavinx.png';
-import { Metadata } from 'next';
+import namecheapIcon from '../images/namecheap.ico';
+import zone3000Icon from '../images/Zone3000_ico.png';
 
 export const metadata: Metadata = {
   title: 'Oleksandr Ratushnyi',
@@ -191,11 +193,37 @@ export default function Home() {
           </Paragraph>
           <Divider />
           <Work
-            title="Merge"
+            job="Front-end developer"
+            time="May 2024 — present"
+            titles={[
+              {
+                title: 'Namecheap',
+                icon: namecheapIcon,
+                href: 'https://namecheap.com',
+              },
+              {
+                title: 'ZONE3000 (in partnership with Namecheap)',
+                icon: zone3000Icon,
+                href: 'https://zone3000.net/',
+              },
+            ]}
+          >
+            <Paragraph>The history is writing...</Paragraph>
+            <Photo
+              paddingHack={130}
+              className={styles.singleVerticalImage}
+              src={namecheap1}
+              vertical
+              caption="Welcome pack"
+            />
+          </Work>
+          <Divider />
+          <Work
+            titles={[
+              { title: 'Merge', icon: merge, href: 'https://merge.rocks' },
+            ]}
             job="Full-stack developer, CTO and co-founder"
-            time="Dec 2018 — present"
-            href="https://merge.rocks"
-            icon={merge}
+            time="Dec 2018 — May 2024"
           >
             <Paragraph>
               At Merge, my role extends beyond mere development. I am
@@ -660,11 +688,15 @@ export default function Home() {
           </Work>
           <Divider />
           <Work
-            title="Merge Academy"
             job="Course author and teacher"
             time="Apr 2022 — Apr 2023"
-            href="https://merge.academy/"
-            icon={mergeAcademy}
+            titles={[
+              {
+                title: 'Merge Academy',
+                icon: mergeAcademy,
+                href: 'https://merge.academy/',
+              },
+            ]}
           >
             <Paragraph>
               At Merge Academy, I designed and taught a comprehensive front-end
@@ -678,11 +710,15 @@ export default function Home() {
           <Divider />
 
           <Work
-            title="Beetroot Academy"
             job="Front-end teacher"
             time="Jul 2020 — Present"
-            href="https://beetroot.academy/"
-            icon={beetroot}
+            titles={[
+              {
+                title: 'Beetroot Academy',
+                icon: beetroot,
+                href: 'https://beetroot.academy/',
+              },
+            ]}
           >
             <Paragraph>
               As a teacher at Beetroot Academy, I not only taught front-end
@@ -706,11 +742,15 @@ export default function Home() {
           </Work>
           <Divider />
           <Work
-            title="WiseAlpha"
             job="Front-end developer"
             time="Jul 2020 – Oct 2020"
-            href="https://wisealpha.com/"
-            icon={wisealpha}
+            titles={[
+              {
+                title: 'WiseAlpha',
+                icon: wisealpha,
+                href: 'https://wisealpha.com/',
+              },
+            ]}
           >
             <Paragraph>
               At WiseAlpha, my role revolved around trading and technology for
@@ -739,11 +779,15 @@ export default function Home() {
           </Work>
           <Divider />
           <Work
-            title="Mavinx"
             job="Fullstack developer (part-time)"
             time="2019 – 2020"
-            href="https://mavinx.com/"
-            icon={mavinx}
+            titles={[
+              {
+                title: 'Mavinx',
+                icon: mavinx,
+                href: 'https://mavinx.com/',
+              },
+            ]}
           >
             <Paragraph>
               These companies are my friends and you have cooperated from time
