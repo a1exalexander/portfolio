@@ -2,9 +2,9 @@ import { BiLogoReact, BiLogoTypescript } from 'react-icons/bi';
 import { ImNpm } from 'react-icons/im';
 import { Metadata } from 'next';
 import { FaWix } from 'react-icons/fa';
-import { DiBackbone, DiStylus, DiRedis } from 'react-icons/di';
+import { DiBackbone, DiStylus, DiRedis, DiReact } from 'react-icons/di';
 import { GrProjects } from 'react-icons/gr';
-import { RiJavascriptFill, RiSupabaseFill } from 'react-icons/ri';
+import { RiSupabaseFill } from 'react-icons/ri';
 import {
   TbBrandNextjs,
   TbBrandReactNative,
@@ -26,7 +26,6 @@ import {
   SiAntdesign,
   SiFastify,
   SiNuxtdotjs,
-  SiExpo,
   SiGithub,
   SiJavascript,
   SiStorybook,
@@ -38,7 +37,6 @@ import {
   SiPostgresql,
   SiStyledcomponents,
   SiMui,
-  SiPlaystation,
 } from 'react-icons/si';
 import {
   Certificate,
@@ -78,8 +76,6 @@ import beetroot from '../images/beetroot.png';
 import mavinx from '../images/mavinx.png';
 import namecheapIcon from '../images/namecheap.ico';
 import zone3000Icon from '../images/Zone3000_ico.png';
-import { CiPizza } from 'react-icons/ci';
-import { GiGuitar } from 'react-icons/gi';
 
 export const metadata: Metadata = {
   title: 'Oleksandr Ratushnyi',
@@ -116,7 +112,94 @@ export default function Home() {
             >
               Typescript
             </Tag>
-            . I have a passion for creating beautiful and functional web apps.
+            . I have a passion for creating beautiful and functional web apps. I
+            have experience in saas, fintech and other industries. I able to
+            work with a wide range of technologies and tools in both front-end
+            and back-end development. I am a big fan of the{' '}
+            <Tag
+              Icon={BiLogoReact}
+              iconColor="#61dafb"
+              href="https://react.dev"
+            >
+              React
+            </Tag>
+            ,
+            <Tag Icon={SiNestjs} iconColor="#e0234e" href="https://nestjs.com/">
+              NestJS
+            </Tag>{' '}
+            and{' '}
+            <Tag
+              Icon={SiPostgresql}
+              iconColor="#336791"
+              href="https://www.postgresql.org/"
+            >
+              PostgreSQL
+            </Tag>
+            , but also I have experience with{' '}
+            <Tag Icon={DiReact} iconColor="#61dafb" href="https://react.dev">
+              React Native
+            </Tag>
+            ,{' '}
+            <Tag
+              Icon={IoLogoVue}
+              iconColor="#41b883"
+              href="https://v2.vuejs.org/"
+            >
+              Vue
+            </Tag>
+            ,{' '}
+            <Tag
+              Icon={TbBrandNextjs}
+              iconColor="#080808"
+              href="https://nextjs.org/"
+            >
+              Next.js
+            </Tag>
+            ,{' '}
+            <Tag Icon={SiRemix} iconColor="#080808" href="https://remix.run/">
+              Remix
+            </Tag>
+            ,{' '}
+            <Tag
+              Icon={IoLogoFirebase}
+              iconColor="#ffca28"
+              href="https://firebase.google.com/"
+            >
+              Firebase
+            </Tag>
+            ,{' '}
+            <Tag
+              Icon={RiSupabaseFill}
+              iconColor="#37ac76"
+              href="https://supabase.com/"
+            >
+              Supabase
+            </Tag>
+            ,{' '}
+            <Tag
+              Icon={SiGraphql}
+              iconColor="#e53ead"
+              href="https://graphql.org/"
+            >
+              GraphQL
+            </Tag>
+            ,{' '}
+            <Tag
+              Icon={IoLogoNodejs}
+              iconColor="#539e43"
+              href="https://nodejs.org/"
+            >
+              Node.js
+            </Tag>
+            ,{' '}
+            <Tag
+              Icon={SiFastify}
+              iconColor="#000000"
+              href="https://fastify.dev/"
+            >
+              Fastify
+            </Tag>
+            {' '} and other technologies.
           </Paragraph>
           <Photo
             loading="eager"
