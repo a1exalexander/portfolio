@@ -1,10 +1,10 @@
-import { BiLogoReact } from 'react-icons/bi';
+import { BiLogoReact, BiLogoTypescript } from 'react-icons/bi';
 import { ImNpm } from 'react-icons/im';
 import { Metadata } from 'next';
 import { FaWix } from 'react-icons/fa';
 import { DiBackbone, DiStylus, DiRedis } from 'react-icons/di';
 import { GrProjects } from 'react-icons/gr';
-import { RiSupabaseFill } from 'react-icons/ri';
+import { RiJavascriptFill, RiSupabaseFill } from 'react-icons/ri';
 import {
   TbBrandNextjs,
   TbBrandReactNative,
@@ -38,6 +38,7 @@ import {
   SiPostgresql,
   SiStyledcomponents,
   SiMui,
+  SiPlaystation,
 } from 'react-icons/si';
 import {
   Certificate,
@@ -77,6 +78,8 @@ import beetroot from '../images/beetroot.png';
 import mavinx from '../images/mavinx.png';
 import namecheapIcon from '../images/namecheap.ico';
 import zone3000Icon from '../images/Zone3000_ico.png';
+import { CiPizza } from 'react-icons/ci';
+import { GiGuitar } from 'react-icons/gi';
 
 export const metadata: Metadata = {
   title: 'Oleksandr Ratushnyi',
@@ -104,28 +107,16 @@ export default function Home() {
         <section id="about-me">
           <h1 className={styles.title}>hey, I&apos;m Oleksandr Ratushnyi 👋</h1>
           <Paragraph>
-            I&apos;m <strong>fullstack developer</strong> from 🇺🇦{' '}
-            <strong>Ukraine</strong>. My 🫶 stack is{' '}
+            I&apos;m <strong>javascript engineer</strong> from 🇺🇦{' '}
+            <strong>Ukraine</strong> and I like{' '}
             <Tag
-              href="https://react.dev"
-              iconColor="#68dbfb"
-              Icon={BiLogoReact}
+              Icon={BiLogoTypescript}
+              iconColor="#007acc"
+              href="https://www.typescriptlang.org/"
             >
-              React
+              Typescript
             </Tag>
-            , {''}
-            <Tag href="https://nestjs.com" iconColor="#e0234e" Icon={SiNestjs}>
-              NestJS
-            </Tag>{' '}
-            and{' '}
-            <Tag
-              href="https://www.postgresql.org"
-              iconColor="#336791"
-              Icon={SiPostgresql}
-            >
-              PostgreSQL
-            </Tag>
-            .
+            . I have a passion for creating beautiful and functional web apps.
           </Paragraph>
           <Photo
             loading="eager"
@@ -133,10 +124,10 @@ export default function Home() {
             caption="I'm in the cafe posing for a photo"
           />
           <Paragraph>
-            I have experience in teaching and creating courses in front-end
-            development. I have successfully released three groups of students
-            in front-end development. Additionally, I crafted my own course for
-            the Merge Academy.
+            I have experience in teaching and creating courses on front-end
+            development. I have successfully graduated several groups of
+            students into front-end development. In addition, I developed my own
+            course for Merge Academy.
           </Paragraph>
 
           <Paragraph>
@@ -187,9 +178,10 @@ export default function Home() {
         <section id="my-work" className={styles.section}>
           <h2 className={styles.heading}>my work 🗂️</h2>
           <Paragraph>
-            I began my journey as a front-end engineer in early 2018 and rapidly
-            advanced from a junior role to become a CTO, showcasing my growth
-            and dedication in the tech field.
+            I began my journey in web engineering in early 2018. Over the years,
+            I have held various positions including front-end developer,
+            full-stack developer, and CTO at an agency. Despite my progression
+            into leadership roles, I primarily identify as an engineer.
           </Paragraph>
           <Divider />
           <Work
@@ -226,13 +218,11 @@ export default function Home() {
             time="Dec 2018 — May 2024"
           >
             <Paragraph>
-              At Merge, my role extends beyond mere development. I am
-              responsible for development proccesses in the agancy, development
-              team management, technical strategy for agancy, clients
-              communication, development discovery and development itself. I
-              have been involved in the development of a wide range of projects
-              as a front-end developer, back-end developer and also as a team
-              leader.
+              At Merge I was responsible for development proccesses in the
+              agancy, development team management, clients communication,
+              development discovery and development itself. I have been involved
+              in the development of a wide range of projects as a developer and
+              also as a team leader.
             </Paragraph>
             <Collage>
               <Photo src={photoMerge1} grid caption="I am in my office" />

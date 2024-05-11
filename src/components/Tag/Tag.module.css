@@ -23,6 +23,7 @@
   position: relative;
   width: 1.2rem;
   margin-right: 0.4rem;
+  z-index: 1;
 }
 
 .icon {

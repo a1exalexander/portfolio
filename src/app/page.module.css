@@ -11,6 +11,19 @@
   margin-bottom: 1.5rem;
 }
 
+.jsTag {
+  position: relative;
+}
+
+.jsTagBg {
+  width: 8px;
+  height: 8px;
+  bottom: 4px;
+  left: 7px;
+  border-radius: 2px;
+  position: absolute;
+}
+
 .heading {
   font-size: 2.4rem;
   font-weight: 700;

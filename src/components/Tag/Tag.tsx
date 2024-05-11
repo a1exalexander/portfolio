@@ -1,11 +1,13 @@
 import clsx from 'clsx';
 import { IconType } from 'react-icons';
 import styles from './Tag.module.css';
+import { ReactNode } from 'react';
 
 interface ITagProps {
-  children: string;
+  children: ReactNode;
   className?: string;
   Icon?: IconType;
+  icon?: ReactNode;
   iconColor?: string;
   href?: string;
   dark?: boolean;
@@ -19,6 +21,7 @@ export const Tag = function Tag({
   children,
   className,
   Icon,
+  icon,
   backgroundColor,
   textColor,
   iconColor,
@@ -37,7 +40,12 @@ export const Tag = function Tag({
         backgroundColor,
         borderColor: backgroundColor,
       }}
-      className={clsx(styles.tag, { [styles.dark]: dark }, className, styles[size])}
+      className={clsx(
+        styles.tag,
+        { [styles.dark]: dark },
+        className,
+        styles[size],
+      )}
     >
       {Icon ? (
         <span className={styles.iconWrapper}>
@@ -47,6 +55,7 @@ export const Tag = function Tag({
           />
         </span>
       ) : null}
+      {icon ? <span className={styles.iconWrapper}>{icon}</span> : null}
       {children}
     </a>
   );
