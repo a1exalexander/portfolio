@@ -208,7 +208,7 @@ export default function Home() {
               },
             ]}
           >
-            <Paragraph>The history is writing...</Paragraph>
+            <Paragraph>In progress...</Paragraph>
             <Photo
               paddingHack={130}
               className={styles.singleVerticalImage}
