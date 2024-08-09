@@ -76,6 +76,7 @@ import beetroot from '../images/beetroot.png';
 import mavinx from '../images/mavinx.png';
 import namecheapIcon from '../images/namecheap.ico';
 import zone3000Icon from '../images/Zone3000_ico.png';
+import myDeskPhoto from '../images/IMG_0029_VSCO.jpg'; 
 
 export const metadata: Metadata = {
   title: 'Oleksandr Ratushnyi',
@@ -284,13 +285,16 @@ export default function Home() {
             ]}
           >
             <Paragraph>In progress...</Paragraph>
-            <Photo
-              paddingHack={130}
-              className={styles.singleVerticalImage}
-              src={namecheap1}
-              vertical
-              caption="Welcome pack"
-            />
+            <Collage>
+              <Photo
+                paddingHack={130}
+                src={namecheap1}
+                vertical
+                grid
+                caption="Welcome pack"
+              />
+              <Photo grid caption='My 2024 desk' src={myDeskPhoto} />
+            </Collage>
           </Work>
           <Divider />
           <Work
