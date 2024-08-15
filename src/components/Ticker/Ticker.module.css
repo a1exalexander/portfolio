@@ -39,5 +39,5 @@
 }
 
 .ticker strong {
-  color: #78ff1c;
+  color: var(--S500);
 }

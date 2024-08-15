@@ -52,7 +52,7 @@
   --Y400: #ff991f;
   --Y500: #ff8b00;
 
-  --P1: #fc2390;
+  --P1: #351525;
 
   --R50: #ffebe5;
   --R75: #ffbdad;
@@ -80,6 +80,8 @@
   --C600: #324b94;
 
   --SECTION_OFFSET: 8rem;
+
+  --S500: #78ff1c;
 }
 
 * {
@@ -116,4 +118,13 @@ a, button {
   cursor: zoom-out;
   width: 90% !important;
   height: auto !important;
+}
+
+.white {
+  color: var(--N0);
+  padding: 0 4px;
+}
+
+.offset {
+  padding: 0 4px;
 }

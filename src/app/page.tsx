@@ -1,10 +1,11 @@
-import { BiLogoReact, BiLogoTypescript } from 'react-icons/bi';
-import { ImNpm } from 'react-icons/im';
-import { Metadata } from 'next';
-import { FaWix } from 'react-icons/fa';
-import { DiBackbone, DiStylus, DiRedis, DiReact } from 'react-icons/di';
-import { GrProjects } from 'react-icons/gr';
-import { RiSupabaseFill } from 'react-icons/ri';
+import { BiLogoReact, BiLogoTypescript } from "react-icons/bi";
+import { RoughNotation } from "react-rough-notation";
+import { ImNpm } from "react-icons/im";
+import { Metadata } from "next";
+import { FaWix } from "react-icons/fa";
+import { DiBackbone, DiStylus, DiRedis, DiReact } from "react-icons/di";
+import { GrProjects } from "react-icons/gr";
+import { RiSupabaseFill } from "react-icons/ri";
 import {
   TbBrandNextjs,
   TbBrandReactNative,
@@ -12,9 +13,9 @@ import {
   TbEPassport,
   TbTriangle,
   TbBrandRedux,
-} from 'react-icons/tb';
-import { BsStripe } from 'react-icons/bs';
-import { IoLogoVue, IoLogoFirebase, IoLogoNodejs } from 'react-icons/io5';
+} from "react-icons/tb";
+import { BsStripe } from "react-icons/bs";
+import { IoLogoVue, IoLogoFirebase, IoLogoNodejs } from "react-icons/io5";
 import {
   SiPrisma,
   SiStrapi,
@@ -37,7 +38,7 @@ import {
   SiPostgresql,
   SiStyledcomponents,
   SiMui,
-} from 'react-icons/si';
+} from "react-icons/si";
 import {
   Certificate,
   Collage,
@@ -50,43 +51,43 @@ import {
   Ticker,
   Work,
   getAlt,
-} from '../components';
-import styles from './page.module.css';
-import photo1 from '../images/a00008.jpg';
-import photo2 from '../images/a00002.jpeg';
-import photo3 from '../images/a00004.jpeg';
-import photo4 from '../images/a00003.jpeg';
-import photo5 from '../images/a00006.jpeg';
-import photo6 from '../images/a00001.jpeg';
-import photo7 from '../images/a00011.jpeg';
-import photoCarpathians2 from '../images/carpathians/c2.jpeg';
-import photoCarpathians3 from '../images/carpathians/c3.jpeg';
-import photoCarpathians5 from '../images/carpathians/c5.jpeg';
-import photoMerge1 from '../images/m1.jpeg';
-import photoMerge2 from '../images/m2.jpg';
-import cert1 from '../images/c1.png';
-import cert2 from '../images/PRJCTR_SQL.png';
-import cert3 from '../images/c3.png';
-import cert4 from '../images/PR3.png';
-import namecheap1 from '../images/nc1.jpeg';
-import merge from '../images/merge.png';
-import mergeAcademy from '../images/merge-academy.ico';
-import wisealpha from '../images/wisealpha.jpg';
-import beetroot from '../images/beetroot.png';
-import mavinx from '../images/mavinx.png';
-import namecheapIcon from '../images/namecheap.ico';
-import zone3000Icon from '../images/Zone3000_ico.png';
-import myDeskPhoto from '../images/IMG_0029_VSCO.jpg'; 
+} from "../components";
+import styles from "./page.module.css";
+import photo1 from "../images/a00008.jpg";
+import photo2 from "../images/a00002.jpeg";
+import photo3 from "../images/a00004.jpeg";
+import photo4 from "../images/a00003.jpeg";
+import photo5 from "../images/a00006.jpeg";
+import photo6 from "../images/a00001.jpeg";
+import photo7 from "../images/a00011.jpeg";
+import photoCarpathians2 from "../images/carpathians/c2.jpeg";
+import photoCarpathians3 from "../images/carpathians/c3.jpeg";
+import photoCarpathians5 from "../images/carpathians/c5.jpeg";
+import photoMerge1 from "../images/m1.jpeg";
+import photoMerge2 from "../images/m2.jpg";
+import cert1 from "../images/c1.png";
+import cert2 from "../images/PRJCTR_SQL.png";
+import cert3 from "../images/c3.png";
+import cert4 from "../images/PR3.png";
+import namecheap1 from "../images/nc1.jpeg";
+import merge from "../images/merge.png";
+import mergeAcademy from "../images/merge-academy.ico";
+import wisealpha from "../images/wisealpha.jpg";
+import beetroot from "../images/beetroot.png";
+import mavinx from "../images/mavinx.png";
+import namecheapIcon from "../images/namecheap.ico";
+import zone3000Icon from "../images/Zone3000_ico.png";
+import myDeskPhoto from "../images/IMG_0029_VSCO.jpg";
 
 export const metadata: Metadata = {
-  title: 'Oleksandr Ratushnyi',
-  description: 'Front-end Developer from Ukraine',
+  title: "Oleksandr Ratushnyi",
+  description: "Front-end Developer from Ukraine",
 };
 
-export const revalidate = 60 * 60 * 24 * 7; // 1 week
+export const revalidate = 604800; // 1 week
 
 const getNumberOfMonthsFromMay2022 = () => {
-  const may2022 = new Date('2022-05-01');
+  const may2022 = new Date("2022-05-01");
   const now = new Date();
   const diff = now.getTime() - may2022.getTime();
   return Math.floor(diff / (1000 * 60 * 60 * 24 * 30));
@@ -100,12 +101,13 @@ export default function Home() {
         been hiding the condition and location of 1600 captured defenders of
         <strong> Azovstal and Mariupol</strong>
       </Ticker>
+      
       <main className={styles.main}>
         <section id="about-me">
-          <h1 className={styles.title}>hey, I&apos;m Oleksandr Ratushnyi 👋</h1>
+          <h1 className={styles.title}>👋 hey, I&apos;m <RoughNotation show color="var(--G400)" type="highlight"><span className="white">{' '}Oleksandr Ratushnyi{' '}</span></RoughNotation></h1>
           <Paragraph>
-            I&apos;m <strong>javascript engineer</strong> from 🇺🇦{' '}
-            <strong>Ukraine</strong> and I like{' '}
+            I&apos;m <RoughNotation animationDelay={500} show color="var(--G400)" strokeWidth={2} type="underline" padding={2}>javascript engineer</RoughNotation> from{" "} 
+            <RoughNotation animationDelay={800} show type="underline" strokeWidth={2} padding={2} color="var(--B400)">🇺🇦{" "} Ukraine</RoughNotation> and I like{" "}
             <Tag
               Icon={BiLogoTypescript}
               iconColor="#007acc"
@@ -115,8 +117,8 @@ export default function Home() {
             </Tag>
             . I have a passion for creating beautiful and functional web apps. I
             have experience in saas, fintech and other industries. I able to
-            work with a wide range of technologies and tools in both front-end
-            and back-end development. I am a big fan of the{' '}
+            work with a wide range of technologies and tools in both front-end 
+            and back-end development. I am a big fan of the{" "}
             <Tag
               Icon={BiLogoReact}
               iconColor="#61dafb"
@@ -127,8 +129,8 @@ export default function Home() {
             ,
             <Tag Icon={SiNestjs} iconColor="#e0234e" href="https://nestjs.com/">
               NestJS
-            </Tag>{' '}
-            and{' '}
+            </Tag>{" "}
+            and{" "}
             <Tag
               Icon={SiPostgresql}
               iconColor="#336791"
@@ -136,11 +138,11 @@ export default function Home() {
             >
               PostgreSQL
             </Tag>
-            , but also I have experience with{' '}
+            , but also I have experience with{" "}
             <Tag Icon={DiReact} iconColor="#61dafb" href="https://react.dev">
               React Native
             </Tag>
-            ,{' '}
+            ,{" "}
             <Tag
               Icon={IoLogoVue}
               iconColor="#41b883"
@@ -148,7 +150,7 @@ export default function Home() {
             >
               Vue
             </Tag>
-            ,{' '}
+            ,{" "}
             <Tag
               Icon={TbBrandNextjs}
               iconColor="#080808"
@@ -156,11 +158,11 @@ export default function Home() {
             >
               Next.js
             </Tag>
-            ,{' '}
+            ,{" "}
             <Tag Icon={SiRemix} iconColor="#080808" href="https://remix.run/">
               Remix
             </Tag>
-            ,{' '}
+            ,{" "}
             <Tag
               Icon={IoLogoFirebase}
               iconColor="#ffca28"
@@ -168,7 +170,7 @@ export default function Home() {
             >
               Firebase
             </Tag>
-            ,{' '}
+            ,{" "}
             <Tag
               Icon={RiSupabaseFill}
               iconColor="#37ac76"
@@ -176,7 +178,7 @@ export default function Home() {
             >
               Supabase
             </Tag>
-            ,{' '}
+            ,{" "}
             <Tag
               Icon={SiGraphql}
               iconColor="#e53ead"
@@ -184,7 +186,7 @@ export default function Home() {
             >
               GraphQL
             </Tag>
-            ,{' '}
+            ,{" "}
             <Tag
               Icon={IoLogoNodejs}
               iconColor="#539e43"
@@ -192,15 +194,15 @@ export default function Home() {
             >
               Node.js
             </Tag>
-            ,{' '}
+            ,{" "}
             <Tag
               Icon={SiFastify}
               iconColor="#000000"
               href="https://fastify.dev/"
             >
               Fastify
-            </Tag>
-            {' '} and other technologies.
+            </Tag>{" "}
+            and other technologies.
           </Paragraph>
           <Photo
             loading="eager"
@@ -217,7 +219,7 @@ export default function Home() {
           <Paragraph>
             When I&apos;m not coding, you might find me capturing life through a
             lens 📸, riding a bicycle 🚴, perfecting my pizza recipe 🍕, or
-            embarking on tourist trips with a tent 🏕️. Check out my photography{' '}
+            embarking on tourist trips with a tent 🏕️. Check out my photography{" "}
             <Tag
               iconColor="#e1306c"
               Icon={SiInstagram}
@@ -273,14 +275,14 @@ export default function Home() {
             time="May 2024 — present"
             titles={[
               {
-                title: 'Namecheap',
+                title: "Namecheap",
                 icon: namecheapIcon,
-                href: 'https://namecheap.com',
+                href: "https://namecheap.com",
               },
               {
-                title: 'ZONE3000 (in partnership with Namecheap)',
+                title: "ZONE3000 (in partnership with Namecheap)",
                 icon: zone3000Icon,
-                href: 'https://zone3000.net/',
+                href: "https://zone3000.net/",
               },
             ]}
           >
@@ -293,13 +295,13 @@ export default function Home() {
                 grid
                 caption="Welcome pack"
               />
-              <Photo grid caption='My 2024 desk' src={myDeskPhoto} />
+              <Photo grid caption="My 2024 desk" src={myDeskPhoto} />
             </Collage>
           </Work>
           <Divider />
           <Work
             titles={[
-              { title: 'Merge', icon: merge, href: 'https://merge.rocks' },
+              { title: "Merge", icon: merge, href: "https://merge.rocks" },
             ]}
             job="Full-stack developer, CTO and co-founder"
             time="Dec 2018 — May 2024"
@@ -331,40 +333,40 @@ export default function Home() {
                   maxWidth={310}
                   stack={[
                     {
-                      name: 'Next.js',
+                      name: "Next.js",
                       Icon: TbBrandNextjs,
-                      color: '#080808',
-                      href: 'https://nextjs.org/',
+                      color: "#080808",
+                      href: "https://nextjs.org/",
                     },
                     {
-                      name: 'Storybook',
+                      name: "Storybook",
                       Icon: SiStorybook,
-                      color: '#ff4785',
-                      href: 'https://storybook.js.org/',
+                      color: "#ff4785",
+                      href: "https://storybook.js.org/",
                     },
                     {
-                      name: 'OpenAI',
+                      name: "OpenAI",
                       Icon: TbBrandOpenai,
-                      color: '#0d0d0d',
-                      href: 'https://openai.com/blog/openai-api',
+                      color: "#0d0d0d",
+                      href: "https://openai.com/blog/openai-api",
                     },
                     {
-                      name: 'Supabase',
+                      name: "Supabase",
                       Icon: RiSupabaseFill,
-                      color: '#37ac76',
-                      href: 'https://supabase.com/',
+                      color: "#37ac76",
+                      href: "https://supabase.com/",
                     },
                     {
-                      name: 'Stripe',
+                      name: "Stripe",
                       Icon: BsStripe,
-                      color: '#6c76e6',
-                      href: 'https://stripe.com/',
+                      color: "#6c76e6",
+                      href: "https://stripe.com/",
                     },
                     {
-                      name: 'CSS modules',
+                      name: "CSS modules",
                       Icon: SiCssmodules,
-                      href: 'https://github.com/css-modules/css-modules',
-                      color: '#000',
+                      href: "https://github.com/css-modules/css-modules",
+                      color: "#000",
                     },
                   ]}
                 />
@@ -379,34 +381,34 @@ export default function Home() {
                   maxWidth={400}
                   stack={[
                     {
-                      name: 'Next.js',
+                      name: "Next.js",
                       Icon: TbBrandNextjs,
-                      color: '#080808',
-                      href: 'https://nextjs.org/',
+                      color: "#080808",
+                      href: "https://nextjs.org/",
                     },
                     {
-                      name: 'Storybook',
+                      name: "Storybook",
                       Icon: SiStorybook,
-                      color: '#ff4785',
-                      href: 'https://storybook.js.org/',
+                      color: "#ff4785",
+                      href: "https://storybook.js.org/",
                     },
                     {
-                      name: 'web3-onboard',
+                      name: "web3-onboard",
                       Icon: SiHiveBlockchain,
-                      color: '#6370e5',
-                      href: 'https://onboard.blocknative.com/',
+                      color: "#6370e5",
+                      href: "https://onboard.blocknative.com/",
                     },
                     {
-                      name: 'Onfido',
+                      name: "Onfido",
                       Icon: TbEPassport,
-                      color: '#3c46f6',
-                      href: 'https://onfido.com/',
+                      color: "#3c46f6",
+                      href: "https://onfido.com/",
                     },
                     {
-                      name: 'Tailwind',
+                      name: "Tailwind",
                       Icon: SiTailwindcss,
-                      color: '#38b2ac',
-                      href: 'https://tailwindcss.com/',
+                      color: "#38b2ac",
+                      href: "https://tailwindcss.com/",
                     },
                   ]}
                 />
@@ -421,34 +423,34 @@ export default function Home() {
                   maxWidth={420}
                   stack={[
                     {
-                      name: 'Remix',
+                      name: "Remix",
                       Icon: SiRemix,
-                      color: '#080808',
-                      href: 'https://remix.run/',
+                      color: "#080808",
+                      href: "https://remix.run/",
                     },
                     {
-                      name: 'Storybook',
+                      name: "Storybook",
                       Icon: SiStorybook,
-                      color: '#ff4785',
-                      href: 'https://storybook.js.org/',
+                      color: "#ff4785",
+                      href: "https://storybook.js.org/",
                     },
                     {
-                      name: 'Fondy',
+                      name: "Fondy",
                       Icon: TbTriangle,
-                      color: '#32af4a',
-                      href: 'https://fondy.ua/uk/',
+                      color: "#32af4a",
+                      href: "https://fondy.ua/uk/",
                     },
                     {
-                      name: 'NestJS',
+                      name: "NestJS",
                       Icon: SiNestjs,
-                      color: '#e0234e',
-                      href: 'https://nestjs.com/',
+                      color: "#e0234e",
+                      href: "https://nestjs.com/",
                     },
                     {
-                      name: 'PostgreSQL',
+                      name: "PostgreSQL",
                       Icon: SiPostgresql,
-                      color: '#336791',
-                      href: 'https://www.postgresql.org/',
+                      color: "#336791",
+                      href: "https://www.postgresql.org/",
                     },
                   ]}
                 />
@@ -463,34 +465,34 @@ export default function Home() {
                   maxWidth={400}
                   stack={[
                     {
-                      name: 'Next.js',
+                      name: "Next.js",
                       Icon: TbBrandNextjs,
-                      color: '#080808',
-                      href: 'https://nextjs.org/',
+                      color: "#080808",
+                      href: "https://nextjs.org/",
                     },
                     {
-                      name: 'React Native',
+                      name: "React Native",
                       Icon: TbBrandReactNative,
-                      color: '#61dafb',
-                      href: 'https://reactnative.dev/',
+                      color: "#61dafb",
+                      href: "https://reactnative.dev/",
                     },
                     {
-                      name: 'Prisma',
+                      name: "Prisma",
                       Icon: SiPrisma,
-                      color: '#2c3e50',
-                      href: 'https://www.prisma.io/',
+                      color: "#2c3e50",
+                      href: "https://www.prisma.io/",
                     },
                     {
-                      name: 'GraphQL',
+                      name: "GraphQL",
                       Icon: SiGraphql,
-                      color: '#e53ead',
-                      href: 'https://graphql.org/',
+                      color: "#e53ead",
+                      href: "https://graphql.org/",
                     },
                     {
-                      name: 'PostgreSQL',
+                      name: "PostgreSQL",
                       Icon: SiPostgresql,
-                      color: '#336791',
-                      href: 'https://www.postgresql.org/',
+                      color: "#336791",
+                      href: "https://www.postgresql.org/",
                     },
                   ]}
                 />
@@ -503,28 +505,28 @@ export default function Home() {
                   maxWidth={470}
                   stack={[
                     {
-                      name: 'Next.js',
+                      name: "Next.js",
                       Icon: TbBrandNextjs,
-                      color: '#080808',
-                      href: 'https://nextjs.org/',
+                      color: "#080808",
+                      href: "https://nextjs.org/",
                     },
                     {
-                      name: 'Storybook',
+                      name: "Storybook",
                       Icon: SiStorybook,
-                      color: '#ff4785',
-                      href: 'https://storybook.js.org/',
+                      color: "#ff4785",
+                      href: "https://storybook.js.org/",
                     },
                     {
-                      name: 'Strapi',
+                      name: "Strapi",
                       Icon: SiStrapi,
-                      color: '#8c4bff',
-                      href: 'https://strapi.io/',
+                      color: "#8c4bff",
+                      href: "https://strapi.io/",
                     },
                     {
-                      name: 'SCSS',
+                      name: "SCSS",
                       Icon: SiSass,
-                      color: '#c69',
-                      href: 'https://sass-lang.com/',
+                      color: "#c69",
+                      href: "https://sass-lang.com/",
                     },
                   ]}
                 />
@@ -539,34 +541,34 @@ export default function Home() {
                   maxWidth={510}
                   stack={[
                     {
-                      name: 'React',
+                      name: "React",
                       Icon: BiLogoReact,
-                      color: '#68dbfb',
-                      href: 'https://react.dev',
+                      color: "#68dbfb",
+                      href: "https://react.dev",
                     },
                     {
-                      name: 'Redux',
+                      name: "Redux",
                       Icon: TbBrandRedux,
-                      color: '#764abc',
-                      href: 'https://react-redux.js.org/',
+                      color: "#764abc",
+                      href: "https://react-redux.js.org/",
                     },
                     {
-                      name: 'Auth0',
+                      name: "Auth0",
                       Icon: SiAuth0,
-                      color: '#eb5424',
-                      href: 'https://auth0.com/',
+                      color: "#eb5424",
+                      href: "https://auth0.com/",
                     },
                     {
-                      name: 'Storybook',
+                      name: "Storybook",
                       Icon: SiStorybook,
-                      color: '#ff4785',
-                      href: 'https://storybook.js.org/',
+                      color: "#ff4785",
+                      href: "https://storybook.js.org/",
                     },
                     {
-                      name: 'SCSS',
+                      name: "SCSS",
                       Icon: SiSass,
-                      color: '#c69',
-                      href: 'https://sass-lang.com/',
+                      color: "#c69",
+                      href: "https://sass-lang.com/",
                     },
                   ]}
                 />
@@ -581,34 +583,34 @@ export default function Home() {
                   maxWidth={520}
                   stack={[
                     {
-                      name: 'React',
+                      name: "React",
                       Icon: BiLogoReact,
-                      color: '#61dafb',
-                      href: 'https://react.dev',
+                      color: "#61dafb",
+                      href: "https://react.dev",
                     },
                     {
-                      name: 'Rollup',
+                      name: "Rollup",
                       Icon: SiRollupdotjs,
-                      color: '#f23132',
-                      href: 'https://rollupjs.org/',
+                      color: "#f23132",
+                      href: "https://rollupjs.org/",
                     },
                     {
-                      name: 'Storybook',
+                      name: "Storybook",
                       Icon: SiStorybook,
-                      color: '#ff4785',
-                      href: 'https://storybook.js.org/',
+                      color: "#ff4785",
+                      href: "https://storybook.js.org/",
                     },
                     {
-                      name: 'NPM',
+                      name: "NPM",
                       Icon: ImNpm,
-                      color: '#cd3f3e',
-                      href: 'https://www.npmjs.com/',
+                      color: "#cd3f3e",
+                      href: "https://www.npmjs.com/",
                     },
                     {
-                      name: 'Styled-components',
+                      name: "Styled-components",
                       Icon: SiStyledcomponents,
-                      color: '#db7093',
-                      href: 'https://styled-components.com/',
+                      color: "#db7093",
+                      href: "https://styled-components.com/",
                     },
                   ]}
                 />
@@ -622,22 +624,22 @@ export default function Home() {
                   maxWidth={280}
                   stack={[
                     {
-                      name: 'React',
+                      name: "React",
                       Icon: BiLogoReact,
-                      color: '#61dafb',
-                      href: 'https://react.dev',
+                      color: "#61dafb",
+                      href: "https://react.dev",
                     },
                     {
-                      name: 'GraphQL',
+                      name: "GraphQL",
                       Icon: SiGraphql,
-                      color: '#e53ead',
-                      href: 'https://graphql.org/',
+                      color: "#e53ead",
+                      href: "https://graphql.org/",
                     },
                     {
-                      name: 'Antd',
+                      name: "Antd",
                       Icon: SiAntdesign,
-                      color: '#0170fe',
-                      href: 'https://ant.design/',
+                      color: "#0170fe",
+                      href: "https://ant.design/",
                     },
                   ]}
                 />
@@ -652,28 +654,28 @@ export default function Home() {
                   maxWidth={260}
                   stack={[
                     {
-                      name: 'Next.js',
+                      name: "Next.js",
                       Icon: TbBrandNextjs,
-                      color: '#080808',
-                      href: 'https://nextjs.org/',
+                      color: "#080808",
+                      href: "https://nextjs.org/",
                     },
                     {
-                      name: 'Storybook',
+                      name: "Storybook",
                       Icon: SiStorybook,
-                      color: '#ff4785',
-                      href: 'https://storybook.js.org/',
+                      color: "#ff4785",
+                      href: "https://storybook.js.org/",
                     },
                     {
-                      name: 'Strapi',
+                      name: "Strapi",
                       Icon: SiStrapi,
-                      color: '#8c4bff',
-                      href: 'https://strapi.io/',
+                      color: "#8c4bff",
+                      href: "https://strapi.io/",
                     },
                     {
-                      name: 'SCSS',
+                      name: "SCSS",
                       Icon: SiSass,
-                      color: '#c69',
-                      href: 'https://sass-lang.com/',
+                      color: "#c69",
+                      href: "https://sass-lang.com/",
                     },
                   ]}
                 />
@@ -688,22 +690,22 @@ export default function Home() {
                   maxWidth={390}
                   stack={[
                     {
-                      name: 'Vue 2',
+                      name: "Vue 2",
                       Icon: IoLogoVue,
-                      color: '#41b883',
-                      href: 'https://v2.vuejs.org/',
+                      color: "#41b883",
+                      href: "https://v2.vuejs.org/",
                     },
                     {
-                      name: 'Storybook',
+                      name: "Storybook",
                       Icon: SiStorybook,
-                      color: '#ff4785',
-                      href: 'https://storybook.js.org/',
+                      color: "#ff4785",
+                      href: "https://storybook.js.org/",
                     },
                     {
-                      name: 'SCSS',
+                      name: "SCSS",
                       Icon: SiSass,
-                      color: '#c69',
-                      href: 'https://sass-lang.com/',
+                      color: "#c69",
+                      href: "https://sass-lang.com/",
                     },
                   ]}
                 />
@@ -717,16 +719,16 @@ export default function Home() {
                   maxWidth={420}
                   stack={[
                     {
-                      name: 'Vue 2',
+                      name: "Vue 2",
                       Icon: IoLogoVue,
-                      color: '#41b883',
-                      href: 'https://v2.vuejs.org/',
+                      color: "#41b883",
+                      href: "https://v2.vuejs.org/",
                     },
                     {
-                      name: 'SCSS',
+                      name: "SCSS",
                       Icon: SiSass,
-                      color: '#c69',
-                      href: 'https://sass-lang.com/',
+                      color: "#c69",
+                      href: "https://sass-lang.com/",
                     },
                   ]}
                 />
@@ -741,22 +743,22 @@ export default function Home() {
                   maxWidth={480}
                   stack={[
                     {
-                      name: 'Vue 2',
+                      name: "Vue 2",
                       Icon: IoLogoVue,
-                      color: '#41b883',
-                      href: 'https://v2.vuejs.org/',
+                      color: "#41b883",
+                      href: "https://v2.vuejs.org/",
                     },
                     {
-                      name: 'Stripe',
+                      name: "Stripe",
                       Icon: BsStripe,
-                      color: '#6c76e6',
-                      href: 'https://stripe.com/',
+                      color: "#6c76e6",
+                      href: "https://stripe.com/",
                     },
                     {
-                      name: 'SCSS',
+                      name: "SCSS",
                       Icon: SiSass,
-                      color: '#c69',
-                      href: 'https://sass-lang.com/',
+                      color: "#c69",
+                      href: "https://sass-lang.com/",
                     },
                   ]}
                 />
@@ -769,9 +771,9 @@ export default function Home() {
             time="Apr 2022 — Apr 2023"
             titles={[
               {
-                title: 'Merge Academy',
+                title: "Merge Academy",
                 icon: mergeAcademy,
-                href: 'https://merge.academy/',
+                href: "https://merge.academy/",
               },
             ]}
           >
@@ -791,9 +793,9 @@ export default function Home() {
             time="Jul 2020 — Present"
             titles={[
               {
-                title: 'Beetroot Academy',
+                title: "Beetroot Academy",
                 icon: beetroot,
-                href: 'https://beetroot.academy/',
+                href: "https://beetroot.academy/",
               },
             ]}
           >
@@ -823,16 +825,16 @@ export default function Home() {
             time="Jul 2020 – Oct 2020"
             titles={[
               {
-                title: 'WiseAlpha',
+                title: "WiseAlpha",
                 icon: wisealpha,
-                href: 'https://wisealpha.com/',
+                href: "https://wisealpha.com/",
               },
             ]}
           >
             <Paragraph>
               At WiseAlpha, my role revolved around trading and technology for
               the Corporate Bond Market. I contributed to the development of new
-              features using{' '}
+              features using{" "}
               <Tag
                 href="https://backbonejs.org"
                 iconColor="#002a41"
@@ -841,7 +843,7 @@ export default function Home() {
                 Backbone
               </Tag>
               , and significantly enhanced the platform&apos;s styling and user
-              interface using{' '}
+              interface using{" "}
               <Tag
                 href="https://stylus-lang.com/"
                 iconColor="#242424"
@@ -860,9 +862,9 @@ export default function Home() {
             time="2019 – 2020"
             titles={[
               {
-                title: 'Mavinx',
+                title: "Mavinx",
                 icon: mavinx,
-                href: 'https://mavinx.com/',
+                href: "https://mavinx.com/",
               },
             ]}
           >
@@ -883,34 +885,34 @@ export default function Home() {
                   maxWidth={630}
                   stack={[
                     {
-                      name: 'Node.js',
+                      name: "Node.js",
                       Icon: IoLogoNodejs,
-                      color: '#539e43',
-                      href: 'https://nodejs.org/',
+                      color: "#539e43",
+                      href: "https://nodejs.org/",
                     },
                     {
-                      name: 'Fastify',
+                      name: "Fastify",
                       Icon: SiFastify,
-                      color: '#000000',
-                      href: 'https://fastify.dev/',
+                      color: "#000000",
+                      href: "https://fastify.dev/",
                     },
                     {
-                      name: 'Nuxt',
+                      name: "Nuxt",
                       Icon: SiNuxtdotjs,
-                      color: '#00dc82',
-                      href: 'https://nuxt.com/',
+                      color: "#00dc82",
+                      href: "https://nuxt.com/",
                     },
                     {
-                      name: 'Redis',
+                      name: "Redis",
                       Icon: DiRedis,
-                      color: '#dc382d',
-                      href: 'https://redis.io/',
+                      color: "#dc382d",
+                      href: "https://redis.io/",
                     },
                     {
-                      name: 'MUI',
+                      name: "MUI",
                       Icon: SiMui,
-                      color: '#0081cb',
-                      href: 'https://material-ui.com/',
+                      color: "#0081cb",
+                      href: "https://material-ui.com/",
                     },
                   ]}
                 />
@@ -924,16 +926,16 @@ export default function Home() {
                   maxWidth={480}
                   stack={[
                     {
-                      name: 'Nuxt',
+                      name: "Nuxt",
                       Icon: SiNuxtdotjs,
-                      color: '#00dc82',
-                      href: 'https://nuxt.com/',
+                      color: "#00dc82",
+                      href: "https://nuxt.com/",
                     },
                     {
-                      name: 'SCSS',
+                      name: "SCSS",
                       Icon: SiSass,
-                      color: '#c69',
-                      href: 'https://sass-lang.com/',
+                      color: "#c69",
+                      href: "https://sass-lang.com/",
                     },
                   ]}
                 />
@@ -946,7 +948,7 @@ export default function Home() {
           <Paragraph>
             Projects that I made for myself, friends, relatives and world on a
             free basis. My pet-projects are a blend of personal passion and
-            skill development. Explore more on my{' '}
+            skill development. Explore more on my{" "}
             <Tag
               href="https://github.com/a1exalexander"
               Icon={SiGithub}
@@ -969,16 +971,16 @@ export default function Home() {
                 description="CLI tool for generating React icons from SVG files"
                 stack={[
                   {
-                    name: 'Node.js',
+                    name: "Node.js",
                     Icon: IoLogoNodejs,
-                    color: '#539e43',
-                    href: 'https://nodejs.org/',
+                    color: "#539e43",
+                    href: "https://nodejs.org/",
                   },
                   {
-                    name: 'Javascript',
+                    name: "Javascript",
                     Icon: SiJavascript,
-                    color: '#f7df1e',
-                    href: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
+                    color: "#f7df1e",
+                    href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
                   },
                 ]}
               />
@@ -992,22 +994,22 @@ export default function Home() {
                 description="Hryvnia to other currencies converter"
                 stack={[
                   {
-                    name: 'React',
+                    name: "React",
                     Icon: BiLogoReact,
-                    color: '#68dbfb',
-                    href: 'https://react.dev',
+                    color: "#68dbfb",
+                    href: "https://react.dev",
                   },
                   {
-                    name: 'Redux',
+                    name: "Redux",
                     Icon: TbBrandRedux,
-                    color: '#764abc',
-                    href: 'https://react-redux.js.org/',
+                    color: "#764abc",
+                    href: "https://react-redux.js.org/",
                   },
                   {
-                    name: 'CSS modules',
+                    name: "CSS modules",
                     Icon: SiCssmodules,
-                    href: 'https://github.com/css-modules/css-modules',
-                    color: '#000',
+                    href: "https://github.com/css-modules/css-modules",
+                    color: "#000",
                   },
                 ]}
               />
@@ -1022,16 +1024,16 @@ export default function Home() {
                 description="Barbershop website for my friend's business"
                 stack={[
                   {
-                    name: 'Next.js',
+                    name: "Next.js",
                     Icon: TbBrandNextjs,
-                    color: '#080808',
-                    href: 'https://nextjs.org/',
+                    color: "#080808",
+                    href: "https://nextjs.org/",
                   },
                   {
-                    name: 'CSS modules',
+                    name: "CSS modules",
                     Icon: SiCssmodules,
-                    href: 'https://github.com/css-modules/css-modules',
-                    color: '#000',
+                    href: "https://github.com/css-modules/css-modules",
+                    color: "#000",
                   },
                 ]}
               />
@@ -1046,22 +1048,22 @@ export default function Home() {
                 description="Kremenchuk school website for my mom, who is a director"
                 stack={[
                   {
-                    name: 'Next.js',
+                    name: "Next.js",
                     Icon: TbBrandNextjs,
-                    color: '#080808',
-                    href: 'https://nextjs.org/',
+                    color: "#080808",
+                    href: "https://nextjs.org/",
                   },
                   {
-                    name: 'Firebase',
+                    name: "Firebase",
                     Icon: IoLogoFirebase,
-                    color: '#ffa82c',
-                    href: 'https://firebase.google.com/',
+                    color: "#ffa82c",
+                    href: "https://firebase.google.com/",
                   },
                   {
-                    name: 'SCSS',
+                    name: "SCSS",
                     Icon: SiSass,
-                    color: '#c69',
-                    href: 'https://sass-lang.com/',
+                    color: "#c69",
+                    href: "https://sass-lang.com/",
                   },
                 ]}
               />
@@ -1075,10 +1077,10 @@ export default function Home() {
                 description="Online store for my aunt's business"
                 stack={[
                   {
-                    name: 'Wix',
+                    name: "Wix",
                     Icon: FaWix,
-                    color: '#000000',
-                    href: 'https://wix.com',
+                    color: "#000000",
+                    href: "https://wix.com",
                   },
                 ]}
               />
@@ -1093,16 +1095,16 @@ export default function Home() {
                 maxWidth={250}
                 stack={[
                   {
-                    name: 'Vue 2',
+                    name: "Vue 2",
                     Icon: IoLogoVue,
-                    color: '#41b883',
-                    href: 'https://v2.vuejs.org/',
+                    color: "#41b883",
+                    href: "https://v2.vuejs.org/",
                   },
                   {
-                    name: 'SCSS',
+                    name: "SCSS",
                     Icon: SiSass,
-                    color: '#c69',
-                    href: 'https://sass-lang.com/',
+                    color: "#c69",
+                    href: "https://sass-lang.com/",
                   },
                 ]}
               />
@@ -1122,24 +1124,24 @@ export default function Home() {
                 className={styles.certItem}
                 src={cert4}
                 backgroundColor="#3548fe"
-                alt={getAlt('Projector: Engineering Discovery')}
+                alt={getAlt("Projector: Engineering Discovery")}
               />
               <Certificate
                 className={styles.certItem}
                 src={cert2}
                 backgroundColor="#100f14"
-                alt={getAlt('Projector: SQL')}
+                alt={getAlt("Projector: SQL")}
               />
               <Certificate
                 className={styles.certItem}
                 src={cert3}
                 backgroundColor="#100f14"
-                alt={getAlt('Projector: CTO')}
+                alt={getAlt("Projector: CTO")}
               />
               <Certificate
                 className={styles.certItem}
                 src={cert1}
-                alt={getAlt('Sololearn: SQL')}
+                alt={getAlt("Sololearn: SQL")}
               />
               <div className={styles.certPadding} />
             </div>
