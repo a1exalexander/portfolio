@@ -104,10 +104,10 @@ export default function Home() {
       
       <main className={styles.main}>
         <section id="about-me">
-          <h1 className={styles.title}>👋 hey, I&apos;m <RoughNotation show color="var(--G400)" type="highlight"><span className="white">{' '}Oleksandr Ratushnyi{' '}</span></RoughNotation></h1>
+          <h1 className={styles.title}>Hey, I&apos;m <RoughNotation show color="var(--G400)" type="highlight"><span className="white">{' '}Oleksandr Ratushnyi{' '}</span></RoughNotation></h1>
           <Paragraph>
-            I&apos;m <RoughNotation animationDelay={500} show color="var(--G400)" strokeWidth={2} type="underline" padding={2}>javascript engineer</RoughNotation> from{" "} 
-            <RoughNotation animationDelay={800} show type="underline" strokeWidth={2} padding={2} color="var(--B400)">🇺🇦{" "} Ukraine</RoughNotation> and I like{" "}
+            I&apos;m <RoughNotation animationDelay={500} show color="var(--G400)" strokeWidth={2} type="underline" padding={3}>javascript engineer</RoughNotation> from{" "} 
+            <RoughNotation animationDelay={800} show type="underline" strokeWidth={2} padding={3} color="var(--B300)">🇺🇦{" "} Ukraine</RoughNotation> and I like{" "}
             <Tag
               Icon={BiLogoTypescript}
               iconColor="#007acc"
