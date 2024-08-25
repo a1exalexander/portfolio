@@ -116,7 +116,6 @@ a, button {
 /* full size image */
 .medium-zoom-image--opened {
   cursor: zoom-out;
-  z-index: 2;
 }
 
 .white {
