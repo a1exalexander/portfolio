@@ -69,6 +69,7 @@ import cert1 from "../images/c1.png";
 import cert2 from "../images/PRJCTR_SQL.png";
 import cert3 from "../images/c3.png";
 import cert4 from "../images/PR3.png";
+import cert5 from "../images/SCR-20241030-qppb.png";
 import namecheap1 from "../images/nc1.jpeg";
 import merge from "../images/merge.png";
 import mergeAcademy from "../images/merge-academy.ico";
@@ -1120,6 +1121,12 @@ export default function Home() {
           <Fullwidth>
             <div className={styles.certsList}>
               <div className={styles.certPadding} />
+              <Certificate
+                className={styles.certItem}
+                src={cert5}
+                backgroundColor="#f2f2f2"
+                alt={getAlt("Josh Comeau: CSS for JS devs")}
+              />
               <Certificate
                 className={styles.certItem}
                 src={cert4}
