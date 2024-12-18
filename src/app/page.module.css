@@ -63,9 +63,6 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 2rem;
-  /* max-width: 1440px;
-  margin-left: auto;
-  margin-right: auto; */
 }
 
 .certsList {
@@ -99,7 +96,6 @@
 .project {
   flex: 0 1 auto;
   min-width: 160px;
-  max-width: auto;
 }
 
 @media (max-width: 768px) {
