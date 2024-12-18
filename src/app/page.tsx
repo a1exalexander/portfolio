@@ -1226,7 +1226,7 @@ export default function Home() {
                     className={styles.section}>
                     <h2 className={styles.heading}>my certificates 🎓</h2>
                     <Paragraph>
-                        Here are some of the course and worshop certifications I&apos;ve
+                        Here are some of the course and workshop certifications I&apos;ve
                         completed.
                     </Paragraph>
                     <Fullwidth>
