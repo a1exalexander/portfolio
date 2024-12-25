@@ -89,19 +89,34 @@ export const metadata: Metadata = {
 
 export const revalidate = 604800; // 1 week
 
-const getNumberOfMonthsFromMay2022 = () => {
+const getNumberOfYearsAndMonthsFromMay2022 = () => {
     const may2022 = new Date('2022-05-01');
     const now = new Date();
     const diff = now.getTime() - may2022.getTime();
-    return Math.floor(diff / (1000 * 60 * 60 * 24 * 30));
+    
+    const diffInMonths = Math.floor(diff / (1000 * 60 * 60 * 24 * 30));
+    const years = Math.floor(diffInMonths / 12);
+    const months = diffInMonths % 12;
+    
+    const yearsText = years === 1 ? '1 year' : `${years} years`;
+    const monthsText = months === 1 ? '1 month' : `${months} months`;
+    
+    if (years === 0) {
+        return monthsText;
+    } else if (months === 0) {
+        return yearsText;
+    } else {
+        return `${yearsText} and ${monthsText}`;
+    }
 };
+
 
 export default function Home() {
     return (
         <>
             <Ticker href="https://www.savedefenders.info/">
-                For <strong>{getNumberOfMonthsFromMay2022()} months</strong>, Russia has
-                been hiding the condition and location of 1600 captured defenders of
+                For <strong>{getNumberOfYearsAndMonthsFromMay2022()}</strong>, Russia has
+                been hiding the condition and location of more than 800 captured defenders of
                 <strong> Azovstal and Mariupol</strong>
             </Ticker>
 
