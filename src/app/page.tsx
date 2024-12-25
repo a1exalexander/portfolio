@@ -98,15 +98,15 @@ const getNumberOfYearsAndMonthsFromMay2022 = () => {
     const years = Math.floor(diffInMonths / 12);
     const months = diffInMonths % 12;
     
-    const yearsText = years === 1 ? '1 year' : `${years} years`;
-    const monthsText = months === 1 ? '1 month' : `${months} months`;
+    const yearsText = years === 1 ? '1 YEAR' : `${years} YEARS`;
+    const monthsText = months === 1 ? '1 MONTH' : `${months} MONTHS`;
     
     if (years === 0) {
         return monthsText;
     } else if (months === 0) {
         return yearsText;
     } else {
-        return `${yearsText} and ${monthsText}`;
+        return `${yearsText} AND ${monthsText}`;
     }
 };
 
@@ -114,10 +114,8 @@ const getNumberOfYearsAndMonthsFromMay2022 = () => {
 export default function Home() {
     return (
         <>
-            <Ticker href="https://www.savedefenders.info/">
-                For <strong>{getNumberOfYearsAndMonthsFromMay2022()}</strong>, Russia has
-                been hiding the condition and location of more than 800 captured defenders of
-                <strong> Azovstal and Mariupol</strong>
+            <Ticker href="https://www.savemariupolheroes.org/">
+                FOR <strong>{getNumberOfYearsAndMonthsFromMay2022()}</strong>, ABOUT <strong>1500</strong> AZOVSTEEL SOLDIERS OF ALL UNITS ARE STILL CAPTURED, INCLUDING <strong>700+</strong> AZOV SOLDIERS.
             </Ticker>
 
             <main className={styles.main}>
