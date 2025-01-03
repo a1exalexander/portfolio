@@ -93,14 +93,14 @@ const getNumberOfYearsAndMonthsFromMay2022 = () => {
     const may2022 = new Date('2022-05-01');
     const now = new Date();
     const diff = now.getTime() - may2022.getTime();
-    
+
     const diffInMonths = Math.floor(diff / (1000 * 60 * 60 * 24 * 30));
     const years = Math.floor(diffInMonths / 12);
     const months = diffInMonths % 12;
-    
+
     const yearsText = years === 1 ? '1 YEAR' : `${years} YEARS`;
     const monthsText = months === 1 ? '1 MONTH' : `${months} MONTHS`;
-    
+
     if (years === 0) {
         return monthsText;
     } else if (months === 0) {
@@ -1034,7 +1034,7 @@ export default function Home() {
                                 className={styles.project}
                                 github="https://github.com/a1exalexander/polly"
                                 title="Polly"
-                                time="2024"
+                                time="2025"
                                 status="production"
                                 href="https://polly-voting-app.vercel.app/"
                                 description="Real-Time Task Estimation and Voting Platform"

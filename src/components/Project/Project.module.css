@@ -176,86 +176,118 @@
 /* New Animation */
 
 @keyframes spark1 {
-    from {
+    0% {
         transform: scale(0.5) translate(0, 0);
+        opacity: 0;
+    }
+    90% {
+        transform: scale(1) translate(-40px, -55px);
         opacity: 1;
     }
-    to {
+    100% {
         transform: scale(1) translate(-40px, -55px);
-        opacity: 0.5;
+        opacity: 0;
     }
 }
 
 @keyframes spark2 {
-    from {
+    0% {
         transform: scale(0.5) translate(0, 0);
+        opacity: 0;
+    }
+    90% {
+        transform: scale(1) translate(60px, -30px);
         opacity: 1;
     }
-    to {
+    100% {
         transform: scale(1) translate(60px, -30px);
-        opacity: 0.5;
+        opacity: 0;
     }
 }
 @keyframes spark3 {
-    from {
+    0% {
         transform: scale(0.5) translate(0, 0);
+        opacity: 0;
+    }
+    90% {
+        transform: scale(1) translate(-70px, 30px);
         opacity: 1;
     }
-    to {
+    100% {
         transform: scale(1) translate(-70px, 30px);
-        opacity: 0.5;
+        opacity: 0;
     }
 }
 @keyframes spark4 {
-    from {
+    0% {
         transform: scale(0.5) translate(0, 0);
+        opacity: 0;
+    }
+    90% {
+        transform: scale(1) translate(100px, 20px);
         opacity: 1;
     }
-    to {
+    100% {
         transform: scale(1) translate(100px, 20px);
-        opacity: 0.5;
+        opacity: 0;
     }
 }
 @keyframes spark5 {
-    from {
+    0% {
         transform: scale(0.5) translate(0, 0);
+        opacity: 0;
+    }
+    90% {
+        transform: scale(1) translate(0px, -50px);
         opacity: 1;
     }
-    to {
+    100% {
         transform: scale(1) translate(0px, -50px);
-        opacity: 0.5;
+        opacity: 0;
     }
 }
 @keyframes spark6 {
-    from {
+    0% {
         transform: scale(0.5) translate(0, 0);
+        opacity: 0;
+    }
+    90% {
+        transform: scale(1) translate(90px, 0px);
         opacity: 1;
     }
-    to {
+    100% {
         transform: scale(1) translate(90px, 0px);
-        opacity: 0.5;
+        opacity: 0;
     }
 }
 
 @keyframes spark7 {
-    from {
+    0% {
         transform: scale(0.5) translate(0, 0);
+        opacity: 0;
+    }
+    90% {
+        transform: scale(1) translate(-10px, 60px);
         opacity: 1;
     }
-    to {
+    100% {
         transform: scale(1) translate(-10px, 60px);
-        opacity: 0.5;
+        opacity: 0;
     }
 }
 
 @keyframes spark8 {
-    from {
+    0% {
         transform: scale(0.5) translate(0, 0);
+        opacity: 0;
+    }
+    90% {
+        transform: scale(1) translate(-90px, 0px);
         opacity: 1;
     }
-    to {
+    100% {
         transform: scale(1) translate(-90px, 0px);
-        opacity: 0.5;
+        opacity: 0;
     }
 }
 
@@ -266,6 +298,7 @@
 
 .newTag {
     text-transform: uppercase;
+    transform-origin: center;
     font-weight: 500;
     color: var(--B500);
     display: none;
