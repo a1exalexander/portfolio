@@ -1249,7 +1249,7 @@ export default function Home() {
                             <Certificate
                                 className={styles.certItem}
                                 src={cert6}
-                                backgroundColor="#f8f9fb"
+                                backgroundColor="#ffffff"
                                 alt={getAlt('OWASP Top 10: Comprehensive Web Application Security (Udemy).')}
                             />
                             <Certificate
