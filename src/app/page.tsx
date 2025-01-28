@@ -78,6 +78,7 @@ import namecheap1 from '../images/nc1.jpeg';
 import cert4 from '../images/PR3.png';
 import cert2 from '../images/PRJCTR_SQL.png';
 import cert5 from '../images/SCR-20241030-qppb.png';
+import cert6 from '../images/OWASP_10.jpg';
 import wisealpha from '../images/wisealpha.jpg';
 import zone3000Icon from '../images/Zone3000_ico.png';
 import styles from './page.module.css';
@@ -1245,6 +1246,12 @@ export default function Home() {
                     <Fullwidth>
                         <div className={styles.certsList}>
                             <div className={styles.certPadding} />
+                            <Certificate
+                                className={styles.certItem}
+                                src={cert6}
+                                backgroundColor="#f8f9fb"
+                                alt={getAlt('OWASP Top 10: Comprehensive Web Application Security (Udemy).')}
+                            />
                             <Certificate
                                 className={styles.certItem}
                                 src={cert5}
