@@ -1,0 +1,21 @@
+.container {
+  width: 100%;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  background-image: url(../../assets/Strum_Hero.svg);
+  background-repeat: repeat;
+  text-decoration: none;
+}
+
+.video {
+  aspect-ratio: 9 / 16;
+  max-width: 20rem;
+  display: block;
+  background-color: yellow;
+  object-fit: contain;
+  margin: 2rem;
+}

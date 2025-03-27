@@ -9,3 +9,4 @@ export * from './Fullwidth';
 export * from './Footer';
 export * from './Certificate';
 export * from './Ticker';
+export * from './Strum';
