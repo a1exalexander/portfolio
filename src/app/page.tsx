@@ -59,10 +59,11 @@ import photo6 from "../images/a00001.jpeg";
 import photo2 from "../images/a00002.jpeg";
 import photo4 from "../images/a00003.jpeg";
 import photo3 from "../images/a00004.jpeg";
-import photo5 from "../images/a00006.jpeg";
+import photo5 from "../images/IMG_3059.jpeg";
 import photo1 from "../images/a00008.jpg";
 import photo7 from "../images/IMG_2349.jpeg";
 import photo9 from "../images/IMG_3055.jpeg";
+import photo10 from "../images/IMG_3058.jpeg";
 import beetroot from "../images/beetroot.png";
 import cert1 from "../images/c1.png";
 import cert3 from "../images/c3.png";
@@ -302,14 +303,15 @@ export default function Home() {
           <Paragraph>
             At my home, there are three cats 🐈🐈🐈 and one dog 🦮.
           </Paragraph>
-          <Collage row>
-            <Photo src={photo9} vertical grid caption="Whole squad" />
-            <Photo src={photo5} vertical grid caption="I'm working with Platon" />
-            <Photo src={photo6} vertical grid caption="Lastick & Platon" />
-            <Photo src={photo7} vertical grid caption="Lapsi" />
+          <Collage className={styles['mb-0']}>
+            <Photo src={photo9} paddingHack={170} vertical grid caption="Whole squad" />
+            <Photo src={photo10} paddingHack={170} vertical grid caption="Lapsi and Luna" />
+            <Photo src={photo5} paddingHack={85} offset={{y: -20}} grid caption="Platon and Luna" />
+            <Photo src={photo7}  grid caption="Lapsi" />
+            <Photo src={photo6} paddingHack={100} offset={{y: -34}} grid caption="Lastick & Platon" />
           </Collage>
         </section>
-        <section id="my-work" className={styles.section}>
+        <section id="my-work">
           <h2 className={styles.heading}>my work 🗂️</h2>
           <Paragraph>
             I began my journey in web engineering in early 2018. Over the years,

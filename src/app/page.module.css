@@ -56,6 +56,9 @@
 .section {
   padding-top: var(--SECTION_OFFSET);
 }
+.section-- {
+  padding-top: var(--SECTION_OFFSET);
+}
 
 .projectsList {
   list-style: none;
@@ -107,4 +110,8 @@
 
 .singleVerticalImage {
   max-width: 25%;
+}
+
+.mb-0 {
+  margin-bottom: 0 !important;
 }

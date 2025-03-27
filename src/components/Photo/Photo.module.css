@@ -31,6 +31,6 @@
   color: var(--N400);
 }
 
-.vertical .image {
+.vertical:not(.paddingHack) .image {
   height: 100%;
 }

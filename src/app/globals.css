@@ -116,6 +116,9 @@ a, button {
 /* full size image */
 .medium-zoom-image--opened {
   cursor: zoom-out;
+  object-fit: contain !important;
+  height: 90vh !important;
+  width: 90vw !important;
 }
 
 .white {
