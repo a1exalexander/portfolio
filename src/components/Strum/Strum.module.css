@@ -8,6 +8,8 @@
   position: relative;
   background-image: url(../../assets/Strum_Hero.svg);
   background-repeat: repeat;
+  background-position: center center;
+  background-size: 20%;
   text-decoration: none;
 }
 
