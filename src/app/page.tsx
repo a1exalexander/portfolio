@@ -62,7 +62,6 @@ import photo3 from "../images/a00004.jpeg";
 import photo5 from "../images/a00006.jpeg";
 import photo1 from "../images/a00008.jpg";
 import photo7 from "../images/IMG_2349.jpeg";
-import photo8 from "../images/IMG_3054.jpg";
 import photo9 from "../images/IMG_3055.jpeg";
 import beetroot from "../images/beetroot.png";
 import cert1 from "../images/c1.png";
@@ -301,7 +300,7 @@ export default function Home() {
           </Collage>
 
           <Paragraph>
-            At my home, there are three cats 🐈🐈🐈 and one dog.
+            At my home, there are three cats 🐈🐈🐈 and one dog 🦮.
           </Paragraph>
           <Collage row>
             <Photo src={photo9} vertical grid caption="Whole squad" />
