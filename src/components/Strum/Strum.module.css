@@ -15,7 +15,6 @@
   aspect-ratio: 9 / 16;
   max-width: 20rem;
   display: block;
-  background-color: yellow;
   object-fit: contain;
   margin: 2rem;
 }
