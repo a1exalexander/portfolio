@@ -50,7 +50,6 @@ import {
   Paragraph,
   Photo,
   Project,
-  Strum,
   Tag,
   Ticker,
   Work,
@@ -123,7 +122,6 @@ export default function Home() {
         <strong>1500</strong> AZOVSTEEL SOLDIERS OF ALL UNITS ARE STILL
         CAPTURED, INCLUDING <strong>700+</strong> AZOV SOLDIERS.
       </Ticker>
-      <Strum />
 
       <main className={styles.main}>
         <section id="about-me">
