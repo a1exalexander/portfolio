@@ -167,7 +167,7 @@ export default function Home() {
               Typescript
             </Tag>
             . I have a passion for creating beautiful and functional web apps. I
-            have experience in saas, fintech and other industries. I able to
+            have experience in SaaS, fintech and other industries. I am able to
             work with a wide range of technologies and tools in both front-end
             and back-end development. I am a big fan of the{" "}
             <Tag
@@ -363,8 +363,8 @@ export default function Home() {
             time="Dec 2018 — May 2024"
           >
             <Paragraph>
-              At Merge I was responsible for development proccesses in the
-              agancy, development team management, clients communication,
+              At Merge I was responsible for development processes in the
+              agency, development team management, client communication,
               development discovery and development itself. I have been involved
               in the development of a wide range of projects as a developer and
               also as a team leader.
@@ -633,7 +633,7 @@ export default function Home() {
                   className={styles.project}
                   title="Spotlyt"
                   time="2021"
-                  description="Components library for data scientists form Poland based company BrytLyt. I worked in the client's team and independently developed a UI library for their applications."
+                  description="Components library for data scientists from Poland-based company BrytLyt. I worked in the client's team and independently developed a UI library for their applications."
                   status="demo"
                   href="https://storybook-spotlyt.netlify.app/"
                   maxWidth={520}
@@ -704,7 +704,7 @@ export default function Home() {
                   className={styles.project}
                   title="Merge"
                   time="2020"
-                  description="Website for the Merge agancy. Actually, it's the 3 or 4 version of the website."
+                  description="Website for the Merge agency. Actually, it's the 3rd or 4th version of the website."
                   status="production"
                   href="https://merge.rocks/"
                   maxWidth={260}
@@ -925,10 +925,10 @@ export default function Home() {
             ]}
           >
             <Paragraph>
-              These companies are my friends and you have cooperated from time
+              This company is run by my friends and we have cooperated from time
               to time. I helped them with the development of some web projects,
-              consulted on issues related to the frontend, and there with the
-              hiring of frontend developers.
+              consulted on issues related to the frontend, and assisted with
+              hiring frontend developers.
             </Paragraph>
             <Fullwidth Icon={GrProjects} title="Projects">
               <ul className={styles.projectsList}>
