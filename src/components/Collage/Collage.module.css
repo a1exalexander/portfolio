@@ -138,3 +138,36 @@
     max-width: initial;
   }
 }
+
+/* Masonry layout for 6-20 images */
+.masonry {
+  display: block;
+  column-gap: 1.5rem;
+  columns: 2;
+}
+
+.masonry > * {
+  break-inside: avoid;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+/* Responsive columns based on image count */
+@media screen and (min-width: 768px) {
+  .masonry {
+    columns: 3;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .masonry {
+    columns: 4;
+  }
+}
+
+/* Adjust columns for larger collections */
+@media screen and (min-width: 1280px) {
+  .masonry {
+    columns: 4;
+  }
+}

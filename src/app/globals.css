@@ -114,7 +114,13 @@ a, button {
 }
 
 /* full size image */
+.medium-zoom-overlay {
+  width: 100vw !important;
+  height: 100vh !important;
+}
 .medium-zoom-image--opened {
+  top: 10vh;
+  left: 10vw;
   cursor: zoom-out;
   object-fit: contain !important;
   height: 90vh !important;

@@ -63,6 +63,10 @@ import photo1 from "../images/a00008.jpg";
 import photo7 from "../images/IMG_2349.jpeg";
 import photo9 from "../images/IMG_3055.jpeg";
 import photo10 from "../images/IMG_3058.jpeg";
+import catPhoto1 from "../images/37FABF81-6070-4FE3-9EF1-443B478C9C20_1_105_c.jpeg";
+import catPhoto2 from "../images/8102D5E0-2690-40AC-8887-08BC2D26BE9A_1_105_c.jpeg";
+import catPhoto3 from "../images/A6CD5315-D301-48C5-940E-4C535D1E53DB_1_105_c.jpeg";
+import catPhoto4 from "../images/B252D2F4-CF7F-4F45-A3ED-F5AF00F39049_1_105_c.jpeg";
 import beetroot from "../images/beetroot.png";
 import cert1 from "../images/c1.png";
 import cert3 from "../images/c3.png";
@@ -304,9 +308,13 @@ export default function Home() {
           <Collage className={styles['mb-0']}>
             <Photo src={photo9} paddingHack={170} vertical grid caption="Whole squad" />
             <Photo src={photo10} paddingHack={170} vertical grid caption="Lapsi and Luna" />
-            <Photo src={photo5} paddingHack={85} offset={{y: -20}} grid caption="Platon and Luna" />
-            <Photo src={photo7}  grid caption="Lapsi" />
-            <Photo src={photo6} paddingHack={100} offset={{y: -34}} grid caption="Lastick & Platon" />
+            <Photo src={photo7} grid caption="Lapsi" />
+            <Photo src={photo6} paddingHack={100} grid caption="Lastick & Platon" />
+            <Photo src={catPhoto1} paddingHack={170} grid caption="Lapsi, Platon and Misty" />
+            <Photo src={catPhoto2} paddingHack={80} grid caption="Platon and Misty" />
+            <Photo src={photo5} paddingHack={85} grid caption="Platon and Luna" />
+            <Photo src={catPhoto3} paddingHack={100} grid caption="Me and Lapsi found mushroom" />
+            <Photo src={catPhoto4} paddingHack={100} grid caption="Platon and Lapsi" />
           </Collage>
         </section>
         <section id="my-work">
