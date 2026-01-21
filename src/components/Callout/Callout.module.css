@@ -1,0 +1,53 @@
+.callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  margin: 2rem 0;
+  padding: 1.2rem 1.4rem;
+  border-radius: 4px;
+  background-color: var(--N20);
+}
+
+.callout.info {
+  background-color: rgba(0, 101, 255, 0.06);
+}
+
+.callout.warning {
+  background-color: rgba(255, 171, 0, 0.08);
+}
+
+.callout.tip {
+  background-color: rgba(0, 135, 90, 0.06);
+}
+
+.callout.note {
+  background-color: var(--N20);
+}
+
+.emoji {
+  flex-shrink: 0;
+  font-size: 1.8rem;
+  line-height: 1.4;
+}
+
+.content {
+  flex: 1;
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: var(--N800);
+}
+
+.title {
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.content p {
+  margin: 0;
+  display: inline;
+}
+
+.content p + p {
+  display: block;
+  margin-top: 0.6rem;
+}

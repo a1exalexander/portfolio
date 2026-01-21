@@ -1,0 +1,91 @@
+.container {
+  margin: 3rem 0;
+  position: relative;
+}
+
+.slider {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  gap: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+.slider::-webkit-scrollbar {
+  display: none;
+}
+
+.slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 66.67%;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: var(--N50);
+}
+
+.image {
+  object-fit: cover;
+}
+
+.caption {
+  margin-top: 1rem;
+  font-size: 1.4rem;
+  color: var(--N500);
+  text-align: center;
+  font-style: italic;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--N200);
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.dot:hover {
+  background-color: var(--N400);
+}
+
+.dot.active {
+  background-color: var(--N700);
+  transform: scale(1.2);
+}
+
+.counter {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+@media screen and (min-width: 768px) {
+  .imageWrapper {
+    border-radius: 12px;
+  }
+}
