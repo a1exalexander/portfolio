@@ -47,7 +47,7 @@ export const Mention = function Mention({
         href={linkHref}
         target="_blank"
         rel="noopener noreferrer"
-        className={clsx(styles.mention, styles.link, className)}
+        className={clsx(styles.mention, styles.link, platform && styles[platform], className)}
       >
         {content}
       </a>
@@ -55,7 +55,7 @@ export const Mention = function Mention({
   }
 
   return (
-    <span className={clsx(styles.mention, className)}>
+    <span className={clsx(styles.mention, platform && styles[platform], className)}>
       {content}
     </span>
   );

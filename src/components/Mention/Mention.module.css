@@ -1,31 +1,63 @@
 .mention {
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
-  padding: 0.2rem 0.6rem;
-  background-color: var(--B50);
-  border-radius: 4px;
-  font-size: 0.95em;
+  gap: 0.25rem;
+  padding: 0.1rem 0.4rem;
+  background-color: transparent;
+  border-radius: 3px;
+  font-size: 0.875em;
   font-weight: 500;
-  color: var(--B500);
+  color: var(--N700);
   white-space: nowrap;
+  text-decoration: underline;
+  text-decoration-color: var(--N200);
+  text-underline-offset: 2px;
 }
 
 .link {
-  text-decoration: none;
-  transition: background-color 0.2s ease;
+  text-decoration: underline;
+  text-decoration-color: currentColor;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
 }
 
 .link:hover {
-  background-color: var(--B100);
+  text-decoration-color: currentColor;
 }
 
 .icon {
-  width: 1.2em;
-  height: 1.2em;
+  width: 0.9em;
+  height: 0.9em;
   flex-shrink: 0;
+  opacity: 0.8;
 }
 
 .handle {
   line-height: 1;
+}
+
+/* Platform-specific colors */
+.twitter {
+  color: #1da1f2;
+}
+
+.twitter:hover {
+  color: #0d8ddb;
+}
+
+.github {
+  color: #333;
+}
+
+.github:hover {
+  color: #000;
+}
+
+.linkedin {
+  color: #0077b5;
+}
+
+.linkedin:hover {
+  color: #005f8f;
 }
