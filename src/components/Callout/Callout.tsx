@@ -1,6 +1,5 @@
 import React from "react";
 import clsx from "clsx";
-import { FiInfo, FiAlertTriangle, FiCheckCircle, FiFileText } from "react-icons/fi";
 import styles from "./Callout.module.css";
 
 type CalloutType = "info" | "warning" | "tip" | "note";
@@ -10,13 +9,14 @@ interface ICalloutProps {
   title?: string;
   children: React.ReactNode;
   className?: string;
+  emoji?: string;
 }
 
-const icons: Record<CalloutType, React.ElementType> = {
-  info: FiInfo,
-  warning: FiAlertTriangle,
-  tip: FiCheckCircle,
-  note: FiFileText,
+const defaultEmojis: Record<CalloutType, string> = {
+  info: "ℹ️",
+  warning: "⚠️",
+  tip: "💡",
+  note: "📝",
 };
 
 export const Callout = function Callout({
@@ -24,16 +24,17 @@ export const Callout = function Callout({
   title,
   children,
   className,
+  emoji,
 }: ICalloutProps) {
-  const Icon = icons[type];
+  const displayEmoji = emoji || defaultEmojis[type];
 
   return (
     <aside className={clsx(styles.callout, styles[type], className)}>
-      <div className={styles.header}>
-        <Icon className={styles.icon} />
+      <span className={styles.emoji}>{displayEmoji}</span>
+      <div className={styles.content}>
         {title && <span className={styles.title}>{title}</span>}
+        {children}
       </div>
-      <div className={styles.content}>{children}</div>
     </aside>
   );
 };
