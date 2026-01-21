@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import rehypePrettyCode from "rehype-pretty-code";
 import { getPostBySlug, getPostSlugs, formatDate } from "@/lib/blog";
 import { mdxComponents } from "@/lib/mdx-components";
 import { Article } from "@/components/Article";
@@ -89,7 +90,23 @@ export default async function BlogPostPage({ params }: PageProps) {
         </header>
 
         <Article className={styles.content}>
-          <MDXRemote source={post.content} components={mdxComponents} />
+          <MDXRemote
+            source={post.content}
+            components={mdxComponents}
+            options={{
+              mdxOptions: {
+                rehypePlugins: [
+                  [
+                    rehypePrettyCode,
+                    {
+                      theme: "one-dark-pro",
+                      keepBackground: true,
+                    },
+                  ],
+                ],
+              },
+            }}
+          />
         </Article>
 
         <footer className={styles.footer}>

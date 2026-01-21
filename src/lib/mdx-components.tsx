@@ -15,9 +15,7 @@ export const mdxComponents: MDXComponents = {
       {children}
     </InlineLink>
   ),
-  pre: ({ children, ...props }) => (
-    <CodeBlock {...props}>{children}</CodeBlock>
-  ),
+  // Note: pre is handled by rehype-pretty-code for syntax highlighting
 
   // Custom components available in MDX
   Article,

@@ -3,6 +3,7 @@ import { BiLogoReact, BiLogoTypescript } from "react-icons/bi";
 import { BsStripe } from "react-icons/bs";
 import { DiBackbone, DiReact, DiRedis, DiStylus } from "react-icons/di";
 import { FaWix } from "react-icons/fa";
+import { FiEdit3 } from "react-icons/fi";
 import { GrProjects } from "react-icons/gr";
 import { ImNpm } from "react-icons/im";
 import { IoLogoFirebase, IoLogoNodejs, IoLogoVue } from "react-icons/io5";
@@ -135,6 +136,11 @@ export default function Home() {
               <span className="white"> Oleksandr Ratushnyi </span>
             </RoughNotation>
           </h1>
+          <nav className={styles.nav}>
+            <Tag Icon={FiEdit3} href="/blog" target="_self">
+              Blog
+            </Tag>
+          </nav>
           <Paragraph>
             I&apos;m{" "}
             <RoughNotation

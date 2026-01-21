@@ -15,6 +15,7 @@ interface ITagProps {
   textColor?: string;
   download?: boolean;
   size?: 'small' | 'medium';
+  target?: '_blank' | '_self';
 }
 
 export const Tag = function Tag({
@@ -29,12 +30,13 @@ export const Tag = function Tag({
   href,
   dark,
   size = 'medium',
+  target = '_blank',
 }: ITagProps) {
   return (
     <a
       download={download}
       href={href}
-      target="_blank"
+      target={target}
       style={{
         color: textColor,
         backgroundColor,

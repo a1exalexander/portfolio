@@ -135,3 +135,65 @@ a, button {
 .offset {
   padding: 0 4px;
 }
+
+/* Syntax highlighting (rehype-pretty-code) */
+[data-rehype-pretty-code-figure] {
+  margin: 2.5rem 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: var(--N900);
+}
+
+[data-rehype-pretty-code-figure] pre {
+  margin: 0;
+  padding: 1.5rem 2rem;
+  overflow-x: auto;
+  font-size: 1.4rem;
+  line-height: 1.7;
+  background-color: transparent !important;
+}
+
+[data-rehype-pretty-code-figure] code {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  counter-reset: line;
+}
+
+[data-rehype-pretty-code-figure] [data-line] {
+  padding: 0 0.5rem;
+  border-left: 2px solid transparent;
+}
+
+[data-rehype-pretty-code-figure] [data-highlighted-line] {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-left-color: var(--B300);
+}
+
+/* Code title/caption */
+[data-rehype-pretty-code-title] {
+  padding: 0.8rem 1.5rem;
+  font-size: 1.2rem;
+  color: var(--N400);
+  background-color: rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+/* Inline code styling */
+:not(pre) > code {
+  background-color: var(--N30);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+@media screen and (max-width: 768px) {
+  [data-rehype-pretty-code-figure] pre {
+    padding: 1rem 1.5rem;
+    font-size: 1.3rem;
+  }
+
+  [data-rehype-pretty-code-figure] {
+    border-radius: 8px;
+  }
+}
