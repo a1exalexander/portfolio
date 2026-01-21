@@ -89,7 +89,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           )}
         </header>
 
-        <Article className={styles.content}>
+        <Article className={styles.content} slug={slug}>
           <MDXRemote
             source={post.content}
             components={mdxComponents}
