@@ -1,0 +1,59 @@
+.figure {
+  margin: 3rem 0;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 66.67%;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: var(--N50);
+}
+
+.image {
+  object-fit: cover;
+}
+
+.caption {
+  margin-top: 1rem;
+  font-size: 1.4rem;
+  color: var(--N500);
+  text-align: center;
+  font-style: italic;
+}
+
+/* Full width breakout */
+.fullWidth {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+.fullWidth .imageWrapper {
+  border-radius: 0;
+  padding-bottom: 50%;
+}
+
+.fullWidth .caption {
+  padding: 0 2rem;
+}
+
+@media screen and (min-width: 768px) {
+  .imageWrapper {
+    border-radius: 12px;
+  }
+
+  .fullWidth .imageWrapper {
+    padding-bottom: 45%;
+  }
+
+  .fullWidth .caption {
+    padding: 0 3rem;
+  }
+}

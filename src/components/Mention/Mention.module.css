@@ -1,0 +1,31 @@
+.mention {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem 0.6rem;
+  background-color: var(--B50);
+  border-radius: 4px;
+  font-size: 0.95em;
+  font-weight: 500;
+  color: var(--B500);
+  white-space: nowrap;
+}
+
+.link {
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.link:hover {
+  background-color: var(--B100);
+}
+
+.icon {
+  width: 1.2em;
+  height: 1.2em;
+  flex-shrink: 0;
+}
+
+.handle {
+  line-height: 1;
+}

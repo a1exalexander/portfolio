@@ -1,0 +1,102 @@
+.container {
+  margin: 2.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: var(--N900);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 0.8rem 1.5rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.filename,
+.language {
+  font-size: 1.2rem;
+  color: var(--N400);
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+.codeWrapper {
+  position: relative;
+}
+
+.pre {
+  margin: 0;
+  padding: 1.5rem;
+  overflow-x: auto;
+  font-size: 1.4rem;
+  line-height: 1.6;
+}
+
+.code {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  color: var(--N100);
+}
+
+.copyButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.2rem;
+  height: 3.2rem;
+  padding: 0;
+  border: none;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--N300);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.copyButton:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: var(--N100);
+}
+
+.copyButton svg {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+/* Syntax highlighting colors */
+.code .keyword {
+  color: #c678dd;
+}
+
+.code .string {
+  color: #98c379;
+}
+
+.code .comment {
+  color: #5c6370;
+  font-style: italic;
+}
+
+.code .function {
+  color: #61afef;
+}
+
+.code .number {
+  color: #d19a66;
+}
+
+.code .operator {
+  color: #56b6c2;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    border-radius: 12px;
+  }
+
+  .pre {
+    padding: 2rem;
+  }
+}

@@ -1,0 +1,156 @@
+---
+title: "Building My Portfolio with Next.js 14"
+description: "A technical deep-dive into how I built this portfolio website using Next.js 14, App Router, TypeScript, and CSS Modules."
+date: "2024-01-20"
+tags: ["next.js", "react", "typescript", "portfolio"]
+published: true
+---
+
+# Building My Portfolio with Next.js 14
+
+When I decided to rebuild my portfolio, I wanted to use the latest technologies while keeping things simple and maintainable. Here's a detailed look at how I built it.
+
+## Tech Stack Overview
+
+The portfolio is built with:
+
+- **Next.js 14** with App Router for server components and routing
+- **TypeScript** for type safety
+- **CSS Modules** for scoped styling
+- **MDX** for this blog you're reading right now
+
+<Callout type="tip" title="Why Next.js 14?">
+  The App Router in Next.js 14 brings React Server Components by default, which means faster page loads and better SEO out of the box.
+</Callout>
+
+## Project Structure
+
+Here's how I organized the codebase:
+
+```
+src/
+├── app/           # Next.js App Router pages
+├── components/    # Reusable UI components
+├── content/       # MDX blog posts
+├── images/        # Static images
+└── lib/           # Utility functions
+```
+
+Each component follows a consistent pattern:
+
+```typescript
+// ComponentName/
+//   ├── ComponentName.tsx
+//   ├── ComponentName.module.css
+//   └── index.ts
+
+import styles from "./ComponentName.module.css";
+
+interface Props {
+  children: React.ReactNode;
+  variant?: "primary" | "secondary";
+}
+
+export function ComponentName({ children, variant = "primary" }: Props) {
+  return (
+    <div className={styles[variant]}>
+      {children}
+    </div>
+  );
+}
+```
+
+## Design System
+
+I created a simple design system using CSS custom properties:
+
+```css
+:root {
+  /* Neutral colors */
+  --N0: #ffffff;
+  --N50: #f8f9fa;
+  --N100: #e9ecef;
+  --N900: #212529;
+
+  /* Accent colors */
+  --B300: #3b82f6;  /* Blue */
+  --G300: #22c55e;  /* Green */
+  --Y300: #eab308;  /* Yellow */
+}
+```
+
+<Callout type="note" title="Design Tokens">
+  Using CSS custom properties makes it easy to maintain consistent colors across the entire site and enables future dark mode support.
+</Callout>
+
+## Adding the Blog
+
+The blog feature uses MDX with `next-mdx-remote`. Here's the setup:
+
+```typescript
+// lib/blog.ts
+import matter from "gray-matter";
+import readingTime from "reading-time";
+
+export function getPostBySlug(slug: string) {
+  const filePath = path.join(BLOG_DIR, `${slug}.mdx`);
+  const fileContents = fs.readFileSync(filePath, "utf8");
+  const { data, content } = matter(fileContents);
+
+  return {
+    ...data,
+    content,
+    readingTime: readingTime(content).text,
+  };
+}
+```
+
+### Custom MDX Components
+
+I created custom components specifically for the blog:
+
+- **ArticleImage** — Enhanced images with zoom and fullwidth support
+- **Callout** — Highlighted tip/info/warning boxes
+- **CodeBlock** — Syntax-highlighted code with copy button
+- **LinkCard** — Rich link previews
+
+<Callout type="warning" title="Performance Note">
+  When using MDX, be careful about importing too many client-side components. Keep as much as possible on the server for better performance.
+</Callout>
+
+## Performance Optimizations
+
+Here are some optimizations I implemented:
+
+1. **Static Generation** — All pages are pre-rendered at build time
+2. **Image Optimization** — Using Next.js Image with blur placeholders
+3. **Font Optimization** — Using the Geist font with `next/font`
+4. **Code Splitting** — Components are loaded only when needed
+
+## Useful Resources
+
+If you're building your own portfolio, check out these resources:
+
+<LinkCard
+  href="https://nextjs.org/docs"
+  title="Next.js Documentation"
+  description="The official Next.js documentation with guides and API reference."
+  image="https://nextjs.org/static/twitter-cards/home.jpg"
+/>
+
+<LinkCard
+  href="https://react.dev"
+  title="React Documentation"
+  description="The library for web and native user interfaces."
+  image="https://react.dev/images/og-home.png"
+/>
+
+## Conclusion
+
+Building this portfolio was a great learning experience. The combination of Next.js 14, TypeScript, and CSS Modules provides a solid foundation that's easy to maintain and extend.
+
+If you're interested in the source code, it's available on <Mention handle="a1exalexander" platform="github" />.
+
+---
+
+Have questions about any part of the build? Feel free to reach out!

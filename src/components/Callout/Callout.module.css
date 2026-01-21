@@ -1,0 +1,90 @@
+.callout {
+  margin: 2.5rem 0;
+  padding: 1.5rem 2rem;
+  border-radius: 8px;
+  border-left: 4px solid;
+}
+
+.callout.info {
+  background-color: var(--B50);
+  border-left-color: var(--B300);
+}
+
+.callout.warning {
+  background-color: var(--Y50);
+  border-left-color: var(--Y300);
+}
+
+.callout.tip {
+  background-color: var(--G50);
+  border-left-color: var(--G300);
+}
+
+.callout.note {
+  background-color: var(--N50);
+  border-left-color: var(--N300);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.icon {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+}
+
+.info .icon {
+  color: var(--B400);
+}
+
+.warning .icon {
+  color: var(--Y400);
+}
+
+.tip .icon {
+  color: var(--G400);
+}
+
+.note .icon {
+  color: var(--N500);
+}
+
+.title {
+  font-weight: 600;
+  font-size: 1.6rem;
+}
+
+.info .title {
+  color: var(--B500);
+}
+
+.warning .title {
+  color: var(--Y500);
+}
+
+.tip .title {
+  color: var(--G500);
+}
+
+.note .title {
+  color: var(--N700);
+}
+
+.content {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: var(--N700);
+}
+
+.content p {
+  margin-bottom: 0;
+}
+
+.content p + p {
+  margin-top: 1rem;
+}
