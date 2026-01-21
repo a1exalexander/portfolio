@@ -1,8 +1,8 @@
 ---
 title: "Building My Portfolio with Next.js 14"
-description: "A technical deep-dive into how I built this portfolio website using Next.js 14, App Router, TypeScript, and CSS Modules."
+description: "A technical deep-dive into how I built this portfolio website using Next.js 14, App Router, TypeScript, CSS Modules, and integrated analytics with PostHog and Upstash."
 date: "2024-01-20"
-tags: ["next.js", "react", "typescript", "portfolio"]
+tags: ["next.js", "react", "typescript", "portfolio", "posthog", "upstash"]
 published: true
 ---
 
@@ -18,6 +18,8 @@ The portfolio is built with:
 - **TypeScript** for type safety
 - **CSS Modules** for scoped styling
 - **MDX** for this blog you're reading right now
+- **PostHog** for analytics and event tracking
+- **Upstash Redis** for article likes and view counts
 
 <Callout type="tip" title="Why Next.js 14?">
   The App Router in Next.js 14 brings React Server Components by default, which means faster page loads and better SEO out of the box.
@@ -30,10 +32,11 @@ Here's how I organized the codebase:
 ```
 src/
 ├── app/           # Next.js App Router pages
+│   └── api/       # API routes (likes, views)
 ├── components/    # Reusable UI components
 ├── content/       # MDX blog posts
 ├── images/        # Static images
-└── lib/           # Utility functions
+└── lib/           # Utility functions (blog, redis)
 ```
 
 Each component follows a consistent pattern:
@@ -75,6 +78,7 @@ I created a simple design system using CSS custom properties:
   /* Accent colors */
   --B300: #3b82f6;  /* Blue */
   --G300: #22c55e;  /* Green */
+  --R300: #ff5630;  /* Red - for likes */
   --Y300: #eab308;  /* Yellow */
 }
 ```
@@ -113,10 +117,110 @@ I created custom components specifically for the blog:
 - **Callout** — Highlighted tip/info/warning boxes
 - **CodeBlock** — Syntax-highlighted code with copy button
 - **LinkCard** — Rich link previews
+- **Mention** — Social media mentions with platform icons
+- **LikeButton** — Interactive like button with PostHog tracking
+- **ViewCounter** — Page view counter
 
 <Callout type="warning" title="Performance Note">
   When using MDX, be careful about importing too many client-side components. Keep as much as possible on the server for better performance.
 </Callout>
+
+## Article Engagement Features
+
+Each article includes a footer with engagement features:
+
+### Like Button
+
+The like button uses Upstash Redis for persistent storage and PostHog for analytics:
+
+```typescript
+// LikeButton.tsx
+const handleLike = async () => {
+  if (hasLiked) return;
+
+  setHasLiked(true);
+  localStorage.setItem(`liked:${slug}`, 'true');
+
+  // Track in PostHog
+  posthog.capture('article_liked', { slug });
+
+  // Persist to Upstash
+  await fetch('/api/likes', {
+    method: 'POST',
+    body: JSON.stringify({ slug }),
+  });
+};
+```
+
+### View Counter
+
+Views are tracked automatically when users visit an article:
+
+```typescript
+// ViewCounter.tsx
+useEffect(() => {
+  const hasViewed = sessionStorage.getItem(`viewed:${slug}`);
+
+  if (!hasViewed) {
+    fetch('/api/views', {
+      method: 'POST',
+      body: JSON.stringify({ slug }),
+    }).then(() => {
+      sessionStorage.setItem(`viewed:${slug}`, 'true');
+    });
+  }
+}, [slug]);
+```
+
+<Callout type="tip" title="Preventing Duplicate Counts">
+  Using `localStorage` for likes and `sessionStorage` for views prevents users from inflating counts while still tracking genuine engagement.
+</Callout>
+
+## Analytics with PostHog
+
+PostHog provides insight into how users interact with the site:
+
+```typescript
+// providers.tsx
+'use client';
+import posthog from 'posthog-js';
+import { PostHogProvider } from 'posthog-js/react';
+
+if (typeof window !== 'undefined') {
+  posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
+    api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
+  });
+}
+
+export function PHProvider({ children }: { children: React.ReactNode }) {
+  return <PostHogProvider client={posthog}>{children}</PostHogProvider>;
+}
+```
+
+## Upstash Redis Integration
+
+For serverless-friendly data persistence, I use Upstash Redis:
+
+```typescript
+// lib/redis.ts
+import { Redis } from '@upstash/redis';
+
+export const redis = new Redis({
+  url: process.env.UPSTASH_REDIS_REST_URL!,
+  token: process.env.UPSTASH_REDIS_REST_TOKEN!,
+});
+```
+
+The API routes are simple and efficient:
+
+```typescript
+// app/api/likes/route.ts
+export async function POST(request: NextRequest) {
+  const { slug } = await request.json();
+  const likes = await redis.incr(`likes:${slug}`);
+  return NextResponse.json({ likes });
+}
+```
 
 ## Performance Optimizations
 
@@ -126,28 +230,23 @@ Here are some optimizations I implemented:
 2. **Image Optimization** — Using Next.js Image with blur placeholders
 3. **Font Optimization** — Using the Geist font with `next/font`
 4. **Code Splitting** — Components are loaded only when needed
+5. **Optimistic UI** — Like and view counts update immediately
 
 ## Useful Resources
 
 If you're building your own portfolio, check out these resources:
 
-<LinkCard
-  href="https://nextjs.org/docs"
-  title="Next.js Documentation"
-  description="The official Next.js documentation with guides and API reference."
-  image="https://nextjs.org/static/twitter-cards/home.jpg"
-/>
+<LinkCard href="https://nextjs.org/docs" title="Next.js Documentation" />
 
-<LinkCard
-  href="https://react.dev"
-  title="React Documentation"
-  description="The library for web and native user interfaces."
-  image="https://react.dev/images/og-home.png"
-/>
+<LinkCard href="https://upstash.com/docs/redis/overall/getstarted" title="Upstash Redis" />
+
+<LinkCard href="https://posthog.com/docs" title="PostHog Documentation" />
 
 ## Conclusion
 
-Building this portfolio was a great learning experience. The combination of Next.js 14, TypeScript, and CSS Modules provides a solid foundation that's easy to maintain and extend.
+Building this portfolio was a great learning experience. The combination of Next.js 14, TypeScript, CSS Modules, PostHog, and Upstash provides a solid foundation that's easy to maintain and extend.
+
+The engagement features (likes and views) add a nice interactive element while providing valuable insights into which content resonates with readers.
 
 If you're interested in the source code, it's available on <Mention handle="a1exalexander" platform="github" />.
 

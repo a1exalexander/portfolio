@@ -6,7 +6,9 @@
       "mcp__context7__resolve-library-id",
       "mcp__context7__query-docs",
       "Bash(npm install:*)",
-      "Bash(npm run lint:*)"
+      "Bash(npm run lint:*)",
+      "Skill(jira-skill)",
+      "Bash(python3:*)"
     ]
   }
 }

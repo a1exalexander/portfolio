@@ -10,6 +10,14 @@ const nextConfig = {
         protocol: "https",
         hostname: "react.dev",
       },
+      {
+        protocol: "https",
+        hostname: "upstash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "posthog.com",
+      },
     ],
   },
 };
