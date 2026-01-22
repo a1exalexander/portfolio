@@ -1,10 +1,10 @@
 .wrapper {
-  border-radius: 16px;
+  border-radius: var(--radius-xl);
   border: 2px solid black;
 }
 
 .inner {
-  border-radius: 16px;
+  border-radius: var(--radius-xl);
   border: 8px solid white;
   position: relative;
   height: 200px;
@@ -19,5 +19,5 @@
 }
 
 .image {
-  border-radius: 8px;
+  border-radius: var(--radius-md);
 }

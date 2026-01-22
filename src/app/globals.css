@@ -82,6 +82,15 @@
   --SECTION_OFFSET: 8rem;
 
   --S500: #78ff1c;
+
+  /* Border Radius Scale */
+  --radius-xs: 2px;   /* inline code, tiny elements */
+  --radius-sm: 4px;   /* tags, small buttons, badges */
+  --radius-md: 8px;   /* cards, inputs, code blocks */
+  --radius-lg: 12px;  /* large cards, containers */
+  --radius-xl: 16px;  /* hero images, feature sections */
+  --radius-full: 9999px; /* pills, fully rounded */
+  --radius-round: 50%;   /* circles */
 }
 
 * {
@@ -139,7 +148,7 @@ a, button {
 /* Syntax highlighting (rehype-pretty-code) */
 [data-rehype-pretty-code-figure] {
   margin: 2.5rem 0;
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
   background-color: var(--N900);
 }
@@ -182,7 +191,7 @@ a, button {
 :not(pre) > code {
   background-color: var(--N30);
   padding: 0.2rem 0.5rem;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   font-size: 0.9em;
   font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
 }
@@ -194,6 +203,6 @@ a, button {
   }
 
   [data-rehype-pretty-code-figure] {
-    border-radius: 8px;
+    border-radius: var(--radius-md);
   }
 }

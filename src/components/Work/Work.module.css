@@ -40,7 +40,7 @@
 }
 
 .icon {
-  border-radius: 50%;
+  border-radius: var(--radius-round);
   overflow: hidden;
   display: inline-flex;
   margin-right: 0.6rem;

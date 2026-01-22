@@ -24,7 +24,7 @@
   height: 8px;
   bottom: 4px;
   left: 7px;
-  border-radius: 2px;
+  border-radius: var(--radius-xs);
   position: absolute;
 }
 

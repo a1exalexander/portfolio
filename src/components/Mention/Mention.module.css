@@ -4,7 +4,7 @@
   gap: 0.25rem;
   padding: 0.1rem 0.4rem;
   background-color: transparent;
-  border-radius: 3px;
+  border-radius: var(--radius-xs);
   font-size: 0.875em;
   font-weight: 500;
   color: var(--N700);

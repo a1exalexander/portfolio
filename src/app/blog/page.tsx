@@ -1,7 +1,8 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { getAllPosts, formatDate } from "@/lib/blog";
+import { FiEye, FiHeart } from "react-icons/fi";
+import { getAllPosts, formatDate, getPostsStats } from "@/lib/blog";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -9,8 +10,10 @@ export const metadata: Metadata = {
   description: "Articles about web development, JavaScript, React, and more.",
 };
 
-export default function BlogPage() {
+export default async function BlogPage() {
   const posts = getAllPosts();
+  const slugs = posts.map((post) => post.slug);
+  const stats = await getPostsStats(slugs);
 
   return (
     <main className={styles.main}>
@@ -51,6 +54,16 @@ export default function BlogPage() {
                   <time className={styles.date}>{formatDate(post.date)}</time>
                   <span className={styles.separator}>·</span>
                   <span className={styles.readingTime}>{post.readingTime}</span>
+                </div>
+                <div className={styles.stats}>
+                  <span className={styles.stat}>
+                    <FiEye className={styles.statIcon} />
+                    {stats[post.slug]?.views ?? 0}
+                  </span>
+                  <span className={styles.stat}>
+                    <FiHeart className={styles.statIcon} />
+                    {stats[post.slug]?.likes ?? 0}
+                  </span>
                 </div>
                 {post.tags.length > 0 && (
                   <div className={styles.tags}>

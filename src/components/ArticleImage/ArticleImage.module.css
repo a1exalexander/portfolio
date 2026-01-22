@@ -6,7 +6,7 @@
   position: relative;
   width: 100%;
   padding-bottom: 66.67%;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   overflow: hidden;
   background-color: var(--N50);
 }
@@ -46,7 +46,7 @@
 
 @media screen and (min-width: 768px) {
   .imageWrapper {
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
   }
 
   .fullWidth .imageWrapper {

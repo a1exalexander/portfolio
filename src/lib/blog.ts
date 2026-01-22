@@ -2,8 +2,14 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import readingTime from "reading-time";
+import { redis } from "./redis";
 
 const BLOG_DIR = path.join(process.cwd(), "src/content/blog");
+
+export interface PostStats {
+  views: number;
+  likes: number;
+}
 
 export interface PostMeta {
   slug: string;
@@ -72,4 +78,29 @@ export function formatDate(dateString: string): string {
     month: "long",
     day: "numeric",
   });
+}
+
+export async function getPostsStats(slugs: string[]): Promise<Record<string, PostStats>> {
+  if (slugs.length === 0) {
+    return {};
+  }
+
+  const pipeline = redis.pipeline();
+
+  for (const slug of slugs) {
+    pipeline.get(`views:${slug}`);
+    pipeline.get(`likes:${slug}`);
+  }
+
+  const results = await pipeline.exec();
+
+  const stats: Record<string, PostStats> = {};
+
+  slugs.forEach((slug, index) => {
+    const views = (results[index * 2] as number) ?? 0;
+    const likes = (results[index * 2 + 1] as number) ?? 0;
+    stats[slug] = { views, likes };
+  });
+
+  return stats;
 }
