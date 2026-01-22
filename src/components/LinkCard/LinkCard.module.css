@@ -31,7 +31,7 @@
 }
 
 .title {
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 500;
   color: var(--N800);
   margin: 0;
@@ -42,13 +42,13 @@
 }
 
 .domain {
-  font-size: 0.8rem;
+  font-size: 1rem;
   color: var(--N400);
 }
 
 .icon {
-  width: 1rem;
-  height: 1rem;
+  width: 1.2rem;
+  height: 1.2rem;
   color: var(--N300);
   flex-shrink: 0;
   margin-left: auto;
