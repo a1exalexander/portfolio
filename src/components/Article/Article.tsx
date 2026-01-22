@@ -14,12 +14,10 @@ export const Article = function Article({ children, className, slug }: IArticleP
   return (
     <article className={clsx(styles.article, className)}>
       {children}
-      {/* Temporarily hidden - view counter and like button
       <footer className={styles.footer}>
         <ViewCounter slug={slug} />
         <LikeButton slug={slug} />
       </footer>
-      */}
     </article>
   );
 };
