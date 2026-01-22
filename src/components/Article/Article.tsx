@@ -3,6 +3,7 @@ import clsx from "clsx";
 import styles from "./Article.module.css";
 import { LikeButton } from "../LikeButton";
 import { ViewCounter } from "../ViewCounter";
+import Link from "next/link";
 
 interface IArticleProps {
   children: React.ReactNode;
@@ -14,10 +15,6 @@ export const Article = function Article({ children, className, slug }: IArticleP
   return (
     <article className={clsx(styles.article, className)}>
       {children}
-      <footer className={styles.footer}>
-        <ViewCounter slug={slug} />
-        <LikeButton slug={slug} />
-      </footer>
     </article>
   );
 };

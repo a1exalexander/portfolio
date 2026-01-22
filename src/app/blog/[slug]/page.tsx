@@ -8,6 +8,7 @@ import { getPostBySlug, getPostSlugs, formatDate } from "@/lib/blog";
 import { mdxComponents } from "@/lib/mdx-components";
 import { Article } from "@/components/Article";
 import styles from "./page.module.css";
+import { LikeButton, ViewCounter } from "@/components";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -113,6 +114,10 @@ export default async function BlogPostPage({ params }: PageProps) {
           <Link href="/blog" className={styles.footerLink}>
             ← Back to Blog
           </Link>
+          <div className={styles.interactions}>
+            <ViewCounter slug={slug} />
+            <LikeButton slug={slug} />
+          </div>
         </footer>
       </article>
     </main>

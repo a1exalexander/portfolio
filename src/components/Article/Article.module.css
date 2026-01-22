@@ -130,3 +130,10 @@
     font-size: 2.4rem;
   }
 }
+
+.backLink {
+  font-size: 1.6rem;
+  color: var(--N500);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
