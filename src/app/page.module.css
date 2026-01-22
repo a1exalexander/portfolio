@@ -60,9 +60,6 @@
 .section {
   padding-top: var(--SECTION_OFFSET);
 }
-.section-- {
-  padding-top: var(--SECTION_OFFSET);
-}
 
 .projectsList {
   list-style: none;

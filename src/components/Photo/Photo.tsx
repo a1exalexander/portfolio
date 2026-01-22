@@ -66,7 +66,6 @@ export const Photo = function Photo({
           src={src}
           alt={getAlt(alt || caption)}
           style={{ objectFit: "cover", objectPosition }}
-          fill
           placeholder="blur"
           loading={loading}
           priority={priority}

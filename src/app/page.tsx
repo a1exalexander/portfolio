@@ -322,7 +322,7 @@ export default function Home() {
             <Photo src={catPhoto4} paddingHack={100} grid caption="Platon and Lapsi" />
           </Collage>
         </section>
-        <section id="my-work">
+        <section id="my-work" className={styles.section}>
           <h2 className={styles.heading}>my work 🗂️</h2>
           <Paragraph>
             I began my journey in web engineering in early 2018. Over the years,
