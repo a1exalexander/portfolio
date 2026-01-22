@@ -14,6 +14,7 @@ interface IPhotoProps {
   test?: boolean;
   grid?: boolean;
   className?: string;
+  objectPosition?: 'center' | 'top' | 'bottom' | 'left' | 'right';
   loading?: "lazy" | "eager";
   priority?: boolean;
   offset?: {
@@ -33,6 +34,7 @@ export const Photo = function Photo({
   className,
   loading = "lazy",
   priority,
+  objectPosition = "center",
   offset = {
     x: 0,
     y: 0,
@@ -47,16 +49,15 @@ export const Photo = function Photo({
         styles.figure,
         grid ? "" : styles.single,
         vertical ? styles.vertical : "",
-        {[styles.paddingHack]: paddingHack},
+        { [styles.paddingHack]: paddingHack },
         className
       )}
     >
       <div
         className={styles.image}
         style={{
-          paddingBottom: `${
-            vertical ? paddingHack || 100 : paddingHack || 66.7
-          }%`,
+          paddingBottom: `${vertical ? paddingHack || 100 : paddingHack || 66.7
+            }%`,
           backgroundColor: test ? "red" : "transparent",
         }}
       >
@@ -64,7 +65,7 @@ export const Photo = function Photo({
           data-zoomable
           src={src}
           alt={getAlt(alt || caption)}
-          style={{ objectFit: "cover", objectPosition: "center" }}
+          style={{ objectFit: "cover", objectPosition }}
           fill
           placeholder="blur"
           loading={loading}

@@ -60,7 +60,7 @@ import photo2 from "../images/a00002.jpeg";
 import photo4 from "../images/a00003.jpeg";
 import photo3 from "../images/a00004.jpeg";
 import photo5 from "../images/IMG_3059.jpeg";
-import photo1 from "../images/a00008.jpg";
+import photo1 from "../images/me-lapsi.jpeg";
 import photo7 from "../images/IMG_2349.jpeg";
 import photo9 from "../images/IMG_3055.jpeg";
 import photo10 from "../images/IMG_3058.jpeg";
@@ -131,10 +131,7 @@ export default function Home() {
       <main className={styles.main}>
         <section id="about-me">
           <h1 className={styles.title}>
-            Hey, I&apos;m{" "}
-            <RoughNotation show color="var(--G400)" type="highlight">
-              <span className="white"> Oleksandr Ratushnyi </span>
-            </RoughNotation>
+            Hey, I&apos;m Oleksandr Ratushnyi 👋
           </h1>
           <nav className={styles.nav}>
             <Tag Icon={FiEdit3} href="/blog" target="_self">
@@ -264,7 +261,9 @@ export default function Home() {
           <Photo
             loading="eager"
             src={photo1}
-            caption="I'm in the cafe posing for a photo"
+            objectPosition="bottom"
+            paddingHack={110}
+            caption="With Lapsi"
           />
           <Paragraph>
             I have experience in teaching and creating courses on front-end
