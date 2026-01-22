@@ -8,11 +8,13 @@ import {
   ReactNode,
 } from 'react';
 
-export type Theme = 'light' | 'dark' | 'system';
+export type Theme = 'light' | 'dark' | 'vhs' | 'system';
+
+type ResolvedTheme = 'light' | 'dark' | 'vhs';
 
 interface ThemeContextType {
   theme: Theme;
-  resolvedTheme: 'light' | 'dark';
+  resolvedTheme: ResolvedTheme;
   setTheme: (theme: Theme) => void;
 }
 
@@ -27,13 +29,18 @@ function getSystemTheme(): 'light' | 'dark' {
     : 'light';
 }
 
+function resolveTheme(theme: Theme): ResolvedTheme {
+  if (theme === 'system') return getSystemTheme();
+  return theme;
+}
+
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<Theme>('system');
-  const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark'>('light');
+  const [resolvedTheme, setResolvedTheme] = useState<ResolvedTheme>('light');
   const [mounted, setMounted] = useState(false);
 
   const applyTheme = useCallback((newTheme: Theme) => {
-    const resolved = newTheme === 'system' ? getSystemTheme() : newTheme;
+    const resolved = resolveTheme(newTheme);
     setResolvedTheme(resolved);
     document.documentElement.setAttribute('data-theme', resolved);
   }, []);

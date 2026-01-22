@@ -35,7 +35,8 @@
   color: var(--tag-icon-color);
 }
 
-:global([data-theme="dark"]) .icon {
+:global([data-theme="dark"]) .icon,
+:global([data-theme="vhs"]) .icon {
   color: var(--tag-icon-color-dark);
 }
 

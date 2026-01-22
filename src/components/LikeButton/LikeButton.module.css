@@ -4,10 +4,10 @@
   align-items: center;
   gap: calc(var(--size) / 3);
   padding: 0.5rem 0.75rem;
-  border: 1px solid var(--N40);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  background-color: var(--N0);
-  color: var(--N300);
+  background-color: var(--color-bg);
+  color: var(--color-text-secondary);
   font-size: var(--size);
   font-weight: 500;
   cursor: pointer;
@@ -24,9 +24,9 @@
 }
 
 .liked {
-  border-color: var(--R100);
+  border-color: var(--color-like-border);
   color: var(--R300);
-  background-color: var(--R50);
+  background-color: var(--color-like-bg);
 }
 
 .heart {

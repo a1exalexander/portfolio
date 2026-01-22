@@ -3,11 +3,13 @@ import { useTheme, Theme } from '@/context';
 import { useState, useEffect } from 'react';
 import { IoSunnyOutline, IoMoonOutline } from 'react-icons/io5';
 import { HiOutlineComputerDesktop } from 'react-icons/hi2';
+import { PiCassetteTapeBold } from 'react-icons/pi';
 import styles from './ThemeSwitcher.module.css';
 
 const themes: { value: Theme; label: string; icon: React.ReactNode }[] = [
   { value: 'light', label: 'Light', icon: <IoSunnyOutline /> },
   { value: 'dark', label: 'Dark', icon: <IoMoonOutline /> },
+  { value: 'vhs', label: 'VHS', icon: <PiCassetteTapeBold /> },
   { value: 'system', label: 'System', icon: <HiOutlineComputerDesktop /> },
 ];
 

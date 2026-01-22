@@ -90,3 +90,25 @@
     font-size: 1.6rem;
   }
 }
+
+/* VHS theme special styling */
+:global([data-theme="vhs"]) .tabs {
+  border: 1px solid var(--color-border-strong);
+}
+
+:global([data-theme="vhs"]) .tab:hover:not(.active) {
+  color: var(--vhs-gold);
+}
+
+:global([data-theme="vhs"]) .indicator {
+  background: linear-gradient(
+    135deg,
+    var(--vhs-red) 0%,
+    var(--vhs-orange) 50%,
+    var(--vhs-gold) 100%
+  );
+}
+
+:global([data-theme="vhs"]) .tab.active {
+  color: var(--vhs-dark);
+}

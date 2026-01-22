@@ -37,13 +37,13 @@
   --T400: #00a3bf;
   --T500: #008da6;
 
-  --G50: #e3fcef;
-  --G75: #acf5d2;
-  --G100: #79f2c0;
-  --G200: #57d9a3;
-  --G300: #36b37e;
-  --G400: #00875a;
-  --G500: #006644;
+  --G50: rgba(120, 171, 42, 0.1);
+  --G75: rgba(120, 171, 42, 0.25);
+  --G100: rgba(120, 171, 42, 0.4);
+  --G200: rgba(120, 171, 42, 0.6);
+  --G300: #78ab2a;
+  --G400: #6a9625;
+  --G500: #5a8020;
 
   --Y50: #fffae5;
   --Y75: #fff0b2;
@@ -111,6 +111,8 @@
   --color-shadow: rgba(9, 30, 66, 0.15);
   --color-shadow-strong: rgba(9, 30, 66, 0.25);
   --color-icon: inherit;
+  --color-like-bg: var(--R50);
+  --color-like-border: var(--R100);
 }
 
 /* Dark theme */
@@ -132,6 +134,125 @@
   --color-shadow: rgba(0, 0, 0, 0.3);
   --color-shadow-strong: rgba(0, 0, 0, 0.5);
   --color-icon: #e6edf3;
+  --color-like-bg: rgba(255, 86, 48, 0.15);
+  --color-like-border: rgba(255, 86, 48, 0.4);
+}
+
+/* VHS theme - Dark retro cassette aesthetic */
+[data-theme="vhs"] {
+  /* Vintage VHS Color Palette */
+  --vhs-cream: #fcf6da;
+  --vhs-pink: #f1e3dc;
+  --vhs-yellow: #ffca1b;
+  --vhs-gold: #ffb700;
+  --vhs-orange: #ff810b;
+  --vhs-red-orange: #f16835;
+  --vhs-red: #fd2e26;
+  --vhs-hot-pink: #ff003d;
+  --vhs-magenta: #7c175c;
+  --vhs-dark: #201e23;
+
+  /*
+   * Neutral palette for dark VHS theme
+   * N0 = lightest (text/foreground), N900 = darkest (backgrounds)
+   * Logic: Lower numbers = lighter shades for text/icons
+   *        Higher numbers = darker shades for backgrounds
+   */
+  --N0: var(--vhs-cream);           /* Primary text - cream on dark */
+  --N10: #ebe5d0;                   /* Slightly darker cream */
+  --N20: #d9d3c0;                   /* Muted cream */
+  --N30: #c7c1ae;                   /* Subdued cream */
+  --N40: #3d3a36;                   /* Subtle border on dark bg */
+  --N50: #4a4742;                   /* Light border */
+  --N60: #5a5650;                   /* Medium border */
+  --N70: #6b665f;                   /* Muted text */
+  --N80: #7d776f;                   /* Secondary muted */
+  --N90: #8f897f;                   /* Tertiary text */
+  --N100: #a19b90;                  /* Placeholder text */
+  --N200: #b3ada2;                  /* Disabled text */
+  --N300: #c5bfb4;                  /* Light muted text */
+  --N400: #9a948a;                  /* Icon secondary */
+  --N500: #3a3733;                  /* Elevated surface */
+  --N600: #2e2b28;                  /* Secondary bg */
+  --N700: #252228;                  /* Tertiary bg */
+  --N800: #1a1820;                  /* Primary bg */
+  --N900: #0d0c0e;                  /* Deepest bg */
+  --N00: #000000;                   /* Pure black */
+
+  /* Red palette - VHS warm reds (light to dark for visibility on dark bg) */
+  --R50: #3d1a18;                   /* Subtle red bg */
+  --R75: #5c2622;                   /* Light red bg */
+  --R100: #8b3a34;                  /* Muted red */
+  --R200: var(--vhs-red-orange);    /* Orange-red accent */
+  --R300: var(--vhs-red);           /* Primary red */
+  --R400: #ff4a42;                  /* Bright red */
+  --R500: #ff6b64;                  /* Light red text */
+
+  /* Blue palette - VHS magenta tones (adjusted for dark bg contrast) */
+  --B50: #2d1528;                   /* Subtle magenta bg */
+  --B75: #451f3c;                   /* Light magenta bg */
+  --B100: #6b2f5c;                  /* Muted magenta */
+  --B200: #8a3d75;                  /* Medium magenta */
+  --B300: var(--vhs-magenta);       /* Primary magenta */
+  --B400: #a44d8e;                  /* Bright magenta */
+  --B500: #c060a8;                  /* Light magenta text */
+
+  /* Teal palette - VHS orange tones (for dark bg) */
+  --T50: #2d2015;                   /* Subtle orange bg */
+  --T75: #4a351f;                   /* Light orange bg */
+  --T100: #7a5530;                  /* Muted orange */
+  --T200: var(--vhs-orange);        /* Primary orange */
+  --T300: var(--vhs-red-orange);    /* Red-orange */
+  --T400: #ffa040;                  /* Bright orange */
+  --T500: #ffb866;                  /* Light orange text */
+
+  /* Green palette - Live card green (consistent scale) */
+  --G50: #1e2a12;                   /* Subtle green bg */
+  --G75: #2d4018;                   /* Light green bg */
+  --G100: #4a6a28;                  /* Muted green border */
+  --G200: #5c8530;                  /* Medium green */
+  --G300: #78ab2a;                  /* Primary green */
+  --G400: #8ec040;                  /* Bright green */
+  --G500: #a5d458;                  /* Light green text */
+
+  /* Yellow palette - VHS yellows (for dark bg visibility) */
+  --Y50: #2d2815;                   /* Subtle yellow bg */
+  --Y75: #4a421f;                   /* Light yellow bg */
+  --Y100: #7a6d30;                  /* Muted yellow */
+  --Y200: var(--vhs-yellow);        /* Primary yellow */
+  --Y300: var(--vhs-gold);          /* Gold */
+  --Y400: #ffd940;                  /* Bright yellow */
+  --Y500: #ffe566;                  /* Light yellow text */
+
+  /* Purple palette - VHS magenta (same as B for consistency) */
+  --P50: #2d1528;                   /* Subtle purple bg */
+  --P75: #451f3c;                   /* Light purple bg */
+  --P100: #6b2f5c;                  /* Muted purple */
+  --P200: #8a3d75;                  /* Medium purple */
+  --P300: var(--vhs-magenta);       /* Primary purple */
+  --P400: #a44d8e;                  /* Bright purple */
+  --P500: #c060a8;                  /* Light purple text */
+
+  /* Semantic tokens */
+  --color-bg: #151317;
+  --color-bg-secondary: var(--vhs-dark);
+  --color-bg-tertiary: #2a272e;
+  --color-bg-elevated: #252228;
+  --color-text: var(--vhs-cream);
+  --color-text-secondary: #c9c3b0;
+  --color-text-tertiary: #8a857a;
+  --color-text-inverse: var(--vhs-dark);
+  --color-border: #3d3a36;
+  --color-border-strong: #4a4742;
+  --color-code-bg: #2a272e;
+  --color-code-block-bg: #0d0c0e;
+  --color-link: var(--vhs-gold);
+  --color-link-hover: var(--vhs-orange);
+  --color-shadow: rgba(0, 0, 0, 0.3);
+  --color-shadow-strong: rgba(0, 0, 0, 0.5);
+  --color-icon: var(--vhs-cream);
+  --color-like-bg: #3d1a18;
+  --color-like-border: #8b3a34;
 }
 
 * {

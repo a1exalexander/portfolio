@@ -57,6 +57,17 @@
 
 .production .status {
     background-color: var(--G100);
+    color: var(--color-text);
+}
+
+.development .status {
+    background-color: var(--T100);
+    color: var(--color-text);
+}
+
+.demo .status {
+    background-color: var(--T100);
+    color: var(--color-text);
 }
 
 .development .container {
@@ -67,20 +78,12 @@
     border-color: var(--T200);
 }
 
-.development .status {
-    background-color: var(--T100);
-}
-
 .demo .container {
     border-color: var(--T100);
 }
 
 .demo:hover .container {
     border-color: var(--T200);
-}
-
-.demo .status {
-    background-color: var(--T100);
 }
 
 .offline .container {
@@ -93,6 +96,7 @@
 
 .offline .status {
     background-color: var(--Y200);
+    color: var(--N900);
 }
 
 .head {
