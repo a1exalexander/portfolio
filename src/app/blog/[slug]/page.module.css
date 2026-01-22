@@ -17,20 +17,20 @@
 .backLink {
   display: inline-block;
   font-size: 1.4rem;
-  color: var(--N500);
+  color: var(--color-text-secondary);
   text-decoration: none;
   margin-bottom: 2rem;
   transition: color 0.2s ease;
 }
 
 .backLink:hover {
-  color: var(--N700);
+  color: var(--color-text);
 }
 
 .title {
   font-size: 3.2rem;
   font-weight: 700;
-  color: var(--N900);
+  color: var(--color-text);
   line-height: 1.2;
   margin-bottom: 1.5rem;
 }
@@ -40,12 +40,12 @@
   align-items: center;
   gap: 0.8rem;
   font-size: 1.5rem;
-  color: var(--N500);
+  color: var(--color-text-secondary);
   margin-bottom: 1.5rem;
 }
 
 .separator {
-  color: var(--N200);
+  color: var(--color-border);
 }
 
 .tags {
@@ -57,10 +57,10 @@
 
 .tag {
   padding: 0.4rem 1rem;
-  background-color: var(--N50);
+  background-color: var(--color-bg-tertiary);
   border-radius: var(--radius-sm);
   font-size: 1.3rem;
-  color: var(--N600);
+  color: var(--color-text-secondary);
 }
 
 .coverImage {
@@ -69,7 +69,7 @@
   padding-bottom: 56.25%;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  background-color: var(--N50);
+  background-color: var(--color-bg-tertiary);
   margin-top: 2rem;
 }
 
@@ -85,7 +85,7 @@
   max-width: 68rem;
   margin: 6rem auto 0;
   padding: 3rem 2rem 0;
-  border-top: 1px solid var(--N100);
+  border-top: 1px solid var(--color-border);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -93,13 +93,13 @@
 
 .footerLink {
   font-size: 1.6rem;
-  color: var(--N500);
+  color: var(--color-text-secondary);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .footerLink:hover {
-  color: var(--N700);
+  color: var(--color-text);
 }
 
 @media screen and (min-width: 768px) {

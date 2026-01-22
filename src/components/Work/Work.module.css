@@ -23,19 +23,19 @@
 
 .link:not(:first-of-type) .title {
   font-size: 1.4rem;
-  color: var(--N600);
+  color: var(--color-text-secondary);
 }
 
 .link:hover .arrow,
 .link:focus .arrow {
-  color: black;
+  color: var(--color-text);
 }
 
 .description {
   font-size: 1.4rem;
   line-height: 1.5;
   font-weight: 400;
-  color: var(--N400);
+  color: var(--color-text-tertiary);
   margin-bottom: 1.4rem;
 }
 
@@ -49,6 +49,6 @@
 
 .arrow {
   font-size: 1.4rem;
-  color: var(--N60);
+  color: var(--color-text-tertiary);
   transition: color 0.2s ease-in-out;
 }

@@ -17,7 +17,7 @@ interface IProjectProps {
     description: string;
     github?: string;
     npm?: string;
-    stack: { Icon: IconType; name: string; color?: string; href: string }[];
+    stack: { Icon: IconType; name: string; color?: string; darkColor?: string; href: string }[];
     maxWidth?: number;
 }
 
@@ -98,7 +98,7 @@ export const Project = function Project({
                     style={{ maxWidth: maxWidth ? `${maxWidth}px` : undefined }}
                     className={styles.description}>{description}</p>
                 <p className={styles.stack}>
-                    {stack.map(({ Icon, name, color, href }) => {
+                    {stack.map(({ Icon, name, color, darkColor, href }) => {
                         return (
                             <Tag
                                 className={styles.tag}
@@ -106,6 +106,7 @@ export const Project = function Project({
                                 Icon={Icon}
                                 size="small"
                                 iconColor={color}
+                                darkIconColor={darkColor}
                                 href={href}
                             >
                                 {name}

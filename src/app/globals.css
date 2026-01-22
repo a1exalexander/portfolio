@@ -1,4 +1,5 @@
 :root {
+  /* Base color palette - always available */
   --N0: #ffffff;
   --N10: #fafbfc;
   --N20: #f4f5f7;
@@ -91,6 +92,46 @@
   --radius-xl: 16px;  /* hero images, feature sections */
   --radius-full: 9999px; /* pills, fully rounded */
   --radius-round: 50%;   /* circles */
+
+  /* Semantic theme tokens - Light theme (default) */
+  --color-bg: var(--N0);
+  --color-bg-secondary: var(--N10);
+  --color-bg-tertiary: var(--N20);
+  --color-bg-elevated: var(--N0);
+  --color-text: var(--N900);
+  --color-text-secondary: var(--N600);
+  --color-text-tertiary: var(--N400);
+  --color-text-inverse: var(--N0);
+  --color-border: var(--N40);
+  --color-border-strong: var(--N60);
+  --color-code-bg: var(--N30);
+  --color-code-block-bg: var(--N900);
+  --color-link: var(--B400);
+  --color-link-hover: var(--B300);
+  --color-shadow: rgba(9, 30, 66, 0.15);
+  --color-shadow-strong: rgba(9, 30, 66, 0.25);
+  --color-icon: inherit;
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+  --color-bg: #0d1117;
+  --color-bg-secondary: #161b22;
+  --color-bg-tertiary: #21262d;
+  --color-bg-elevated: #1c2128;
+  --color-text: #e6edf3;
+  --color-text-secondary: #8b949e;
+  --color-text-tertiary: #9ca3af;
+  --color-text-inverse: var(--N900);
+  --color-border: #30363d;
+  --color-border-strong: #484f58;
+  --color-code-bg: #2d333b;
+  --color-code-block-bg: #161b22;
+  --color-link: var(--B100);
+  --color-link-hover: var(--B75);
+  --color-shadow: rgba(0, 0, 0, 0.3);
+  --color-shadow-strong: rgba(0, 0, 0, 0.5);
+  --color-icon: #e6edf3;
 }
 
 * {
@@ -115,7 +156,9 @@ a {
 }
 body {
   font-size: 1.6rem;
-  color: var(--N900);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 a, button {
@@ -136,7 +179,7 @@ a, button {
   margin: 2.5rem 0;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  background-color: var(--N900);
+  background-color: var(--color-code-block-bg);
 }
 
 [data-rehype-pretty-code-figure] pre {
@@ -175,7 +218,7 @@ a, button {
 
 /* Inline code styling */
 :not(pre) > code {
-  background-color: var(--N30);
+  background-color: var(--color-code-bg);
   padding: 0.2rem 0.5rem;
   border-radius: var(--radius-sm);
   font-size: 0.9em;

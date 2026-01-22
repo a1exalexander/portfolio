@@ -10,6 +10,7 @@ export * from './Footer';
 export * from './Certificate';
 export * from './Ticker';
 export * from './Strum';
+export * from './ThemeSwitcher';
 
 // Blog components
 export * from './Article';

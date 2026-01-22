@@ -9,6 +9,7 @@ interface ITagProps {
   Icon?: IconType;
   icon?: ReactNode;
   iconColor?: string;
+  darkIconColor?: string;
   href?: string;
   dark?: boolean;
   backgroundColor?: string;
@@ -26,12 +27,18 @@ export const Tag = function Tag({
   backgroundColor,
   textColor,
   iconColor,
+  darkIconColor,
   download,
   href,
   dark,
   size = 'medium',
   target = '_blank',
 }: ITagProps) {
+  const cssVars = {
+    '--tag-icon-color': iconColor || 'currentcolor',
+    '--tag-icon-color-dark': darkIconColor || iconColor || 'currentcolor',
+  } as React.CSSProperties;
+
   return (
     <a
       download={download}
@@ -41,6 +48,7 @@ export const Tag = function Tag({
         color: textColor,
         backgroundColor,
         borderColor: backgroundColor,
+        ...cssVars,
       }}
       className={clsx(
         styles.tag,
@@ -51,10 +59,7 @@ export const Tag = function Tag({
     >
       {Icon ? (
         <span className={styles.iconWrapper}>
-          <Icon
-            className={styles.icon}
-            style={{ color: iconColor || 'currentcolor' }}
-          />
+          <Icon className={styles.icon} />
         </span>
       ) : null}
       {icon ? <span className={styles.iconWrapper}>{icon}</span> : null}

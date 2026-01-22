@@ -208,12 +208,18 @@ export default function Home() {
             <Tag
               Icon={TbBrandNextjs}
               iconColor="#080808"
+              darkIconColor="#ffffff"
               href="https://nextjs.org/"
             >
               Next.js
             </Tag>
             ,{" "}
-            <Tag Icon={SiRemix} iconColor="#080808" href="https://remix.run/">
+            <Tag
+              Icon={SiRemix}
+              iconColor="#080808"
+              darkIconColor="#ffffff"
+              href="https://remix.run/"
+            >
               Remix
             </Tag>
             ,{" "}
@@ -252,6 +258,7 @@ export default function Home() {
             <Tag
               Icon={SiFastify}
               iconColor="#000000"
+              darkIconColor="#ffffff"
               href="https://fastify.dev/"
             >
               Fastify
@@ -397,6 +404,7 @@ export default function Home() {
                       name: "Next.js",
                       Icon: TbBrandNextjs,
                       color: "#080808",
+                      darkColor: "#ffffff",
                       href: "https://nextjs.org/",
                     },
                     {
@@ -409,6 +417,7 @@ export default function Home() {
                       name: "OpenAI",
                       Icon: TbBrandOpenai,
                       color: "#0d0d0d",
+                      darkColor: "#ffffff",
                       href: "https://openai.com/blog/openai-api",
                     },
                     {
@@ -428,6 +437,7 @@ export default function Home() {
                       Icon: SiCssmodules,
                       href: "https://github.com/css-modules/css-modules",
                       color: "#000",
+                      darkColor: "#ffffff",
                     },
                   ]}
                 />
@@ -445,6 +455,7 @@ export default function Home() {
                       name: "Next.js",
                       Icon: TbBrandNextjs,
                       color: "#080808",
+                      darkColor: "#ffffff",
                       href: "https://nextjs.org/",
                     },
                     {
@@ -487,6 +498,7 @@ export default function Home() {
                       name: "Remix",
                       Icon: SiRemix,
                       color: "#080808",
+                      darkColor: "#ffffff",
                       href: "https://remix.run/",
                     },
                     {
@@ -529,6 +541,7 @@ export default function Home() {
                       name: "Next.js",
                       Icon: TbBrandNextjs,
                       color: "#080808",
+                      darkColor: "#ffffff",
                       href: "https://nextjs.org/",
                     },
                     {
@@ -569,6 +582,7 @@ export default function Home() {
                       name: "Next.js",
                       Icon: TbBrandNextjs,
                       color: "#080808",
+                      darkColor: "#ffffff",
                       href: "https://nextjs.org/",
                     },
                     {
@@ -718,6 +732,7 @@ export default function Home() {
                       name: "Next.js",
                       Icon: TbBrandNextjs,
                       color: "#080808",
+                      darkColor: "#ffffff",
                       href: "https://nextjs.org/",
                     },
                     {
@@ -899,6 +914,7 @@ export default function Home() {
               <Tag
                 href="https://backbonejs.org"
                 iconColor="#002a41"
+                darkIconColor="#4a9fd4"
                 Icon={DiBackbone}
               >
                 Backbone
@@ -955,6 +971,7 @@ export default function Home() {
                       name: "Fastify",
                       Icon: SiFastify,
                       color: "#000000",
+                      darkColor: "#ffffff",
                       href: "https://fastify.dev/",
                     },
                     {
@@ -1046,6 +1063,7 @@ export default function Home() {
                     name: "Next.js",
                     Icon: TbBrandNextjs,
                     color: "#080808",
+                    darkColor: "#ffffff",
                     href: "https://nextjs.org/",
                   },
                   {
@@ -1053,6 +1071,7 @@ export default function Home() {
                     Icon: SiCssmodules,
                     href: "https://github.com/css-modules/css-modules",
                     color: "#000",
+                    darkColor: "#ffffff",
                   },
                   {
                     name: "Supabase",
@@ -1124,6 +1143,7 @@ export default function Home() {
                     Icon: SiCssmodules,
                     href: "https://github.com/css-modules/css-modules",
                     color: "#000",
+                    darkColor: "#ffffff",
                   },
                 ]}
               />
@@ -1141,6 +1161,7 @@ export default function Home() {
                     name: "Next.js",
                     Icon: TbBrandNextjs,
                     color: "#080808",
+                    darkColor: "#ffffff",
                     href: "https://nextjs.org/",
                   },
                   {
@@ -1148,6 +1169,7 @@ export default function Home() {
                     Icon: SiCssmodules,
                     href: "https://github.com/css-modules/css-modules",
                     color: "#000",
+                    darkColor: "#ffffff",
                   },
                 ]}
               />
@@ -1165,6 +1187,7 @@ export default function Home() {
                     name: "Next.js",
                     Icon: TbBrandNextjs,
                     color: "#080808",
+                    darkColor: "#ffffff",
                     href: "https://nextjs.org/",
                   },
                   {
@@ -1194,6 +1217,7 @@ export default function Home() {
                     name: "Wix",
                     Icon: FaWix,
                     color: "#000000",
+                    darkColor: "#ffffff",
                     href: "https://wix.com",
                   },
                 ]}

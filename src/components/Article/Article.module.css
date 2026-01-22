@@ -3,7 +3,7 @@
   font-size: 1.8rem;
   line-height: 1.7;
   letter-spacing: -0.003em;
-  color: var(--N800);
+  color: var(--color-text);
   max-width: var(--article-width);
   margin: 0 auto;
   padding: 0 2rem;
@@ -19,7 +19,7 @@
   font-weight: 700;
   margin-top: 4rem;
   margin-bottom: 1.5rem;
-  color: var(--N900);
+  color: var(--color-text);
 }
 
 .article h2 {
@@ -28,7 +28,7 @@
   font-weight: 600;
   margin-top: 4rem;
   margin-bottom: 1rem;
-  color: var(--N900);
+  color: var(--color-text);
 }
 
 .article h3 {
@@ -37,7 +37,7 @@
   font-weight: 600;
   margin-top: 3rem;
   margin-bottom: 0.8rem;
-  color: var(--N900);
+  color: var(--color-text);
 }
 
 .article h4 {
@@ -46,7 +46,7 @@
   font-weight: 600;
   margin-top: 2.5rem;
   margin-bottom: 0.6rem;
-  color: var(--N900);
+  color: var(--color-text);
 }
 
 .article p {
@@ -54,11 +54,11 @@
 }
 
 .article blockquote {
-  border-left: 3px solid var(--N200);
+  border-left: 3px solid var(--color-border-strong);
   padding-left: 2rem;
   margin: 2.5rem 0;
   font-style: italic;
-  color: var(--N600);
+  color: var(--color-text-secondary);
 }
 
 .article blockquote p {
@@ -76,18 +76,18 @@
 }
 
 .article li::marker {
-  color: var(--N400);
+  color: var(--color-text-tertiary);
 }
 
 .article hr {
   border: none;
-  border-top: 1px solid var(--N100);
+  border-top: 1px solid var(--color-border);
   margin: 4rem 0;
 }
 
 .article strong {
   font-weight: 600;
-  color: var(--N900);
+  color: var(--color-text);
 }
 
 .article em {
@@ -95,7 +95,7 @@
 }
 
 .article code:not(pre code) {
-  background-color: var(--N50);
+  background-color: var(--color-code-bg);
   padding: 0.2rem 0.5rem;
   border-radius: var(--radius-sm);
   font-size: 0.9em;
@@ -109,7 +109,7 @@
   gap: 1rem;
   margin-top: 4rem;
   padding-top: 2rem;
-  border-top: 1px solid var(--N100);
+  border-top: 1px solid var(--color-border);
 }
 
 @media screen and (min-width: 768px) {
@@ -133,7 +133,7 @@
 
 .backLink {
   font-size: 1.6rem;
-  color: var(--N500);
+  color: var(--color-text-secondary);
   text-decoration: none;
   transition: color 0.2s ease;
 }

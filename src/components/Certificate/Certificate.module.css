@@ -1,15 +1,15 @@
 .wrapper {
   border-radius: var(--radius-xl);
-  border: 2px solid black;
+  border: 2px solid var(--color-border-strong);
 }
 
 .inner {
   border-radius: var(--radius-xl);
-  border: 8px solid white;
+  border: 8px solid var(--color-bg);
   position: relative;
   height: 200px;
   width: clamp(276px, 70vw, 281px);
-  background-color: white;
+  background-color: var(--color-bg);
 }
 
 @media screen and (min-width: 768px) {

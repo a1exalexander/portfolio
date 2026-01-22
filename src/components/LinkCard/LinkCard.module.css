@@ -6,13 +6,13 @@
   padding: 0.25rem 0.5rem;
   border-radius: var(--radius-sm);
   text-decoration: none;
-  color: var(--N600);
+  color: var(--color-text-secondary);
   font-size: 0.9rem;
   transition: background-color 0.15s ease;
 }
 
 .inline:hover {
-  background-color: var(--N30);
+  background-color: var(--color-bg-tertiary);
 }
 
 .faviconSmall {
@@ -23,13 +23,13 @@
 }
 
 .inlineDomain {
-  color: var(--N600);
+  color: var(--color-text-secondary);
 }
 
 .iconSmall {
   width: 0.875rem;
   height: 0.875rem;
-  color: var(--N400);
+  color: var(--color-text-tertiary);
   flex-shrink: 0;
 }
 
@@ -39,7 +39,7 @@
   align-items: center;
   gap: 0.75rem;
   padding: 0.75rem 1rem;
-  border: 1px solid var(--N100);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   text-decoration: none;
   color: inherit;
@@ -48,8 +48,8 @@
 }
 
 .card:hover {
-  border-color: var(--N200);
-  background-color: var(--N20);
+  border-color: var(--color-border-strong);
+  background-color: var(--color-bg-secondary);
 }
 
 .favicon {
@@ -69,7 +69,7 @@
 .title {
   font-size: 1.2rem;
   font-weight: 500;
-  color: var(--N800);
+  color: var(--color-text);
   margin: 0;
   line-height: 1.3;
   white-space: nowrap;
@@ -79,13 +79,13 @@
 
 .domain {
   font-size: 1rem;
-  color: var(--N400);
+  color: var(--color-text-tertiary);
 }
 
 .icon {
   width: 1.2rem;
   height: 1.2rem;
-  color: var(--N300);
+  color: var(--color-text-tertiary);
   flex-shrink: 0;
   margin-left: auto;
 }
@@ -94,7 +94,7 @@
 .preview {
   display: flex;
   width: 100%;
-  border: 1px solid var(--N100);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   overflow: hidden;
   text-decoration: none;
@@ -104,8 +104,8 @@
 }
 
 .preview:hover {
-  border-color: var(--N200);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border-color: var(--color-border-strong);
+  box-shadow: 0 2px 8px var(--color-shadow);
 }
 
 .imageWrapper {
@@ -113,7 +113,7 @@
   width: 140px;
   min-height: 100px;
   flex-shrink: 0;
-  background-color: var(--N50);
+  background-color: var(--color-bg-tertiary);
 }
 
 .image {
@@ -137,13 +137,13 @@
 
 .previewDomain {
   font-size: 0.85rem;
-  color: var(--N400);
+  color: var(--color-text-tertiary);
 }
 
 .previewTitle {
   font-size: 1.1rem;
   font-weight: 600;
-  color: var(--N800);
+  color: var(--color-text);
   line-height: 1.3;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -153,7 +153,7 @@
 
 .previewDescription {
   font-size: 0.95rem;
-  color: var(--N500);
+  color: var(--color-text-secondary);
   margin: 0;
   line-height: 1.4;
   display: -webkit-box;
@@ -165,7 +165,7 @@
 .previewIcon {
   width: 1.2rem;
   height: 1.2rem;
-  color: var(--N300);
+  color: var(--color-text-tertiary);
   flex-shrink: 0;
   margin: 1rem;
   align-self: flex-start;

@@ -5,23 +5,23 @@
   margin: 2rem 0;
   padding: 1.2rem 1.4rem;
   border-radius: var(--radius-md);
-  background-color: var(--N20);
+  background-color: var(--color-bg-tertiary);
 }
 
 .callout.info {
-  background-color: rgba(0, 101, 255, 0.2);
+  background-color: rgba(0, 101, 255, 0.15);
 }
 
 .callout.warning {
-  background-color: rgba(255, 171, 0, 0.2);
+  background-color: rgba(255, 171, 0, 0.15);
 }
 
 .callout.tip {
-  background-color: rgba(0, 135, 90, 0.2);
+  background-color: rgba(0, 135, 90, 0.15);
 }
 
 .callout.note {
-  background-color: var(--N30);
+  background-color: var(--color-bg-tertiary);
 }
 
 .emoji {
@@ -34,7 +34,7 @@
   flex: 1;
   font-size: 1.5rem;
   line-height: 1.6;
-  color: var(--N800);
+  color: var(--color-text);
 }
 
 .title {
