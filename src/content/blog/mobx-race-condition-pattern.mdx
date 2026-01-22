@@ -89,6 +89,43 @@ Follow these rules to avoid this race condition:
   Create a linting rule or code review checklist item to catch stored references before `await` statements in MobX store methods.
 </Callout>
 
+## MobX-State-Tree Connection
+
+If you're using MobX-State-Tree, you may encounter this specific error message:
+
+<Callout type="danger" title="MST Error">
+  "This object has died and is no longer part of a state tree. It cannot be used anymore."
+</Callout>
+
+This is the same underlying issue — the object reference was detached when the tree was updated. MST is more explicit about this problem because it tracks object lifecycle, while vanilla MobX will silently allow operations on detached objects.
+
+## Alternative: Using `flow` Generators
+
+MobX's `flow` function with generators can help structure async code more cleanly, though it **doesn't prevent** the stale reference issue when objects are recreated:
+
+```typescript
+import { flow } from "mobx";
+
+class MyStore {
+    updateSomething = flow(function* (this: MyStore, id: string) {
+        let obj = this.getObjectById(id);
+        if (!obj) return;
+        obj.setLoading(true);
+
+        const data = yield this.api.fetch(id);
+
+        // Still need to re-fetch after yield!
+        obj = this.getObjectById(id);
+        if (obj) {
+            obj.updateData(data);
+            obj.setLoading(false);
+        }
+    });
+}
+```
+
+The `flow` pattern is useful for automatically wrapping state updates in actions, but the core principle remains: **always re-fetch object references after any yield/await**.
+
 ## Real-World Scenario
 
 This bug commonly appears in applications with:
@@ -128,3 +165,11 @@ it('should handle concurrent object recreation during async operation', async ()
 ---
 
 Understanding this pattern will save you from mysterious bugs where state updates seem to disappear into thin air. Always remember: in MobX with async operations, **object references are temporary** — re-fetch after every await.
+
+## Resources
+
+<LinkCard href="https://mobx.js.org/actions.html" title="MobX Actions Documentation" />
+
+<LinkCard href="https://github.com/mobxjs/mobx-state-tree/issues/416" title="MST Race Condition Issue #416" />
+
+<LinkCard href="https://mobx.js.org/understanding-reactivity.html" title="Understanding MobX Reactivity" />
