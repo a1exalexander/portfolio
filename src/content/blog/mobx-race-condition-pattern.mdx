@@ -1,6 +1,6 @@
 ---
 title: "Critical Race Condition Pattern in MobX"
-description: "Understanding and preventing a common bug where MobX store methods recreate observable objects, invalidating all previous references during async operations."
+description: "Understanding and preventing a common bug where concurrent async operations in MobX stores can lead to stale object references, causing silent state update failures."
 date: "2025-01-21"
 tags: ["mobx", "react", "typescript", "debugging", "state management"]
 published: true
@@ -12,7 +12,7 @@ When working with MobX stores in complex applications, there's a subtle but crit
 
 ## The Problem
 
-When store methods recreate observable objects (e.g., during hydration), all previous object references become invalid. This creates a race condition where async operations continue working with stale references.
+When concurrent store operations recreate or replace observable objects, all previous object references become invalid. This creates a race condition where async operations continue working with stale references.
 
 <Callout type="warning" title="Symptoms">
   - Updates to objects fail silently after WebSocket events
@@ -22,7 +22,7 @@ When store methods recreate observable objects (e.g., during hydration), all pre
 
 ## Root Cause
 
-Store methods like `hydrateState()` replace all observable instances. Any references held before that moment become stale — they point to objects that are no longer part of the store's state tree.
+Store methods that replace or recreate observable instances can invalidate existing references. Any references held before that moment become stale — they point to objects that are no longer part of the store's state tree.
 
 ## The Bug Pattern
 
@@ -34,8 +34,8 @@ public async updateSomething(id: string) {
     obj.setLoading(true);
 
     const data = await this.api.fetch(id);
-    // Meanwhile, WebSocket event calls hydration method
-    // which recreates all objects - 'obj' is now stale!
+    // Meanwhile, another async operation recreates all objects
+    // (e.g., WebSocket sync, batch update) - 'obj' is now stale!
 
     obj.updateData(data); // FAILS - operates on dead object
     obj.setLoading(false); // FAILS - operates on dead object
@@ -47,11 +47,10 @@ The timeline of this bug:
 1. Method starts, gets reference to object
 2. Sets loading state on the object
 3. Starts async API call
-4. **During the await**, a WebSocket event triggers `hydrateState()`
-5. `hydrateState()` recreates all objects with fresh instances
-6. Async call completes
-7. Code tries to update the **old** object reference
-8. Updates are lost because they're applied to a detached object
+4. **During the await**, another operation recreates all objects with fresh instances
+5. Async call completes
+6. Code tries to update the **old** object reference
+7. Updates are lost because they're applied to a detached object
 
 <Callout type="danger" title="Why This Is Dangerous">
   The bug is silent — no errors are thrown. The code executes successfully, but changes are made to objects that are no longer connected to the reactive state tree.
@@ -95,8 +94,8 @@ Follow these rules to avoid this race condition:
 This bug commonly appears in applications with:
 
 - **WebSocket connections** that sync state from the server
-- **SSR hydration** that recreates store state on the client
 - **Polling mechanisms** that periodically refresh data
+- **Batch updates** that recreate multiple objects at once
 - **Optimistic updates** combined with server reconciliation
 
 Any time your store has a method that bulk-replaces observable objects, you're at risk for this race condition.
@@ -106,15 +105,15 @@ Any time your store has a method that bulk-replaces observable objects, you're a
 To verify your code handles this correctly:
 
 ```typescript
-it('should handle concurrent hydration during async operation', async () => {
+it('should handle concurrent object recreation during async operation', async () => {
     const store = new MyStore();
     const id = 'test-id';
 
     // Start async operation
     const updatePromise = store.updateSomething(id);
 
-    // Simulate hydration during the async operation
-    store.hydrateState();
+    // Simulate concurrent batch update that recreates objects
+    store.batchUpdateFromServer();
 
     // Wait for async operation to complete
     await updatePromise;
