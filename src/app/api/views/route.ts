@@ -8,6 +8,10 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: 'Slug is required' }, { status: 400 });
   }
 
+  if (!redis) {
+    return NextResponse.json({ views: 0 }, { status: 200 });
+  }
+
   const views = (await redis.get<number>(`views:${slug}`)) ?? 0;
 
   return NextResponse.json({ views });
@@ -18,6 +22,10 @@ export async function POST(request: NextRequest) {
 
   if (!slug) {
     return NextResponse.json({ error: 'Slug is required' }, { status: 400 });
+  }
+
+  if (!redis) {
+    return NextResponse.json({ views: 1 }, { status: 200 });
   }
 
   const views = await redis.incr(`views:${slug}`);
