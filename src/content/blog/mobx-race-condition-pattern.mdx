@@ -15,7 +15,7 @@ When working with MobX stores in complex applications, there's a subtle but crit
 When concurrent store operations recreate or replace observable objects, all previous object references become invalid. This creates a race condition where async operations continue working with stale references.
 
 <Callout type="warning" title="Symptoms">
-  - Updates to objects fail silently after WebSocket events
+  - Updates to objects fail silently after async operations
   - State changes don't persist after concurrent operations
   - Loading states get stuck indefinitely
 </Callout>
@@ -35,7 +35,7 @@ public async updateSomething(id: string) {
 
     const data = await this.api.fetch(id);
     // Meanwhile, another async operation recreates all objects
-    // (e.g., WebSocket sync, batch update) - 'obj' is now stale!
+    // (e.g., batch update, WebSocket sync, polling refresh) - 'obj' is now stale!
 
     obj.updateData(data); // FAILS - operates on dead object
     obj.setLoading(false); // FAILS - operates on dead object
@@ -130,9 +130,9 @@ The `flow` pattern is useful for automatically wrapping state updates in actions
 
 This bug commonly appears in applications with:
 
-- **WebSocket connections** that sync state from the server
-- **Polling mechanisms** that periodically refresh data
 - **Batch updates** that recreate multiple objects at once
+- **Polling mechanisms** that periodically refresh data
+- **WebSocket connections** that sync state from the server
 - **Optimistic updates** combined with server reconciliation
 
 Any time your store has a method that bulk-replaces observable objects, you're at risk for this race condition.
