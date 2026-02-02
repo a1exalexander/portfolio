@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { FiEye, FiHeart } from "react-icons/fi";
 import { getAllPosts, formatDate, getPostsStats } from "@/lib/blog";
+import MasonryGrid from "./MasonryGrid";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -29,7 +30,7 @@ export default async function BlogPage() {
           <p>No articles yet. Stay tuned!</p>
         </div>
       ) : (
-        <div className={styles.grid}>
+        <MasonryGrid>
           {posts.map((post) => (
             <Link
               key={post.slug}
@@ -77,7 +78,7 @@ export default async function BlogPage() {
               </div>
             </Link>
           ))}
-        </div>
+        </MasonryGrid>
       )}
 
       <footer className={styles.footer}>

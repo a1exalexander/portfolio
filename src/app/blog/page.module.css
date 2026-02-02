@@ -37,6 +37,21 @@
   gap: 3rem;
 }
 
+.masonryGrid {
+  display: flex;
+  margin-left: -3rem;
+  width: auto;
+}
+
+.masonryColumn {
+  padding-left: 3rem;
+  background-clip: padding-box;
+}
+
+.masonryColumn > .card {
+  margin-bottom: 3rem;
+}
+
 .card {
   display: flex;
   flex-direction: column;
@@ -172,7 +187,14 @@
 
 @media screen and (min-width: 1024px) {
   .grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 4rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+    grid-auto-rows: auto;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .card {
+    height: fit-content;
   }
 }

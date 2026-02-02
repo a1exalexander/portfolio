@@ -7,6 +7,7 @@ import { Mention } from "@/components/Mention";
 import { InlineLink } from "@/components/InlineLink";
 import { LinkCard } from "@/components/LinkCard";
 import { CodeBlock } from "@/components/CodeBlock";
+import { Table } from "@/components/Table";
 
 export const mdxComponents: MDXComponents = {
   // Override default HTML elements
@@ -26,4 +27,5 @@ export const mdxComponents: MDXComponents = {
   InlineLink,
   LinkCard,
   CodeBlock,
+  Table,
 };

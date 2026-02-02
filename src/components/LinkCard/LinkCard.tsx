@@ -4,14 +4,29 @@ import clsx from "clsx";
 import { FiExternalLink } from "react-icons/fi";
 import styles from "./LinkCard.module.css";
 
+/**
+ * Display variants for LinkCard component.
+ * - `inline` - Minimal: favicon + domain link only
+ * - `inline-preview` - Compact: favicon + title + domain (default)
+ * - `preview` - Full card: OG image, title, description, and domain
+ */
 type LinkCardType = "inline" | "inline-preview" | "preview";
 
+/**
+ * Props for the LinkCard component.
+ */
 interface ILinkCardProps {
+  /** The URL the card links to (required) */
   href: string;
+  /** Display title - falls back to domain if not provided */
   title?: string;
+  /** Description text - only shown in "preview" type */
   description?: string;
+  /** OG/preview image URL - only shown in "preview" type */
   image?: string;
+  /** Card display variant @default "inline-preview" */
   type?: LinkCardType;
+  /** Additional CSS class names */
   className?: string;
 }
 
