@@ -54,16 +54,14 @@ import {
   Ticker,
   Work,
 } from "../components";
-import MasonryGrid from "./blog/MasonryGrid";
+import MasonryGrid from "@/components/MasonryGrid";
 import photo6 from "../images/a00001.jpeg";
 import photo2 from "../images/a00002.jpeg";
 import photo4 from "../images/a00003.jpeg";
 import photo3 from "../images/a00004.jpeg";
 import photo5 from "../images/IMG_3059.jpeg";
 import photo1 from "../images/me-lapsi.jpeg";
-import photo7 from "../images/IMG_2349.jpeg";
 import photo9 from "../images/IMG_3055.jpeg";
-import photo10 from "../images/IMG_3058.jpeg";
 import catPhoto1 from "../images/37FABF81-6070-4FE3-9EF1-443B478C9C20_1_105_c.jpeg";
 import catPhoto2 from "../images/8102D5E0-2690-40AC-8887-08BC2D26BE9A_1_105_c.jpeg";
 import catPhoto3 from "../images/A6CD5315-D301-48C5-940E-4C535D1E53DB_1_105_c.jpeg";

@@ -3,7 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { FiEye, FiHeart } from "react-icons/fi";
 import { getAllPosts, formatDate, getPostsStats } from "@/lib/blog";
-import MasonryGrid from "./MasonryGrid";
+import MasonryGrid from "@/components/MasonryGrid";
+import TagFilter from "@/components/TagFilter";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -11,10 +12,25 @@ export const metadata: Metadata = {
   description: "Articles about web development, JavaScript, React, and more.",
 };
 
-export default async function BlogPage() {
+export default async function BlogPage({
+  searchParams,
+}: {
+  searchParams: { tag?: string };
+}) {
   const posts = getAllPosts();
   const slugs = posts.map((post) => post.slug);
   const stats = await getPostsStats(slugs);
+
+  // Extract all unique tags from posts
+  const allTags = Array.from(
+    new Set(posts.flatMap((post) => post.tags))
+  ).sort();
+
+  // Filter posts by tag from query param
+  const selectedTag = searchParams.tag || null;
+  const filteredPosts = selectedTag
+    ? posts.filter((post) => post.tags.includes(selectedTag))
+    : posts;
 
   return (
     <main className={styles.main}>
@@ -30,62 +46,71 @@ export default async function BlogPage() {
           <p>No articles yet. Stay tuned!</p>
         </div>
       ) : (
-        <MasonryGrid
-          breakpointCols={{
-            default: 2,
-            1280: 2,
-            768: 1,
-          }}
-          className={styles.masonryGrid}
-          columnClassName={styles.masonryColumn}>
-          {posts.map((post) => (
-            <Link
-              key={post.slug}
-              href={`/blog/${post.slug}`}
-              className={styles.card}
-            >
-              {post.coverImage && (
-                <div className={styles.imageWrapper}>
-                  <Image
-                    src={post.coverImage}
-                    alt={post.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className={styles.image}
-                  />
-                </div>
-              )}
-              <div className={styles.content}>
-                <h2 className={styles.cardTitle}>{post.title}</h2>
-                <p className={styles.cardDescription}>{post.description}</p>
-                <div className={styles.meta}>
-                  <time className={styles.date}>{formatDate(post.date)}</time>
-                  <span className={styles.separator}>·</span>
-                  <span className={styles.readingTime}>{post.readingTime}</span>
-                </div>
-                <div className={styles.stats}>
-                  <span className={styles.stat}>
-                    <FiEye className={styles.statIcon} />
-                    {stats[post.slug]?.views ?? 0}
-                  </span>
-                  <span className={styles.stat}>
-                    <FiHeart className={styles.statIcon} />
-                    {stats[post.slug]?.likes ?? 0}
-                  </span>
-                </div>
-                {post.tags.length > 0 && (
-                  <div className={styles.tags}>
-                    {post.tags.slice(0, 3).map((tag) => (
-                      <span key={tag} className={styles.tag}>
-                        {tag}
+        <>
+          {allTags.length > 0 && (
+            <TagFilter tags={allTags} activeTag={selectedTag} />
+          )}
+          {filteredPosts.length === 0 ? (
+            <div className={styles.empty}>
+              <p>No articles found with this tag.</p>
+            </div>
+          ) : (
+            <MasonryGrid
+              breakpointCols={{
+                default: 2,
+                1280: 2,
+                768: 1,
+              }}
+              className={styles.masonryGrid}
+              columnClassName={styles.masonryColumn}>
+              {filteredPosts.map((post) => (
+                <Link
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
+                  className={styles.card}
+                >
+                  {post.coverImage && (
+                    <div className={styles.imageWrapper}>
+                      <Image
+                        src={post.coverImage}
+                        alt={post.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        className={styles.image}
+                      />
+                    </div>
+                  )}
+                  <div className={styles.content}>
+                    <h2 className={styles.cardTitle}>{post.title}</h2>
+                    <p className={styles.cardDescription}>{post.description}</p>
+                    <div className={styles.meta}>
+                      <time className={styles.date}>{formatDate(post.date)}</time>
+                      <span className={styles.separator}>·</span>
+                      <span className={styles.readingTime}>{post.readingTime}</span>
+                    </div>
+                    <div className={styles.stats}>
+                      <span className={styles.stat}>
+                        <FiEye className={styles.statIcon} />
+                        {stats[post.slug]?.views ?? 0}
                       </span>
-                    ))}
+                      <span className={styles.stat}>
+                        <FiHeart className={styles.statIcon} />
+                        {stats[post.slug]?.likes ?? 0}
+                      </span>
+                    </div>
+                    {post.tags.length > 0 && (
+                      <div className={styles.tags}>
+                        {post.tags.slice(0, 3).map((tag) => (
+                          <span key={tag} className={styles.tag}>
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
-                )}
-              </div>
-            </Link>
-          ))}
-        </MasonryGrid>
+                </Link>
+              ))}
+            </MasonryGrid>)}        </>
       )}
 
       <footer className={styles.footer}>
