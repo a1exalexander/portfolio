@@ -30,7 +30,14 @@ export default async function BlogPage() {
           <p>No articles yet. Stay tuned!</p>
         </div>
       ) : (
-        <MasonryGrid>
+        <MasonryGrid
+          breakpointCols={{
+            default: 2,
+            1280: 2,
+            768: 1,
+          }}
+          className={styles.masonryGrid}
+          columnClassName={styles.masonryColumn}>
           {posts.map((post) => (
             <Link
               key={post.slug}

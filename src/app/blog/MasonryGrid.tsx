@@ -1,10 +1,13 @@
 "use client";
 
 import React from "react";
-import Masonry from "react-masonry-css";
+import Masonry, { MasonryProps } from "react-masonry-css";
 import styles from "./page.module.css";
 
 type MasonryGridProps = {
+  breakpointCols?: MasonryProps["breakpointCols"];
+  className: string;
+  columnClassName?: string;
   children: React.ReactNode;
 };
 
@@ -14,12 +17,14 @@ const breakpointColumnsObj = {
   768: 1,
 };
 
-export default function MasonryGrid({ children }: MasonryGridProps) {
+export default function MasonryGrid({ children, breakpointCols, className, columnClassName }: MasonryGridProps) {
   return (
     <Masonry
-      breakpointCols={breakpointColumnsObj}
-      className={styles.masonryGrid}
-      columnClassName={styles.masonryColumn}
+      breakpointCols={breakpointCols || breakpointColumnsObj}
+      className={className}
+      columnClassName={columnClassName}
+    // className={styles.masonryGrid}
+    // columnClassName={styles.masonryColumn}
     >
       {children}
     </Masonry>
