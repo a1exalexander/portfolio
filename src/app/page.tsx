@@ -44,7 +44,6 @@ import {
 import { RoughNotation } from "react-rough-notation";
 import {
   Certificate,
-  Collage,
   Divider,
   Fullwidth,
   getAlt,
@@ -55,6 +54,7 @@ import {
   Ticker,
   Work,
 } from "../components";
+import MasonryGrid from "./blog/MasonryGrid";
 import photo6 from "../images/a00001.jpeg";
 import photo2 from "../images/a00002.jpeg";
 import photo4 from "../images/a00003.jpeg";
@@ -292,7 +292,14 @@ export default function Home() {
             </Tag>
             .
           </Paragraph>
-          <Collage>
+          <MasonryGrid
+            className={styles.masonryGrid}
+            columnClassName={styles.masonryColumn}
+            breakpointCols={{
+              default: 2,
+              768: 2,
+            }}
+          >
             <Photo src={photo4} grid caption="Hoverla, Carpathian mountains" />
             <Photo
               src={photoCarpathians2}
@@ -312,22 +319,27 @@ export default function Home() {
               grid
               caption="Kostrycha, Carpathian mountains"
             />
-          </Collage>
+          </MasonryGrid>
 
           <Paragraph>
             At my home, there are three cats 🐈🐈🐈 and one dog 🦮.
           </Paragraph>
-          <Collage className={styles['mb-0']}>
+          <MasonryGrid
+            className={styles.masonryGrid}
+            columnClassName={styles.masonryColumn}
+            breakpointCols={{
+              default: 3,
+              768: 2,
+            }}
+          >
             <Photo src={photo9} paddingHack={170} vertical grid caption="Whole squad" />
-            <Photo src={photo10} paddingHack={170} vertical grid caption="Lapsi and Luna" />
-            <Photo src={photo7} grid caption="Lapsi" />
             <Photo src={photo6} paddingHack={100} grid caption="Lastick & Platon" />
             <Photo src={catPhoto1} paddingHack={170} grid caption="Lapsi, Platon and Misty" />
             <Photo src={catPhoto2} paddingHack={80} grid caption="Platon and Misty" />
-            <Photo src={photo5} paddingHack={85} grid caption="Platon and Luna" />
-            <Photo src={catPhoto3} paddingHack={100} grid caption="Me and Lapsi found mushroom" />
-            <Photo src={catPhoto4} paddingHack={100} grid caption="Platon and Lapsi" />
-          </Collage>
+            <Photo src={photo5} paddingHack={140} grid caption="Platon and Luna" />
+            <Photo src={catPhoto3} paddingHack={120} grid caption="Me and Lapsi found mushroom" />
+            <Photo src={catPhoto4} paddingHack={110} grid caption="Platon and Lapsi" />
+          </MasonryGrid>
         </section>
         <section id="my-work" className={styles.section}>
           <h2 className={styles.heading}>my work 🗂️</h2>
@@ -355,7 +367,14 @@ export default function Home() {
             ]}
           >
             <Paragraph>In progress...</Paragraph>
-            <Collage>
+            <MasonryGrid
+              className={styles.masonryGrid}
+              columnClassName={styles.masonryColumn}
+              breakpointCols={{
+                default: 2,
+                768: 2,
+              }}
+            >
               <Photo
                 paddingHack={130}
                 src={namecheap1}
@@ -364,7 +383,7 @@ export default function Home() {
                 caption="Welcome pack"
               />
               <Photo grid caption="My 2024 desk" src={myDeskPhoto} />
-            </Collage>
+            </MasonryGrid>
           </Work>
           <Divider />
           <Work
@@ -381,14 +400,21 @@ export default function Home() {
               in the development of a wide range of projects as a developer and
               also as a team leader.
             </Paragraph>
-            <Collage>
+            <MasonryGrid
+              className={styles.masonryGrid}
+              columnClassName={styles.masonryColumn}
+              breakpointCols={{
+                default: 2,
+                768: 2,
+              }}
+            >
               <Photo src={photoMerge1} grid caption="I am in my office" />
               <Photo
                 src={photoMerge2}
                 grid
                 caption="With the team in the cafe (left – Viktoriia, right – Kate)"
               />
-            </Collage>
+            </MasonryGrid>
             <Fullwidth Icon={GrProjects} title="Projects">
               <ul className={styles.projectsList}>
                 <Project
@@ -882,7 +908,14 @@ export default function Home() {
               actively supported students in their practical projects, helping
               them to apply theoretical knowledge to real-world scenarios.
             </Paragraph>
-            <Collage>
+            <MasonryGrid
+              className={styles.masonryGrid}
+              columnClassName={styles.masonryColumn}
+              breakpointCols={{
+                default: 2,
+                768: 2,
+              }}
+            >
               <Photo
                 src={photo2}
                 grid
@@ -893,7 +926,7 @@ export default function Home() {
                 grid
                 caption="Some performance about academy"
               />
-            </Collage>
+            </MasonryGrid>
           </Work>
           <Divider />
           <Work

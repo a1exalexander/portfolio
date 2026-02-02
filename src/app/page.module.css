@@ -116,3 +116,52 @@
 .mb-0 {
   margin-bottom: 0 !important;
 }
+
+/* Masonry Grid Styles */
+.collage {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 95%;
+  width: 100%;
+}
+
+.masonryGrid {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-left: -1.5rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.masonryColumn {
+  padding-left: 1.5rem;
+  background-clip: padding-box;
+  /* Let the masonry library handle column widths via JavaScript */
+}
+
+.masonryColumn > * {
+  margin-bottom: 1.5rem;
+}
+
+/* 3-column layout for 9-photo cat section */
+.masonryGrid > :nth-child(3n) {
+  /* This will be for 3-column layouts when breakpointCols sets it */
+}
+
+@media (max-width: 768px) {
+  .masonryGrid {
+    margin-left: 0;
+  }
+
+  .masonryColumn {
+    padding-left: 0;
+  }
+
+  /* Adjust margin for mobile 2-column layout */
+  .masonryColumn > * {
+    margin-bottom: 1.5rem;
+  }
+}

@@ -2,7 +2,6 @@
 
 import React from "react";
 import Masonry, { MasonryProps } from "react-masonry-css";
-import styles from "./page.module.css";
 
 type MasonryGridProps = {
   breakpointCols?: MasonryProps["breakpointCols"];
@@ -11,20 +10,23 @@ type MasonryGridProps = {
   children: React.ReactNode;
 };
 
-const breakpointColumnsObj = {
+const defaultBreakpointCols = {
   default: 2,
   1280: 2,
   768: 1,
 };
 
-export default function MasonryGrid({ children, breakpointCols, className, columnClassName }: MasonryGridProps) {
+export default function MasonryGrid({ 
+  children, 
+  breakpointCols = defaultBreakpointCols, 
+  className, 
+  columnClassName 
+}: MasonryGridProps) {
   return (
     <Masonry
-      breakpointCols={breakpointCols || breakpointColumnsObj}
+      breakpointCols={breakpointCols}
       className={className}
       columnClassName={columnClassName}
-    // className={styles.masonryGrid}
-    // columnClassName={styles.masonryColumn}
     >
       {children}
     </Masonry>
