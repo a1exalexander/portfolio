@@ -153,11 +153,11 @@
 
 @media (max-width: 768px) {
   .masonryGrid {
-    margin-left: 0;
+    margin-left: -1rem;
   }
 
   .masonryColumn {
-    padding-left: 0;
+    padding-left: 1rem;
   }
 
   /* Adjust margin for mobile 2-column layout */
