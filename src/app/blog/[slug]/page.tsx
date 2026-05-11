@@ -54,9 +54,22 @@ export default async function BlogPostPage({ params }: PageProps) {
     <main className={styles.main}>
       <article className={styles.article}>
         <header className={styles.header}>
-          <Link href="/blog" className={styles.backLink}>
-            ← Back to Blog
-          </Link>
+          <nav className={styles.nav} aria-label="Article navigation">
+            <Link href="/" className={styles.homeLink} aria-label="Home">
+              <Image
+                src="/favicon-32x32.png"
+                alt=""
+                width={32}
+                height={32}
+                className={styles.logo}
+                priority
+              />
+              <span className={styles.homeLinkLabel}>Oleksandr Ratushnyi</span>
+            </Link>
+            <Link href="/blog" className={styles.backLink}>
+              ← Back to Blog
+            </Link>
+          </nav>
 
           <h1 className={styles.title}>{post.title}</h1>
 
