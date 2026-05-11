@@ -1,0 +1,356 @@
+---
+title: "Building Flashcards: A Turborepo App with Fastify and React"
+description: "How I built Flashcards — a vocabulary learning app — as a Turborepo monorepo with Fastify + Better Auth on the server and React 19 + Vite + Tailwind on the web."
+date: "2026-05-11"
+tags: ["flashcards", "monorepo", "turborepo", "fastify", "react", "vite", "better-auth", "tailwind", "typescript"]
+coverImage: "/assets/flashcards-cover.png"
+published: true
+---
+
+# Building Flashcards: A Turborepo App with Fastify and React
+
+I learn languages slowly. Apps like Anki are powerful but feel heavy for the simple thing I actually want — type a word, type the translation, study it later, see if I remember. So I built [Flashcards](https://app.flashcards.best): a small vocabulary trainer with my own UX, my own data, and my own pace.
+
+This post walks through the architecture: how the monorepo is wired with Turborepo, how the Fastify server handles auth and owner-scoped data, and how the React + Vite SPA stays simple while doing real work.
+
+## What's Actually in the App
+
+Before the code, the product in one paragraph: users sign up with email and password, create decks, add vocabulary entries (term + optional translation), and run study sessions where they rate each card as **repeat** or **studied**. Ratings persist, a stats dashboard aggregates activity over the last 14 days, and there are free-plan limits with an "upgrade" request flow. Nothing exotic — but the pieces all need to fit together cleanly.
+
+<Callout type="note" title="Scope of this post">
+  I'll focus on the **monorepo layout**, the **Fastify server**, and the **React web app**. There's also a React Native (Expo) client and an Astro landing page in the same repo — those are stories for another day.
+</Callout>
+
+## The Monorepo with Turborepo
+
+I chose a monorepo because the server, the web app, the native app, and the landing page all share types, Prisma client, and email rendering. Splitting them across repos would mean publishing internal packages and chasing version drift. Turborepo handles task orchestration and caching without forcing any particular framework opinions.
+
+### Workspace Layout
+
+```
+flashcards/
+├── apps/
+│   ├── server/      # Fastify API + Better Auth
+│   ├── web/         # React 19 + Vite + Tailwind
+│   ├── native/      # Expo / React Native
+│   └── landing/     # Astro static site
+├── packages/
+│   ├── db/          # Prisma schema + client (MongoDB)
+│   └── email/       # Nodemailer templates and sender
+└── turbo.json
+```
+
+Apps live under `apps/`, shared code lives under `packages/`. The convention is boring, which is the point — anyone landing in this repo can guess where things go.
+
+### Workspace Wiring
+
+The root `package.json` declares npm workspaces and a single Node engine:
+
+```json
+{
+  "name": "flashcards",
+  "private": true,
+  "workspaces": ["apps/*", "packages/*"],
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "check-types": "turbo run check-types"
+  }
+}
+```
+
+Internal packages are referenced by name (`@repo/db`, `@repo/email`) with a `*` version, so changes propagate instantly with no `npm publish` dance.
+
+### turbo.json
+
+The `turbo.json` is short and explicit. Build outputs are cached, dev tasks aren't, and Prisma tasks opt out of caching so generated clients stay fresh:
+
+```json
+{
+  "$schema": "https://turborepo.dev/schema.json",
+  "ui": "tui",
+  "globalEnv": ["...shared env keys go here"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
+    },
+    "dev": { "cache": false, "persistent": true },
+    "lint": { "dependsOn": ["^lint"] },
+    "check-types": { "dependsOn": ["^check-types"] },
+    "prisma:generate": { "cache": false }
+  }
+}
+```
+
+<Callout type="tip" title="globalEnv earns its keep">
+  Listing shared env vars in `globalEnv` is what makes Turborepo's caching trustworthy across packages. Without it, you can ship stale builds when a secret rotates.
+</Callout>
+
+### Running One Command, Building Everything
+
+From the repo root, `npm run dev` boots the server, the web app, and the native app concurrently — each in its own pane thanks to Turborepo's `tui`. The build pipeline understands that the web app depends on `@repo/db` (for shared types) and the server depends on both `@repo/db` and `@repo/email`, so `^build` walks the graph in the right order with no manual wiring.
+
+## The Server: Fastify + Better Auth
+
+The server is a Fastify 5 app organized as routes → controllers → services → repositories. Plugins are autoloaded; routes are autoloaded. Adding a new endpoint is a matter of dropping a file in the right folder.
+
+```
+apps/server/src/
+├── app.ts
+├── plugins/        # cross-cutting (auth guard, cors, sensible)
+├── routes/         # autoloaded HTTP endpoints
+├── controllers/    # request/response shape
+├── services/       # business rules
+└── repositories/   # Prisma access
+```
+
+The entry point is intentionally tiny:
+
+```typescript
+const app: FastifyPluginAsync<AppOptions> = async (fastify, opts) => {
+  void fastify.register(AutoLoad, {
+    dir: join(appDir, 'plugins'),
+    options: opts,
+  })
+  void fastify.register(AutoLoad, {
+    dir: join(appDir, 'routes'),
+    options: opts,
+  })
+}
+```
+
+Everything else is plugins and route files. Fastify's plugin model means the auth guard runs before any route file sees a request — there is no path where a route forgets to check auth.
+
+### Authentication with Better Auth
+
+I went with [Better Auth](https://www.better-auth.com/) because it ships email/password, sessions, and email verification out of the box, with a MongoDB adapter that talks to the same connection Prisma uses. No third-party identity provider, no separate user table to sync.
+
+The auth wiring is direct:
+
+```typescript
+const mongoClient = new MongoClient(databaseUrl)
+
+export const auth = betterAuth({
+  database: mongodbAdapter(mongoClient.db(databaseName)),
+  emailAndPassword: {
+    enabled: true,
+    requireEmailVerification: false,
+  },
+  emailVerification: {
+    sendOnSignUp: true,
+    sendVerificationEmail: async ({ user, url }) => {
+      await sendVerificationEmail({ to: user.email, verificationUrl: url })
+    },
+  },
+  user: { deleteUser: { enabled: true } },
+  plugins: [expo()],
+  // ...trustedOrigins, etc.
+})
+```
+
+Session cookies are HTTP-only, the web client sends them via `credentials: 'include'`, and the native app uses the Better Auth Expo plugin to handle the same flow on mobile.
+
+### A Single Guard for Every Protected Route
+
+The auth guard is one Fastify `preHandler` hook. It runs on every request, short-circuits public paths, resolves the session through Better Auth, and decorates the request with `userId` and `userRole`:
+
+```typescript
+const publicPaths = new Set([
+  '/ping',
+  '/login',
+  '/sign-up',
+  '/webhook/monobank',
+])
+
+export default fp(async (fastify) => {
+  fastify.decorateRequest('userId', '')
+  fastify.decorateRequest('userRole', 'user')
+
+  fastify.addHook('preHandler', async (request, reply) => {
+    const path = request.url.split('?')[0]
+    if (publicPaths.has(path) || path.startsWith('/api/auth')) {
+      return
+    }
+
+    const session = await auth.api.getSession({
+      headers: fromNodeHeaders(request.headers),
+    })
+
+    const userId = session?.user?.id
+    if (!userId) {
+      return reply.code(401).send({ error: 'UNAUTHORIZED' })
+    }
+
+    const dbUser = await prisma.user.findUnique({
+      where: { id: userId },
+      select: { id: true, role: true },
+    })
+    if (!dbUser) {
+      return reply.code(401).send({ error: 'UNAUTHORIZED' })
+    }
+
+    request.userId = userId
+    request.userRole = dbUser.role
+  })
+})
+```
+
+<Callout type="warning" title="Never trust client-supplied user IDs">
+  Controllers read `request.userId` set by the guard — they never accept a user ID from the request body. The product guardrail is simple: **all business data is per-user; no cross-user reads or writes**. Owner scoping is enforced at the repository layer, not at the route handler.
+</Callout>
+
+### Plan Limits Live in the Service Layer
+
+Free users get up to 10 decks and 10 cards per deck. Pro and admin users bypass the limits. That rule lives in the service layer, not in the route handler — so the same check applies whether the caller is the web app, the native app, or a future integration:
+
+```typescript
+if (userRole === 'user') {
+  if (deckCount >= 10) {
+    throw new PlanLimitError('PLAN_LIMIT_DECKS_REACHED')
+  }
+}
+```
+
+The error code is part of the API contract. The web app surfaces a specific upgrade prompt when it sees `PLAN_LIMIT_DECKS_REACHED`, rather than parsing English error messages.
+
+## The Web App: React 19 + Vite + Tailwind
+
+The web app is a Vite SPA. I considered Next.js out of habit, but the product is fully behind a login wall — there is no SEO surface that needs server rendering. Vite gives me sub-second HMR and a smaller mental model.
+
+### Stack
+
+- **React 19** with the React Compiler enabled via `babel-plugin-react-compiler`
+- **Vite 8** with the React plugin
+- **React Router v7** for routing
+- **TanStack Query** for server state
+- **Zustand** for local UI state (study session, preferences, modal toggles)
+- **Tailwind CSS v4** with the `@tailwindcss/vite` plugin
+- **Radix UI primitives** for accessible select/dropdown
+- **Framer Motion** for the card flip animation
+- **PostHog** for analytics and an error boundary
+
+### Why Two State Libraries
+
+This split confuses people, but it's deliberate. **TanStack Query owns anything that came from the server** — decks, cards, stats, the current user. It handles caching, refetching, and invalidation, and its `staleTime: 30_000` + `refetchOnWindowFocus: false` defaults match how a flashcards app actually behaves (users tab away mid-study and come back).
+
+**Zustand owns transient UI state** — which card you're on in a study session, whether the card is revealed, your ratings buffer before submission. That state would feel wrong in URL params and is overkill for React Query.
+
+```typescript
+// stores/study.store.ts
+type StudyState = {
+  currentIndex: number
+  isRevealed: boolean
+  ratings: Record<string, 'repeat' | 'studied'>
+  filteredIds?: string[]
+  reveal: () => void
+  rate: (entryId: string, rating: 'repeat' | 'studied') => void
+  reset: () => void
+}
+```
+
+<Callout type="tip" title="Pick state libraries by lifetime">
+  Server state has a lifetime tied to the backend — it can go stale, it needs invalidation. UI state has a lifetime tied to the screen. Mixing them in one store works until it doesn't, and by then you have a refactor on your hands.
+</Callout>
+
+### The API Client
+
+The API client is ~40 lines. It centralizes the base URL, attaches credentials, and throws a typed `ApiError` on non-2xx responses:
+
+```typescript
+export class ApiError extends Error {
+  constructor(public status: number, public code?: string, message?: string) {
+    super(message ?? code ?? `HTTP ${status}`)
+  }
+}
+
+export async function api<T>(path: string, init?: RequestInit): Promise<T> {
+  const res = await fetch(`${BASE_URL}${path}`, {
+    ...init,
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json',
+      ...(init?.headers ?? {}),
+    },
+  })
+
+  if (!res.ok) {
+    const body = await res.json().catch(() => ({}))
+    throw new ApiError(res.status, body.error, body.message)
+  }
+
+  return res.json() as Promise<T>
+}
+```
+
+Every TanStack Query hook calls this. When the server returns `PLAN_LIMIT_DECKS_REACHED`, the upgrade modal can read `error.code` directly — no string matching.
+
+### Routing and Guards
+
+React Router v7 expresses guards as wrapper components. `ProtectedRoute` redirects unauthenticated users to `/auth/login`, `GuestOnlyRoute` does the inverse, and `AdminRoute` checks the role:
+
+```tsx
+<Route element={<RootLayout />}>
+  <Route path="/auth/login" element={
+    <GuestOnlyRoute><LoginPage /></GuestOnlyRoute>
+  } />
+  <Route element={<ProtectedRoute><AppShell /></ProtectedRoute>}>
+    <Route path="/" element={<HomePage />} />
+    <Route path="/decks" element={<DecksPage />} />
+    <Route path="/decks/:deckId" element={<DeckDetailPage />} />
+    <Route path="/study" element={<StudyPage />} />
+    <Route path="/stats" element={<StatsPage />} />
+    <Route path="/settings" element={<SettingsPage />} />
+  </Route>
+</Route>
+```
+
+The guard components rely on a `useSession` hook backed by TanStack Query — so the auth check is just another cached query, with no separate auth context provider to babysit.
+
+### Tailwind v4 with the Vite Plugin
+
+Tailwind v4 is configured entirely in CSS — no `tailwind.config.ts` file. The Vite plugin handles content scanning:
+
+```typescript
+// vite.config.ts
+export default defineConfig({
+  plugins: [
+    react({ babel: { plugins: [['babel-plugin-react-compiler', {}]] } }),
+    tailwindcss(),
+  ],
+})
+```
+
+Design tokens live in `styles.css` as CSS variables, and Tailwind utilities consume them. Theme switching (light / dark / system) flips a `data-theme` attribute on `<html>`, just like in this portfolio.
+
+## What I'd Do Differently
+
+A few honest notes after shipping:
+
+1. **MongoDB was a habit, not a decision.** Flashcards has relational data (users → decks → entries with a join table). Postgres + Prisma would have been the more natural fit; I went with MongoDB because I had a Mongo client lying around. The schema works, but I notice the friction every time I add a query.
+2. **The native app deserves more sharing.** Right now `apps/native` re-implements its own components instead of pulling from a shared `@repo/ui` package. Next time I'd start with the shared package on day one.
+3. **Better Auth is great, but read the docs twice.** The trusted-origins / CORS interaction with the Expo plugin took me an evening to untangle. Worth it, but not free.
+
+<Callout type="note" title="What's next">
+  Spaced-repetition scheduling and OAuth sign-in are the next two items. Both are deliberately out of scope for v1 — I wanted the app live and used before adding complexity.
+</Callout>
+
+## Useful Resources
+
+<LinkCard href="https://turborepo.dev/docs" title="Turborepo Documentation" />
+
+<LinkCard href="https://fastify.dev/" title="Fastify" />
+
+<LinkCard href="https://www.better-auth.com/" title="Better Auth" />
+
+<LinkCard href="https://tanstack.com/query/latest" title="TanStack Query" />
+
+<LinkCard href="https://tailwindcss.com/" title="Tailwind CSS" />
+
+## Closing
+
+The hardest part of this project wasn't any single library — it was resisting the urge to add things. No spaced repetition, no AI tutor, no OAuth, no offline sync. Just decks, cards, study, stats. Ship the small thing, use it, then decide what's actually missing.
+
+If you want to try it: [app.flashcards.best](https://app.flashcards.best). Find me on <Mention handle="a1exalexander" platform="github" /> if you want to talk shop.
