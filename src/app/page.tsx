@@ -10,6 +10,7 @@ import { IoLogoFirebase, IoLogoNodejs, IoLogoVue } from "react-icons/io5";
 import { RiSupabaseFill } from "react-icons/ri";
 import {
   SiAntdesign,
+  SiAstro,
   SiAuth0,
   SiCssmodules,
   SiFastify,
@@ -18,6 +19,7 @@ import {
   SiHiveBlockchain,
   SiInstagram,
   SiJavascript,
+  SiMongodb,
   SiMui,
   SiNestjs,
   SiNuxtdotjs,
@@ -32,6 +34,7 @@ import {
   SiTailwindcss,
   SiSentry,
   SiPosthog,
+  SiVite,
 } from "react-icons/si";
 import {
   TbBrandNextjs,
@@ -85,13 +88,14 @@ import cert2 from "../images/PRJCTR_SQL.png";
 import cert5 from "../images/SCR-20241030-qppb.png";
 import cert6 from "../images/OWASP_10.jpg";
 import cert7 from "../images/udemy_sec_1.jpg";
+import cert8 from "../images/mate_python_basics.png";
 import wisealpha from "../images/wisealpha.jpg";
 import zone3000Icon from "../images/Zone3000_ico.png";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "Oleksandr Ratushnyi",
-  description: "Front-end Developer from Ukraine",
+  title: "Oleksandr Ratushnyi — JavaScript Developer",
+  description: "JavaScript Developer from Ukraine",
 };
 
 export const revalidate = 604800; // 1 week
@@ -1071,6 +1075,72 @@ export default function Home() {
             <ul className={styles.projectsList}>
               <Project
                 className={styles.project}
+                title="Flashcards"
+                time="2026"
+                status="production"
+                href="https://app.flashcards.best"
+                description="Cards for words learning"
+                stack={[
+                  {
+                    name: "React",
+                    Icon: BiLogoReact,
+                    color: "#61dafb",
+                    href: "https://react.dev",
+                  },
+                  {
+                    name: "Typescript",
+                    Icon: BiLogoTypescript,
+                    color: "#007acc",
+                    href: "https://www.typescriptlang.org/",
+                  },
+                  {
+                    name: "Vite",
+                    Icon: SiVite,
+                    color: "#646cff",
+                    href: "https://vitejs.dev/",
+                  },
+                  {
+                    name: "Astro",
+                    Icon: SiAstro,
+                    color: "#ff5d01",
+                    href: "https://astro.build/",
+                  },
+                  {
+                    name: "Tailwind",
+                    Icon: SiTailwindcss,
+                    color: "#38b2ac",
+                    href: "https://tailwindcss.com/",
+                  },
+                  {
+                    name: "Fastify",
+                    Icon: SiFastify,
+                    color: "#000000",
+                    darkColor: "#ffffff",
+                    href: "https://fastify.dev/",
+                  },
+                  {
+                    name: "Prisma",
+                    Icon: SiPrisma,
+                    color: "#2c3e50",
+                    darkColor: "#ffffff",
+                    href: "https://www.prisma.io/",
+                  },
+                  {
+                    name: "MongoDB",
+                    Icon: SiMongodb,
+                    color: "#47a248",
+                    href: "https://www.mongodb.com/",
+                  },
+                  {
+                    name: "Posthog",
+                    Icon: SiPosthog,
+                    color: "#f4b400",
+                    href: "https://posthog.com/",
+                  },
+                ]}
+              />
+              <Project
+                className={styles.project}
                 github="https://github.com/a1exalexander/polly"
                 title="Polly"
                 time="2025"
@@ -1289,6 +1359,12 @@ export default function Home() {
           <Fullwidth>
             <div className={styles.certsList}>
               <div className={styles.certPadding} />
+              <Certificate
+                className={styles.certItem}
+                src={cert8}
+                backgroundColor="#ffffff"
+                alt={getAlt("Python Basics (Mate academy)")}
+              />
               <Certificate
                 className={styles.certItem}
                 src={cert7}
