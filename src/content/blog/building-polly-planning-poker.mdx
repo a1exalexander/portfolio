@@ -1,0 +1,174 @@
+---
+title: "Polly: A Planning Poker App I Built in a Weekend"
+description: "How I built Polly — a real-time planning poker app for my team in a 2-3 day sprint with Next.js and Supabase, and how I now maintain it almost entirely with AI."
+date: "2026-05-11"
+tags: ["polly", "planning-poker", "next.js", "supabase", "realtime", "react", "typescript", "side-project", "ai"]
+coverImage: "/assets/polly-cover.png"
+published: true
+---
+
+# Polly: A Planning Poker App I Built in a Weekend
+
+For a while, my team estimated stories with a popular planning poker SaaS. It worked — until it didn't. The free plan capped rooms at **10 people**, the cards were **integers only**, and our scrum master kept hitting both limits in the same meeting. Upgrading wasn't a battle worth fighting on a budget call.
+
+So one weekend in late 2024, I sat down and built [Polly](https://polly-voting-app.vercel.app/) — a real-time planning poker app, sized exactly for the problems my team actually had. It shipped in 2–3 days. By Monday standup we were estimating in our own tool.
+
+That MVP was hand-coded. Today, almost everything I add to Polly — new features, schema migrations, design refreshes — I build with AI. This post is the story of both halves.
+
+## The Problems Worth Solving
+
+The list of features was short and specific:
+
+- **Unlimited participants per room.** Our team was already 12 and growing.
+- **Fractional estimates.** We worked in weeks, so 1.5 and 2.5 weeks were normal — we kept rounding up and over-committing.
+- **A real-time experience.** Everyone reveals at once, no refresh button required.
+
+That's it. No retros, no jira integration, no AI summarization. Just a deck of cards, a story, and a button that flips them all at once.
+
+<Callout type="note" title="Scope discipline">
+  Every "what if we also added..." idea I had during the sprint went into a Notion page instead of the codebase. Some of them got built later. Most didn't.
+</Callout>
+
+## The Stack
+
+The weekend sprint chose itself based on what I'd be fast in:
+
+- **Next.js 15** with the App Router and server actions
+- **React 18** + **TypeScript**
+- **Supabase** for Postgres, Auth, and — crucially — **Realtime**
+- **CSS Modules** for styling, scoped and boring
+- **`useReducer`** + a custom store pattern (no global state library)
+- **PostHog** and **Sentry** added on day three
+
+No Redux, no Zustand, no tRPC. The whole point of a weekend MVP is to not introduce anything you'd have to read docs for.
+
+## Realtime Without a WebSocket Server
+
+The single feature that justifies "real-time" in the name is the moment the cards flip. Everyone in the room votes, the host clicks "Reveal", and every screen updates simultaneously.
+
+Supabase Realtime makes this almost free. Every table relevant to the room is subscribed via `postgres_changes`, and a single channel hook fans out the events into reducer actions:
+
+```typescript
+channel
+  .on('postgres_changes',
+    { event: 'UPDATE', schema: 'public', table: 'Rooms', filter: `id=eq.${roomId}` },
+    (payload) => dispatch({ type: ActionTypes.ROOM_UPDATED, payload: payload.new })
+  )
+  .on('postgres_changes',
+    { event: 'UPDATE', schema: 'public', table: 'Stories', filter: `id=eq.${storyId}` },
+    (payload) => dispatch({ type: ActionTypes.STORY_UPDATED, payload: payload.new })
+  )
+  .on('postgres_changes',
+    { event: 'INSERT', schema: 'public', table: 'UsersOnStories', filter: `story_id=eq.${storyId}` },
+    (payload) => dispatch({ type: ActionTypes.USER_ON_STORY_CREATED, payload: payload.new })
+  )
+```
+
+There's no Socket.IO server, no Pusher, no Ably. Supabase ships Postgres changes over a WebSocket and the client filters by row predicate. For a room with a dozen voters, this is rock solid — and the same database that stores votes is the source of every UI update.
+
+<Callout type="tip" title="Realtime is just Postgres">
+  Treating the database as the single source of truth means there's nothing to "sync" — the UI is a projection of rows. When a vote insert lands, every connected client sees it within ~100ms.
+</Callout>
+
+## The Store Pattern
+
+Polly's room page has a non-trivial amount of state: the current story, all the voters, who's voted, what the reveal status is, how many stories have happened in this room. A flat `useState` soup would be unmaintainable.
+
+I went with `useReducer` plus a typed action enum:
+
+```typescript
+export enum ActionTypes {
+  USERS_FETCHED = 'USERS_FETCHED',
+  USER_CREATED = 'USER_CREATED',
+  STORY_FETCHED = 'STORY_FETCHED',
+  STORY_UPDATED = 'STORY_UPDATED',
+  ROOM_UPDATED = 'ROOM_UPDATED',
+  USER_ON_STORY_CREATED = 'USER_ON_STORY_CREATED',
+  // ...
+}
+
+export type IAction =
+  | { type: ActionTypes.USERS_FETCHED; payload: UserWithActivity[] }
+  | { type: ActionTypes.USER_CREATED; payload: UserWithActivity }
+  | { type: ActionTypes.STORY_UPDATED; payload: Story }
+  // ...
+```
+
+The pattern keeps three things separate:
+
+1. **`RoomPage.service.ts`** — fetches, inserts, updates against Supabase
+2. **`RoomPage.store.ts`** — the reducer, actions, and state type
+3. **`RoomPage.realtime.ts`** — the channel subscription that translates DB events into actions
+
+A new feature usually touches one of those three files, not all three. That's the only architectural decision I made on day one that I'd defend today.
+
+## Float-Numbered Cards
+
+The most quietly important constant in the entire codebase:
+
+```typescript
+export const VoteValues: Record<VoteValuesType, number[]> = {
+  days: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+  weeks: [
+    1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5,
+    6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5,
+    11, 11.5, 12,
+  ],
+  boolean: [0, 1],
+}
+```
+
+The "weeks" scale was the whole reason I built this. My team estimates in weeks, half-weeks are real, and the original tool wouldn't let us pick them. Three lines of TypeScript later, the problem was gone.
+
+A planning poker app is, at its core, just a constant array and a UI for clicking the values. That's a sobering thing to notice after a weekend of writing schema migrations.
+
+## Then AI Showed Up
+
+When I built Polly in late 2024, agent coding tools existed but couldn't really *build* features — they could autocomplete, suggest, occasionally one-shot a small function. Driving a feature from "add admin permissions to rooms" all the way through schema, RLS, server actions, store actions, and UI was on me.
+
+That changed fast. Recent additions to Polly — admin permissions on `UsersOnRooms`, Google avatars on `Users`, a recently-visited-rooms list, a v2 design pass with loading skeletons — were almost entirely AI-driven. I write the requirement, I review the diff, I run the tests, I ship.
+
+<Callout type="note" title="The shift, in one observation">
+  In 2024 I wrote the migrations and the agent autocompleted them. In 2026 I describe the migration and the agent writes it, generates types, updates the store, and proposes the UI. My job moved from typing to reviewing — and there's a lot more to review.
+</Callout>
+
+A few honest caveats:
+
+- **The MVP being hand-built matters.** AI works best on top of a clear architecture. If the store pattern weren't already in place, I'd be spending half my review time arguing with the agent about where state should live.
+- **Reviews take longer than coding used to.** A 200-line PR from an agent demands the same scrutiny as a 200-line PR from a human — and the agent has no skin in the game.
+- **Tests are doing more work.** I run them every iteration now, not at the end of the day. Playwright catching a broken flow has saved me from shipping bad code more than once.
+
+## What's in the Database
+
+If you're curious how thin the data model actually is:
+
+- `Rooms` — id, name, slug, vote scale, current story, settings
+- `Users` — id, name, avatar_url, auth fields
+- `Stories` — id, title, status (idle / active / finished)
+- `UsersOnRooms` — join, plus `is_admin` and `last_visited_at`
+- `UsersOnStories` — join, plus the vote value
+- `StoriesOnRooms` — link a story to a room
+
+Five real tables and three join tables. The whole app is CRUD on those six things with one fancy reveal animation on top.
+
+## What I'd Do Differently
+
+A few things I'd change if I were starting today:
+
+1. **Use `boolean` for the reveal state on Stories, not a string status.** The three-state enum (`idle` / `active` / `finished`) was over-engineered. Two booleans (`isRevealed`, `isFinished`) would have been clearer.
+2. **Persist anonymous users earlier.** The first weekend I had nameless guests; adding identity later meant a noisy migration.
+3. **Start with the v2 design.** The MVP UI was "ship the function, style later" — and "later" took a year.
+
+## Useful Resources
+
+<LinkCard href="https://supabase.com/docs/guides/realtime" title="Supabase Realtime" />
+
+<LinkCard href="https://nextjs.org/docs/app" title="Next.js App Router" />
+
+<LinkCard href="https://react.dev/reference/react/useReducer" title="useReducer" />
+
+## Closing
+
+Polly is small, opinionated, and built for exactly one team — mine. That's its whole personality. The free version of the original tool turned out to be a constraint worth a weekend; everything since has been small extensions on top of a clear core.
+
+If you want to try it: [polly-voting-app.vercel.app](https://polly-voting-app.vercel.app/). The source is open on <Mention handle="a1exalexander" platform="github" />.
