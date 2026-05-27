@@ -214,15 +214,12 @@ export default function MentorPage() {
           <a href="/">/</a>
           <span className={styles.crumbHere}>mentor</span>
         </div>
-        <div className={styles.crumb}>
-          <span>1000 ₴ · 400 ₴ / год</span>
-        </div>
       </header>
 
       {/* === Hero === */}
       <section className={styles.hero}>
         <div>
-          <div className={styles.kicker}>Менторство · викладаю з 2020</div>
+          <div className={styles.kicker}>Сашко Ратушний · front-end developer</div>
           <h1 className={styles.heroTitle}>
             Навчання і <span className={styles.accentRose}>менторство</span> у{" "}
             <span className={styles.accentViolet}>веб-розробці</span>
