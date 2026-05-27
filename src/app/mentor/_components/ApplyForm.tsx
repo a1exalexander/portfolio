@@ -20,7 +20,8 @@ const FORMATS = [
 type Data = {
   name: string;
   email: string;
-  contact: string;
+  telegram: string;
+  phone: string;
   level: string;
   format: string;
   message: string;
@@ -29,7 +30,8 @@ type Data = {
 const initialData: Data = {
   name: "",
   email: "",
-  contact: "",
+  telegram: "",
+  phone: "",
   level: "",
   format: "",
   message: "",
@@ -37,24 +39,52 @@ const initialData: Data = {
 
 const validateEmail = (s: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
 
+type ErrorKey = keyof Data | "contacts";
+
 export const ApplyForm = () => {
   const [data, setData] = useState<Data>(initialData);
-  const [errors, setErrors] = useState<Partial<Record<keyof Data, string>>>({});
+  const [errors, setErrors] = useState<Partial<Record<ErrorKey, string>>>({});
   const [sent, setSent] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   const set = <K extends keyof Data>(key: K, value: Data[K]) => {
     setData((d) => ({ ...d, [key]: value }));
-    setErrors((e) => ({ ...e, [key]: undefined }));
+    setErrors((e) => ({ ...e, [key]: undefined, contacts: undefined }));
   };
 
-  const submit = (e: FormEvent<HTMLFormElement>) => {
+  const submit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const er: Partial<Record<keyof Data, string>> = {};
+    const er: Partial<Record<ErrorKey, string>> = {};
     if (!data.name.trim()) er.name = "Як до тебе звертатися?";
-    if (!validateEmail(data.email)) er.email = "Потрібен дійсний email";
+
+    const hasContact = Boolean(
+      data.email.trim() || data.telegram.trim() || data.phone.trim(),
+    );
+    if (!hasContact) er.contacts = "Заповни хоча б один контакт";
+    if (data.email.trim() && !validateEmail(data.email))
+      er.email = "Потрібен дійсний email";
+
     setErrors(er);
-    if (Object.keys(er).length === 0) setSent(true);
+    if (Object.keys(er).length > 0) return;
+
+    setSubmitting(true);
+    try {
+      const res = await fetch("/api/mentor-apply", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error("request failed");
+      setSent(true);
+    } catch {
+      setErrors({ contacts: "Щось пішло не так, спробуй ще раз" });
+    } finally {
+      setSubmitting(false);
+    }
   };
+
+  const primaryContact =
+    data.email.trim() || data.telegram.trim() || data.phone.trim();
 
   if (sent) {
     return (
@@ -74,7 +104,7 @@ export const ApplyForm = () => {
           <h3>Заявку відправлено</h3>
           <p>
             Дякую, {data.name.split(" ")[0]}. Читаю кожну заявку особисто і відповім на{" "}
-            <strong>{data.email}</strong> протягом 48 годин — запропоную час для безкоштовного
+            <strong>{primaryContact}</strong> протягом 48 годин — запропоную час для безкоштовного
             20-хвилинного знайомства.
           </p>
           <div className={styles.formSuccessActions}>
@@ -127,30 +157,45 @@ export const ApplyForm = () => {
           />
           {errors.name && <span className={styles.err}>{errors.name}</span>}
         </div>
-
         <div className={styles.field}>
-          <label htmlFor="mentor-email">
-            Email <span className={styles.req}>*</span>
-          </label>
+          <label htmlFor="mentor-email">Email</label>
           <input
             id="mentor-email"
             type="email"
+            inputMode="email"
             placeholder="ti@example.com"
             value={data.email}
             onChange={(e) => set("email", e.target.value)}
           />
           {errors.email && <span className={styles.err}>{errors.email}</span>}
         </div>
-
-        <div className={`${styles.field} ${styles.fieldWide}`}>
-          <label htmlFor="mentor-contact">Telegram або номер телефону (необов&apos;язково)</label>
+        <div className={styles.field}>
+          <label htmlFor="mentor-telegram">Telegram</label>
           <input
-            id="mentor-contact"
+            id="mentor-telegram"
             type="text"
-            placeholder="@username | +380XXXXXXXXX"
-            value={data.contact}
-            onChange={(e) => set("contact", e.target.value)}
+            placeholder="@username"
+            value={data.telegram}
+            onChange={(e) => set("telegram", e.target.value)}
           />
+        </div>
+        <div className={styles.field}>
+          <label htmlFor="mentor-phone">Телефон</label>
+          <input
+            id="mentor-phone"
+            type="tel"
+            inputMode="tel"
+            placeholder="+380XXXXXXXXX"
+            value={data.phone}
+            onChange={(e) => set("phone", e.target.value)}
+          />
+        </div>
+        <div className={`${styles.field} ${styles.fieldWide}`}>
+          <p className={styles.contactsHint}>
+            Заповни хоча б один контакт <span className={styles.req}>*</span> — Email, Telegram або
+            телефон.
+          </p>
+          {errors.contacts && <span className={styles.err}>{errors.contacts}</span>}
         </div>
 
         <div className={`${styles.field} ${styles.fieldWide}`}>
@@ -213,8 +258,8 @@ export const ApplyForm = () => {
       </div>
 
       <div className={styles.formFoot}>
-        <button type="submit" className={`${styles.btn} ${styles.btnPrimary}`}>
-          Надіслати заявку <IconArrowR />
+        <button type="submit" className={`${styles.btn} ${styles.btnPrimary}`} disabled={submitting}>
+          {submitting ? "Надсилаємо…" : <> Надіслати заявку <IconArrowR /></>}
         </button>
       </div>
     </form>

@@ -1242,6 +1242,14 @@
   color: var(--koty-danger);
   font-family: var(--koty-font-mono);
 }
+.contactsHint {
+  font-family: var(--koty-font-mono);
+  font-size: 12px;
+  color: var(--koty-muted);
+}
+.contactsHint .req {
+  margin: 0 2px;
+}
 
 .radioRow {
   display: grid;

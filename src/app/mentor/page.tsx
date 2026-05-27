@@ -97,7 +97,7 @@ const jsonLd = {
       image: `${SITE_URL}${OG_IMAGE}`,
       jobTitle: "JavaScript Engineer & Frontend Mentor",
       description:
-        "JavaScript-інженер з Кременчука. Викладає фронтенд з 2020 року.",
+        "JavaScript-інженер з Кременчука з 8+ роками комерційного досвіду. Викладає фронтенд з 2020 року.",
       knowsAbout: [
         "JavaScript",
         "TypeScript",
@@ -229,9 +229,9 @@ export default function MentorPage() {
             <span className={styles.accentDot}>.</span>
           </h1>
           <p className={styles.heroLede}>
-            Привіт. Я Олександр — JavaScript-інженер з Кременчука. Викладаю фронтенд з 2020 року,
-            мої студенти працюють в українських і міжнародних компаніях. Беру обмежену кількість
-            менті на індивідуальне і групове навчання.
+            Привіт. Я Олександр — JavaScript-інженер з Кременчука з 8+ роками комерційного досвіду.
+            Викладаю фронтенд з 2020 року, мої студенти працюють в українських і міжнародних
+            компаніях.
           </p>
 
           <div className={styles.heroMeta}>
@@ -241,6 +241,7 @@ export default function MentorPage() {
             </span>
             <span className={`${styles.chip} ${styles.chipViolet}`}>📍 Кременчук — офлайн</span>
             <span className={styles.chip}>JS · TS · React</span>
+            <span className={styles.chip}>8+ років досвіду</span>
           </div>
 
           <div className={styles.heroCta}>
