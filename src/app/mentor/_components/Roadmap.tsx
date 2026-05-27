@@ -154,8 +154,23 @@ const ROADMAP: Block[] = [
     ],
   },
   {
-    id: "career",
+    id: "ai",
     step: "10",
+    title: "AI-інструменти",
+    level: "Опціонально",
+    desc:
+      "Не замінює знання, але прискорює роботу в рази. Вчимося користуватись свідомо — як підсилювач, а не як милиця.",
+    topics: [
+      { name: "Claude", kind: "rec" },
+      { name: "GitHub Copilot", kind: "rec" },
+      { name: "Cursor / AI IDE", kind: "opt" },
+      { name: "Промптинг для коду", kind: "opt" },
+      { name: "AI код-рев'ю", kind: "opt" },
+    ],
+  },
+  {
+    id: "career",
+    step: "11",
     title: "Робота та кар'єра",
     level: "Фінал",
     desc:

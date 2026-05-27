@@ -3,7 +3,7 @@ import { ApplyForm } from "./_components/ApplyForm";
 import { FAQ } from "./_components/FAQ";
 import { FAQ_ITEMS } from "./_components/faq-items";
 import { Roadmap } from "./_components/Roadmap";
-import { Avatar } from "./_components/Avatar";
+import { Testimonials } from "./_components/Testimonials";
 import {
   BackIllo,
   FrontIllo,
@@ -409,38 +409,41 @@ export default function MentorPage() {
             Все максимально просто. Без заплутаних тарифів, контрактів чи курсів-конвеєрів.
           </p>
         </div>
-        <div className={styles.steps}>
-          <div className={styles.stepCard}>
-            <div className={styles.stepN}>1</div>
-            <h4>Ти залишаєш заявку</h4>
-            <p>Коротка форма нижче — три хвилини. Я читаю особисто, без ботів.</p>
-          </div>
-          <div className={styles.stepCard}>
-            <div className={styles.stepN}>2</div>
-            <h4>Безкоштовний дзвінок · 20 хв</h4>
-            <p>Знайомимось, я питаю про цілі, ми вирішуємо, чи я взагалі тобі підходжу.</p>
-          </div>
-          <div className={styles.stepCard}>
-            <div className={styles.stepN}>3</div>
-            <h4>Складаємо план</h4>
-            <p>Готую персональну програму під твій рівень і ціль. Графік 1–2 заняття на тиждень.</p>
-          </div>
-          <div className={styles.stepCard}>
-            <div className={styles.stepN}>4</div>
-            <h4>Працюємо до результату</h4>
-            <p>
-              Живі сесії онлайн (або офлайн у Кременчуку), код-рев&apos;ю твоїх проектів, підтримка
-              в Telegram між зустрічами.
-            </p>
-          </div>
-        </div>
-        <div className={styles.splitNote} style={{ marginTop: 28 }}>
-          <IconSparkle />
-          <span>
-            <strong>Перше заняття — безкоштовне.</strong> Якщо після нього зрозуміємо, що не
-            підходимо одне одному — просто розходимось. Без контрактів і зобов&apos;язань.
-          </span>
-        </div>
+        <ol className={styles.stepper}>
+          <li className={styles.stepperItem}>
+            <div className={styles.stepperNode}>1</div>
+            <div className={styles.stepperBody}>
+              <h4>Ти залишаєш заявку</h4>
+              <p>Коротка форма нижче. Або ж пиши напряму в телеграм.</p>
+            </div>
+          </li>
+          <li className={styles.stepperItem}>
+            <div className={styles.stepperNode}>2</div>
+            <div className={styles.stepperBody}>
+              <h4>Вступний ознайомчий дзвінок</h4>
+              <p>Знайомимось та визначаємо цілі</p>
+            </div>
+          </li>
+          <li className={styles.stepperItem}>
+            <div className={styles.stepperNode}>3</div>
+            <div className={styles.stepperBody}>
+              <h4>Складаємо план</h4>
+              <p>
+                Готую персональну програму під твій рівень та цілі.
+              </p>
+            </div>
+          </li>
+          <li className={styles.stepperItem}>
+            <div className={styles.stepperNode}>4</div>
+            <div className={styles.stepperBody}>
+              <h4>Працюємо до результату</h4>
+              <p>
+                Живі сесії онлайн (або офлайн у Кременчуку), код-рев&apos;ю твоїх проектів, підтримка
+                в Telegram між зустрічами.
+              </p>
+            </div>
+          </li>
+        </ol>
       </section>
 
       {/* === Pricing === */}
@@ -514,101 +517,8 @@ export default function MentorPage() {
         </p>
       </section>
 
-      {/* === Testimonials === */}
-      <section className={styles.section} id="testimonials">
-        <div className={styles.secHead}>
-          <div>
-            <div className={styles.kicker}>§ 06</div>
-            <h2>
-              Що кажуть <span className={styles.violet}>студенти</span>
-            </h2>
-          </div>
-          <p className={styles.lede}>
-            Кілька слів від тих, хто пройшов менторство — з Beetroot Academy, Merge Academy та
-            індивідуально.
-          </p>
-        </div>
-        <div className={styles.testimonials}>
-          <div className={styles.testi}>
-            <div className={styles.quoteMark}>“</div>
-            <p className={styles.quote}>
-              Олександр — той рідкісний викладач, який може пояснити одне поняття трьома різними
-              способами, поки воно не клікне. За чотири місяці я з copy-paste туторіалів вийшла на
-              власний TypeScript.
-            </p>
-            <div className={styles.who}>
-              <Avatar initials="ОК" tone="rose" />
-              <div className={styles.whoMeta}>
-                <span className={styles.whoName}>Олена К.</span>
-                <span className={styles.whoRole}>Junior React Dev · Київ</span>
-              </div>
-            </div>
-          </div>
-
-          <div className={`${styles.testi} ${styles.testiViolet}`}>
-            <div className={styles.quoteMark}>“</div>
-            <p className={styles.quote}>
-              Шість місяців я застряг у співбесідах. Сашко за вісім тижнів розібрав мій CV, провів
-              мок-інтерв&apos;ю, навчив відповідати на «розкажіть про себе». Результат — три оферти
-              за два тижні.
-            </p>
-            <div className={styles.who}>
-              <Avatar initials="АР" tone="lavender" />
-              <div className={styles.whoMeta}>
-                <span className={styles.whoName}>Андрій Р.</span>
-                <span className={styles.whoRole}>Frontend · Lviv fintech</span>
-              </div>
-            </div>
-          </div>
-
-          <div className={`${styles.testi} ${styles.testiMidnight}`}>
-            <div className={styles.quoteMark}>“</div>
-            <p className={styles.quote}>
-              Я починала з повного нуля, ніколи не писала навіть HTML. Через сім місяців я отримала
-              першу роботу в українському продукті. Ключове — у Сашка є чіткий план, а не «давайте
-              подивимось туторіал».
-            </p>
-            <div className={styles.who}>
-              <Avatar initials="МБ" tone="midnight" />
-              <div className={styles.whoMeta}>
-                <span className={styles.whoName}>Марія Б.</span>
-                <span className={styles.whoRole}>Junior Frontend · з нуля</span>
-              </div>
-            </div>
-          </div>
-
-          <div className={`${styles.testi} ${styles.testiRose}`}>
-            <div className={styles.quoteMark}>“</div>
-            <p className={styles.quote}>
-              Я перейшов із QA. Думав, буде боляче — а виявилось, що з ментором це у два рази швидше
-              і у п&apos;ять разів цікавіше. Сашко не «вчить React» — він вчить мислити як інженер.
-            </p>
-            <div className={styles.who}>
-              <Avatar initials="ДЛ" tone="violet" />
-              <div className={styles.whoMeta}>
-                <span className={styles.whoName}>Дмитро Л.</span>
-                <span className={styles.whoRole}>Frontend, ex-QA · Харків</span>
-              </div>
-            </div>
-          </div>
-
-          <div className={`${styles.testi} ${styles.testiLavender}`}>
-            <div className={styles.quoteMark}>“</div>
-            <p className={styles.quote}>
-              Я ходила у міні-групі. Атмосфера — як на справжній роботі: парне програмування,
-              код-рев&apos;ю один одного, дискусії. Чесно — за таку атмосферу 400 ₴/год це майже
-              подарунок.
-            </p>
-            <div className={styles.who}>
-              <Avatar initials="СН" tone="rose" />
-              <div className={styles.whoMeta}>
-                <span className={styles.whoName}>Софія Н.</span>
-                <span className={styles.whoRole}>Trainee · група, потік 2024</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* === Testimonials (client carousel) === */}
+      <Testimonials />
 
       {/* === FAQ (client) === */}
       <FAQ />

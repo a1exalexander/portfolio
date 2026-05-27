@@ -3,6 +3,9 @@ import { FiCheckCircle, FiHelpCircle } from "react-icons/fi";
 import {
   LuBriefcase,
   LuGlobe,
+  LuMonitor,
+  LuServer,
+  LuSparkles,
   LuSprout,
   LuTarget,
   LuTerminal,
@@ -135,146 +138,28 @@ export const HeroIllo = () => (
   </svg>
 );
 
-export const FrontIllo = () => (
-  <svg viewBox="0 0 56 40" {...svgBase}>
-    {/* Browser frame */}
-    <P x={2} y={3} w={52} h={34} c="#3A1428" />
-    <P x={4} y={5} w={48} h={30} c="#FFFAFC" />
+export const FrontIllo = () => <LuMonitor size={64} color="var(--koty-accent)" />;
 
-    {/* Top bar */}
-    <P x={4} y={5} w={48} h={5} c="#F2E0E8" />
-    <P x={6} y={7} w={2} h={2} c="#CB5283" />
-    <P x={9} y={7} w={2} h={2} c="#C7791D" />
-    <P x={12} y={7} w={2} h={2} c="#1F9D6E" />
-    <P x={18} y={6} w={28} h={3} c="#FFFAFC" />
-    <P x={20} y={7} w={2} h={1} c="#1F9D6E" />
-    <P x={23} y={7} w={20} h={1} c="#A88090" />
-
-    {/* Page hero block */}
-    <P x={6} y={12} w={18} h={3} c="#3A1428" />
-    <P x={6} y={16} w={28} h={1} c="#6B2A4A" />
-    <P x={6} y={18} w={24} h={1} c="#6B2A4A" />
-    <P x={6} y={20} w={20} h={1} c="#6B2A4A" />
-
-    {/* Image card on right */}
-    <P x={38} y={12} w={12} h={10} c="#E0DCFE" />
-    <P x={40} y={14} w={3} h={3} c="#4C3AF9" />
-    <P x={44} y={16} w={5} h={1} c="#4C3AF9" />
-    <P x={44} y={18} w={4} h={1} c="#4C3AF9" />
-
-    {/* CTA button */}
-    <P x={6} y={23} w={12} h={4} c="#CB5283" />
-    <P x={8} y={25} w={8} h={1} c="#FFFAFC" />
-
-    {/* Form input */}
-    <P x={6} y={29} w={28} h={3} c="#FFFAFC" />
-    <P x={6} y={29} w={28} h={1} c="#F2E0E8" />
-    <P x={6} y={31} w={28} h={1} c="#F2E0E8" />
-    <P x={6} y={29} w={1} h={3} c="#F2E0E8" />
-    <P x={33} y={29} w={1} h={3} c="#F2E0E8" />
-    <P x={8} y={30} w={10} h={1} c="#6B2A4A" />
-    <P x={36} y={29} w={10} h={3} c="#4C3AF9" />
-    <P x={38} y={30} w={6} h={1} c="#FFFAFC" />
-
-    {/* Cursor */}
-    <P x={18} y={25} c="#3A1428" />
-    <P x={18} y={26} w={2} c="#3A1428" />
-    <P x={18} y={27} w={3} c="#3A1428" />
-    <P x={18} y={28} w={4} c="#3A1428" />
-    <P x={19} y={29} w={2} c="#3A1428" />
-
-    {/* Code symbol */}
-    <P x={46} y={2} w={6} h={2} c="#CB5283" />
-    <P x={47} y={1} w={4} h={1} c="#CB5283" />
-
-    {/* Corner cat ear */}
-    <P x={1} y={37} w={3} h={2} c="#CB5283" />
-    <P x={2} y={36} w={1} h={1} c="#CB5283" />
-  </svg>
-);
-
-export const BackIllo = () => (
-  <svg viewBox="0 0 56 40" {...svgBase}>
-    {/* Server rack */}
-    <P x={4} y={6} w={20} h={28} c="#3A1428" />
-    {[8, 14, 20, 26].map((y) => (
-      <g key={y}>
-        <P x={6} y={y} w={16} h={4} c="#060132" />
-        <P x={7} y={y + 1} w={2} h={2} c="#1F9D6E" />
-        <P x={10} y={y + 1} w={2} h={2} c="#C7791D" />
-        <P x={13} y={y + 2} w={8} h={1} c="#A88090" />
-        <P x={13} y={y + 1} w={6} h={1} c="#E0DCFE" />
-      </g>
-    ))}
-    <P x={6} y={31} w={16} h={2} c="#CB5283" />
-
-    {/* Database cylinder */}
-    <P x={36} y={9} w={14} h={2} c="#4C3AF9" />
-    <P x={38} y={8} w={10} h={1} c="#4C3AF9" />
-    <P x={34} y={10} w={2} h={2} c="#4C3AF9" />
-    <P x={50} y={10} w={2} h={2} c="#4C3AF9" />
-    <P x={34} y={11} w={18} h={4} c="#4C3AF9" />
-    <P x={36} y={15} w={14} h={1} c="#1806C7" />
-    <P x={34} y={16} w={2} h={1} c="#1806C7" />
-    <P x={50} y={16} w={2} h={1} c="#1806C7" />
-    <P x={38} y={16} w={10} h={1} c="#1806C7" />
-    <P x={34} y={17} w={18} h={4} c="#4C3AF9" />
-    <P x={36} y={21} w={14} h={1} c="#1806C7" />
-    <P x={34} y={22} w={2} h={1} c="#1806C7" />
-    <P x={50} y={22} w={2} h={1} c="#1806C7" />
-    <P x={38} y={22} w={10} h={1} c="#1806C7" />
-    <P x={34} y={23} w={18} h={3} c="#4C3AF9" />
-    <P x={36} y={26} w={14} h={1} c="#4C3AF9" />
-    <P x={38} y={27} w={10} h={1} c="#4C3AF9" />
-    <P x={40} y={13} w={2} h={1} c="#E0DCFE" />
-    <P x={43} y={13} w={4} h={1} c="#E0DCFE" />
-    <P x={40} y={19} w={6} h={1} c="#E0DCFE" />
-
-    {/* API arrows */}
-    <P x={25} y={14} w={8} h={1} c="#CB5283" />
-    <P x={32} y={13} c="#CB5283" />
-    <P x={32} y={15} c="#CB5283" />
-    <P x={25} y={20} w={8} h={1} c="#1F9D6E" />
-    <P x={25} y={19} c="#1F9D6E" />
-    <P x={25} y={21} c="#1F9D6E" />
-
-    {/* Shield */}
-    <P x={38} y={30} w={10} h={4} c="#CB5283" />
-    <P x={39} y={29} w={8} h={1} c="#CB5283" />
-    <P x={40} y={34} w={6} h={1} c="#CB5283" />
-    <P x={41} y={35} w={4} h={1} c="#CB5283" />
-    <P x={42} y={36} w={2} h={1} c="#CB5283" />
-    <P x={42} y={31} c="#FFFAFC" />
-    <P x={43} y={32} c="#FFFAFC" />
-    <P x={44} y={31} c="#FFFAFC" />
-    <P x={45} y={30} c="#FFFAFC" />
-
-    {/* JSON tag */}
-    <P x={6} y={36} w={14} h={3} c="#060132" />
-    <P x={8} y={37} w={2} h={1} c="#CB5283" />
-    <P x={11} y={37} c="#E0DCFE" />
-    <P x={13} y={37} w={3} h={1} c="#1F9D6E" />
-    <P x={17} y={37} c="#FFC78C" />
-  </svg>
-);
+export const BackIllo = () => <LuServer size={64} color="var(--koty-violet)" />;
 
 // === Persona icons (react-icons) ===
 export const PersonaZero = () => <LuSprout size="100%" />;
 export const PersonaStuck = () => <FiHelpCircle size="100%" />;
 export const PersonaJobs = () => <LuBriefcase size="100%" />;
 
-// === Roadmap step icons (react-icons) ===
+// === Roadmap step icons (react-icons) — each tinted by its type ===
 export const STEP_ICONS: Record<string, ComponentType> = {
-  internet: () => <LuGlobe size="100%" />,
-  html: () => <SiHtml5 size="100%" />,
-  css: () => <SiCss3 size="100%" />,
-  js: () => <SiJavascript size="100%" />,
-  git: () => <SiGit size="100%" />,
-  tooling: () => <LuTerminal size="100%" />,
-  react: () => <SiReact size="100%" />,
-  ts: () => <SiTypescript size="100%" />,
-  testing: () => <FiCheckCircle size="100%" />,
-  career: () => <LuTarget size="100%" />,
+  internet: () => <LuGlobe size="100%" color="#4C3AF9" />,
+  html: () => <SiHtml5 size="100%" color="#E34F26" />,
+  css: () => <SiCss3 size="100%" color="#1572B6" />,
+  js: () => <SiJavascript size="100%" color="#E8B400" />,
+  git: () => <SiGit size="100%" color="#F05032" />,
+  tooling: () => <LuTerminal size="100%" color="#3A1428" />,
+  react: () => <SiReact size="100%" color="#149ECA" />,
+  ts: () => <SiTypescript size="100%" color="#3178C6" />,
+  testing: () => <FiCheckCircle size="100%" color="#1F9D6E" />,
+  ai: () => <LuSparkles size="100%" color="#9333EA" />,
+  career: () => <LuTarget size="100%" color="#CB5283" />,
 };
 
 // Koty wordmark
