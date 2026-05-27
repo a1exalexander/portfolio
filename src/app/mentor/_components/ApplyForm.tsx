@@ -14,6 +14,7 @@ const LEVELS = [
 const FORMATS = [
   { id: "indiv", label: "1-на-1", sub: "1000 ₴ / година" },
   { id: "group", label: "У групі", sub: "400 ₴ / година" },
+  { id: "undecided", label: "Не визначився", sub: "ще не вибрав формат" },
 ] as const;
 
 type Data = {
@@ -51,8 +52,6 @@ export const ApplyForm = () => {
     const er: Partial<Record<keyof Data, string>> = {};
     if (!data.name.trim()) er.name = "Як до тебе звертатися?";
     if (!validateEmail(data.email)) er.email = "Потрібен дійсний email";
-    if (!data.level) er.level = "Обери рівень";
-    if (!data.format) er.format = "Обери формат";
     setErrors(er);
     if (Object.keys(er).length === 0) setSent(true);
   };
@@ -164,7 +163,7 @@ export const ApplyForm = () => {
                 type="button"
                 key={opt.id}
                 className={`${styles.radioTile} ${data.level === opt.id ? styles.radioTileOn : ""}`}
-                onClick={() => set("level", opt.id)}
+                onClick={() => set("level", data.level === opt.id ? "" : opt.id)}
               >
                 <span className={styles.radioMark}>
                   <IconCheck />
@@ -176,7 +175,6 @@ export const ApplyForm = () => {
               </button>
             ))}
           </div>
-          {errors.level && <span className={styles.err}>{errors.level}</span>}
         </div>
 
         <div className={`${styles.field} ${styles.fieldWide}`}>
@@ -189,7 +187,7 @@ export const ApplyForm = () => {
                 type="button"
                 key={opt.id}
                 className={`${styles.radioTile} ${data.format === opt.id ? styles.radioTileOn : ""}`}
-                onClick={() => set("format", opt.id)}
+                onClick={() => set("format", data.format === opt.id ? "" : opt.id)}
               >
                 <span className={styles.radioMark}>
                   <IconCheck />
@@ -201,7 +199,6 @@ export const ApplyForm = () => {
               </button>
             ))}
           </div>
-          {errors.format && <span className={styles.err}>{errors.format}</span>}
         </div>
 
         <div className={`${styles.field} ${styles.fieldWide}`}>

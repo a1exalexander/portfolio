@@ -241,11 +241,8 @@ export const Roadmap = () => {
             return (
               <article key={b.id} id={b.id} className={styles.roadmapBlock}>
                 <div className={styles.blockHead}>
-                  <div className={styles.blockIcon}>{Ico ? <Ico /> : null}</div>
-                  <h3>
-                    <span className={styles.step}>{b.step}</span>
-                    {b.title}
-                  </h3>
+                  <div className={styles.blockIcon}><Ico /></div>
+                  <h3><span className={styles.step}>{b.step}</span>{b.title}</h3>
                   <div className={styles.level}>{b.level}</div>
                 </div>
                 <p className={styles.desc}>{b.desc}</p>

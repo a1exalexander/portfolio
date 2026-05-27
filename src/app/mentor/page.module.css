@@ -599,19 +599,19 @@
 
 .roadmapMain {
   display: grid;
-  gap: 56px;
+  gap: 36px;
 }
 .roadmapBlock {
   scroll-margin-top: 80px;
   display: grid;
-  gap: 16px;
+  gap: 12px;
 }
 .blockHead {
   display: grid;
   grid-template-columns: 56px 1fr auto;
   gap: 16px;
   align-items: center;
-  padding-bottom: 16px;
+  padding-bottom: 12px;
   border-bottom: 1px solid var(--koty-line);
 }
 .blockIcon {
@@ -660,13 +660,13 @@
   line-height: 1.6;
   color: var(--koty-ink-2);
   max-width: 64ch;
-  margin: 0;
+  margin: -2px 0 0 0;
 }
 .topics {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-top: 4px;
+  margin-top: 2px;
 }
 .topic {
   font-family: var(--koty-font-mono);
