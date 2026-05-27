@@ -4,6 +4,7 @@ import { RiPagesLine } from 'react-icons/ri';
 import { FiEdit3 } from 'react-icons/fi';
 
 import { Tag } from '../Tag';
+import { ThemeSwitcher } from '../ThemeSwitcher';
 import styles from './Footer.module.css';
 
 export const Footer = function Footer() {
@@ -43,6 +44,9 @@ export const Footer = function Footer() {
         >
           Instagram
         </Tag>
+      </div>
+      <div className={styles.bottom}>
+        <ThemeSwitcher />
       </div>
     </footer>
   );

@@ -55,12 +55,6 @@ export function ThemeSwitcher() {
             <span className={styles.icon}>{t.icon}</span>
           </button>
         ))}
-        <span
-          className={styles.indicator}
-          style={{
-            transform: `translateX(${themes.findIndex((t) => t.value === theme) * 100}%)`,
-          }}
-        />
       </div>
     </div>
   );

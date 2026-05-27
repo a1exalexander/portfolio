@@ -2,7 +2,7 @@ import { GeistSans } from 'geist/font/sans';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { PHProvider } from './providers';
 import { ThemeProvider } from '@/context';
-import { Footer, ThemeSwitcher } from '../components';
+import { Footer } from '../components';
 import './globals.css';
 
 const themeScript = `
@@ -32,7 +32,6 @@ export default function RootLayout({
       <PHProvider>
         <ThemeProvider>
           <body className={GeistSans.className}>
-            <ThemeSwitcher />
             {children}
             <Footer />
             <SpeedInsights />

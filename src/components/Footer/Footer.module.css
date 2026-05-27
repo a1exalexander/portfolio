@@ -17,3 +17,8 @@
   gap: 1rem;
   flex-wrap: wrap;
 }
+
+.bottom {
+  display: flex;
+  margin-top: 2rem;
+}
