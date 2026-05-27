@@ -165,3 +165,77 @@
     margin-bottom: 1.5rem;
   }
 }
+
+.mentorCallout {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 3rem;
+  padding: 1.125rem 1.25rem;
+  background: #fce4ed;
+  border: 1.5px solid #e8bad0;
+  border-radius: 16px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.mentorCallout:hover {
+  border-color: #cb5283;
+  box-shadow: 0 2px 12px rgba(203, 82, 131, 0.12);
+}
+
+.mentorCalloutLogo {
+  width: 36px;
+  height: 36px;
+  color: #cb5283;
+  flex-shrink: 0;
+}
+
+.mentorCalloutBody {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.mentorCalloutLabel {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #cb5283;
+}
+
+.mentorCalloutText {
+  font-size: 0.9rem;
+  color: #060132;
+  margin: 0;
+  line-height: 1.45;
+}
+
+.mentorCalloutArrow {
+  font-size: 1.1rem;
+  color: #cb5283;
+  flex-shrink: 0;
+  transition: transform 0.15s;
+}
+
+.mentorCallout:hover .mentorCalloutArrow {
+  transform: translateX(3px);
+}
+
+[data-theme="dark"] .mentorCallout {
+  background: rgba(203, 82, 131, 0.1);
+  border-color: rgba(203, 82, 131, 0.25);
+}
+
+[data-theme="dark"] .mentorCallout:hover {
+  border-color: #cb5283;
+  box-shadow: 0 2px 12px rgba(203, 82, 131, 0.2);
+}
+
+[data-theme="dark"] .mentorCalloutText {
+  color: #e0dcfe;
+}

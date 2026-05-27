@@ -1,3 +1,6 @@
+'use client';
+
+import { usePathname } from 'next/navigation';
 import { SiGithub, SiLinkedin, SiInstagram } from 'react-icons/si';
 import { HiOutlineMail } from 'react-icons/hi';
 import { RiPagesLine } from 'react-icons/ri';
@@ -8,6 +11,9 @@ import { ThemeSwitcher } from '../ThemeSwitcher';
 import styles from './Footer.module.css';
 
 export const Footer = function Footer() {
+  const pathname = usePathname();
+  if (pathname?.startsWith('/mentor')) return null;
+
   return (
     <footer className={styles.container}>
       <h2 className={styles.heading}>my links 🔗</h2>
