@@ -25,7 +25,7 @@ import styles from "./page.module.css";
 
 const SITE_URL = "https://sashkoratushnyi.com";
 const MENTOR_URL = `${SITE_URL}/mentor`;
-const OG_IMAGE = "/android-chrome-512x512.png";
+const OG_IMAGE = "/og-mentor.png";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -70,14 +70,14 @@ export const metadata: Metadata = {
     images: [
       {
         url: OG_IMAGE,
-        width: 512,
-        height: 512,
+        width: 1200,
+        height: 630,
         alt: "Менторство у веб-розробці — Олександр Ратушний",
       },
     ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Менторство у веб-розробці — Олександр Ратушний",
     description:
       "Менторство з фронтенду 1-на-1 або в міні-групі: JS, TS, React. Онлайн або офлайн у Кременчуку.",
@@ -94,7 +94,7 @@ const jsonLd = {
       name: "Олександр Ратушний",
       alternateName: ["Oleksandr Ratushnyi", "Sashko Ratushnyi", "a1exalexander"],
       url: SITE_URL,
-      image: `${SITE_URL}${OG_IMAGE}`,
+      image: `${SITE_URL}/android-chrome-512x512.png`,
       jobTitle: "JavaScript Engineer & Frontend Mentor",
       description:
         "JavaScript-інженер з Кременчука з 8+ роками комерційного досвіду. Викладає фронтенд з 2020 року.",
@@ -454,8 +454,7 @@ export default function MentorPage() {
             </h2>
           </div>
           <p className={styles.lede}>
-            Дві опції — обирай свою. Знайомство безкоштовне в обох випадках. Для українських
-            студентів і людей, що постраждали від війни, є гнучка знижка — просто напиши.
+            Дві опції — обирай свою. Знайомство безкоштовне в обох випадках.
           </p>
         </div>
         <div className={styles.pricing}>
