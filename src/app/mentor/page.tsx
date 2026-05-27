@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: "Менторство у веб-розробці — Олександр Ратушний",
   description:
-    "Менторство з фронтенду 1-на-1 або в міні-групі: JavaScript, TypeScript, React. Онлайн з будь-якої точки України та світу або офлайн у Кременчуку. Перше заняття безкоштовне.",
+    "Менторство з фронтенду 1-на-1 або в міні-групі: JavaScript, TypeScript, React. Онлайн з будь-якої точки України та світу або офлайн у Кременчуку. Перше заняття без ризику — не продовжиш, можеш за нього не платити.",
   keywords: [
     "менторство",
     "ментор з програмування",
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Менторство у веб-розробці — Олександр Ратушний",
     description:
-      "Менторство з фронтенду 1-на-1 або в міні-групі: JS, TS, React. Онлайн або офлайн у Кременчуку. Перше заняття безкоштовне.",
+      "Менторство з фронтенду 1-на-1 або в міні-групі: JS, TS, React. Онлайн або офлайн у Кременчуку. Перше заняття без ризику: не продовжиш — не платиш.",
     url: "/mentor",
     siteName: "sashkoratushnyi.com",
     type: "website",
@@ -414,14 +414,14 @@ export default function MentorPage() {
             <div className={styles.stepperNode}>1</div>
             <div className={styles.stepperBody}>
               <h4>Ти залишаєш заявку</h4>
-              <p>Коротка форма нижче. Або ж пиши напряму в телеграм.</p>
+              <p>Коротка форма нижче. Або ж пиши напряму в Telegram.</p>
             </div>
           </li>
           <li className={styles.stepperItem}>
             <div className={styles.stepperNode}>2</div>
             <div className={styles.stepperBody}>
-              <h4>Вступний ознайомчий дзвінок</h4>
-              <p>Знайомимось та визначаємо цілі</p>
+              <h4>Безкоштовний ознайомчий дзвінок</h4>
+              <p>Знайомимось, визначаємо твої цілі та чи підходимо одне одному.</p>
             </div>
           </li>
           <li className={styles.stepperItem}>
@@ -473,11 +473,10 @@ export default function MentorPage() {
               Тільки ти і я. Програма під твою ціль, гнучкий графік, повна увага.
             </p>
             <ul>
-              <li>Персональна програма під твій рівень</li>
-              <li>Код-рев&apos;ю кожного твого комміту</li>
+              <li>Персональна програма</li>
+              <li>Код-рев&apos;ю</li>
               <li>Telegram-чат між зустрічами</li>
-              <li>Запис заняття на вимогу</li>
-              <li>Допомога з працевлаштуванням</li>
+              <li>Допомога з пошуком роботи</li>
             </ul>
             <div className={styles.ctaRow}>
               <a className={`${styles.btn} ${styles.btnPrimary}`} href="#apply">
@@ -499,10 +498,9 @@ export default function MentorPage() {
             </p>
             <ul>
               <li>Спільна програма групи</li>
-              <li>Код-рев&apos;ю спільних проектів</li>
-              <li>Дискусії, парне програмування</li>
+              <li>Код-рев&apos;ю</li>
+              <li>Спільні проекти</li>
               <li>Можна перейти на 1-на-1 у будь-який момент</li>
-              <li>Нижча ціна — швидший результат разом</li>
             </ul>
             <div className={styles.ctaRow}>
               <a className={`${styles.btn} ${styles.btnGhost}`} href="#apply">
@@ -512,8 +510,8 @@ export default function MentorPage() {
           </div>
         </div>
         <p className={styles.priceMuted}>
-          → Перше заняття — безкоштовне в обох форматах. Оплата по факту проведених годин, без
-          передоплат.
+          → Перше заняття — без ризику: якщо вирішиш не продовжувати, можеш за нього не платити.
+          Далі — оплата по факту проведених годин, без передоплат.
         </p>
       </section>
 

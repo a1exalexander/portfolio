@@ -16,7 +16,16 @@ export const FAQ = () => {
           </h2>
         </div>
         <p className={styles.lede}>
-          Якщо не знайшов відповідь — напиши мені у Telegram, я відповім.
+          Якщо не знайшов відповідь — напиши мені у{" "}
+          <a
+            className={styles.textLink}
+            href="https://t.me/a1exalexander"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Telegram
+          </a>
+          , я відповім.
         </p>
       </div>
       <div className={styles.faq}>

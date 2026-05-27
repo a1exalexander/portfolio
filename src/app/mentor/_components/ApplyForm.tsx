@@ -143,11 +143,11 @@ export const ApplyForm = () => {
         </div>
 
         <div className={`${styles.field} ${styles.fieldWide}`}>
-          <label htmlFor="mentor-contact">Telegram або інший контакт (необов&apos;язково)</label>
+          <label htmlFor="mentor-contact">Telegram або номер телефону (необов&apos;язково)</label>
           <input
             id="mentor-contact"
             type="text"
-            placeholder="@username"
+            placeholder="@username | +380XXXXXXXXX"
             value={data.contact}
             onChange={(e) => set("contact", e.target.value)}
           />
@@ -155,7 +155,7 @@ export const ApplyForm = () => {
 
         <div className={`${styles.field} ${styles.fieldWide}`}>
           <label>
-            Твій рівень <span className={styles.req}>*</span>
+            Твій рівень 
           </label>
           <div className={styles.radioRow}>
             {LEVELS.map((opt) => (
@@ -179,7 +179,7 @@ export const ApplyForm = () => {
 
         <div className={`${styles.field} ${styles.fieldWide}`}>
           <label>
-            Формат <span className={styles.req}>*</span>
+            Формат
           </label>
           <div className={styles.radioRow}>
             {FORMATS.map((opt) => (
@@ -213,7 +213,6 @@ export const ApplyForm = () => {
       </div>
 
       <div className={styles.formFoot}>
-        <span className={styles.formSmall}>→ відповідь за 48 годин</span>
         <button type="submit" className={`${styles.btn} ${styles.btnPrimary}`}>
           Надіслати заявку <IconArrowR />
         </button>

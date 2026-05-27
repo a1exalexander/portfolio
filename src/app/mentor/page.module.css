@@ -1401,6 +1401,14 @@
 .monoLink:hover {
   color: var(--koty-indigo);
 }
+.textLink {
+  color: var(--koty-violet);
+  border-bottom: 1px solid currentColor;
+  transition: color 140ms;
+}
+.textLink:hover {
+  color: var(--koty-indigo);
+}
 
 /* === Footer (page-local) === */
 .foot {
