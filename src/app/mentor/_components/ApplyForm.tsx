@@ -3,6 +3,13 @@
 import { useState, type FormEvent } from "react";
 import styles from "../page.module.css";
 import { IconArrowR, IconCheck } from "./icons";
+import {
+  type ApplyData,
+  type ApplyErrors,
+  LIMITS,
+  hasErrors,
+  validateApplyForm,
+} from "@/lib/mentor-apply-validation";
 
 const LEVELS = [
   { id: "zero", label: "З нуля", sub: "ніколи не писав коду" },
@@ -17,17 +24,7 @@ const FORMATS = [
   { id: "undecided", label: "Не визначився", sub: "ще не вибрав формат" },
 ] as const;
 
-type Data = {
-  name: string;
-  email: string;
-  telegram: string;
-  phone: string;
-  level: string;
-  format: string;
-  message: string;
-};
-
-const initialData: Data = {
+const initialData: ApplyData = {
   name: "",
   email: "",
   telegram: "",
@@ -37,35 +34,22 @@ const initialData: Data = {
   message: "",
 };
 
-const validateEmail = (s: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
-
-type ErrorKey = keyof Data | "contacts";
-
 export const ApplyForm = () => {
-  const [data, setData] = useState<Data>(initialData);
-  const [errors, setErrors] = useState<Partial<Record<ErrorKey, string>>>({});
+  const [data, setData] = useState<ApplyData>(initialData);
+  const [errors, setErrors] = useState<ApplyErrors>({});
   const [sent, setSent] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
-  const set = <K extends keyof Data>(key: K, value: Data[K]) => {
+  const set = <K extends keyof ApplyData>(key: K, value: ApplyData[K]) => {
     setData((d) => ({ ...d, [key]: value }));
     setErrors((e) => ({ ...e, [key]: undefined, contacts: undefined }));
   };
 
   const submit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const er: Partial<Record<ErrorKey, string>> = {};
-    if (!data.name.trim()) er.name = "Як до тебе звертатися?";
-
-    const hasContact = Boolean(
-      data.email.trim() || data.telegram.trim() || data.phone.trim(),
-    );
-    if (!hasContact) er.contacts = "Заповни хоча б один контакт";
-    if (data.email.trim() && !validateEmail(data.email))
-      er.email = "Потрібен дійсний email";
-
+    const er = validateApplyForm(data);
     setErrors(er);
-    if (Object.keys(er).length > 0) return;
+    if (hasErrors(er)) return;
 
     setSubmitting(true);
     try {
@@ -152,6 +136,7 @@ export const ApplyForm = () => {
             id="mentor-name"
             type="text"
             placeholder="Олена"
+            maxLength={LIMITS.name}
             value={data.name}
             onChange={(e) => set("name", e.target.value)}
           />
@@ -164,6 +149,7 @@ export const ApplyForm = () => {
             type="email"
             inputMode="email"
             placeholder="ti@example.com"
+            maxLength={LIMITS.email}
             value={data.email}
             onChange={(e) => set("email", e.target.value)}
           />
@@ -175,9 +161,11 @@ export const ApplyForm = () => {
             id="mentor-telegram"
             type="text"
             placeholder="@username"
+            maxLength={LIMITS.telegram}
             value={data.telegram}
             onChange={(e) => set("telegram", e.target.value)}
           />
+          {errors.telegram && <span className={styles.err}>{errors.telegram}</span>}
         </div>
         <div className={styles.field}>
           <label htmlFor="mentor-phone">Телефон</label>
@@ -186,9 +174,11 @@ export const ApplyForm = () => {
             type="tel"
             inputMode="tel"
             placeholder="+380XXXXXXXXX"
+            maxLength={LIMITS.phone}
             value={data.phone}
             onChange={(e) => set("phone", e.target.value)}
           />
+          {errors.phone && <span className={styles.err}>{errors.phone}</span>}
         </div>
         <div className={`${styles.field} ${styles.fieldWide}`}>
           <p className={styles.contactsHint}>
@@ -200,7 +190,7 @@ export const ApplyForm = () => {
 
         <div className={`${styles.field} ${styles.fieldWide}`}>
           <label>
-            Твій рівень 
+            Твій рівень
           </label>
           <div className={styles.radioRow}>
             {LEVELS.map((opt) => (
@@ -251,9 +241,11 @@ export const ApplyForm = () => {
           <textarea
             id="mentor-message"
             placeholder="Що вже знаєш, що хочеш вивчити, чому саме фронтенд, посилання на GitHub чи проекти…"
+            maxLength={LIMITS.message}
             value={data.message}
             onChange={(e) => set("message", e.target.value)}
           />
+          {errors.message && <span className={styles.err}>{errors.message}</span>}
         </div>
       </div>
 

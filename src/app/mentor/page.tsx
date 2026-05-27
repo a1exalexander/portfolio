@@ -532,7 +532,7 @@ export default function MentorPage() {
             </h2>
           </div>
           <p className={styles.lede}>
-            Кілька питань, щоб я зрозумів, з чим ти приходиш. Відповім особисто протягом 48 годин.
+            Кілька питань, щоб я зрозумів, з чим ти приходиш.
           </p>
         </div>
         <ApplyForm />
