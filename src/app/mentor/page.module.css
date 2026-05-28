@@ -142,6 +142,42 @@
   color: var(--koty-ink);
 }
 
+/* === Social bar === */
+.socialBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--koty-line);
+}
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--koty-font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px 11px;
+  border-radius: var(--koty-radius-pill);
+  border: 1px solid transparent;
+  transition: background 140ms, border-color 140ms;
+}
+.socialLink svg {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+}
+.socialLinkWeb { color: var(--koty-accent); }
+.socialLinkWeb:hover { background: var(--koty-accent-soft); border-color: var(--koty-accent); }
+.socialLinkGh { color: #24292e; }
+.socialLinkGh:hover { background: #ebebeb; border-color: #24292e; }
+.socialLinkLi { color: #0a66c2; }
+.socialLinkLi:hover { background: #e8f1fb; border-color: #0a66c2; }
+.socialLinkTg { color: #2aabee; }
+.socialLinkTg:hover { background: #e3f5fd; border-color: #2aabee; }
+.socialLinkMail { color: var(--koty-danger); }
+.socialLinkMail:hover { background: #fde8eb; border-color: var(--koty-danger); }
+
 /* === Kicker === */
 .kicker {
   font-family: var(--koty-font-mono);
@@ -1072,6 +1108,26 @@
   font-size: 14px;
   color: var(--koty-ink);
 }
+.whoSocialLink {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  color: var(--koty-muted);
+  flex-shrink: 0;
+  transition: color 140ms, background 140ms;
+}
+.whoSocialLink:hover {
+  color: var(--koty-violet);
+  background: rgba(0, 0, 0, 0.05);
+}
+.whoSocialLink svg {
+  width: 14px;
+  height: 14px;
+}
 .whoRole {
   font-family: var(--koty-font-mono);
   font-size: 11px;
@@ -1405,9 +1461,18 @@
   font-family: var(--koty-font-mono);
   color: var(--koty-violet);
   border-bottom: 1px solid currentColor;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  vertical-align: middle;
 }
 .monoLink:hover {
   color: var(--koty-indigo);
+}
+.monoLink svg {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
 }
 .textLink {
   color: var(--koty-violet);

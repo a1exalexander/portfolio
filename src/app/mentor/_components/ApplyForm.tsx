@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
+import { usePostHog } from "posthog-js/react";
 import styles from "../page.module.css";
 import { IconArrowR, IconCheck } from "./icons";
 import {
@@ -35,12 +36,20 @@ const initialData: ApplyData = {
 };
 
 export const ApplyForm = () => {
+  const posthog = usePostHog();
+  const startedRef = useRef(false);
   const [data, setData] = useState<ApplyData>(initialData);
   const [errors, setErrors] = useState<ApplyErrors>({});
   const [sent, setSent] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
   const set = <K extends keyof ApplyData>(key: K, value: ApplyData[K]) => {
+    if (!startedRef.current) {
+      startedRef.current = true;
+      posthog.capture("mentor_apply_started");
+    }
+    if (key === "level" && value) posthog.capture("mentor_apply_level_selected", { level: value });
+    if (key === "format" && value) posthog.capture("mentor_apply_format_selected", { format: value });
     setData((d) => ({ ...d, [key]: value }));
     setErrors((e) => ({ ...e, [key]: undefined, contacts: undefined }));
   };
@@ -59,8 +68,14 @@ export const ApplyForm = () => {
         body: JSON.stringify(data),
       });
       if (!res.ok) throw new Error("request failed");
+      posthog.capture("mentor_apply_submitted", {
+        level: data.level || null,
+        format: data.format || null,
+        contact_method: data.email.trim() ? "email" : data.telegram.trim() ? "telegram" : "phone",
+      });
       setSent(true);
     } catch {
+      posthog.capture("mentor_apply_error");
       setErrors({ contacts: "Щось пішло не так, спробуй ще раз" });
     } finally {
       setSubmitting(false);

@@ -52,14 +52,24 @@ export const HeroIllo = () => (
     <P x={22} y={40} w={20} h={2} c="#3A1428" />
 
     {/* Koty mark peeking behind monitor */}
-    <g
-      transform="translate(24 0) scale(0.25)"
-      fill="#CB5283"
-      shapeRendering="geometricPrecision"
-    >
-      <path d="M14 24 L20 8 L26 24 Z" />
-      <path d="M38 24 L44 8 L50 24 Z" />
-      <rect x={10} y={20} width={44} height={36} rx={14} ry={14} />
+    <g transform="translate(24 20)" fill="#CB5283" shapeRendering="geometricPrecision">
+      <animateTransform
+        attributeName="transform"
+        type="translate"
+        from="24 20"
+        to="24 0"
+        dur="0.7s"
+        begin="0.4s"
+        fill="freeze"
+        calcMode="spline"
+        keyTimes="0;1"
+        keySplines="0 0 0.2 1"
+      />
+      <g transform="scale(0.25)">
+        <path d="M14 24 L20 8 L26 24 Z" />
+        <path d="M38 24 L44 8 L50 24 Z" />
+        <rect x={10} y={20} width={44} height={36} rx={14} ry={14} />
+      </g>
     </g>
 
     {/* Monitor chassis */}
@@ -115,19 +125,12 @@ export const HeroIllo = () => (
       />
     </rect>
 
-    {/* Sticky note */}
-    <P x={40} y={28} w={14} h={6} c="#C7791D" />
-    <P x={42} y={30} w={10} h={1} c="#FFFAFC" />
-    <P x={42} y={32} w={8} h={1} c="#FFFAFC" />
-
-    {/* Coffee mug + steam */}
-    <P x={49} y={28} w={6} h={8} c="#4C3AF9" />
-    <P x={55} y={30} w={1} h={4} c="#4C3AF9" />
-    <P x={49} y={28} w={6} h={1} c="#1806C7" />
-    <P x={50} y={30} w={4} h={1} c="#E0DCFE" />
-    <P x={50} y={24} w={1} h={2} c="#A88090" />
-    <P x={52} y={22} w={1} h={3} c="#A88090" />
-    <P x={54} y={24} w={1} h={2} c="#A88090" />
+    {/* Mouse */}
+    <P x={53} y={39} w={6} h={7} c="#3A1428" />
+    <P x={54} y={40} w={2} h={2} c="#4C3AF9" />
+    <P x={57} y={40} w={1} h={2} c="#CB5283" />
+    <P x={56} y={40} w={1} h={2} c="#FFFAFC" />
+    <P x={54} y={43} w={4} h={2} c="#5A2040" />
 
     {/* Keyboard */}
     <P x={14} y={43} w={36} h={4} c="#3A1428" />

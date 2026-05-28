@@ -4,6 +4,7 @@ import { motion, useAnimationFrame, useMotionValue, useReducedMotion } from "fra
 import { useRef, useState } from "react";
 import styles from "../page.module.css";
 import { Avatar, type AvatarTone } from "./Avatar";
+import { IconLi } from "./icons";
 
 type Testimonial = {
   initials: string;
@@ -11,53 +12,38 @@ type Testimonial = {
   name: string;
   role: string;
   quote: string;
+  linkedIn?: string;
   variant?: "testiViolet" | "testiMidnight" | "testiRose" | "testiLavender";
 };
 
 const TESTIMONIALS: Testimonial[] = [
   {
-    initials: "ОК",
-    tone: "rose",
-    name: "Олена К.",
-    role: "Junior React Dev · Київ",
+    initials: "ОЧ",
+    tone: "violet",
+    name: "Олег Ч.",
+    role: "Webflow Developer",
     quote:
-      "Олександр — той рідкісний викладач, який може пояснити одне поняття трьома різними способами, поки воно не клікне. За чотири місяці я з copy-paste туторіалів вийшла на власний TypeScript.",
+      "Хороший викладач, який реально включається в процес. Сашко добре пояснює і не пропускає дрібниць. Дуже уважний до деталей. Формує звичку писати акуратний і продуманий код.",
+    linkedIn: "https://www.linkedin.com/in/oleh-chynchyk/",
   },
   {
-    initials: "АР",
+    initials: "ВА",
     tone: "lavender",
-    name: "Андрій Р.",
-    role: "Frontend · Lviv fintech",
+    name: "Вячеслав А.",
+    role: "Middle Frontend Developer",
     quote:
-      "Шість місяців я застряг у співбесідах. Сашко за вісім тижнів розібрав мій CV, провів мок-інтерв'ю, навчив відповідати на «розкажіть про себе». Результат — три оферти за два тижні.",
+      "На уроках панувала дружня атмосфера. Сашко доступно пояснював усі питання, що виникали під час навчання. Інформація подавалася чітко та структуровано. Фідбек по домашніх завданнях був зрозумілим і допомагав покращити якість коду та уникати помилок. Залишилися тільки позитивні враження після навчання.",
     variant: "testiViolet",
   },
   {
-    initials: "МБ",
+    initials: "ЄБ",
     tone: "midnight",
-    name: "Марія Б.",
-    role: "Junior Frontend · з нуля",
+    name: "Євген Б.",
+    role: "Frontend Developer",
     quote:
-      "Я починала з повного нуля, ніколи не писала навіть HTML. Через сім місяців я отримала першу роботу в українському продукті. Ключове — у Сашка є чіткий план, а не «давайте подивимось туторіал».",
+      "Сашко це людина, завдяки якій почався мій шлях у програмуванні. Приблизно 5 років тому я вирішив спробувати себе на курсах з фронтенд розробки, і Сашко був моїм наставником та головним мотиватором у цій справі. Він дуже професійний, відданий своїй справі і просто цікава людина, яка надихає та мотивує до розвитку й навчання. Ми досі спілкуємося і я завжди можу звернутися до нього за порадою.",
+    linkedIn: "https://www.linkedin.com/in/yevhenii-bryzhko-8003a81b2/",
     variant: "testiMidnight",
-  },
-  {
-    initials: "ДЛ",
-    tone: "violet",
-    name: "Дмитро Л.",
-    role: "Frontend, ex-QA · Харків",
-    quote:
-      "Я перейшов із QA. Думав, буде боляче — а виявилось, що з ментором це у два рази швидше і у п'ять разів цікавіше. Сашко не «вчить React» — він вчить мислити як інженер.",
-    variant: "testiRose",
-  },
-  {
-    initials: "СН",
-    tone: "rose",
-    name: "Софія Н.",
-    role: "Trainee · група, потік 2024",
-    quote:
-      "Я ходила у міні-групі. Атмосфера — як на справжній роботі: парне програмування, код-рев'ю один одного, дискусії. Чесно — за таку атмосферу 400 ₴/год це майже подарунок.",
-    variant: "testiLavender",
   },
 ];
 
@@ -118,6 +104,17 @@ export const Testimonials = () => {
                     <span className={styles.whoName}>{t.name}</span>
                     <span className={styles.whoRole}>{t.role}</span>
                   </div>
+                  {t.linkedIn && (
+                    <a
+                      href={t.linkedIn}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.whoSocialLink}
+                      aria-label={`${t.name} on LinkedIn`}
+                    >
+                      <IconLi />
+                    </a>
+                  )}
                 </div>
               </div>
             </div>

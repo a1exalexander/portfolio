@@ -16,6 +16,7 @@ import {
 import {
   IconArrowR,
   IconGh,
+  IconGlobe,
   IconLi,
   IconMail,
   IconSparkle,
@@ -29,9 +30,9 @@ const OG_IMAGE = "/og-mentor.png";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Менторство у веб-розробці — Олександр Ратушний",
+  title: "Менторство та навчання front-end та веб-розробці",
   description:
-    "Менторство з фронтенду 1-на-1 або в міні-групі: JavaScript, TypeScript, React. Онлайн з будь-якої точки України та світу або офлайн у Кременчуку. Перше заняття без ризику — не продовжиш, можеш за нього не платити.",
+    "Менторство та навчання front-end та веб-розробка: JS, TS, React. Онлайн або офлайн м. Кременчук.",
   keywords: [
     "менторство",
     "ментор з програмування",
@@ -60,9 +61,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Менторство у веб-розробці — Олександр Ратушний",
+    title: "Менторство та навчання front-end та веб-розробці",
     description:
-      "Менторство з фронтенду 1-на-1 або в міні-групі: JS, TS, React. Онлайн або офлайн у Кременчуку. Перше заняття без ризику: не продовжиш — не платиш.",
+      "Менторство та навчання front-end та веб-розробка: JS, TS, React. Онлайн або офлайн м. Кременчук.",
     url: "/mentor",
     siteName: "sashkoratushnyi.com",
     type: "website",
@@ -72,15 +73,15 @@ export const metadata: Metadata = {
         url: OG_IMAGE,
         width: 1200,
         height: 630,
-        alt: "Менторство у веб-розробці — Олександр Ратушний",
+        alt: "Менторство та навчання front-end та веб-розробці",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Менторство у веб-розробці — Олександр Ратушний",
+    title: "Менторство та навчання front-end та веб-розробці",
     description:
-      "Менторство з фронтенду 1-на-1 або в міні-групі: JS, TS, React. Онлайн або офлайн у Кременчуку.",
+      "Менторство та навчання front-end та веб-розробка: JS, TS, React. Онлайн або офлайн м. Кременчук.",
     images: [OG_IMAGE],
   },
 };
@@ -215,6 +216,25 @@ export default function MentorPage() {
           <span className={styles.crumbHere}>mentor</span>
         </div>
       </header>
+
+      {/* === Social bar === */}
+      <div className={styles.socialBar}>
+        <a href="https://sashkoratushnyi.com" className={`${styles.socialLink} ${styles.socialLinkWeb}`}>
+          <IconGlobe /> sashkoratushnyi.com
+        </a>
+        <a href="https://github.com/a1exalexander" target="_blank" rel="noreferrer" className={`${styles.socialLink} ${styles.socialLinkGh}`}>
+          <IconGh /> GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/alexander-ratushnyi/" target="_blank" rel="noreferrer" className={`${styles.socialLink} ${styles.socialLinkLi}`}>
+          <IconLi /> LinkedIn
+        </a>
+        <a href="https://t.me/a1exalexander" target="_blank" rel="noreferrer" className={`${styles.socialLink} ${styles.socialLinkTg}`}>
+          <IconTg /> Telegram
+        </a>
+        <a href="mailto:alexander.ratushnyi@gmail.com" className={`${styles.socialLink} ${styles.socialLinkMail}`}>
+          <IconMail /> alexander.ratushnyi@gmail.com
+        </a>
+      </div>
 
       {/* === Hero === */}
       <section className={styles.hero}>
@@ -540,10 +560,12 @@ export default function MentorPage() {
             target="_blank"
             rel="noreferrer"
           >
+            <IconTg />
             Telegram
           </a>{" "}
           / на{" "}
           <a className={styles.monoLink} href="mailto:alexander.ratushnyi@gmail.com">
+            <IconMail />
             email
           </a>{" "}
           / у{" "}
@@ -553,6 +575,7 @@ export default function MentorPage() {
             target="_blank"
             rel="noreferrer"
           >
+            <IconLi />
             LinkedIn
           </a>
           .
