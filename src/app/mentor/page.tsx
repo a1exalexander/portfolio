@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: "Менторство та навчання front-end та веб-розробці",
   description:
-    "Менторство та навчання front-end та веб-розробка: JS, TS, React. Онлайн або офлайн м. Кременчук.",
+    "Курси програмування та менторство: вивчитись на програміста з нуля. JavaScript, React, TypeScript, front-end та веб-розробка. Онлайн або офлайн у Кременчуці.",
   keywords: [
     "менторство",
     "ментор з програмування",
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Менторство та навчання front-end та веб-розробці",
     description:
-      "Менторство та навчання front-end та веб-розробка: JS, TS, React. Онлайн або офлайн м. Кременчук.",
+      "Курси програмування та менторство: вивчитись на програміста з нуля. JavaScript, React, TypeScript, front-end та веб-розробка. Онлайн або офлайн у Кременчуці.",
     url: "/mentor",
     siteName: "sashkoratushnyi.com",
     type: "website",
@@ -83,7 +83,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Менторство та навчання front-end та веб-розробці",
     description:
-      "Менторство та навчання front-end та веб-розробка: JS, TS, React. Онлайн або офлайн м. Кременчук.",
+      "Курси програмування та менторство: вивчитись на програміста з нуля. JavaScript, React, TypeScript, front-end та веб-розробка. Онлайн або офлайн у Кременчуці.",
   },
 };
 
