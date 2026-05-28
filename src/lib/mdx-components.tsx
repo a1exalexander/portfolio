@@ -3,6 +3,7 @@ import { Article } from "@/components/Article";
 import { ArticleImage } from "@/components/ArticleImage";
 import { ArticleSlider } from "@/components/ArticleSlider";
 import { Callout } from "@/components/Callout";
+import { MentorCallout } from "@/components/MentorCallout";
 import { Mention } from "@/components/Mention";
 import { InlineLink } from "@/components/InlineLink";
 import { LinkCard } from "@/components/LinkCard";
@@ -23,6 +24,7 @@ export const mdxComponents: MDXComponents = {
   ArticleImage,
   ArticleSlider,
   Callout,
+  MentorCallout,
   Mention,
   InlineLink,
   LinkCard,

@@ -50,6 +50,7 @@ import {
   Divider,
   Fullwidth,
   getAlt,
+  MentorCallout,
   Paragraph,
   Photo,
   Project,
@@ -58,7 +59,6 @@ import {
   Work,
 } from "../components";
 import MasonryGrid from "@/components/MasonryGrid";
-import { KotyMark } from "@/app/mentor/_components/illustrations";
 import photo6 from "../images/a00001.jpeg";
 import photo2 from "../images/a00002.jpeg";
 import photo4 from "../images/a00003.jpeg";
@@ -271,16 +271,7 @@ export default function Home() {
           </Paragraph>
 
           {/* === Mentor Callout === */}
-          <a href="/mentor" className={styles.mentorCallout}>
-            <KotyMark className={styles.mentorCalloutLogo} />
-            <div className={styles.mentorCalloutBody}>
-              <span className={styles.mentorCalloutLabel}>mentorship</span>
-              <p className={styles.mentorCalloutText}>
-                I teach JavaScript, TypeScript &amp; React — online worldwide or in-person in Ukraine.
-              </p>
-            </div>
-            <span className={styles.mentorCalloutArrow}>→</span>
-          </a>
+          <MentorCallout />
 
           <Photo
             loading="eager"
