@@ -1,7 +1,12 @@
 import type { Metadata, Viewport } from "next";
+import { AnimatedCard } from "./_components/AnimatedCard";
 import { ApplyForm } from "./_components/ApplyForm";
 import { FAQ } from "./_components/FAQ";
 import { FAQ_ITEMS } from "./_components/faq-items";
+import { FadeUp } from "./_components/FadeUp";
+import { FadeUpLi } from "./_components/FadeUpLi";
+import { GrainOverlay } from "./_components/GrainOverlay";
+import { MagnetButton } from "./_components/MagnetButton";
 import { Roadmap } from "./_components/Roadmap";
 import { Testimonials } from "./_components/Testimonials";
 import {
@@ -202,6 +207,7 @@ export default function MentorPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <GrainOverlay />
       <header className={styles.topbar}>
         <a href="/" className={styles.brandLockup}>
           <KotyMark className={styles.brandMark} />
@@ -235,39 +241,47 @@ export default function MentorPage() {
       {/* === Hero === */}
       <section className={styles.hero}>
         <div>
-          <div className={styles.kicker}>Сашко Ратушний · front-end developer</div>
-          <h1 className={styles.heroTitle}>
-            Навчання і <span className={styles.accentRose}>менторство</span> у{" "}
-            <span className={styles.accentViolet}>веб-розробці</span>
-            <span className={styles.accentDot}>.</span>
-          </h1>
-          <p className={styles.heroLede}>
-            Привіт. Я Олександр — JavaScript-інженер з Кременчука з {yearsExp}+ роками комерційного досвіду.
-            Викладаю фронтенд з 2020 року, мої студенти працюють в українських і міжнародних
-            компаніях.
-          </p>
-
-          <div className={styles.heroMeta}>
-            <span className={`${styles.chip} ${styles.chipRose}`}>
-              <i className={styles.chipDot} />
-              Онлайн · Україна та світ
-            </span>
-            <span className={`${styles.chip} ${styles.chipViolet}`}>📍 Кременчук — офлайн</span>
-            <span className={styles.chip}>JS · TS · React</span>
-            <span className={styles.chip}>{yearsExp}+ років досвіду</span>
-          </div>
-
-          <div className={styles.heroCta}>
-            <a className={`${styles.btn} ${styles.btnPrimary}`} href="#apply">
-              Залишити заявку <IconArrowR />
-            </a>
-          </div>
+          <FadeUp inView={false} delay={0}>
+            <div className={styles.kicker}>Сашко Ратушний · front-end developer</div>
+          </FadeUp>
+          <FadeUp inView={false} delay={0.1}>
+            <h1 className={styles.heroTitle}>
+              Навчання і <span className={styles.accentRose}>менторство</span> у{" "}
+              <span className={styles.accentViolet}>веб-розробці</span>
+              <span className={styles.accentDot}>.</span>
+            </h1>
+          </FadeUp>
+          <FadeUp inView={false} delay={0.22}>
+            <p className={styles.heroLede}>
+              Привіт. Я Олександр — JavaScript-інженер з Кременчука з {yearsExp}+ роками комерційного досвіду.
+              Викладаю фронтенд з 2020 року, мої студенти працюють в українських і міжнародних
+              компаніях.
+            </p>
+          </FadeUp>
+          <FadeUp inView={false} delay={0.34}>
+            <div className={styles.heroMeta}>
+              <span className={`${styles.chip} ${styles.chipRose}`}>
+                <i className={styles.chipDot} />
+                Онлайн · Україна та світ
+              </span>
+              <span className={`${styles.chip} ${styles.chipViolet}`}>📍 Кременчук — офлайн</span>
+              <span className={styles.chip}>JS · TS · React</span>
+              <span className={styles.chip}>{yearsExp}+ років досвіду</span>
+            </div>
+          </FadeUp>
+          <FadeUp inView={false} delay={0.44}>
+            <div className={styles.heroCta}>
+              <MagnetButton className={`${styles.btn} ${styles.btnPrimary}`} href="#apply">
+                Залишити заявку <IconArrowR />
+              </MagnetButton>
+            </div>
+          </FadeUp>
         </div>
 
-        <div className={`${styles.illoFrame} ${styles.illoFrameLavender}`}>
+        <FadeUp inView={false} delay={0.2} className={`${styles.illoFrame} ${styles.illoFrameLavender}`}>
           <HeroIllo />
           <span className={styles.illoFootTag}>{"/* mentor.cat — hello world */"}</span>
-        </div>
+        </FadeUp>
       </section>
 
       {/* === Personas === */}
@@ -285,7 +299,7 @@ export default function MentorPage() {
           </p>
         </div>
         <div className={styles.personas}>
-          <div className={styles.persona}>
+          <AnimatedCard className={styles.persona} delay={0} hover>
             <div className={styles.personaIcon}>
               <PersonaZero />
             </div>
@@ -295,8 +309,8 @@ export default function MentorPage() {
               Хочеш змінити професію або просто спробувати. Почнемо з HTML, поступово прийдемо до
               React. Без поспіху — у твоєму темпі.
             </p>
-          </div>
-          <div className={styles.persona}>
+          </AnimatedCard>
+          <AnimatedCard className={styles.persona} delay={0.1} hover>
             <div className={styles.personaIcon}>
               <PersonaStuck />
             </div>
@@ -306,8 +320,8 @@ export default function MentorPage() {
               Курси є, інформації забагато, а власний проект не зрушується. Розкладемо знання по
               поличках і збудуємо одне реальне портфоліо.
             </p>
-          </div>
-          <div className={styles.persona}>
+          </AnimatedCard>
+          <AnimatedCard className={styles.persona} delay={0.2} hover>
             <div className={styles.personaIcon}>
               <PersonaJobs />
             </div>
@@ -317,7 +331,7 @@ export default function MentorPage() {
               Перепишемо CV, оживимо GitHub, проведемо мок-співбесіди, відрепетируємо переговори. До
               оферу.
             </p>
-          </div>
+          </AnimatedCard>
         </div>
       </section>
 
@@ -421,21 +435,21 @@ export default function MentorPage() {
           </p>
         </div>
         <ol className={styles.stepper}>
-          <li className={styles.stepperItem}>
+          <FadeUpLi className={styles.stepperItem} delay={0}>
             <div className={styles.stepperNode}>1</div>
             <div className={styles.stepperBody}>
               <h4>Ти залишаєш заявку</h4>
               <p>Коротка форма нижче. Або ж пиши напряму в Telegram.</p>
             </div>
-          </li>
-          <li className={styles.stepperItem}>
+          </FadeUpLi>
+          <FadeUpLi className={styles.stepperItem} delay={0.12}>
             <div className={styles.stepperNode}>2</div>
             <div className={styles.stepperBody}>
               <h4>Безкоштовний ознайомчий дзвінок</h4>
               <p>Знайомимось, визначаємо твої цілі та чи підходимо одне одному.</p>
             </div>
-          </li>
-          <li className={styles.stepperItem}>
+          </FadeUpLi>
+          <FadeUpLi className={styles.stepperItem} delay={0.24}>
             <div className={styles.stepperNode}>3</div>
             <div className={styles.stepperBody}>
               <h4>Складаємо план</h4>
@@ -443,8 +457,8 @@ export default function MentorPage() {
                 Готую персональну програму під твій рівень та цілі.
               </p>
             </div>
-          </li>
-          <li className={styles.stepperItem}>
+          </FadeUpLi>
+          <FadeUpLi className={styles.stepperItem} delay={0.36}>
             <div className={styles.stepperNode}>4</div>
             <div className={styles.stepperBody}>
               <h4>Працюємо до результату</h4>
@@ -453,7 +467,7 @@ export default function MentorPage() {
                 в Telegram між зустрічами.
               </p>
             </div>
-          </li>
+          </FadeUpLi>
         </ol>
       </section>
 
@@ -471,7 +485,7 @@ export default function MentorPage() {
           </p>
         </div>
         <div className={styles.pricing}>
-          <div className={`${styles.priceCard} ${styles.priceCardFeatured}`}>
+          <AnimatedCard className={`${styles.priceCard} ${styles.priceCardFeatured}`} delay={0} hover>
             <span className={styles.badge}>Рекомендую</span>
             <div className={styles.role}>Індивідуально</div>
             <h3>1-на-1 з ментором</h3>
@@ -493,9 +507,9 @@ export default function MentorPage() {
                 Хочу 1-на-1 <IconArrowR />
               </a>
             </div>
-          </div>
+          </AnimatedCard>
 
-          <div className={styles.priceCard}>
+          <AnimatedCard className={styles.priceCard} delay={0.15} hover>
             <span className={styles.badge}>Економно</span>
             <div className={styles.role}>У групі</div>
             <h3>Заняття в міні-групі</h3>
@@ -517,7 +531,7 @@ export default function MentorPage() {
                 Хочу в групу <IconArrowR />
               </a>
             </div>
-          </div>
+          </AnimatedCard>
         </div>
         <p className={styles.priceMuted}>
           → Перше заняття — без ризику: якщо вирішиш не продовжувати, можеш за нього не платити.
