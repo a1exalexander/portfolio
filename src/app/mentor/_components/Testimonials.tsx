@@ -45,6 +45,16 @@ const TESTIMONIALS: Testimonial[] = [
     linkedIn: "https://www.linkedin.com/in/yevhenii-bryzhko-8003a81b2/",
     variant: "testiMidnight",
   },
+  {
+    initials: "ЯЛ",
+    tone: "rose",
+    name: "Яна Л.",
+    role: "Freelance Frontend Developer",
+    quote:
+      "Моїм ментором був Сашко, кожен урок був справді цікавим та зрозумілим. Він завжди був відкритий до додаткових питань, давав розгорнуту відповідь та показував конкретні приклади. Також для пояснення він використовував кейси з особистого досвіду, що дозволяло краще зрозуміти реальну кухню розробки. Роботи перевіряв дуже оперативно, і від нього завжди відчувалася підтримка. Завдяки його менторству мій розвиток у цій сфері триває й досі. Дякую за навчання!",
+    linkedIn: "https://www.linkedin.com/in/yliubyva/",
+    variant: "testiRose",
+  },
 ];
 
 const SPEED = 45; // px per second
