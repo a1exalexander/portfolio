@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useAnimationFrame, useMotionValue, useReducedMotion } from "framer-motion";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "../page.module.css";
 import { Avatar, type AvatarTone } from "./Avatar";
 import { IconLi } from "./icons";
@@ -54,16 +54,48 @@ export const Testimonials = () => {
   const x = useMotionValue(0);
   const trackRef = useRef<HTMLDivElement>(null);
   const [paused, setPaused] = useState(false);
+  const touchStartXRef = useRef<number>(0);
+  const motionStartXRef = useRef<number>(0);
+  const isTouchRef = useRef(false);
+
+  useEffect(() => {
+    const handlePageShow = (e: PageTransitionEvent) => {
+      if (e.persisted) x.set(0);
+    };
+    window.addEventListener("pageshow", handlePageShow);
+    return () => window.removeEventListener("pageshow", handlePageShow);
+  }, [x]);
 
   useAnimationFrame((_, delta) => {
     if (reduce || paused || !trackRef.current) return;
     // Track renders the list twice, so one set is half the scroll width.
     const half = trackRef.current.scrollWidth / 2;
     if (half <= 0) return;
-    let next = x.get() - (SPEED * delta) / 1000;
+    // Cap delta to avoid a large jump when resuming from BFCache.
+    let next = x.get() - (SPEED * Math.min(delta, 100)) / 1000;
     if (-next >= half) next += half; // seamless wrap
     x.set(next);
   });
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    isTouchRef.current = true;
+    touchStartXRef.current = e.touches[0].clientX;
+    motionStartXRef.current = x.get();
+    setPaused(true);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!trackRef.current) return;
+    const half = trackRef.current.scrollWidth / 2;
+    if (half <= 0) return;
+    const dx = e.touches[0].clientX - touchStartXRef.current;
+    let next = motionStartXRef.current + dx;
+    while (next > 0) next -= half;
+    while (-next >= half) next += half;
+    x.set(next);
+  };
+
+  const handleTouchEnd = () => setPaused(false);
 
   const cards = [...TESTIMONIALS, ...TESTIMONIALS];
 
@@ -83,10 +115,13 @@ export const Testimonials = () => {
 
       <div
         className={styles.carouselWrap}
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
+        onMouseEnter={() => { if (!isTouchRef.current) setPaused(true); }}
+        onMouseLeave={() => { if (!isTouchRef.current) setPaused(false); }}
         onFocusCapture={() => setPaused(true)}
         onBlurCapture={() => setPaused(false)}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
       >
         <div className={styles.carousel}>
           <motion.div ref={trackRef} className={styles.carouselTrack} style={{ x }}>

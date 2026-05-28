@@ -1086,6 +1086,7 @@
   position: relative;
   overflow: hidden;
   padding: 8px 0;
+  touch-action: pan-y;
 }
 .carouselTrack {
   display: flex;
