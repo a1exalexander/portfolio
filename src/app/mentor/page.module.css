@@ -318,6 +318,12 @@
   color: var(--koty-ink-2);
   letter-spacing: 0.02em;
 }
+@media (max-width: 760px) {
+  .chip {
+    font-size: 10px;
+    padding: 3px 8px;
+  }
+}
 .chipRose {
   background: var(--koty-accent-soft);
   border-color: var(--koty-accent-soft);
@@ -991,6 +997,12 @@
   gap: 10px;
   flex-wrap: wrap;
 }
+@media (max-width: 760px) {
+  .priceCard .ctaRow .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
 .priceMuted {
   margin-top: 20px;
   font-family: var(--koty-font-mono);
@@ -1001,18 +1013,37 @@
 }
 
 /* === Testimonials (auto-moving carousel) === */
+.carouselWrap {
+  position: relative;
+}
+.carouselWrap::before,
+.carouselWrap::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  z-index: 2;
+  pointer-events: none;
+}
+.carouselWrap::before {
+  left: 0;
+  background: linear-gradient(to right, var(--koty-bg), transparent);
+}
+.carouselWrap::after {
+  right: 0;
+  background: linear-gradient(to left, var(--koty-bg), transparent);
+}
+@media (max-width: 760px) {
+  .carouselWrap::before,
+  .carouselWrap::after {
+    width: 48px;
+  }
+}
 .carousel {
   position: relative;
   overflow: hidden;
   padding: 8px 0;
-  -webkit-mask-image: linear-gradient(
-    90deg,
-    transparent,
-    #000 6%,
-    #000 94%,
-    transparent
-  );
-  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
 }
 .carouselTrack {
   display: flex;
@@ -1383,6 +1414,12 @@
   align-items: center;
   gap: 12px;
   flex-wrap: wrap;
+}
+@media (max-width: 760px) {
+  .formFoot .btn {
+    width: 100%;
+    justify-content: center;
+  }
 }
 .formSmall {
   font-family: var(--koty-font-mono);

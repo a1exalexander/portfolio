@@ -82,44 +82,46 @@ export const Testimonials = () => {
       </div>
 
       <div
-        className={styles.carousel}
+        className={styles.carouselWrap}
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
         onFocusCapture={() => setPaused(true)}
         onBlurCapture={() => setPaused(false)}
       >
-        <motion.div ref={trackRef} className={styles.carouselTrack} style={{ x }}>
-          {cards.map((t, i) => (
-            <div
-              className={styles.carouselItem}
-              key={`${t.name}-${i}`}
-              aria-hidden={i >= TESTIMONIALS.length}
-            >
-              <div className={`${styles.testi} ${t.variant ? styles[t.variant] : ""}`}>
-                <div className={styles.quoteMark}>“</div>
-                <p className={styles.quote}>{t.quote}</p>
-                <div className={styles.who}>
-                  <Avatar initials={t.initials} tone={t.tone} />
-                  <div className={styles.whoMeta}>
-                    <span className={styles.whoName}>{t.name}</span>
-                    <span className={styles.whoRole}>{t.role}</span>
+        <div className={styles.carousel}>
+          <motion.div ref={trackRef} className={styles.carouselTrack} style={{ x }}>
+            {cards.map((t, i) => (
+              <div
+                className={styles.carouselItem}
+                key={`${t.name}-${i}`}
+                aria-hidden={i >= TESTIMONIALS.length}
+              >
+                <div className={`${styles.testi} ${t.variant ? styles[t.variant] : ""}`}>
+                  <div className={styles.quoteMark}>&ldquo;</div>
+                  <p className={styles.quote}>{t.quote}</p>
+                  <div className={styles.who}>
+                    <Avatar initials={t.initials} tone={t.tone} />
+                    <div className={styles.whoMeta}>
+                      <span className={styles.whoName}>{t.name}</span>
+                      <span className={styles.whoRole}>{t.role}</span>
+                    </div>
+                    {t.linkedIn && (
+                      <a
+                        href={t.linkedIn}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.whoSocialLink}
+                        aria-label={`${t.name} on LinkedIn`}
+                      >
+                        <IconLi />
+                      </a>
+                    )}
                   </div>
-                  {t.linkedIn && (
-                    <a
-                      href={t.linkedIn}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.whoSocialLink}
-                      aria-label={`${t.name} on LinkedIn`}
-                    >
-                      <IconLi />
-                    </a>
-                  )}
                 </div>
               </div>
-            </div>
-          ))}
-        </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </div>
     </section>
   );

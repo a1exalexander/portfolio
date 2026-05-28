@@ -30,6 +30,7 @@ const OG_IMAGE = "/og-mentor.png";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  themeColor: "#fffafc",
   title: "Менторство та навчання front-end та веб-розробці",
   description:
     "Менторство та навчання front-end та веб-розробка: JS, TS, React. Онлайн або офлайн м. Кременчук.",
@@ -264,9 +265,6 @@ export default function MentorPage() {
           <div className={styles.heroCta}>
             <a className={`${styles.btn} ${styles.btnPrimary}`} href="#apply">
               Залишити заявку <IconArrowR />
-            </a>
-            <a className={`${styles.btn} ${styles.btnGhost}`} href="#roadmap">
-              Подивитись програму
             </a>
           </div>
         </div>
