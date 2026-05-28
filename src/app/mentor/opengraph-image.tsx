@@ -48,7 +48,7 @@ export default async function OGImage() {
                 Менторство та навчання
               </span>
             </div>
-            <div style={{ display: "flex", marginTop: 6 }}>
+            <div style={{ display: "flex", marginTop: 6, gap: 16 }}>
               <span
                 style={{
                   fontFamily: "Manrope",
@@ -71,7 +71,7 @@ export default async function OGImage() {
                   lineHeight: 1.05,
                 }}
               >
-                {" та веб-розробці."}
+                {"та веб-розробці."}
               </span>
             </div>
           </div>
