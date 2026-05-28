@@ -66,14 +66,29 @@ export const Testimonials = () => {
     return () => window.removeEventListener("pageshow", handlePageShow);
   }, [x]);
 
+  useEffect(() => {
+    const onVisibility = () => {
+      if (document.visibilityState === "visible") setPaused(false);
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+    return () => document.removeEventListener("visibilitychange", onVisibility);
+  }, []);
+
+  // offsetLeft of the first duplicated card is the exact gap-correct wrap distance.
+  const getWrapDistance = () => {
+    const track = trackRef.current;
+    if (!track) return 0;
+    const firstDup = track.children[TESTIMONIALS.length] as HTMLElement | undefined;
+    return firstDup ? firstDup.offsetLeft : track.scrollWidth / 2;
+  };
+
   useAnimationFrame((_, delta) => {
     if (reduce || paused || !trackRef.current) return;
-    // Track renders the list twice, so one set is half the scroll width.
-    const half = trackRef.current.scrollWidth / 2;
-    if (half <= 0) return;
+    const wrap = getWrapDistance();
+    if (wrap <= 0) return;
     // Cap delta to avoid a large jump when resuming from BFCache.
     let next = x.get() - (SPEED * Math.min(delta, 100)) / 1000;
-    if (-next >= half) next += half; // seamless wrap
+    while (-next >= wrap) next += wrap; // seamless wrap
     x.set(next);
   });
 
@@ -85,17 +100,19 @@ export const Testimonials = () => {
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    if (!trackRef.current) return;
-    const half = trackRef.current.scrollWidth / 2;
-    if (half <= 0) return;
+    const wrap = getWrapDistance();
+    if (wrap <= 0) return;
     const dx = e.touches[0].clientX - touchStartXRef.current;
     let next = motionStartXRef.current + dx;
-    while (next > 0) next -= half;
-    while (-next >= half) next += half;
+    while (next > 0) next -= wrap;
+    while (-next >= wrap) next += wrap;
     x.set(next);
   };
 
-  const handleTouchEnd = () => setPaused(false);
+  const handleTouchEnd = () => {
+    isTouchRef.current = false;
+    setPaused(false);
+  };
 
   const cards = [...TESTIMONIALS, ...TESTIMONIALS];
 
@@ -122,6 +139,7 @@ export const Testimonials = () => {
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
+        onTouchCancel={handleTouchEnd}
       >
         <div className={styles.carousel}>
           <motion.div ref={trackRef} className={styles.carouselTrack} style={{ x }}>
