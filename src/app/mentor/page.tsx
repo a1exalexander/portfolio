@@ -611,7 +611,6 @@ export default function MentorPage() {
         </div>
         <div className={styles.footRight}>
           <span>Кременчук, Україна 🇺🇦</span>
-          <span>{"// page rendered with ♥ & pixels"}</span>
         </div>
       </footer>
     </main>

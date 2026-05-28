@@ -51,6 +51,7 @@
   margin: 0;
   padding: 0 24px;
   position: relative;
+  overflow-x: clip;
   background: var(--koty-bg);
   color: var(--koty-ink);
   font-family: var(--koty-font-sans);
@@ -718,22 +719,34 @@
 }
 .topic {
   font-family: var(--koty-font-mono);
-  font-size: 12px;
-  padding: 5px 11px;
+  font-size: 11px;
+  padding: 3px 9px;
   border-radius: var(--koty-radius-pill);
   background: var(--koty-paper);
   border: 1px solid var(--koty-line);
   color: var(--koty-ink-2);
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
 }
 .topic::before {
   content: "";
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   background: var(--koty-accent);
   display: inline-block;
+  flex-shrink: 0;
+}
+@media (max-width: 760px) {
+  .topic {
+    font-size: 10px;
+    padding: 2px 7px;
+    gap: 4px;
+  }
+  .topic::before {
+    width: 4px;
+    height: 4px;
+  }
 }
 .topicCore {
   background: var(--koty-accent-soft);
