@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { ApplyForm } from "./_components/ApplyForm";
 import { FAQ } from "./_components/FAQ";
 import { FAQ_ITEMS } from "./_components/faq-items";
@@ -26,11 +26,15 @@ import styles from "./page.module.css";
 
 const SITE_URL = "https://sashkoratushnyi.com";
 const MENTOR_URL = `${SITE_URL}/mentor`;
-const OG_IMAGE = "/og-mentor.png";
+const CAREER_START_YEAR = 2018;
+const yearsExp = new Date().getFullYear() - CAREER_START_YEAR;
+
+export const viewport: Viewport = {
+  themeColor: "#fffafc",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  themeColor: "#fffafc",
   title: "Менторство та навчання front-end та веб-розробці",
   description:
     "Менторство та навчання front-end та веб-розробка: JS, TS, React. Онлайн або офлайн м. Кременчук.",
@@ -69,21 +73,12 @@ export const metadata: Metadata = {
     siteName: "sashkoratushnyi.com",
     type: "website",
     locale: "uk_UA",
-    images: [
-      {
-        url: OG_IMAGE,
-        width: 1200,
-        height: 630,
-        alt: "Менторство та навчання front-end та веб-розробці",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Менторство та навчання front-end та веб-розробці",
     description:
       "Менторство та навчання front-end та веб-розробка: JS, TS, React. Онлайн або офлайн м. Кременчук.",
-    images: [OG_IMAGE],
   },
 };
 
@@ -99,7 +94,7 @@ const jsonLd = {
       image: `${SITE_URL}/android-chrome-512x512.png`,
       jobTitle: "JavaScript Engineer & Frontend Mentor",
       description:
-        "JavaScript-інженер з Кременчука з 8+ роками комерційного досвіду. Викладає фронтенд з 2020 року.",
+        `JavaScript-інженер з Кременчука з ${yearsExp}+ роками комерційного досвіду. Викладає фронтенд з 2020 року.`,
       knowsAbout: [
         "JavaScript",
         "TypeScript",
@@ -247,7 +242,7 @@ export default function MentorPage() {
             <span className={styles.accentDot}>.</span>
           </h1>
           <p className={styles.heroLede}>
-            Привіт. Я Олександр — JavaScript-інженер з Кременчука з 8+ роками комерційного досвіду.
+            Привіт. Я Олександр — JavaScript-інженер з Кременчука з {yearsExp}+ роками комерційного досвіду.
             Викладаю фронтенд з 2020 року, мої студенти працюють в українських і міжнародних
             компаніях.
           </p>
@@ -259,7 +254,7 @@ export default function MentorPage() {
             </span>
             <span className={`${styles.chip} ${styles.chipViolet}`}>📍 Кременчук — офлайн</span>
             <span className={styles.chip}>JS · TS · React</span>
-            <span className={styles.chip}>8+ років досвіду</span>
+            <span className={styles.chip}>{yearsExp}+ років досвіду</span>
           </div>
 
           <div className={styles.heroCta}>
