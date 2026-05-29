@@ -29,7 +29,7 @@ import {
 } from "./_components/icons";
 import styles from "./page.module.css";
 
-const SITE_URL = "https://sashkoratushnyi.com";
+const SITE_URL = "https://www.sashkoratushnyi.com";
 const MENTOR_URL = `${SITE_URL}/mentor`;
 const CAREER_START_YEAR = 2018;
 const yearsExp = new Date().getFullYear() - CAREER_START_YEAR;
@@ -221,7 +221,7 @@ export default function MentorPage() {
 
       {/* === Social bar === */}
       <div className={styles.socialBar}>
-        <a href="https://sashkoratushnyi.com" className={`${styles.socialLink} ${styles.socialLinkWeb}`}>
+        <a href="https://www.sashkoratushnyi.com" className={`${styles.socialLink} ${styles.socialLinkWeb}`}>
           <IconGlobe /> sashkoratushnyi.com
         </a>
         <a href="https://github.com/a1exalexander" target="_blank" rel="noreferrer" className={`${styles.socialLink} ${styles.socialLinkGh}`}>

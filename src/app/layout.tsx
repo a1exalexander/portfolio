@@ -1,9 +1,14 @@
+import type { Metadata } from 'next';
 import { GeistSans } from 'geist/font/sans';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { PHProvider } from './providers';
 import { ThemeProvider } from '@/context';
 import { Footer } from '../components';
 import './globals.css';
+
+export const metadata: Metadata = {
+  metadataBase: new URL('https://www.sashkoratushnyi.com'),
+};
 
 const themeScript = `
 (function() {

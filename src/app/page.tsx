@@ -98,6 +98,7 @@ import styles from "./page.module.css";
 export const metadata: Metadata = {
   title: "Oleksandr Ratushnyi — JavaScript Developer",
   description: "JavaScript Developer from Ukraine",
+  alternates: { canonical: "/" },
 };
 
 export const revalidate = 604800; // 1 week

@@ -10,6 +10,7 @@ import styles from "./page.module.css";
 export const metadata: Metadata = {
   title: "Blog | Oleksandr Ratushnyi",
   description: "Articles about web development, JavaScript, React, and more.",
+  alternates: { canonical: "/blog" },
 };
 
 export default async function BlogPage({
