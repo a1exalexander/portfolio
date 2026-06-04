@@ -211,7 +211,7 @@ export default function MentorPage() {
       <header className={styles.topbar}>
         <a href="/" className={styles.brandLockup}>
           <KotyMark className={styles.brandMark} />
-          Sashko Ratushnyi<span className={styles.brandDot}>.</span>
+          Oleksandr Ratushnyi<span className={styles.brandDot}>.</span>
         </a>
         <div className={styles.crumb}>
           <a href="/">/</a>
@@ -242,7 +242,7 @@ export default function MentorPage() {
       <section className={styles.hero}>
         <div>
           <FadeUp inView={false} delay={0}>
-            <div className={styles.kicker}>Сашко Ратушний · front-end developer</div>
+            <div className={styles.kicker}>Олександр Ратушний · front-end developer</div>
           </FadeUp>
           <FadeUp inView={false} delay={0.1}>
             <h1 className={styles.heroTitle}>
