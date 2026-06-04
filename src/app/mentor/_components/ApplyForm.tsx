@@ -12,6 +12,14 @@ import {
   validateApplyForm,
 } from "@/lib/mentor-apply-validation";
 
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}
+
+const ADS_CONVERSION_ID = "AW-18213227098/osZiCKqp3LgcENqU3-xD";
+
 const LEVELS = [
   { id: "zero", label: "З нуля", sub: "ніколи не писав коду" },
   { id: "self", label: "Сам вчуся", sub: "курси, туторіали, петпроекти" },
@@ -72,6 +80,11 @@ export const ApplyForm = () => {
         level: data.level || null,
         format: data.format || null,
         contact_method: data.email.trim() ? "email" : data.telegram.trim() ? "telegram" : "phone",
+      });
+      window.gtag?.("event", "conversion", {
+        send_to: ADS_CONVERSION_ID,
+        value: 1.0,
+        currency: "UAH",
       });
       setSent(true);
     } catch {
