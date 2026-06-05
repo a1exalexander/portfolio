@@ -353,7 +353,6 @@ export function ServicesForm() {
             </>
           )}
         </button>
-        <span className={styles.formStatus}>Без спаму · відповідаю протягом 1 робочого дня</span>
       </div>
     </form>
   );

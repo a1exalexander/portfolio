@@ -1,17 +1,21 @@
 import type { Metadata, Viewport } from "next";
+import { SiJavascript, SiTypescript } from "react-icons/si";
 import { AnimatedCard } from "../mentor/_components/AnimatedCard";
 import { FadeUp } from "../mentor/_components/FadeUp";
 import { FadeUpLi } from "../mentor/_components/FadeUpLi";
 import { MagnetButton } from "../mentor/_components/MagnetButton";
 import { PhoneLink } from "../mentor/_components/PhoneLink";
+import { BootLines } from "./_components/BootLines";
 import { ContactCTA } from "./_components/ContactCTA";
+import { CRTOverlay } from "./_components/CRTOverlay";
 import { FAQ } from "./_components/FAQ";
 import { FAQ_ITEMS } from "./_components/faq-items";
-import { GrainOverlay } from "./_components/GrainOverlay";
 import { ProjectsCarousel } from "./_components/ProjectsCarousel";
 import { ServicesForm } from "./_components/ServicesForm";
 import { SERVICES } from "./_components/services-data";
+import { StatusBar } from "./_components/StatusBar";
 import { TechStack } from "./_components/TechStack";
+import { Typewriter } from "./_components/Typewriter";
 import {
   IconArrowR,
   IconGh,
@@ -34,7 +38,7 @@ const PROCESS = [
   {
     num: "01",
     title: "Брифінг",
-    text: "Обговорюємо ідею, цілі, обсяг і терміни. Безкоштовно та без зобовʼязань.",
+    text: "Обговорюємо ідею, цілі, обсяг і терміни.",
   },
   {
     num: "02",
@@ -44,33 +48,34 @@ const PROCESS = [
   {
     num: "03",
     title: "Дизайн / прототип",
-    text: "Структура та UI/UX за потреби — узгоджуємо напрямок до старту коду.",
+    text: "Структура та UI/UX за потреби — узгоджуємо напрямок.",
   },
   {
     num: "04",
     title: "Розробка",
-    text: "Ітеративна розробка з прозорими апдейтами на кожному етапі.",
+    text: "Розробка з прозорими апдейтами на кожному етапі.",
   },
   {
     num: "05",
     title: "QA та запуск",
-    text: "Тестування, деплой і передача коду та всіх прав вам.",
+    text: "Тестування, розгортання і передача коду та всіх прав.",
   },
 ];
 
 export const viewport: Viewport = {
-  themeColor: "#f7f6fc",
+  themeColor: "#1c1b26",
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Послуги веброзробки — Олександр Ратушний",
+  title: "Послуги веброзробки — сайти, застосунки",
   description:
-    "Послуги веброзробки від Олександра Ратушного — JavaScript/TypeScript інженера, ex-CTO агенції Merge. Сайти, веб-застосунки, розробка нових функцій та підтримка проєктів. У веброзробці з 2018 року.",
+    "Послуги веброзробки: сайти, веб-застосунки, розробка нових функцій та підтримка проєктів. JavaScript/TypeScript інженер з Кременчука, у веброзробці з 2018 року, працюю віддалено з усім світом.",
   keywords: [
     "веброзробка",
     "розробка сайтів",
     "веб-застосунки",
+    "Webflow",
     "frontend",
     "фронтенд",
     "full-stack",
@@ -81,6 +86,8 @@ export const metadata: Metadata = {
     "односторінковий сайт",
     "корпоративний сайт",
     "CMS",
+    "веброзробка Кременчук",
+    "веброзробка Україна",
     "Олександр Ратушний",
   ],
   authors: [{ name: "Олександр Ратушний", url: SITE_URL }],
@@ -99,7 +106,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Послуги веброзробки — Олександр Ратушний",
     description:
-      "Сайти, веб-застосунки, нові функції та підтримка проєктів. JavaScript/TypeScript інженер, ex-CTO агенції Merge, з досвідом у SaaS, fintech, crypto та wealth management.",
+      "Сайти, веб-застосунки, нові функції та підтримка проєктів. JavaScript/TypeScript інженер з Кременчука, з досвідом у SaaS, fintech, crypto та wealth management.",
     url: "/services",
     siteName: "sashkoratushnyi.com",
     type: "website",
@@ -109,7 +116,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Послуги веброзробки — Олександр Ратушний",
     description:
-      "Послуги веброзробки: сайти, веб-застосунки, розробка нових функцій та підтримка проєктів.",
+      "Послуги веброзробки: сайти, веб-застосунки, інтернет-магазини, розробка нових функцій та підтримка проєктів.",
   },
 };
 
@@ -124,6 +131,12 @@ const jsonLd = {
       url: SITE_URL,
       image: `${SITE_URL}/android-chrome-512x512.png`,
       jobTitle: "JavaScript Engineer",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Кременчук",
+        addressRegion: "Полтавська область",
+        addressCountry: "UA",
+      },
       sameAs: [GITHUB, LINKEDIN, TELEGRAM, "https://www.instagram.com/a1exalexander/"],
     },
     {
@@ -134,7 +147,7 @@ const jsonLd = {
       serviceType: "Web development",
       provider: { "@id": `${SITE_URL}/#person` },
       areaServed: { "@type": "Place", name: "Worldwide (online)" },
-      availableLanguage: ["uk", "en"],
+      availableLanguage: ["uk"],
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "Послуги веброзробки",
@@ -167,6 +180,37 @@ function Plus({ pos }: { pos: "tl" | "tr" | "bl" | "br" }) {
   return <span className={`${styles.plus} ${styles[pos]}`} aria-hidden="true" />;
 }
 
+function Prompt({ cmd }: { cmd: string }) {
+  return (
+    <span className={styles.prompt}>
+      <span className={styles.promptUser}>sashko@portfolio</span>
+      <span className={styles.promptColon}>:</span>
+      <span className={styles.promptPath}>~/services</span>
+      <span className={styles.promptSign}>$</span>
+      <Typewriter
+        text={cmd}
+        inView
+        speed={36}
+        cursor={false}
+        className={styles.promptCmd}
+      />
+    </span>
+  );
+}
+
+function TermBar({ title }: { title: string }) {
+  return (
+    <div className={styles.termBar}>
+      <span className={styles.termDots} aria-hidden="true">
+        <i />
+        <i />
+        <i />
+      </span>
+      <span className={styles.termTitle}>{title}</span>
+    </div>
+  );
+}
+
 export default function ServicesPage() {
   return (
     <main className={styles.page} lang="uk">
@@ -174,7 +218,7 @@ export default function ServicesPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <GrainOverlay />
+      <CRTOverlay />
       <div className={styles.frame}>
         {/* === Header === */}
         <header className={styles.siteHead}>
@@ -184,56 +228,82 @@ export default function ServicesPage() {
                 <KotyMark />
               </span>
               <span className={styles.who}>
-                <b>Олександр Ратушний</b>
-                <span>веб-інженер · JS / TS</span>
+                <b>sashko@portfolio</b>
+                <span>~/services · JS / TS</span>
               </span>
             </a>
             <nav className={styles.nav} aria-label="Основна навігація">
               <a className={`${styles.navlink} ${styles.hideSm}`} href="#services">
-                Послуги
+                services
+              </a>
+              <a className={`${styles.navlink} ${styles.hideSm}`} href="#process">
+                process
               </a>
               <a className={`${styles.navlink} ${styles.hideSm}`} href="#work">
-                Проєкти
+                projects
               </a>
               <a className={`${styles.navlink} ${styles.hideSm}`} href="#why">
-                Чому я
+                about
               </a>
               <a className={`${styles.navlink} ${styles.hideSm}`} href="#faq">
-                FAQ
+                faq
               </a>
               <ContactCTA className={`${styles.btn} ${styles.btnPrimary} ${styles.btnSm}`}>
-                Почати проєкт <IconArrowR className={styles.arr} />
+                ./contact <IconArrowR className={styles.arr} />
               </ContactCTA>
             </nav>
           </div>
         </header>
 
-        {/* === Hero === */}
+        {/* === Hero (terminal window) === */}
         <section className={`${styles.section} ${styles.hero}`} id="top">
           <div className={styles.gridBg} aria-hidden="true" />
           <div className={styles.heroGlow} aria-hidden="true" />
           <Plus pos="tl" />
           <Plus pos="tr" />
-          <FadeUp className={styles.eyebrowRow} inView={false}>
-            <span className={styles.kicker}>
-              <span className={styles.dot} /> Послуги веброзробки
-            </span>
-          </FadeUp>
-          <div className={styles.heroGrid}>
-            <div>
-              <FadeUp inView={false} delay={0.06}>
-                <h1 className={styles.hHero}>
-                  Розробка сайтів і веб-застосунків на{" "}
-                  <span className={styles.accentword}>JavaScript та TypeScript.</span>
-                </h1>
-              </FadeUp>
-              <FadeUp inView={false} delay={0.16}>
-                <p className={styles.lede}>
-                  Створюю красиві та функціональні вебпродукти — front-end і full-stack. Розробляю
-                  проєкти з нуля та підсилюю наявні команди. У веброзробці з 2018 року.
-                </p>
-              </FadeUp>
-              <FadeUp inView={false} delay={0.26} className={styles.ctaRow}>
+          <FadeUp className={styles.termWin} inView={false}>
+            <TermBar title="sashko@portfolio: ~/services — zsh" />
+            <div className={styles.termBody}>
+              <BootLines />
+              <div className={styles.heroCmd}>
+                <Typewriter text="$ ./services.sh --hire" delay={1500} speed={42} />
+              </div>
+              <h1 className={styles.hHero}>
+                Розробка сайтів і веб-застосунків.
+              </h1>
+              <dl className={styles.heroSpecs}>
+                <div>
+                  <dt>language</dt>
+                  <dd>
+                    <span className={styles.jsWord}>
+                      <SiJavascript aria-hidden="true" />
+                      JavaScript
+                    </span>
+                    {" · "}
+                    <span className={styles.tsWord}>
+                      <SiTypescript aria-hidden="true" />
+                      TypeScript
+                    </span>
+                  </dd>
+                </div>
+                <div>
+                  <dt>experience</dt>
+                  <dd>
+                    <b>2018</b> → present
+                  </dd>
+                </div>
+                <div>
+                  <dt>industries</dt>
+                  <dd>SaaS · fintech · crypto · wealth management</dd>
+                </div>
+                <div>
+                  <dt>location</dt>
+                  <dd>
+                    <b>Кременчук</b>, Україна 🇺🇦 · працюю віддалено
+                  </dd>
+                </div>
+              </dl>
+              <div className={styles.ctaRow}>
                 <MagnetButton
                   href="#contact"
                   className={`${styles.btn} ${styles.btnPrimary} ${styles.btnMagnet}`}
@@ -243,29 +313,9 @@ export default function ServicesPage() {
                 <a className={`${styles.btn} ${styles.btnGhost}`} href="#services">
                   Дивитись послуги
                 </a>
-              </FadeUp>
+              </div>
             </div>
-            <FadeUp inView={false} delay={0.34}>
-              <aside className={styles.heroMeta}>
-                <div className={styles.metaBlock}>
-                  <span className={styles.mono}>Досвід з</span>
-                  <div className={styles.val}>
-                    <b>2018</b> року у веброзробці.
-                  </div>
-                </div>
-                <div className={styles.metaBlock}>
-                  <span className={styles.mono}>Індустрії</span>
-                  <div className={styles.val}>SaaS · Fintech · Crypto · Wealth management</div>
-                </div>
-                <div className={styles.metaBlock}>
-                  <span className={styles.mono}>Зараз</span>
-                  <div className={styles.val}>
-                    Front-end у <b>Namecheap</b> · раніше CTO в <b>Merge</b>.
-                  </div>
-                </div>
-              </aside>
-            </FadeUp>
-          </div>
+          </FadeUp>
         </section>
 
         {/* === Tech stack === */}
@@ -273,18 +323,15 @@ export default function ServicesPage() {
           <Plus pos="tl" />
           <Plus pos="tr" />
           <FadeUp className={styles.eyebrowRow}>
-            <span className={styles.kicker}>
-              <span className={styles.dot} /> Стек
-            </span>
+            <Prompt cmd="cat stack.txt" />
             <span className={styles.mono}>front-end · full-stack</span>
           </FadeUp>
           <FadeUp>
             <h2 className={styles.hSection} style={{ maxWidth: "20ch" }}>
-              Технології, з якими я працюю.
+              Технології, з якими я працюю
             </h2>
             <p className={styles.lede} style={{ marginTop: 18 }}>
-              Великий фан React, NestJS і PostgreSQL — але підбираю інструменти під задачу, а не
-              навпаки.
+              Великий фан React і NestJS — але підбираю інструменти під задачу, а не навпаки.
             </p>
           </FadeUp>
           <TechStack />
@@ -295,14 +342,12 @@ export default function ServicesPage() {
           <Plus pos="tl" />
           <Plus pos="tr" />
           <FadeUp className={styles.eyebrowRow}>
-            <span className={styles.kicker}>
-              <span className={styles.dot} /> Послуги
-            </span>
+            <Prompt cmd="ls ./services" />
             <span className={styles.mono}>01 — 04 · оберіть, щоб отримати оцінку</span>
           </FadeUp>
           <FadeUp>
             <h2 className={styles.hSection} style={{ maxWidth: "18ch" }}>
-              Чотири напрями веброзробки.
+              Чотири напрями веброзробки
             </h2>
           </FadeUp>
           <div className={styles.svcRack}>
@@ -321,8 +366,6 @@ export default function ServicesPage() {
                     <li key={g}>{g}</li>
                   ))}
                 </ul>
-                <div className={styles.label}>Для кого</div>
-                <p className={styles.who}>{s.who}</p>
                 <div className={styles.svcFoot}>
                   <ContactCTA className={styles.quoteBtn} service={s.value}>
                     Отримати оцінку <IconArrowR className={styles.arr} />
@@ -338,14 +381,12 @@ export default function ServicesPage() {
           <Plus pos="tl" />
           <Plus pos="tr" />
           <FadeUp className={styles.eyebrowRow}>
-            <span className={styles.kicker}>
-              <span className={styles.dot} /> Процес
-            </span>
+            <Prompt cmd="man workflow" />
             <span className={styles.mono}>5 кроків · прозоро</span>
           </FadeUp>
           <FadeUp>
             <h2 className={styles.hSection} style={{ maxWidth: "16ch" }}>
-              Як ми працюємо над проєктом.
+              Як ми працюємо над проєктом
             </h2>
           </FadeUp>
           <ol className={styles.steps}>
@@ -366,14 +407,12 @@ export default function ServicesPage() {
           <Plus pos="tl" />
           <Plus pos="tr" />
           <FadeUp className={styles.eyebrowRow}>
-            <span className={styles.kicker}>
-              <span className={styles.dot} /> Проєкти
-            </span>
+            <Prompt cmd="git log --oneline --projects" />
             <span className={styles.mono}>20+ реалізованих</span>
           </FadeUp>
           <FadeUp>
             <h2 className={styles.hSection} style={{ maxWidth: "20ch" }}>
-              Над чим я працював.
+              Над чим я працював
             </h2>
             <p className={styles.lede} style={{ marginTop: 18 }}>
               Клієнтські продукти в агенціях Merge та Mavinx — і власні pet-проєкти. SaaS, fintech,
@@ -389,19 +428,14 @@ export default function ServicesPage() {
           <Plus pos="tr" />
           <div className={styles.whyGrid}>
             <FadeUp className={styles.whyIntro}>
-              <span className={styles.kicker}>
-                <span className={styles.dot} /> Чому саме я
-              </span>
-              <h2 className={styles.hSection}>Один інженер для повного циклу розробки.</h2>
+              <Prompt cmd="whoami" />
+              <h2 className={styles.hSection}>Олександр Ратушний - веб-розробник</h2>
               <p>
-                Розробляю вебпродукти з 2018 року. Був CTO та співзасновником агенції Merge, зараз —
-                front-end інженер у Namecheap. Маю досвід у SaaS, fintech, crypto та wealth
-                management — від інтерфейсів до бекенду й API.
-              </p>
-              <p>
-                Працюю самостійно та у складі команд. Навчаю й менторю фронтенд-розробників, тож
-                приділяю особливу увагу читабельності коду, документації та прозорості технічних
-                рішень.
+                Розробляю вебпродукти з 2018 року. Маю досвід у SaaS, fintech, crypto та wealth
+                management — від інтерфейсів до бекенду й API.{" "}
+                <a href="/" className={styles.monoLink}>
+                  Детальніше про мене →
+                </a>
               </p>
             </FadeUp>
             <FadeUp delay={0.12}>
@@ -435,13 +469,6 @@ export default function ServicesPage() {
                   </div>
                 </a>
               </div>
-              <div className={styles.availCard}>
-                <span className={styles.availDot} aria-hidden="true" />
-                <div>
-                  <strong>Доступний для нових проєктів</strong>
-                  <span>Зазвичай відповідаю протягом 24 годин · 🇺🇦 працюю з усім світом</span>
-                </div>
-              </div>
             </FadeUp>
           </div>
         </section>
@@ -451,9 +478,7 @@ export default function ServicesPage() {
           <Plus pos="tl" />
           <Plus pos="tr" />
           <FadeUp className={styles.eyebrowRow}>
-            <span className={styles.kicker}>
-              <span className={styles.dot} /> FAQ
-            </span>
+            <Prompt cmd="./faq --list" />
             <span className={styles.mono}>
               питання? →{" "}
               <a className={styles.monoLink} href={TELEGRAM} target="_blank" rel="noreferrer">
@@ -463,7 +488,7 @@ export default function ServicesPage() {
           </FadeUp>
           <FadeUp>
             <h2 className={styles.hSection} style={{ maxWidth: "14ch" }}>
-              Часті питання.
+              Часті питання
             </h2>
           </FadeUp>
           <FadeUp delay={0.08}>
@@ -471,16 +496,14 @@ export default function ServicesPage() {
           </FadeUp>
         </section>
 
-        {/* === Contact === */}
+        {/* === Contact (terminal window) === */}
         <section className={`${styles.section} ${styles.contact}`} id="contact">
           <Plus pos="tl" />
           <Plus pos="tr" />
           <div className={styles.contactGrid}>
             <FadeUp className={styles.contactAside}>
-              <span className={styles.kicker}>
-                <span className={styles.dot} /> Почати проєкт
-              </span>
-              <h2 className={styles.hSection}>Опишіть свій проєкт.</h2>
+              <Prompt cmd="./contact --send" />
+              <h2 className={styles.hSection}>Опишіть свій проєкт</h2>
               <p>
                 Що більше деталей, то точніша попередня оцінка. Посилання та терміни допоможуть
                 відповісти конкретніше.
@@ -495,10 +518,13 @@ export default function ServicesPage() {
                 <PhoneLink />
               </div>
               <p className={styles.note}>
-                Базуюсь в Україні 🇺🇦 · працюю з командами по всьому світу.
+                Базуюсь в м. Кременчук, Україна 🇺🇦 · працюю по всьому світу.
               </p>
             </FadeUp>
-            <ServicesForm />
+            <FadeUp delay={0.1} className={styles.termWin}>
+              <TermBar title="contact — new message" />
+              <ServicesForm />
+            </FadeUp>
           </div>
         </section>
 
@@ -542,13 +568,14 @@ export default function ServicesPage() {
             </div>
           </div>
           <div className={styles.footBottom}>
-            <span className={styles.mono}>© 2026 Олександр Ратушний · веб-інженер</span>
+            <span className={styles.mono}>$ exit · © 2026 Олександр Ратушний · веб-інженер</span>
             <ContactCTA className={styles.quoteBtn} style={{ width: "auto" }}>
               Почати проєкт <IconArrowR className={styles.arr} />
             </ContactCTA>
           </div>
         </footer>
       </div>
+      <StatusBar />
     </main>
   );
 }

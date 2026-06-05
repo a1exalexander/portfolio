@@ -8,17 +8,22 @@ import { PROJECTS, statusLabel } from "./projects-data";
 
 const SPEED = 38; // px per second
 
-// Seamless auto-scrolling marquee of real projects. Mechanics (seamless wrap,
-// pause on hover/focus, touch drag, BFCache reset) ported from the /mentor
-// Testimonials carousel.
 export const ProjectsCarousel = () => {
   const reduce = useReducedMotion();
   const x = useMotionValue(0);
   const trackRef = useRef<HTMLDivElement>(null);
   const [paused, setPaused] = useState(false);
+
+  // touch drag
   const touchStartXRef = useRef<number>(0);
   const motionStartXRef = useRef<number>(0);
   const isTouchRef = useRef(false);
+
+  // mouse drag
+  const isDraggingRef = useRef(false);
+  const mouseStartXRef = useRef(0);
+  const mouseMotionStartRef = useRef(0);
+  const didDragRef = useRef(false);
 
   useEffect(() => {
     const handlePageShow = (e: PageTransitionEvent) => {
@@ -74,17 +79,50 @@ export const ProjectsCarousel = () => {
     setPaused(false);
   };
 
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (isTouchRef.current) return;
+    isDraggingRef.current = true;
+    didDragRef.current = false;
+    mouseStartXRef.current = e.clientX;
+    mouseMotionStartRef.current = x.get();
+    setPaused(true);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDraggingRef.current) return;
+    const wrap = getWrapDistance();
+    if (wrap <= 0) return;
+    const dx = e.clientX - mouseStartXRef.current;
+    if (Math.abs(dx) > 3) didDragRef.current = true;
+    let next = mouseMotionStartRef.current + dx;
+    while (next > 0) next -= wrap;
+    while (-next >= wrap) next += wrap;
+    x.set(next);
+  };
+
+  const handleMouseUp = () => {
+    isDraggingRef.current = false;
+    setPaused(false);
+  };
+
+  const handleLinkClick = (e: React.MouseEvent) => {
+    if (didDragRef.current) e.preventDefault();
+  };
+
   const cards = [...PROJECTS, ...PROJECTS];
 
   return (
     <div
       className={styles.carouselWrap}
-      onMouseEnter={() => {
-        if (!isTouchRef.current) setPaused(true);
-      }}
       onMouseLeave={() => {
-        if (!isTouchRef.current) setPaused(false);
+        if (!isTouchRef.current) {
+          isDraggingRef.current = false;
+          setPaused(false);
+        }
       }}
+      onMouseDown={handleMouseDown}
+      onMouseMove={handleMouseMove}
+      onMouseUp={handleMouseUp}
       onFocusCapture={() => setPaused(true)}
       onBlurCapture={() => setPaused(false)}
       onTouchStart={handleTouchStart}
@@ -103,13 +141,13 @@ export const ProjectsCarousel = () => {
             return (
               <CardTag
                 {...linkProps}
-                className={`${styles.pcard} ${styles[`tone_${p.companyTone}`]}`}
+                className={styles.pcard}
                 key={`${p.title}-${i}`}
                 aria-hidden={dup}
                 tabIndex={dup ? -1 : undefined}
+                onClick={handleLinkClick}
               >
                 <div className={styles.pcardTop}>
-                  <span className={styles.companyChip}>{p.company}</span>
                   <span className={`${styles.statusBadge} ${styles[`st_${p.status}`]}`}>
                     {statusLabel(p.status)}
                   </span>

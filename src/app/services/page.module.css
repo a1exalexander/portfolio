@@ -1,50 +1,70 @@
 /* =========================================================================
    Oleksandr Ratushnyi — Web Development Services (/services)
-   "Engineer" identity: indigo/violet primary + electric-lime pop accent on a
-   warm-white, dot-grid base with film grain. Sibling of the /mentor page but
-   with its own techy, energetic character. All tokens & selectors are scoped
-   to .page so nothing leaks into the global stylesheet.
+   CLI / terminal theme on a dark #22212c base. Simple, flat colour scheme:
+   a single purple accent for all chrome (brand, CTA, focus, card/section
+   highlights) — no per-section rainbow, no neon glow. A few semantic colours
+   stay (green = ok/live, yellow = demo, red = errors) plus the classic
+   terminal traffic-light dots. Scanlines + grain + vignette via <CRTOverlay/>.
+   All tokens & selectors are scoped to .page so nothing leaks globally.
    ========================================================================= */
 
 .page {
-  --bg: #f7f6fc; /* soft warm-white with a lavender hint */
-  --surface: #ffffff;
-  --surface-2: #faf9ff; /* faint lavender surface for alternating sections */
-  --ink: #060132; /* Midnight — primary text */
-  --ink-2: #3a3556; /* secondary text */
-  --muted: #7c7993; /* tertiary / mono labels */
-  --line: rgba(6, 1, 50, 0.12);
-  --line-soft: rgba(6, 1, 50, 0.06);
-  --line-strong: rgba(6, 1, 50, 0.24);
+  /* ---- Dracula Pro — backgrounds (dark) -------------------------------- */
+  --bg: #1c1b26; /* Dracula Pro background (darkened) */
+  --bg-dark: #17161d; /* bgdark — alt sections / inputs */
+  --bg-darker: #0b0b0f; /* bgdarker — status bar / deepest */
+  --surface: #2e2b3b; /* bglight — lifted panel */
+  --surface-2: #393649; /* bglighter — chips / inputs-adjacent */
+  --panel-2: #17161d; /* darker alt-section bg */
 
-  --accent: #4c3af9; /* Violet / indigo — primary action */
-  --accent-deep: #1806c7; /* deep indigo */
-  --accent-tint: color-mix(in oklab, var(--accent), #ffffff 86%);
-  --accent-tint-2: color-mix(in oklab, var(--accent), #ffffff 72%);
-  --lavender: #e7e3fe;
+  /* ---- Text ------------------------------------------------------------ */
+  --text: #f8f8f2; /* Dracula Pro foreground */
+  --text-dim: #c8c3e8; /* secondary */
+  --muted: #7970a9; /* Dracula Pro comment — labels / tertiary */
+  --selection: #454158; /* Dracula Pro selection */
 
-  --lime: #78ff1c; /* electric-lime energetic pop */
-  --lime-deep: #357a05; /* readable lime for text on light surfaces */
-  --lime-tint: color-mix(in oklab, var(--lime), #ffffff 80%);
+  /* ---- Accent + semantic colours (simple, flat — no neon) -------------- */
+  --purple: #9580ff;
+  --pink: #ff80bf;
+  --cyan: #80ffea;
+  --green: #8aff80;
+  --yellow: #ffff80;
+  --orange: #ffca80;
+  --red: #ff9580;
 
-  --midnight: #060132; /* dark feature surfaces */
-  --on-accent: #ffffff;
+  /* one accent for the whole page — brand, CTA, focus, every highlight */
+  --primary: var(--accent);
+  --accent: #f8f8f2;
+
+  /* legacy aliases all collapse to the single accent */
+  --gold: var(--accent);
+  --plum: var(--accent);
+  --maroon: var(--accent);
+  --rose: var(--accent);
+  --amber: var(--accent);
+
+  --line: rgba(248, 248, 242, 0.12);
+  --line-soft: rgba(248, 248, 242, 0.06);
+  --line-strong: rgba(248, 248, 242, 0.22);
+  --glow: 0 0 0 transparent; /* neon removed; no-op kept for old references */
+  --sunset: linear-gradient(var(--accent), var(--accent)); /* was rainbow; now flat accent */
 
   --maxw: 1240px;
   --pad: clamp(20px, 4vw, 56px);
 
   --font-sans: var(--font-manrope), system-ui, sans-serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, "SF Mono", monospace;
+  --font-display: var(--font-mono);
 
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 
   position: relative;
-  z-index: 1;
+  z-index: 0;
   overflow-x: clip;
   background: var(--bg);
-  color: var(--ink);
+  color: var(--text);
   font-family: var(--font-sans);
-  font-size: 17px;
+  font-size: 16px;
   line-height: 1.62;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -58,7 +78,7 @@
 
 .page ::selection {
   background: var(--accent);
-  color: var(--on-accent);
+  color: var(--bg);
 }
 
 .page a {
@@ -67,53 +87,83 @@
 }
 
 .page :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--primary);
   outline-offset: 2px;
   border-radius: 3px;
 }
 
-/* faint vertical guide columns drawn behind the frame on wide screens */
-.page::before {
-  content: "";
+/* ---- CRT overlay layers (rendered by <CRTOverlay/>) ---------------------- */
+.crt {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(
-    90deg,
-    transparent 0,
-    transparent calc(50% - var(--maxw) / 2 - 1px),
-    var(--line-soft) calc(50% - var(--maxw) / 2 - 1px),
-    var(--line-soft) calc(50% - var(--maxw) / 2),
-    transparent calc(50% - var(--maxw) / 2)
+  z-index: 4;
+}
+.crtScan {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.26) 0 1px,
+    transparent 1px 3px
   );
-  z-index: 0;
+  opacity: 0.55;
 }
-
-/* film-grain overlay (paired with the #services-grain SVG filter) */
-.grainOverlay {
-  position: fixed;
+.crtGrain {
+  position: absolute;
   inset: 0;
-  pointer-events: none;
-  z-index: 3;
-  opacity: 0.06;
   filter: url(#services-grain);
-  mix-blend-mode: multiply;
+  opacity: 0.05;
+  mix-blend-mode: screen;
+}
+.crtVignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(125% 125% at 50% 48%, transparent 52%, rgba(0, 0, 0, 0.62) 100%);
+}
+.crtFlicker {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.02);
+  animation: crtFlicker 5s steps(40) infinite;
+}
+@keyframes crtFlicker {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  20% {
+    opacity: 0.4;
+  }
+  35% {
+    opacity: 0.65;
+  }
+  50% {
+    opacity: 0.45;
+  }
+  70% {
+    opacity: 0.6;
+  }
+  85% {
+    opacity: 0.5;
+  }
 }
 
-/* ---- Frame: the centered rack with a subtle dot grid --------------------- */
+/* ---- Frame --------------------------------------------------------------- */
 .frame {
   max-width: var(--maxw);
   margin: 0 auto;
-  background-image: radial-gradient(circle, var(--line-soft) 1px, transparent 1.5px),
-    linear-gradient(var(--surface), var(--surface));
-  background-size: 26px 26px, auto;
+  background: var(--bg);
   border-left: 1px solid var(--line);
   border-right: 1px solid var(--line);
   position: relative;
 }
 
 .section {
-  padding: clamp(56px, 8vw, 108px) var(--pad);
+  padding: clamp(56px, 8vw, 104px) var(--pad);
   border-bottom: 1px solid var(--line);
   position: relative;
   scroll-margin-top: 76px;
@@ -128,7 +178,7 @@
   width: 11px;
   height: 11px;
   color: var(--accent);
-  opacity: 0.55;
+  opacity: 0.5;
   z-index: 3;
 }
 .plus::before,
@@ -168,40 +218,47 @@
   right: -6px;
 }
 
-/* ---- Monospace utility text ---------------------------------------------- */
+/* ---- Mono utility / prompt ---------------------------------------------- */
 .mono {
   font-family: var(--font-mono);
   font-size: 12px;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--muted);
   font-weight: 500;
 }
 .monoLink {
-  color: var(--accent-deep);
-  border-bottom: 1px solid color-mix(in oklab, var(--accent), transparent 50%);
+  color: var(--accent);
+  border-bottom: 1px solid color-mix(in oklab, var(--accent), transparent 55%);
   transition: border-color 0.15s;
 }
 .monoLink:hover {
   border-color: var(--accent);
 }
-.kicker {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
+
+.prompt {
   font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--accent-deep);
-  font-weight: 600;
+  font-size: 12.5px;
+  letter-spacing: 0.01em;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
 }
-.kicker .dot {
-  width: 7px;
-  height: 7px;
-  background: var(--accent);
-  border-radius: 50%;
-  box-shadow: 0 0 0 4px var(--accent-tint);
+.promptUser {
+  color: var(--green);
+}
+.promptColon {
+  color: var(--muted);
+}
+.promptPath {
+  color: var(--text-dim);
+}
+.promptSign {
+  color: var(--muted);
+  margin: 0 6px 0 4px;
+}
+.promptCmd {
+  color: var(--text);
 }
 
 .eyebrowRow {
@@ -210,30 +267,35 @@
   justify-content: space-between;
   gap: 16px;
   flex-wrap: wrap;
-  margin-bottom: clamp(28px, 5vw, 48px);
+  margin-bottom: clamp(28px, 5vw, 44px);
 }
 
 /* ---- Headings ------------------------------------------------------------ */
 .page :is(h1, h2, h3) {
   margin: 0;
+  font-family: var(--font-display);
   font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.04;
+  letter-spacing: -0.01em;
+  line-height: 1.08;
 }
 .hHero {
-  font-size: clamp(2.5rem, 6.2vw, 4.9rem);
+  font-size: clamp(2rem, 5vw, 3.6rem);
   font-weight: 800;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.025em;
+  line-height: 1.04;
+  color: var(--text);
 }
 .hSection {
-  font-size: clamp(1.9rem, 3.4vw, 2.8rem);
-  letter-spacing: -0.028em;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  letter-spacing: -0.02em;
+  color: var(--text);
 }
 .lede {
-  font-size: clamp(1.05rem, 1.6vw, 1.28rem);
+  font-family: var(--font-sans);
+  font-size: clamp(1.02rem, 1.5vw, 1.2rem);
   line-height: 1.55;
-  color: var(--ink-2);
-  max-width: 46ch;
+  color: var(--text-dim);
+  max-width: 52ch;
 }
 
 /* ========================================================================= */
@@ -243,8 +305,8 @@
   position: sticky;
   top: 0;
   z-index: 40;
-  background: color-mix(in oklab, var(--surface), transparent 12%);
-  backdrop-filter: saturate(1.4) blur(10px);
+  background: color-mix(in oklab, var(--bg), transparent 12%);
+  backdrop-filter: saturate(1.2) blur(10px);
   border-bottom: 1px solid var(--line);
 }
 .bar {
@@ -253,7 +315,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px var(--pad);
+  padding: 12px var(--pad);
   border-left: 1px solid var(--line);
   border-right: 1px solid var(--line);
 }
@@ -267,9 +329,9 @@
   height: 34px;
   display: grid;
   place-items: center;
-  border-radius: 10px;
-  background: var(--accent);
-  color: var(--on-accent);
+  border-radius: 8px;
+  background: var(--primary);
+  color: var(--bg);
   flex: none;
 }
 .brand .mark svg {
@@ -278,19 +340,19 @@
   display: block;
 }
 .brand .who {
-  line-height: 1.15;
+  line-height: 1.2;
+  font-family: var(--font-mono);
 }
 .brand .who b {
-  font-weight: 700;
-  font-size: 15px;
+  font-weight: 600;
+  font-size: 14px;
   letter-spacing: -0.01em;
+  color: var(--text);
 }
 .brand .who span {
   display: block;
-  font-family: var(--font-mono);
   font-size: 10.5px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  letter-spacing: 0.06em;
   color: var(--muted);
 }
 
@@ -301,29 +363,35 @@
 }
 .nav a.navlink {
   font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--ink-2);
+  font-size: 12.5px;
+  letter-spacing: 0.02em;
+  color: var(--text-dim);
   padding: 8px 12px;
-  border-radius: 7px;
+  border-radius: 6px;
   transition: color 0.15s, background 0.15s;
 }
+.nav a.navlink::before {
+  content: "./";
+  color: var(--muted);
+}
 .nav a.navlink:hover {
-  color: var(--accent-deep);
-  background: var(--accent-tint);
+  color: var(--primary);
+  background: color-mix(in oklab, var(--primary) 10%, transparent);
+}
+.nav > *:last-child {
+  margin-left: 12px;
 }
 
 /* ---- Buttons ------------------------------------------------------------- */
 .btn {
-  font-family: var(--font-sans);
+  font-family: var(--font-mono);
   font-weight: 600;
-  font-size: 15px;
+  font-size: 14px;
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 13px 22px;
-  border-radius: 11px;
+  padding: 12px 20px;
+  border-radius: 9px;
   border: 1px solid transparent;
   cursor: pointer;
   transition: background 0.15s var(--ease), color 0.15s, border-color 0.15s,
@@ -334,27 +402,29 @@
 .btn:active {
   transform: translateY(1px);
 }
-.btnPrimary {
-  background: var(--accent);
-  color: var(--on-accent);
-  box-shadow: 0 10px 26px -14px var(--accent);
+/* `.page` prefix lifts specificity above `.page a { color: inherit }` so the
+   colour sticks on anchor-based CTAs (MagnetButton) too — not just <button>.
+   The primary CTA stays purple everywhere so the brand action reads as one. */
+.page .btnPrimary {
+  background: var(--primary);
+  color: var(--bg);
+  border-color: var(--primary);
 }
-.btnPrimary:hover {
-  background: var(--accent-deep);
-  box-shadow: 0 14px 30px -12px var(--accent);
+.page .btnPrimary:hover {
+  background: color-mix(in oklab, var(--primary), white 16%);
+  color: var(--bg);
 }
 .btnMagnet {
   will-change: transform;
 }
-.btnGhost {
+.page .btnGhost {
   background: transparent;
-  color: var(--ink);
+  color: var(--accent);
   border-color: var(--line-strong);
 }
 .btnGhost:hover {
-  border-color: var(--ink);
-  background: var(--ink);
-  color: var(--surface);
+  border-color: var(--accent);
+  background: color-mix(in oklab, var(--accent) 8%, transparent);
 }
 .btn .arr {
   font-size: 15px;
@@ -365,8 +435,100 @@
   transform: translateX(3px);
 }
 .btnSm {
-  padding: 10px 16px;
-  font-size: 13.5px;
+  padding: 9px 14px;
+  font-size: 13px;
+}
+
+/* ========================================================================= */
+/* Terminal window                                                           */
+/* ========================================================================= */
+.termWin {
+  position: relative;
+  z-index: 2;
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5), 0 28px 64px -34px #000;
+}
+.termBar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: linear-gradient(var(--surface), var(--bg));
+  border-bottom: 1px solid var(--line);
+}
+.termDots {
+  display: inline-flex;
+  gap: 7px;
+  flex: none;
+}
+.termDots i {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  display: block;
+}
+.termDots i:nth-child(1) {
+  background: var(--red);
+}
+.termDots i:nth-child(2) {
+  background: var(--yellow);
+}
+.termDots i:nth-child(3) {
+  background: var(--green);
+}
+.termTitle {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  color: var(--muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.termBody {
+  padding: clamp(22px, 4vw, 46px);
+}
+
+/* blinking block caret (Typewriter) */
+.caret {
+  display: inline-block;
+  width: 0.6em;
+  height: 1.02em;
+  margin-left: 2px;
+  vertical-align: -0.15em;
+  background: var(--accent);
+  box-shadow: var(--glow);
+  animation: caretBlink 1s steps(1) infinite;
+}
+@keyframes caretBlink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* boot sequence */
+.boot {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  line-height: 1.7;
+  margin-bottom: 18px;
+  min-height: 5.6em;
+}
+.bootLine {
+  display: block;
+  white-space: pre-wrap;
+}
+.boot_cmd {
+  color: var(--green);
+}
+.boot_ok {
+  color: var(--text-dim);
+}
+.boot_ok::first-line {
+  color: var(--text-dim);
 }
 
 /* ========================================================================= */
@@ -377,105 +539,93 @@
   overflow: hidden;
 }
 .heroGlow {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 0;
-}
-.heroGlow::before {
-  content: "";
-  position: absolute;
-  top: -180px;
-  right: -90px;
-  width: 540px;
-  height: 540px;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    color-mix(in oklab, var(--accent), transparent 70%),
-    transparent 68%
-  );
-  filter: blur(38px);
-}
-.heroGlow::after {
-  content: "";
-  position: absolute;
-  bottom: -220px;
-  left: -70px;
-  width: 440px;
-  height: 440px;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    color-mix(in oklab, var(--lime), transparent 78%),
-    transparent 66%
-  );
-  filter: blur(50px);
+  display: none; /* neon colour blobs removed */
 }
 .gridBg {
   position: absolute;
   inset: 0;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.55;
+  opacity: 0.5;
   background-image: linear-gradient(var(--line-soft) 1px, transparent 1px),
     linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
-  background-size: 56px 56px;
-  -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 78%);
-  mask-image: linear-gradient(180deg, #000 0%, transparent 78%);
+  background-size: 52px 52px;
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 80%);
+  mask-image: linear-gradient(180deg, #000 0%, transparent 80%);
 }
-.hero .eyebrowRow {
-  position: relative;
-  z-index: 2;
+.heroCmd {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--green);
+  margin-bottom: 20px;
 }
-.heroGrid {
-  position: relative;
-  z-index: 2;
-  display: grid;
-  grid-template-columns: 1fr minmax(220px, 320px);
-  gap: clamp(32px, 5vw, 72px);
-  align-items: end;
+.jsWord,
+.tsWord {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.22em;
+  vertical-align: middle;
+  line-height: inherit;
+  white-space: nowrap;
 }
+.jsWord {
+  color: #f7df1e;
+}
+.tsWord {
+  color: #4f9ddb;
+}
+.jsWord svg,
+.tsWord svg {
+  width: 1em;
+  height: 1em;
+  flex: none;
+  border-radius: 3px;
+}
+
 .hero h1 .accentword {
   color: var(--accent);
-  background: linear-gradient(
-    transparent 62%,
-    color-mix(in oklab, var(--lime), transparent 40%) 62%
-  );
-  background-size: 100% 100%;
-  padding: 0 0.04em;
+  text-shadow: var(--glow);
+  background-image: var(--sunset);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 100% 3px;
+  padding-bottom: 3px;
 }
 .hero .lede {
-  margin-top: 26px;
+  margin-top: 22px;
+}
+.heroSpecs {
+  margin: 26px 0 0;
+  display: grid;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+.heroSpecs > div {
+  display: flex;
+  gap: 14px;
+}
+.heroSpecs dt {
+  color: var(--muted);
+  min-width: 116px;
+  flex: none;
+}
+.heroSpecs dt::after {
+  content: " :";
+}
+.heroSpecs dd {
+  color: var(--text);
+  margin: 0;
+}
+.heroSpecs dd b {
+  color: var(--accent);
+  font-weight: 600;
 }
 .ctaRow {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
-  margin-top: 38px;
-}
-
-.heroMeta {
-  border-left: 2px solid var(--accent);
-  padding-left: 28px;
-  align-self: stretch;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  gap: 22px;
-}
-.metaBlock .mono {
-  display: block;
-  margin-bottom: 6px;
-}
-.metaBlock .val {
-  font-size: 15px;
-  color: var(--ink);
-  line-height: 1.45;
-}
-.metaBlock .val b {
-  font-weight: 700;
+  margin-top: 34px;
 }
 
 /* ========================================================================= */
@@ -493,24 +643,30 @@
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  padding: 9px 15px;
+  padding: 9px 14px;
   border: 1px solid var(--line);
-  border-radius: 100px;
+  border-radius: 8px;
   background: var(--surface);
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--ink);
-  transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
-}
-.techChip:hover {
-  border-color: color-mix(in oklab, var(--accent), transparent 55%);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 22px -14px color-mix(in oklab, var(--accent), transparent 30%);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s, color 0.15s;
 }
 .techChip svg {
-  width: 18px;
-  height: 18px;
+  width: 17px;
+  height: 17px;
   flex: none;
+  color: var(--ico, var(--accent));
+  transition: color 0.15s, filter 0.15s;
+}
+.techChip:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+.techChip:hover svg {
+  filter: brightness(1.15) saturate(1.1);
 }
 
 /* ========================================================================= */
@@ -519,61 +675,53 @@
 .svcRack {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin-top: clamp(32px, 5vw, 52px);
+  gap: 14px;
+  margin-top: clamp(32px, 5vw, 50px);
 }
 .svc {
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 18px;
-  padding: 26px 22px 22px;
+  border-radius: 12px;
+  padding: 24px 20px 20px;
   display: flex;
   flex-direction: column;
   position: relative;
   overflow: hidden;
-  transition: background 0.18s var(--ease), border-color 0.18s var(--ease),
-    box-shadow 0.18s var(--ease);
+  transition: border-color 0.18s var(--ease), box-shadow 0.18s var(--ease);
 }
-.svc::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent), var(--lime));
-  opacity: 0;
-  transition: opacity 0.2s var(--ease);
-}
+/* Per-card Dracula accent colours */
+.svc:nth-child(1) { --accent: var(--cyan); }
+.svc:nth-child(2) { --accent: var(--green); }
+.svc:nth-child(3) { --accent: var(--orange); }
+.svc:nth-child(4) { --accent: var(--pink); }
+
 .svc:hover {
-  border-color: color-mix(in oklab, var(--accent), transparent 64%);
-  box-shadow: 0 22px 40px -28px color-mix(in oklab, var(--ink), transparent 55%);
-}
-.svc:hover::before {
-  opacity: 1;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px color-mix(in oklab, var(--accent) 25%, transparent);
 }
 .svc .num {
   font-family: var(--font-mono);
   font-size: 13px;
   color: var(--accent);
+  text-shadow: var(--glow);
   font-weight: 700;
   letter-spacing: 0.08em;
 }
 .svc h3 {
-  font-size: 1.32rem;
-  margin-top: 16px;
-  letter-spacing: -0.02em;
-  line-height: 1.12;
+  font-size: 1.12rem;
+  margin-top: 14px;
+  line-height: 1.2;
+  color: var(--text);
 }
 .svc .summary {
   margin-top: 10px;
-  color: var(--ink-2);
-  font-size: 14.5px;
+  color: var(--text-dim);
+  font-size: 14px;
   line-height: 1.5;
 }
 .svc .price {
-  margin-top: 20px;
-  padding-top: 18px;
+  margin-top: 18px;
+  padding-top: 16px;
   border-top: 1px solid var(--line);
   display: flex;
   flex-direction: column;
@@ -587,11 +735,12 @@
   color: var(--muted);
 }
 .svc .price .priceVal {
-  font-family: var(--font-sans);
-  font-size: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 1.32rem;
   font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--ink);
+  letter-spacing: -0.01em;
+  color: var(--accent);
+  text-shadow: var(--glow);
   line-height: 1;
 }
 .svc .label {
@@ -600,7 +749,7 @@
   letter-spacing: 0.13em;
   text-transform: uppercase;
   color: var(--muted);
-  margin-top: 22px;
+  margin-top: 20px;
   margin-bottom: 9px;
 }
 .svc ul {
@@ -613,43 +762,34 @@
 }
 .svc ul li {
   position: relative;
-  padding-left: 20px;
-  font-size: 14px;
+  padding-left: 18px;
+  font-size: 13.5px;
   line-height: 1.45;
-  color: var(--ink);
+  color: var(--text);
 }
 .svc ul li::before {
-  content: "";
+  content: "▸";
   position: absolute;
   left: 0;
-  top: 0.5em;
-  width: 9px;
-  height: 9px;
-  border-radius: 2px;
-  background: var(--lime);
-  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--lime-deep), transparent 40%);
-}
-.svc .who {
-  font-size: 13.5px;
-  color: var(--ink-2);
-  line-height: 1.45;
+  top: 0;
+  color: var(--accent);
+  font-size: 12px;
 }
 .svcFoot {
   margin-top: auto;
-  padding-top: 26px;
+  padding-top: 24px;
 }
 .quoteBtn {
   font-family: var(--font-mono);
   font-size: 12px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--accent-deep);
+  letter-spacing: 0.04em;
+  color: var(--accent);
   display: inline-flex;
   align-items: center;
   gap: 8px;
   border: 1px solid var(--line-strong);
-  padding: 11px 14px;
-  border-radius: 9px;
+  padding: 10px 14px;
+  border-radius: 8px;
   cursor: pointer;
   background: transparent;
   transition: all 0.15s var(--ease);
@@ -658,8 +798,9 @@
 }
 .quoteBtn:hover {
   background: var(--accent);
-  color: var(--on-accent);
+  color: var(--bg);
   border-color: var(--accent);
+  box-shadow: var(--glow);
 }
 .quoteBtn .arr {
   display: inline-flex;
@@ -673,11 +814,11 @@
 /* Process                                                                   */
 /* ========================================================================= */
 .process {
-  background: var(--surface-2);
+  background: var(--panel-2);
 }
 .steps {
   list-style: none;
-  margin: clamp(32px, 5vw, 52px) 0 0;
+  margin: clamp(32px, 5vw, 50px) 0 0;
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -694,31 +835,34 @@
 }
 .stepNum {
   flex: none;
-  width: 48px;
-  height: 48px;
+  width: 46px;
+  height: 46px;
   display: grid;
   place-items: center;
-  border-radius: 14px;
-  background: var(--accent-tint);
-  color: var(--accent-deep);
-  border: 1px solid color-mix(in oklab, var(--accent), transparent 78%);
+  border-radius: 10px;
+  background: color-mix(in oklab, var(--accent) 10%, transparent);
+  color: var(--accent);
+  border: 1px solid var(--line-strong);
   font-family: var(--font-mono);
   font-weight: 600;
   font-size: 14px;
+  text-shadow: var(--glow);
 }
 .step:last-child .stepNum {
-  background: var(--lime-tint);
-  color: var(--lime-deep);
-  border-color: color-mix(in oklab, var(--lime), transparent 50%);
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+  text-shadow: none;
 }
 .stepBody h3 {
-  font-size: 1.2rem;
-  letter-spacing: -0.02em;
+  font-size: 1.08rem;
+  color: var(--text);
 }
 .stepBody p {
-  color: var(--ink-2);
+  font-family: var(--font-sans);
+  color: var(--text-dim);
   margin: 6px 0 0;
-  font-size: 15px;
+  font-size: 14.5px;
   line-height: 1.5;
   max-width: 56ch;
 }
@@ -727,43 +871,45 @@
 /* Projects carousel                                                         */
 /* ========================================================================= */
 .carouselWrap {
-  margin-top: clamp(32px, 5vw, 52px);
+  margin-top: clamp(22px, 5vw, 40px);
   position: relative;
-  -webkit-mask-image: linear-gradient(
-    90deg,
-    transparent,
-    #000 5%,
-    #000 95%,
-    transparent
-  );
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
   mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
 }
+/* Vertical padding gives the cards room to lift on hover (translateY(-4px))
+   and to show their glow without being clipped by `overflow: hidden`. */
 .carousel {
   overflow: hidden;
+  padding: 14px 4px;
+  cursor: grab;
+}
+.carousel:active {
+  cursor: grabbing;
 }
 .carouselTrack {
   display: flex;
-  gap: 16px;
+  gap: 14px;
   width: max-content;
   will-change: transform;
 }
 .pcard {
+  --accent: var(--purple);
   flex: 0 0 320px;
   width: 320px;
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 18px;
-  padding: 20px;
+  border-radius: 12px;
+  padding: 18px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 11px;
   color: inherit;
   transition: border-color 0.18s var(--ease), box-shadow 0.18s var(--ease),
     transform 0.18s var(--ease);
 }
 a.pcard:hover {
-  border-color: color-mix(in oklab, var(--accent), transparent 58%);
-  box-shadow: 0 22px 40px -26px color-mix(in oklab, var(--ink), transparent 50%);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px color-mix(in oklab, var(--accent) 22%, transparent);
   transform: translateY(-4px);
 }
 .pcardTop {
@@ -775,25 +921,16 @@ a.pcard:hover {
 .companyChip {
   font-family: var(--font-mono);
   font-size: 10.5px;
-  letter-spacing: 0.07em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   font-weight: 600;
   padding: 4px 10px;
-  border-radius: 100px;
+  border-radius: 6px;
   white-space: nowrap;
+  background: color-mix(in oklab, var(--accent) 16%, transparent);
+  color: var(--accent);
 }
-.tone_violet .companyChip {
-  background: var(--accent-tint);
-  color: var(--accent-deep);
-}
-.tone_midnight .companyChip {
-  background: var(--midnight);
-  color: #ffffff;
-}
-.tone_lime .companyChip {
-  background: var(--lime-tint);
-  color: var(--lime-deep);
-}
+/* company tone classes no longer recolour — every card uses the single accent */
 .statusBadge {
   font-family: var(--font-mono);
   font-size: 10px;
@@ -812,10 +949,10 @@ a.pcard:hover {
   background: currentColor;
 }
 .st_live {
-  color: var(--lime-deep);
+  color: var(--green);
 }
 .st_demo {
-  color: var(--accent);
+  color: var(--yellow);
 }
 .st_offline {
   color: var(--muted);
@@ -828,14 +965,15 @@ a.pcard:hover {
   margin-top: 2px;
 }
 .pcardTitle {
-  font-size: 1.22rem;
-  letter-spacing: -0.02em;
+  font-size: 1.1rem;
+  letter-spacing: -0.01em;
+  color: var(--text);
   display: inline-flex;
   align-items: center;
   gap: 6px;
 }
 .pcardArrow {
-  font-size: 15px;
+  font-size: 14px;
   color: var(--accent);
   transition: transform 0.15s var(--ease);
 }
@@ -849,8 +987,9 @@ a.pcard:hover .pcardArrow {
   flex: none;
 }
 .pcardDesc {
-  color: var(--ink-2);
-  font-size: 14px;
+  font-family: var(--font-sans);
+  color: var(--text-dim);
+  font-size: 13.5px;
   line-height: 1.5;
   margin: 0;
   flex: 1 1 auto;
@@ -867,11 +1006,11 @@ a.pcard:hover .pcardArrow {
   font-family: var(--font-mono);
   font-size: 10.5px;
   letter-spacing: 0.02em;
-  color: var(--ink-2);
+  color: var(--text-dim);
   background: var(--surface-2);
   border: 1px solid var(--line);
   padding: 3px 8px;
-  border-radius: 7px;
+  border-radius: 6px;
 }
 
 /* ========================================================================= */
@@ -884,22 +1023,23 @@ a.pcard:hover .pcardArrow {
   align-items: start;
 }
 .whyIntro .hSection {
-  margin-top: 22px;
+  margin-top: 18px;
 }
 .whyIntro p {
-  color: var(--ink-2);
-  margin: 22px 0 0;
+  font-family: var(--font-sans);
+  color: var(--text-dim);
+  margin: 20px 0 0;
   max-width: 48ch;
 }
 .whyFacts {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  border-radius: 18px;
+  border-radius: 12px;
   overflow: hidden;
   border: 1px solid var(--line);
 }
 .fact {
-  padding: 24px 22px;
+  padding: 22px 20px;
   border-bottom: 1px solid var(--line);
   border-right: 1px solid var(--line);
   background: var(--surface);
@@ -911,23 +1051,24 @@ a.pcard:hover .pcardArrow {
   border-bottom: none;
 }
 .factLink {
-  transition: background 0.15s var(--ease);
+  transition: background 0.15s var(--ease), color 0.15s;
 }
 .factLink:hover {
-  background: var(--accent-tint);
+  background: color-mix(in oklab, var(--accent) 10%, transparent);
 }
 .fact .big {
-  font-family: var(--font-sans);
-  font-size: clamp(1.7rem, 3vw, 2.3rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
+  font-family: var(--font-mono);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
   line-height: 1;
-  color: var(--ink);
+  color: var(--accent);
+  text-shadow: var(--glow);
 }
 .fact .lab {
   font-family: var(--font-mono);
   font-size: 11px;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--muted);
   margin-top: 10px;
@@ -936,65 +1077,24 @@ a.pcard:hover .pcardArrow {
 .fact .lab span {
   display: block;
 }
-/* dark feature tile — overrides must follow the base .fact rules above so the
-   equal-specificity colour wins via source order */
+/* sunset feature tile — overrides follow base .fact rules so source order wins */
 .factDark {
-  background: var(--midnight);
+  background: var(--accent);
+  border-color: transparent;
 }
 .factDark .big {
-  color: var(--lime);
+  color: var(--bg);
+  text-shadow: none;
 }
 .factDark .lab {
-  color: rgba(255, 255, 255, 0.66);
-}
-
-.availCard {
-  margin-top: 16px;
-  display: flex;
-  gap: 14px;
-  align-items: center;
-  background: var(--midnight);
-  color: #ffffff;
-  border-radius: 18px;
-  padding: 18px 20px;
-}
-.availCard strong {
-  display: block;
-  font-size: 15px;
-  font-weight: 700;
-}
-.availCard span {
-  display: block;
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.7);
-  margin-top: 4px;
-  line-height: 1.5;
-}
-.availDot {
-  flex: none;
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  background: var(--lime);
-  animation: availPulse 2.2s ease-out infinite;
-}
-@keyframes availPulse {
-  0% {
-    box-shadow: 0 0 0 0 color-mix(in oklab, var(--lime), transparent 35%);
-  }
-  70% {
-    box-shadow: 0 0 0 11px transparent;
-  }
-  100% {
-    box-shadow: 0 0 0 0 transparent;
-  }
+  color: rgba(34, 33, 44, 0.72);
 }
 
 /* ========================================================================= */
 /* FAQ                                                                       */
 /* ========================================================================= */
 .faq {
-  margin-top: clamp(28px, 4vw, 44px);
+  margin-top: clamp(28px, 4vw, 42px);
   border-top: 1px solid var(--line);
 }
 .faqRow {
@@ -1006,25 +1106,32 @@ a.pcard:hover .pcardArrow {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 22px 4px;
+  padding: 20px 4px;
   background: none;
   border: none;
   cursor: pointer;
   text-align: left;
-  font-family: var(--font-sans);
-  font-size: clamp(1rem, 1.6vw, 1.12rem);
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: clamp(0.95rem, 1.5vw, 1.04rem);
+  font-weight: 500;
+  color: var(--text);
   transition: color 0.15s;
 }
+.faqQ::before {
+  content: "> ";
+  color: var(--accent);
+  flex: none;
+}
+.faqQ > span:first-child {
+  flex: 1;
+}
 .faqQ:hover {
-  color: var(--accent-deep);
+  color: var(--accent);
 }
 .faqPlus {
   position: relative;
-  width: 16px;
-  height: 16px;
+  width: 15px;
+  height: 15px;
   flex: none;
 }
 .faqPlus::before,
@@ -1033,6 +1140,7 @@ a.pcard:hover .pcardArrow {
   position: absolute;
   background: var(--accent);
   border-radius: 2px;
+  box-shadow: var(--glow);
 }
 .faqPlus::before {
   left: 0;
@@ -1054,11 +1162,12 @@ a.pcard:hover .pcardArrow {
   opacity: 0;
 }
 .faqA p {
-  padding: 0 4px 22px;
-  color: var(--ink-2);
+  font-family: var(--font-sans);
+  padding: 0 4px 22px 22px;
+  color: var(--text-dim);
   max-width: 72ch;
   margin: 0;
-  font-size: 15px;
+  font-size: 14.5px;
   line-height: 1.6;
 }
 
@@ -1066,24 +1175,25 @@ a.pcard:hover .pcardArrow {
 /* Contact                                                                   */
 /* ========================================================================= */
 .contact {
-  background: var(--accent-tint);
+  background: var(--panel-2);
 }
 .contactGrid {
   display: grid;
   grid-template-columns: 0.85fr 1.15fr;
-  gap: clamp(36px, 6vw, 80px);
+  gap: clamp(36px, 6vw, 72px);
   align-items: start;
 }
 .contactAside .hSection {
-  margin-top: 22px;
+  margin-top: 18px;
 }
 .contactAside p {
-  color: var(--ink-2);
-  margin: 20px 0 0;
+  font-family: var(--font-sans);
+  color: var(--text-dim);
+  margin: 18px 0 0;
   max-width: 34ch;
 }
 .direct {
-  margin-top: 32px;
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -1094,43 +1204,44 @@ a.pcard:hover .pcardArrow {
   gap: 10px;
   font-family: var(--font-mono);
   font-size: 13px;
-  color: var(--ink);
+  color: var(--text);
   border-bottom: 1px solid var(--line-strong);
   padding-bottom: 4px;
   width: fit-content;
   transition: color 0.15s, border-color 0.15s;
 }
 .direct a:hover {
-  color: var(--accent-deep);
+  color: var(--accent);
   border-color: var(--accent);
 }
 .direct a svg {
   color: var(--accent);
 }
 .note {
-  margin-top: 26px;
+  margin-top: 24px;
   font-family: var(--font-mono);
   font-size: 11.5px;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   color: var(--muted);
   line-height: 1.6;
 }
 
+/* form lives inside a .termWin, so it has no frame of its own */
 .formCard {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  padding: clamp(22px, 3vw, 38px);
-  border-radius: 18px;
-  box-shadow: 0 30px 60px -40px color-mix(in oklab, var(--ink), transparent 50%);
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: clamp(22px, 3vw, 34px);
 }
 .field {
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 .field.row2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 18px;
-  margin-bottom: 20px;
+  gap: 16px;
+  margin-bottom: 18px;
 }
 .field.row2 .field {
   margin-bottom: 0;
@@ -1145,9 +1256,9 @@ a.pcard:hover .pcardArrow {
 .flabel label {
   font-family: var(--font-mono);
   font-size: 11.5px;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--ink);
+  color: var(--text);
   font-weight: 500;
 }
 .flabel .req {
@@ -1159,14 +1270,14 @@ a.pcard:hover .pcardArrow {
   color: var(--muted);
   font-family: var(--font-mono);
   font-size: 10.5px;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
 .contactsHint {
   font-family: var(--font-mono);
   font-size: 11.5px;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   color: var(--muted);
   line-height: 1.6;
   margin: 0;
@@ -1179,34 +1290,34 @@ a.pcard:hover .pcardArrow {
 .select,
 .textarea {
   width: 100%;
-  font-family: var(--font-sans);
-  font-size: 15px;
-  color: var(--ink);
-  background: var(--surface);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--text);
+  background: var(--bg-dark);
   border: 1px solid var(--line-strong);
-  border-radius: 10px;
-  padding: 12px 14px;
+  border-radius: 8px;
+  padding: 11px 13px;
   transition: border-color 0.15s, box-shadow 0.15s;
   line-height: 1.4;
 }
 .input::placeholder,
 .textarea::placeholder {
-  color: color-mix(in oklab, var(--muted), transparent 18%);
+  color: var(--muted);
 }
 .input:focus,
 .select:focus,
 .textarea:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-tint-2);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 22%, transparent);
 }
 .textarea {
   resize: vertical;
-  min-height: 132px;
+  min-height: 128px;
 }
 .select {
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%237c7993' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23f8f8f2' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 14px center;
   padding-right: 38px;
@@ -1216,19 +1327,19 @@ a.pcard:hover .pcardArrow {
 .field.invalid .input,
 .field.invalid .select,
 .field.invalid .textarea {
-  border-color: #d62b4b;
+  border-color: var(--red);
 }
 .field.invalid .input:focus,
 .field.invalid .select:focus,
 .field.invalid .textarea:focus {
-  box-shadow: 0 0 0 3px color-mix(in oklab, #d62b4b, transparent 82%);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--red), transparent 78%);
 }
 .err {
   display: flex;
   align-items: center;
   gap: 6px;
   margin-top: 7px;
-  color: #c01f3f;
+  color: var(--red);
   font-size: 12.5px;
   font-family: var(--font-mono);
   letter-spacing: 0.02em;
@@ -1254,43 +1365,44 @@ a.pcard:hover .pcardArrow {
   flex-wrap: wrap;
 }
 .formFoot .btnPrimary {
-  padding: 14px 26px;
-  font-size: 15px;
+  padding: 13px 24px;
+  font-size: 14px;
 }
 .formStatus {
   font-family: var(--font-mono);
   font-size: 11.5px;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   color: var(--muted);
 }
 
 /* success state */
 .formSuccess {
   text-align: left;
-  padding: clamp(28px, 4vw, 48px) clamp(22px, 3vw, 40px);
+  padding: clamp(28px, 4vw, 44px) clamp(22px, 3vw, 36px);
 }
 .tick {
-  width: 46px;
-  height: 46px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background: var(--accent);
-  color: var(--on-accent);
+  background: var(--green);
+  color: var(--bg);
   display: grid;
   place-items: center;
-  font-size: 22px;
-  margin-bottom: 22px;
+  font-size: 21px;
+  margin-bottom: 20px;
 }
 .formSuccess h3 {
-  font-size: 1.6rem;
-  letter-spacing: -0.02em;
+  font-size: 1.4rem;
+  color: var(--text);
 }
 .formSuccess p {
-  color: var(--ink-2);
+  font-family: var(--font-sans);
+  color: var(--text-dim);
   margin: 14px 0 0;
   max-width: 40ch;
 }
 .recap {
-  margin-top: 24px;
+  margin-top: 22px;
   border-top: 1px solid var(--line);
   padding-top: 20px;
   display: grid;
@@ -1304,37 +1416,38 @@ a.pcard:hover .pcardArrow {
 .recap .r .rk {
   font-family: var(--font-mono);
   font-size: 11px;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--muted);
   min-width: 92px;
   padding-top: 2px;
 }
 .recap .r span:last-child {
+  color: var(--text);
   word-break: break-word;
 }
 .resend {
-  margin-top: 26px;
+  margin-top: 24px;
 }
 .formBanner {
   display: flex;
   align-items: center;
   gap: 10px;
-  background: color-mix(in oklab, #d62b4b, transparent 90%);
-  border: 1px solid color-mix(in oklab, #d62b4b, transparent 70%);
-  color: #a81834;
+  background: color-mix(in oklab, var(--red), transparent 86%);
+  border: 1px solid color-mix(in oklab, var(--red), transparent 62%);
+  color: #ffbfb3;
   padding: 12px 14px;
-  border-radius: 10px;
+  border-radius: 8px;
   font-size: 13.5px;
-  margin-bottom: 22px;
+  margin-bottom: 20px;
 }
 
 /* spinner */
 .spin {
   width: 15px;
   height: 15px;
-  border: 2px solid color-mix(in oklab, var(--on-accent), transparent 55%);
-  border-top-color: var(--on-accent);
+  border: 2px solid rgba(34, 33, 44, 0.45);
+  border-top-color: var(--bg);
   border-radius: 50%;
   animation: spin 0.7s linear infinite;
 }
@@ -1348,7 +1461,7 @@ a.pcard:hover .pcardArrow {
 /* Footer                                                                    */
 /* ========================================================================= */
 .siteFoot {
-  padding: clamp(40px, 6vw, 64px) var(--pad) 40px;
+  padding: clamp(40px, 6vw, 60px) var(--pad) calc(40px + 34px);
 }
 .footTop {
   display: flex;
@@ -1365,29 +1478,29 @@ a.pcard:hover .pcardArrow {
 .footLinks a {
   font-family: var(--font-mono);
   font-size: 12.5px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--ink-2);
+  letter-spacing: 0.04em;
+  color: var(--text-dim);
   display: inline-flex;
   align-items: center;
   gap: 8px;
   transition: color 0.15s;
 }
 .footLinks a:hover {
-  color: var(--accent-deep);
+  color: var(--accent);
 }
 .footLinks a .ext {
   color: var(--accent);
   display: inline-flex;
 }
 .footStatement {
-  font-size: clamp(1.3rem, 2.4vw, 1.9rem);
-  letter-spacing: -0.025em;
+  font-size: clamp(1.2rem, 2.2vw, 1.7rem);
+  letter-spacing: -0.02em;
   max-width: 18ch;
-  line-height: 1.1;
+  line-height: 1.15;
+  color: var(--text);
 }
 .footBottom {
-  margin-top: clamp(40px, 6vw, 60px);
+  margin-top: clamp(36px, 6vw, 56px);
   padding-top: 22px;
   border-top: 1px solid var(--line);
   display: flex;
@@ -1398,6 +1511,53 @@ a.pcard:hover .pcardArrow {
 }
 .footBottom .mono {
   font-size: 11px;
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+/* ========================================================================= */
+/* Status bar (fixed, vim/tmux style)                                        */
+/* ========================================================================= */
+.statusBar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 45;
+  display: flex;
+  align-items: stretch;
+  height: 26px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  background: var(--bg-darker);
+  border-top: 1px solid var(--line-strong);
+}
+.statusMode {
+  background: var(--primary);
+  color: var(--bg);
+  font-weight: 700;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+}
+.statusSeg {
+  color: var(--text-dim);
+  padding: 0 12px;
+  border-right: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+}
+.statusSpacer {
+  flex: 1;
+}
+.statusClock {
+  background: var(--surface-2);
+  color: var(--text-dim);
+  font-weight: 700;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
 }
 
 /* ========================================================================= */
@@ -1405,23 +1565,10 @@ a.pcard:hover .pcardArrow {
 /* ========================================================================= */
 @media (max-width: 1080px) {
   .svcRack {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 @media (max-width: 900px) {
-  .heroGrid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-  .heroMeta {
-    border-left: none;
-    border-top: 2px solid var(--accent);
-    padding-left: 0;
-    padding-top: 28px;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 28px 48px;
-  }
   .whyGrid {
     grid-template-columns: 1fr;
   }
@@ -1442,7 +1589,11 @@ a.pcard:hover .pcardArrow {
   .field.row2 {
     grid-template-columns: 1fr;
   }
-  .brand .who span {
+  .heroSpecs > div {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .statusHideSm {
     display: none;
   }
   .pcard {
@@ -1461,7 +1612,11 @@ a.pcard:hover .pcardArrow {
 
 /* ---- Reduced motion ------------------------------------------------------ */
 @media (prefers-reduced-motion: reduce) {
-  .availDot {
+  .caret {
     animation: none;
+  }
+  .crtFlicker {
+    animation: none;
+    opacity: 0.5;
   }
 }
