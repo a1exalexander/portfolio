@@ -7,6 +7,7 @@ import { FadeUp } from "./_components/FadeUp";
 import { FadeUpLi } from "./_components/FadeUpLi";
 import { GrainOverlay } from "./_components/GrainOverlay";
 import { MagnetButton } from "./_components/MagnetButton";
+import { PhoneLink } from "./_components/PhoneLink";
 import { Roadmap } from "./_components/Roadmap";
 import { Testimonials } from "./_components/Testimonials";
 import {
@@ -236,6 +237,7 @@ export default function MentorPage() {
         <a href="mailto:alexander.ratushnyi@gmail.com" className={`${styles.socialLink} ${styles.socialLinkMail}`}>
           <IconMail /> alexander.ratushnyi@gmail.com
         </a>
+        <PhoneLink className={`${styles.socialLink} ${styles.socialLinkPhone}`} />
       </div>
 
       {/* === Hero === */}
@@ -616,6 +618,7 @@ export default function MentorPage() {
               <IconMail />
               Email
             </a>
+            <PhoneLink />
           </div>
         </div>
         <div className={styles.footRight}>

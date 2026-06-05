@@ -208,6 +208,8 @@
 .socialLinkTg:hover { background: #e3f5fd; border-color: #2aabee; }
 .socialLinkMail { color: var(--koty-danger); }
 .socialLinkMail:hover { background: #fde8eb; border-color: var(--koty-danger); }
+.socialLinkPhone { color: #16a34a; }
+.socialLinkPhone:hover { background: #e7f7ed; border-color: #16a34a; }
 
 /* === Kicker === */
 .kicker {
