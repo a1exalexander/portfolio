@@ -12,7 +12,7 @@ import styles from './Footer.module.css';
 
 export const Footer = function Footer() {
   const pathname = usePathname();
-  if (pathname?.startsWith('/mentor')) return null;
+  if (pathname?.startsWith('/mentor') || pathname?.startsWith('/services')) return null;
 
   return (
     <footer className={styles.container}>
