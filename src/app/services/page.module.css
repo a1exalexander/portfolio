@@ -76,6 +76,18 @@
   box-sizing: border-box;
 }
 
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 .page ::selection {
   background: var(--accent);
   color: var(--bg);
@@ -285,6 +297,10 @@
   line-height: 1.04;
   color: var(--text);
 }
+.mdHash {
+  color: var(--muted);
+  font-weight: inherit;
+}
 .hSection {
   font-size: clamp(1.6rem, 3vw, 2.4rem);
   letter-spacing: -0.02em;
@@ -490,6 +506,7 @@
 }
 .termBody {
   padding: clamp(22px, 4vw, 46px);
+  min-height: 400px;
 }
 
 /* blinking block caret (Typewriter) */
@@ -559,28 +576,6 @@
   color: var(--green);
   margin-bottom: 20px;
 }
-.jsWord,
-.tsWord {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.22em;
-  vertical-align: middle;
-  line-height: inherit;
-  white-space: nowrap;
-}
-.jsWord {
-  color: #f7df1e;
-}
-.tsWord {
-  color: #4f9ddb;
-}
-.jsWord svg,
-.tsWord svg {
-  width: 1em;
-  height: 1em;
-  flex: none;
-  border-radius: 3px;
-}
 
 .hero h1 .accentword {
   color: var(--accent);
@@ -596,28 +591,9 @@
 }
 .heroSpecs {
   margin: 26px 0 0;
-  display: grid;
-  gap: 8px;
-  font-family: var(--font-mono);
-  font-size: 13px;
+  min-height: unset;
 }
-.heroSpecs > div {
-  display: flex;
-  gap: 14px;
-}
-.heroSpecs dt {
-  color: var(--muted);
-  min-width: 116px;
-  flex: none;
-}
-.heroSpecs dt::after {
-  content: " :";
-}
-.heroSpecs dd {
-  color: var(--text);
-  margin: 0;
-}
-.heroSpecs dd b {
+.heroSpecs b {
   color: var(--accent);
   font-weight: 600;
 }
@@ -1576,10 +1552,12 @@ a.pcard:hover .pcardArrow {
     grid-template-columns: 1fr;
   }
 }
-@media (max-width: 680px) {
+@media (max-width: 900px) {
   .nav .hideSm {
     display: none;
   }
+}
+@media (max-width: 680px) {
   .svcRack {
     grid-template-columns: 1fr;
   }
@@ -1607,6 +1585,15 @@ a.pcard:hover .pcardArrow {
   }
   .fact:nth-child(2n) {
     border-right: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .brand .who b {
+    font-size: 12px;
+  }
+  .brand .who span {
+    font-size: 9px;
   }
 }
 

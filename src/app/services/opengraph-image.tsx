@@ -20,7 +20,7 @@ const C = {
 }
 
 const CHARS =
-  'Розробка сайтів і веб-застосунків. sashko@portfolio:~/services$ ./services.sh --hire JavaScript TypeScript React Next.js NestJS 2018 → present sashkoratushnyi.com NORMAL'
+  'Розробка сайтів і веб-застосунків. sashko@portfolio:~/services$ ./services.sh --start --format=md JavaScript TypeScript React Next.js NestJS 2018 → present sashkoratushnyi.com NORMAL'
 
 async function loadJBMono(weight: 400 | 700): Promise<{ data: ArrayBuffer; weight: 400 | 700 } | null> {
   try {
@@ -105,7 +105,7 @@ export default async function ServicesOGImage() {
               <span style={{ color: C.muted }}>:</span>
               <span style={{ color: C.textDim }}>~/services</span>
               <span style={{ color: C.muted, margin: '0 6px' }}>$</span>
-              <span style={{ color: C.text }}>./services.sh --hire</span>
+              <span style={{ color: C.text }}>./services.sh --start --format=md</span>
             </div>
 
             {/* Headline */}

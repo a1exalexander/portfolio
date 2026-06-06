@@ -1,11 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { SiJavascript, SiTypescript } from "react-icons/si";
 import { AnimatedCard } from "../mentor/_components/AnimatedCard";
 import { FadeUp } from "../mentor/_components/FadeUp";
 import { FadeUpLi } from "../mentor/_components/FadeUpLi";
-import { MagnetButton } from "../mentor/_components/MagnetButton";
 import { PhoneLink } from "../mentor/_components/PhoneLink";
-import { BootLines } from "./_components/BootLines";
+import { HeroBody } from "./_components/HeroBody";
 import { ContactCTA } from "./_components/ContactCTA";
 import { CRTOverlay } from "./_components/CRTOverlay";
 import { FAQ } from "./_components/FAQ";
@@ -257,64 +255,14 @@ export default function ServicesPage() {
 
         {/* === Hero (terminal window) === */}
         <section className={`${styles.section} ${styles.hero}`} id="top">
+          <h1 className={styles.srOnly}>Розробка сайтів і веб-застосунків.</h1>
           <div className={styles.gridBg} aria-hidden="true" />
           <div className={styles.heroGlow} aria-hidden="true" />
           <Plus pos="tl" />
           <Plus pos="tr" />
           <FadeUp className={styles.termWin} inView={false}>
             <TermBar title="sashko@portfolio: ~/services — zsh" />
-            <div className={styles.termBody}>
-              <BootLines />
-              <div className={styles.heroCmd}>
-                <Typewriter text="$ ./services.sh --hire" delay={1500} speed={42} />
-              </div>
-              <h1 className={styles.hHero}>
-                Розробка сайтів і веб-застосунків.
-              </h1>
-              <dl className={styles.heroSpecs}>
-                <div>
-                  <dt>language</dt>
-                  <dd>
-                    <span className={styles.jsWord}>
-                      <SiJavascript aria-hidden="true" />
-                      JavaScript
-                    </span>
-                    {" · "}
-                    <span className={styles.tsWord}>
-                      <SiTypescript aria-hidden="true" />
-                      TypeScript
-                    </span>
-                  </dd>
-                </div>
-                <div>
-                  <dt>experience</dt>
-                  <dd>
-                    <b>2018</b> → present
-                  </dd>
-                </div>
-                <div>
-                  <dt>industries</dt>
-                  <dd>SaaS · fintech · crypto · wealth management</dd>
-                </div>
-                <div>
-                  <dt>location</dt>
-                  <dd>
-                    <b>Кременчук</b>, Україна 🇺🇦 · працюю віддалено
-                  </dd>
-                </div>
-              </dl>
-              <div className={styles.ctaRow}>
-                <MagnetButton
-                  href="#contact"
-                  className={`${styles.btn} ${styles.btnPrimary} ${styles.btnMagnet}`}
-                >
-                  Почати проєкт <IconArrowR className={styles.arr} />
-                </MagnetButton>
-                <a className={`${styles.btn} ${styles.btnGhost}`} href="#services">
-                  Дивитись послуги
-                </a>
-              </div>
-            </div>
+            <HeroBody />
           </FadeUp>
         </section>
 
@@ -519,6 +467,9 @@ export default function ServicesPage() {
               </div>
               <p className={styles.note}>
                 Базуюсь в м. Кременчук, Україна 🇺🇦 · працюю по всьому світу.
+              </p>
+              <p className={styles.note}>
+                Беру обмежену кількість приватних проєктів у вільний час.
               </p>
             </FadeUp>
             <FadeUp delay={0.1} className={styles.termWin}>
