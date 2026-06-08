@@ -41,9 +41,9 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Менторство та навчання front-end та веб-розробці",
+  title: "Менторство з front-end розробки — Олександр Ратушний, Кременчук",
   description:
-    "Курси програмування та менторство: вивчитись на програміста з нуля. JavaScript, React, TypeScript, front-end та веб-розробка. Онлайн або офлайн у Кременчуці.",
+    "Вивчитись на програміста з нуля або закрити прогалини в програмуванні. Допомога з пошуком роботи. JavaScript, React, TypeScript. Онлайн або офлайн у Кременчуці.",
   keywords: [
     "менторство",
     "ментор з програмування",
@@ -72,9 +72,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Менторство та навчання front-end та веб-розробці",
+    title: "Менторство з front-end розробки — Олександр Ратушний, Кременчук",
     description:
-      "Курси програмування та менторство: вивчитись на програміста з нуля. JavaScript, React, TypeScript, front-end та веб-розробка. Онлайн або офлайн у Кременчуці.",
+      "Вивчитись на програміста з нуля або закрити прогалини в програмуванні. Допомога з пошуком роботи. JavaScript, React, TypeScript. Онлайн або офлайн у Кременчуці.",
     url: "/mentor",
     siteName: "sashkoratushnyi.com",
     type: "website",
@@ -82,9 +82,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Менторство та навчання front-end та веб-розробці",
+    title: "Менторство з front-end розробки — Олександр Ратушний, Кременчук",
     description:
-      "Курси програмування та менторство: вивчитись на програміста з нуля. JavaScript, React, TypeScript, front-end та веб-розробка. Онлайн або офлайн у Кременчуці.",
+      "Вивчитись на програміста з нуля або закрити прогалини в програмуванні. Допомога з пошуком роботи. JavaScript, React, TypeScript. Онлайн або офлайн у Кременчуці.",
   },
 };
 
