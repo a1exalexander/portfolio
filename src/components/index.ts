@@ -18,6 +18,7 @@ export * from './ArticleImage';
 export * from './ArticleSlider';
 export * from './Callout';
 export * from './MentorCallout';
+export * from './ServiceCallout';
 export * from './Mention';
 export * from './InlineLink';
 export * from './LinkCard';

@@ -51,6 +51,7 @@ import {
   Fullwidth,
   getAlt,
   MentorCallout,
+  ServiceCallout,
   Paragraph,
   Photo,
   Project,
@@ -271,8 +272,11 @@ export default function Home() {
             and other technologies.
           </Paragraph>
 
-          {/* === Mentor Callout === */}
-          <MentorCallout />
+          {/* === Mentor + Services Callouts === */}
+          <div className={styles.calloutRow}>
+            <MentorCallout />
+            <ServiceCallout />
+          </div>
 
           <Photo
             loading="eager"

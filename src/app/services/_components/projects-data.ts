@@ -127,7 +127,7 @@ export const PROJECTS: CarouselProject[] = [
     companyTone: "gold",
     status: "demo",
     href: "https://media-scout.netlify.app/",
-    description: "Платформа відеоаналітики. Спільний проєкт із Володимиром Мазурцем.",
+    description: "Платформа відеоаналітики.",
     stack: ["Vue", "Storybook", "SCSS"],
   },
   {
@@ -218,7 +218,7 @@ export const PROJECTS: CarouselProject[] = [
     companyTone: "maroon",
     status: "live",
     href: "https://elevendogs.com.ua",
-    description: "Сайт барбершопу для бізнесу друга.",
+    description: "Сайт барбершопу в Кременчуці.",
     stack: ["Next.js", "CSS Modules"],
   },
   {
@@ -238,7 +238,7 @@ export const PROJECTS: CarouselProject[] = [
     companyTone: "maroon",
     status: "live",
     href: "https://keenly.shop/",
-    description: "Інтернет-магазин для бізнесу тітки.",
+    description: "Інтернет магазин на платформі Wix.",
     stack: ["Wix"],
   },
   {

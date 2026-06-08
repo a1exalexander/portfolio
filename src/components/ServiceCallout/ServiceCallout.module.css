@@ -1,0 +1,71 @@
+/* Dracula Pro terminal palette — mirrors /services page tokens */
+.serviceCallout {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.125rem 1.25rem;
+  background: #1c1b26;
+  border: 1.5px solid rgba(149, 128, 255, 0.3);
+  border-radius: 16px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  flex: 1;
+  min-width: 0;
+}
+
+.serviceCallout:hover {
+  border-color: #9580ff;
+  box-shadow: 0 2px 12px rgba(149, 128, 255, 0.18);
+}
+
+.serviceCalloutLogo {
+  width: 40px;
+  height: 40px;
+  color: #9580ff;
+  flex-shrink: 0;
+}
+
+.serviceCalloutBody {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.serviceCalloutLabel {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9580ff;
+}
+
+.serviceCalloutText {
+  font-size: 1.1rem;
+  color: #c8c3e8;
+  margin: 0;
+  line-height: 1.45;
+}
+
+.serviceCalloutArrow {
+  font-size: 1.5rem;
+  color: #9580ff;
+  flex-shrink: 0;
+  transition: transform 0.15s;
+}
+
+.serviceCallout:hover .serviceCalloutArrow {
+  transform: translateX(3px);
+}
+
+[data-theme="dark"] .serviceCallout {
+  background: #17161d;
+  border-color: rgba(149, 128, 255, 0.22);
+}
+
+[data-theme="dark"] .serviceCallout:hover {
+  border-color: #9580ff;
+  box-shadow: 0 2px 12px rgba(149, 128, 255, 0.22);
+}

@@ -44,7 +44,7 @@ export const ProjectsCarousel = () => {
   const getWrapDistance = () => {
     const track = trackRef.current;
     if (!track) return 0;
-    const firstDup = track.children[PROJECTS.length] as HTMLElement | undefined;
+    const firstDup = track.children[workable.length] as HTMLElement | undefined;
     return firstDup ? firstDup.offsetLeft : track.scrollWidth / 2;
   };
 
@@ -81,6 +81,7 @@ export const ProjectsCarousel = () => {
 
   const handleMouseDown = (e: React.MouseEvent) => {
     if (isTouchRef.current) return;
+    e.preventDefault();
     isDraggingRef.current = true;
     didDragRef.current = false;
     mouseStartXRef.current = e.clientX;
@@ -88,7 +89,7 @@ export const ProjectsCarousel = () => {
     setPaused(true);
   };
 
-  const handleMouseMove = (e: React.MouseEvent) => {
+  const handleMouseMove = (e: MouseEvent | React.MouseEvent) => {
     if (!isDraggingRef.current) return;
     const wrap = getWrapDistance();
     if (wrap <= 0) return;
@@ -101,28 +102,33 @@ export const ProjectsCarousel = () => {
   };
 
   const handleMouseUp = () => {
+    if (!isDraggingRef.current) return;
     isDraggingRef.current = false;
     setPaused(false);
   };
+
+  useEffect(() => {
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mouseup", handleMouseUp);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseup", handleMouseUp);
+    };
+  });
 
   const handleLinkClick = (e: React.MouseEvent) => {
     if (didDragRef.current) e.preventDefault();
   };
 
-  const cards = [...PROJECTS, ...PROJECTS];
+  const workable = PROJECTS.filter((p) => p.status !== "offline");
+  const cards = [...workable, ...workable];
 
   return (
     <div
       className={styles.carouselWrap}
-      onMouseLeave={() => {
-        if (!isTouchRef.current) {
-          isDraggingRef.current = false;
-          setPaused(false);
-        }
-      }}
+      onMouseEnter={() => { if (!isTouchRef.current) setPaused(true); }}
+      onMouseLeave={() => { if (!isTouchRef.current && !isDraggingRef.current) setPaused(false); }}
       onMouseDown={handleMouseDown}
-      onMouseMove={handleMouseMove}
-      onMouseUp={handleMouseUp}
       onFocusCapture={() => setPaused(true)}
       onBlurCapture={() => setPaused(false)}
       onTouchStart={handleTouchStart}
@@ -133,7 +139,7 @@ export const ProjectsCarousel = () => {
       <div className={styles.carousel}>
         <motion.div ref={trackRef} className={styles.carouselTrack} style={{ x }}>
           {cards.map((p, i) => {
-            const dup = i >= PROJECTS.length;
+            const dup = i >= workable.length;
             const CardTag = p.href ? "a" : "div";
             const linkProps = p.href
               ? { href: p.href, target: "_blank", rel: "noopener noreferrer" }
