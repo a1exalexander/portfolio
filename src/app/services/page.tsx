@@ -66,15 +66,16 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Послуги веброзробки — сайти, застосунки",
+  title: "Послуги веб-розробки — сайти, застосунки",
   description:
-    "Послуги веброзробки: сайти, веб-застосунки, розробка нових функцій та підтримка проєктів. JavaScript/TypeScript інженер з Кременчука, у веброзробці з 2018 року, працюю віддалено з усім світом.",
+    "Послуги веб-розробки: сайти, веб-застосунки, розробка нових функцій та підтримка проєктів. JavaScript/TypeScript інженер з Кременчука, у веб-розробці з 2018 року, працюю віддалено з усім світом.",
   keywords: [
-    "веброзробка",
+    "веб-розробка",
     "розробка сайтів",
     "веб-застосунки",
     "Webflow",
     "frontend",
+    "front-end",
     "фронтенд",
     "full-stack",
     "JavaScript",
@@ -84,8 +85,8 @@ export const metadata: Metadata = {
     "односторінковий сайт",
     "корпоративний сайт",
     "CMS",
-    "веброзробка Кременчук",
-    "веброзробка Україна",
+    "веб-розробка Кременчук",
+    "веб-розробка Україна",
     "Олександр Ратушний",
   ],
   authors: [{ name: "Олександр Ратушний", url: SITE_URL }],
@@ -102,7 +103,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Послуги веброзробки — Олександр Ратушний",
+    title: "Послуги веб-розробки — Олександр Ратушний",
     description:
       "Сайти, веб-застосунки, нові функції та підтримка проєктів. JavaScript/TypeScript інженер з Кременчука, з досвідом у SaaS, fintech, crypto та wealth management.",
     url: "/services",
@@ -112,9 +113,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Послуги веброзробки — Олександр Ратушний",
+    title: "Послуги веб-розробки — Олександр Ратушний",
     description:
-      "Послуги веброзробки: сайти, веб-застосунки, інтернет-магазини, розробка нових функцій та підтримка проєктів.",
+      "Послуги веб-розробки: сайти, веб-застосунки, інтернет-магазини, розробка нових функцій та підтримка проєктів.",
   },
 };
 
@@ -140,7 +141,7 @@ const jsonLd = {
     {
       "@type": "Service",
       "@id": `${SERVICES_URL}#service`,
-      name: "Веброзробка",
+      name: "Веб-розробка",
       url: SERVICES_URL,
       serviceType: "Web development",
       provider: { "@id": `${SITE_URL}/#person` },
@@ -148,7 +149,7 @@ const jsonLd = {
       availableLanguage: ["uk"],
       hasOfferCatalog: {
         "@type": "OfferCatalog",
-        name: "Послуги веброзробки",
+        name: "Послуги веб-розробки",
         itemListElement: SERVICES.map((s) => ({
           "@type": "Offer",
           name: s.title,
