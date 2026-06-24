@@ -182,6 +182,16 @@ export const PROJECTS: CarouselProject[] = [
     stack: ["React", "TypeScript", "Astro", "Prisma"],
   },
   {
+    title: "Arena Gym",
+    year: "2026",
+    company: "Особистий проєкт",
+    companyTone: "maroon",
+    status: "live",
+    href: "https://www.arena-gym.best/",
+    description: "Сайт кросфіт- та MMA-залу в Кременчуці.",
+    stack: ["Astro", "Decap CMS", "Netlify"],
+  },
+  {
     title: "Polly",
     year: "2025",
     company: "Особистий проєкт",
