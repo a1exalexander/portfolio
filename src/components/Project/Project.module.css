@@ -296,7 +296,7 @@
 }
 
 
-.isCurrentYear:first-child .newTag {
+.isCurrentYear .newTag {
     display: inline-block;
 }
 

@@ -1089,6 +1089,34 @@ export default function Home() {
             <ul className={styles.projectsList}>
               <Project
                 className={styles.project}
+                title="Arena Gym"
+                time="2026"
+                status="production"
+                href="https://www.arena-gym.best/"
+                description="Website for a CrossFit & MMA gym in Kremenchuk, Ukraine"
+                stack={[
+                  {
+                    name: "Astro",
+                    Icon: SiAstro,
+                    color: "#ff5d01",
+                    href: "https://astro.build/",
+                  },
+                  {
+                    name: "Decap CMS",
+                    Icon: SiDecapcms,
+                    color: "#ff0082",
+                    href: "https://decapcms.org/",
+                  },
+                  {
+                    name: "Netlify",
+                    Icon: SiNetlify,
+                    color: "#00c7b7",
+                    href: "https://www.netlify.com/",
+                  },
+                ]}
+              />
+              <Project
+                className={styles.project}
                 title="Flashcards"
                 time="2026"
                 status="production"
@@ -1150,34 +1178,6 @@ export default function Home() {
                     Icon: SiPosthog,
                     color: "#f4b400",
                     href: "https://posthog.com/",
-                  },
-                ]}
-              />
-              <Project
-                className={styles.project}
-                title="Arena Gym"
-                time="2026"
-                status="production"
-                href="https://www.arena-gym.best/"
-                description="Website for a CrossFit & MMA gym in Kremenchuk, Ukraine"
-                stack={[
-                  {
-                    name: "Astro",
-                    Icon: SiAstro,
-                    color: "#ff5d01",
-                    href: "https://astro.build/",
-                  },
-                  {
-                    name: "Decap CMS",
-                    Icon: SiDecapcms,
-                    color: "#ff0082",
-                    href: "https://decapcms.org/",
-                  },
-                  {
-                    name: "Netlify",
-                    Icon: SiNetlify,
-                    color: "#00c7b7",
-                    href: "https://www.netlify.com/",
                   },
                 ]}
               />
