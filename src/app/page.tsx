@@ -1089,6 +1089,41 @@ export default function Home() {
             <ul className={styles.projectsList}>
               <Project
                 className={styles.project}
+                github="https://github.com/a1exalexander/volunteer-gang"
+                title="Volunteer Gang"
+                time="2026"
+                status="production"
+                href="https://www.vgang.com.ua"
+                description="Fundraising website for a Ukrainian volunteer team, with a branded Instagram template generator"
+                stack={[
+                  {
+                    name: "Astro",
+                    Icon: SiAstro,
+                    color: "#ff5d01",
+                    href: "https://astro.build/",
+                  },
+                  {
+                    name: "Typescript",
+                    Icon: BiLogoTypescript,
+                    color: "#3178c6",
+                    href: "https://www.typescriptlang.org/",
+                  },
+                  {
+                    name: "Decap CMS",
+                    Icon: SiDecapcms,
+                    color: "#ff0082",
+                    href: "https://decapcms.org/",
+                  },
+                  {
+                    name: "Netlify",
+                    Icon: SiNetlify,
+                    color: "#00c7b7",
+                    href: "https://www.netlify.com/",
+                  },
+                ]}
+              />
+              <Project
+                className={styles.project}
                 title="Arena Gym"
                 time="2026"
                 status="production"
