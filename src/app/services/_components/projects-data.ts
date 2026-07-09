@@ -182,6 +182,16 @@ export const PROJECTS: CarouselProject[] = [
     stack: ["React", "TypeScript", "Astro", "Prisma"],
   },
   {
+    title: "Volunteer Gang",
+    year: "2026",
+    company: "Особистий проєкт",
+    companyTone: "maroon",
+    status: "live",
+    href: "https://www.vgang.com.ua",
+    description: "Сайт збору коштів для волонтерської команди з генератором брендованих Instagram-шаблонів.",
+    stack: ["Astro", "TypeScript", "Decap CMS", "Netlify"],
+  },
+  {
     title: "Arena Gym",
     year: "2026",
     company: "Особистий проєкт",
