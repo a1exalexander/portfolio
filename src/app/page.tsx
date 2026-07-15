@@ -1125,6 +1125,7 @@ export default function Home() {
               />
               <Project
                 className={styles.project}
+                github="https://github.com/a1exalexander/arena-gym"
                 title="Arena Gym"
                 time="2026"
                 status="production"
