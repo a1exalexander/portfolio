@@ -94,6 +94,7 @@ import cert6 from "../images/OWASP_10.jpg";
 import cert7 from "../images/udemy_sec_1.jpg";
 import cert8 from "../images/mate_python_basics.png";
 import cert9 from "../images/mate_python_basics_extended.png";
+import cert10 from "../images/mate_sql_basics.png";
 import wisealpha from "../images/wisealpha.jpg";
 import zone3000Icon from "../images/Zone3000_ico.png";
 import styles from "./page.module.css";
@@ -1436,6 +1437,12 @@ export default function Home() {
           <Fullwidth>
             <div className={styles.certsList}>
               <div className={styles.certPadding} />
+              <Certificate
+                className={styles.certItem}
+                src={cert10}
+                backgroundColor="#ffffff"
+                alt={getAlt("SQL Basics (Mate academy)")}
+              />
               <Certificate
                 className={styles.certItem}
                 src={cert9}
