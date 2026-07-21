@@ -2,9 +2,9 @@
 
 import styles from "../page.module.css";
 
-// CRT / VHS screen overlay for the /services page: scanlines, phosphor grain,
-// vignette and a subtle flicker. All layers are pointer-events:none; the flicker
-// is disabled under prefers-reduced-motion (handled in CSS). Replaces the old
+// CRT / VHS screen overlay for the /services page: phosphor grain, vignette
+// and a subtle flicker. All layers are pointer-events:none; the flicker is
+// disabled under prefers-reduced-motion (handled in CSS). Replaces the old
 // GrainOverlay.
 export const CRTOverlay = () => (
   <>
@@ -28,7 +28,6 @@ export const CRTOverlay = () => (
       </defs>
     </svg>
     <div className={styles.crt} aria-hidden="true">
-      <div className={styles.crtScan} />
       <div className={styles.crtGrain} />
       <div className={styles.crtVignette} />
       <div className={styles.crtFlicker} />

@@ -13,7 +13,7 @@ interface BootLine {
 const LINES: BootLine[] = [
   { text: "$ ./portfolio --section services", kind: "cmd" },
   { text: "[ok] profile loaded: Oleksandr Ratushnyi", kind: "ok" },
-  { text: "[ok] role: JS / TS engineer · front-end & full-stack", kind: "ok" },
+  { text: "[ok] role: JS / TS engineer · full-stack", kind: "ok" },
   { text: "[ok] online since 2018 · SaaS · fintech · crypto · wealth", kind: "ok" },
 ];
 
