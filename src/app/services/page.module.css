@@ -685,37 +685,15 @@
   font-size: 14px;
   line-height: 1.5;
 }
-.svc .price {
-  margin-top: 18px;
-  padding-top: 16px;
-  border-top: 1px solid var(--line);
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.svc .price .priceLab {
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.svc .price .priceVal {
-  font-family: var(--font-mono);
-  font-size: 1.32rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  color: var(--accent);
-  text-shadow: var(--glow);
-  line-height: 1;
-}
 .svc .label {
   font-family: var(--font-mono);
   font-size: 10.5px;
   letter-spacing: 0.13em;
   text-transform: uppercase;
   color: var(--muted);
-  margin-top: 20px;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
   margin-bottom: 9px;
 }
 .svc ul {
