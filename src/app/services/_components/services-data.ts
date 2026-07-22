@@ -5,8 +5,6 @@ export type Service = {
   title: string;
   value: (typeof SERVICE_VALUES)[number];
   summary: string;
-  priceLabel: string;
-  price: string;
   get: string[];
 };
 
@@ -16,8 +14,6 @@ export const SERVICES: Service[] = [
     title: "Односторінковий сайт + CMS",
     value: "Односторінковий сайт + CMS",
     summary: "Односторінковий сайт із можливістю самостійного редагування контенту.",
-    priceLabel: "Від",
-    price: "$300+",
     get: [
       "Індивідуальний дизайн",
       "Редагований контент (CMS)",
@@ -30,8 +26,6 @@ export const SERVICES: Service[] = [
     title: "Багатосторінковий сайт + CMS",
     value: "Багатосторінковий сайт + CMS",
     summary: "Корпоративний сайт із кількох сторінок та можливістю масштабування.",
-    priceLabel: "Від",
-    price: "$500 +",
     get: [
       "Головна, послуги, про компанію, блог, контакти",
       "Редагований контент (CMS)",
@@ -44,8 +38,6 @@ export const SERVICES: Service[] = [
     title: "Веб-застосунок",
     value: "Веб-застосунок",
     summary: "Веб-застосунок: від інтерфейсу до шару даних.",
-    priceLabel: "Ціна",
-    price: "За запитом",
     get: [
       "Інтерфейс (UI/UX)",
       "Шар даних та API",
@@ -58,8 +50,6 @@ export const SERVICES: Service[] = [
     title: "Нова функція / виправлення",
     value: "Нова функція / виправлення в наявному проєкті",
     summary: "Підключення до наявного проєкту для розробки та підтримки.",
-    priceLabel: "Ціна",
-    price: "За запитом",
     get: [
       "Розробка нових функцій",
       "Покращення продуктивності",

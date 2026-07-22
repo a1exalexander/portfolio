@@ -305,10 +305,6 @@ export default function ServicesPage() {
                 <span className={styles.num}>{s.num}</span>
                 <h3>{s.title}</h3>
                 <p className={styles.summary}>{s.summary}</p>
-                <div className={styles.price}>
-                  <span className={styles.priceLab}>{s.priceLabel}</span>
-                  <span className={styles.priceVal}>{s.price}</span>
-                </div>
                 <div className={styles.label}>Що входить</div>
                 <ul>
                   {s.get.map((g) => (
