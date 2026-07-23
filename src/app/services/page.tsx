@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { AnimatedCard } from "../mentor/_components/AnimatedCard";
 import { FadeUp } from "../mentor/_components/FadeUp";
-import { FadeUpLi } from "../mentor/_components/FadeUpLi";
 import { PhoneLink } from "../mentor/_components/PhoneLink";
 import { HeroBody } from "./_components/HeroBody";
 import { ContactCTA } from "./_components/ContactCTA";
@@ -31,34 +30,6 @@ const EMAIL = "alexander.ratushnyi@gmail.com";
 const GITHUB = "https://github.com/a1exalexander";
 const LINKEDIN = "https://www.linkedin.com/in/alexander-ratushnyi/";
 const TELEGRAM = "https://t.me/a1exalexander";
-
-const PROCESS = [
-  {
-    num: "01",
-    title: "Брифінг",
-    text: "Обговорюємо ідею, цілі, обсяг і терміни.",
-  },
-  {
-    num: "02",
-    title: "Оцінка та план",
-    text: "Фіксую обсяг робіт і даю конкретну оцінку вартості та строків.",
-  },
-  {
-    num: "03",
-    title: "Дизайн / прототип",
-    text: "Структура та UI/UX за потреби — узгоджуємо напрямок.",
-  },
-  {
-    num: "04",
-    title: "Розробка",
-    text: "Розробка з прозорими апдейтами на кожному етапі.",
-  },
-  {
-    num: "05",
-    title: "QA та запуск",
-    text: "Тестування, розгортання і передача коду та всіх прав.",
-  },
-];
 
 export const viewport: Viewport = {
   themeColor: "#1c1b26",
@@ -235,9 +206,6 @@ export default function ServicesPage() {
               <a className={`${styles.navlink} ${styles.hideSm}`} href="#services">
                 services
               </a>
-              <a className={`${styles.navlink} ${styles.hideSm}`} href="#process">
-                process
-              </a>
               <a className={`${styles.navlink} ${styles.hideSm}`} href="#work">
                 projects
               </a>
@@ -292,11 +260,11 @@ export default function ServicesPage() {
           <Plus pos="tr" />
           <FadeUp className={styles.eyebrowRow}>
             <Prompt cmd="ls ./services" />
-            <span className={styles.mono}>01 — 04 · оберіть, щоб отримати оцінку</span>
+            <span className={styles.mono}>01 — 06 · оберіть, щоб отримати оцінку</span>
           </FadeUp>
           <FadeUp>
             <h2 className={styles.hSection} style={{ maxWidth: "18ch" }}>
-              Чотири напрями веброзробки
+              Шість напрямів розробки
             </h2>
           </FadeUp>
           <div className={styles.svcRack}>
@@ -319,32 +287,6 @@ export default function ServicesPage() {
               </AnimatedCard>
             ))}
           </div>
-        </section>
-
-        {/* === Process === */}
-        <section className={`${styles.section} ${styles.process}`} id="process">
-          <Plus pos="tl" />
-          <Plus pos="tr" />
-          <FadeUp className={styles.eyebrowRow}>
-            <Prompt cmd="man workflow" />
-            <span className={styles.mono}>5 кроків · прозоро</span>
-          </FadeUp>
-          <FadeUp>
-            <h2 className={styles.hSection} style={{ maxWidth: "16ch" }}>
-              Як ми працюємо над проєктом
-            </h2>
-          </FadeUp>
-          <ol className={styles.steps}>
-            {PROCESS.map((p, i) => (
-              <FadeUpLi className={styles.step} key={p.num} delay={i * 0.1}>
-                <span className={styles.stepNum}>{p.num}</span>
-                <div className={styles.stepBody}>
-                  <h3>{p.title}</h3>
-                  <p>{p.text}</p>
-                </div>
-              </FadeUpLi>
-            ))}
-          </ol>
         </section>
 
         {/* === Projects === */}
