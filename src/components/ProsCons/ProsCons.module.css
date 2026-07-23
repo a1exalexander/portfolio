@@ -7,7 +7,6 @@
 
 .column {
   border-radius: var(--radius-lg);
-  border-top: 3px solid var(--accent);
   background-color: var(--tint);
   padding: 1.6rem 1.8rem 1.8rem;
 }
