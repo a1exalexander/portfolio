@@ -61,6 +61,7 @@ Components available in MDX files via `src/lib/mdx-components.tsx`:
 - `ArticleImage` - Optimized images with captions
 - `ArticleSlider` - Image carousel/slider
 - `Callout` - Highlighted info/warning boxes
+- `ProsCons` / `Pros` / `Cons` - Two-column pros & cons comparison (`<ProsCons><Pros title="...">…</Pros><Cons title="...">…</Cons></ProsCons>`)
 - `CodeBlock` - Syntax-highlighted code (rehype-pretty-code with one-dark-pro theme)
 - `InlineLink` - Styled anchor links (auto-applied to `<a>` tags)
 - `LinkCard` - Rich link previews

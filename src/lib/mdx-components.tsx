@@ -9,6 +9,7 @@ import { InlineLink } from "@/components/InlineLink";
 import { LinkCard } from "@/components/LinkCard";
 import { CodeBlock } from "@/components/CodeBlock";
 import { Table } from "@/components/Table";
+import { ProsCons, Pros, Cons } from "@/components/ProsCons";
 
 export const mdxComponents: MDXComponents = {
   // Override default HTML elements
@@ -30,4 +31,7 @@ export const mdxComponents: MDXComponents = {
   LinkCard,
   CodeBlock,
   Table,
+  ProsCons,
+  Pros,
+  Cons,
 };
