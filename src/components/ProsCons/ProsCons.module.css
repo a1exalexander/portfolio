@@ -1,0 +1,105 @@
+.prosCons {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  margin: 2.4rem 0;
+}
+
+.column {
+  border-radius: var(--radius-lg);
+  background-color: var(--tint);
+  padding: 1.6rem 1.8rem 1.8rem;
+}
+
+.pros {
+  --accent: var(--G300);
+  --tint: rgba(120, 171, 42, 0.08);
+}
+
+.cons {
+  --accent: var(--R300);
+  --tint: rgba(255, 86, 48, 0.08);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0 0 1.2rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-text);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: var(--radius-round);
+  background-color: var(--accent);
+  color: var(--color-text-inverse);
+}
+
+.badge svg {
+  width: 1.3rem;
+  height: 1.3rem;
+}
+
+.body {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+.body ul,
+.body ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.body li {
+  position: relative;
+  padding-left: 2.4rem;
+  margin-bottom: 1rem;
+}
+
+.body li:last-child {
+  margin-bottom: 0;
+}
+
+.body li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.45em;
+  width: 1.4rem;
+  height: 1.4rem;
+  background-color: var(--accent);
+  mask-image: var(--marker);
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  -webkit-mask-image: var(--marker);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+}
+
+.pros .body li::before {
+  --marker: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M13.5 4.5L6.25 11.75L2.5 8' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+.cons .body li::before {
+  --marker: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8H12.5' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+.body p {
+  margin: 0 0 1rem;
+}
+
+.body p:last-child {
+  margin-bottom: 0;
+}

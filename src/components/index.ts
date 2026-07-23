@@ -25,3 +25,4 @@ export * from './LinkCard';
 export * from './CodeBlock';
 export * from './LikeButton';
 export * from './ViewCounter';
+export * from './ProsCons';
