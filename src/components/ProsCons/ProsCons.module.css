@@ -1,14 +1,8 @@
 .prosCons {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 1.6rem;
   margin: 2.4rem 0;
-}
-
-@media (max-width: 640px) {
-  .prosCons {
-    grid-template-columns: 1fr;
-  }
 }
 
 .column {
