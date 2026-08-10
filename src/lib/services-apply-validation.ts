@@ -14,9 +14,9 @@ export type ServicesErrors = Partial<Record<keyof ServicesData | "contacts", str
 // Canonical list of selectable services — the single source of truth shared by
 // the form select, the "Get a quote" presets and this validator.
 export const SERVICE_VALUES = [
-  "Односторінковий сайт + CMS",
-  "Багатосторінковий сайт + CMS",
+  "Сайт + CMS",
   "Веб-застосунок",
+  "Розробка з AI (вайб-кодинг)",
   "Нова функція / виправлення в наявному проєкті",
   "Автоматизація процесів",
   "Діджиталізація процесів",
