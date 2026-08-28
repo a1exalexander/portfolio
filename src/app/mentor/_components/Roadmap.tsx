@@ -214,7 +214,7 @@ export const Roadmap = () => {
     <section className={styles.section} id="roadmap">
       <div className={styles.secHead}>
         <div>
-          <div className={styles.kicker}>§ 03</div>
+          <div className={styles.kicker}>§ 02</div>
           <h2>
             Що ти <span className={styles.accent}>вивчиш</span>
           </h2>

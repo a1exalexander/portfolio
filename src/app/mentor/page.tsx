@@ -11,8 +11,6 @@ import { PhoneLink } from "./_components/PhoneLink";
 import { Roadmap } from "./_components/Roadmap";
 import { Testimonials } from "./_components/Testimonials";
 import {
-  BackIllo,
-  FrontIllo,
   HeroIllo,
   KotyMark,
   PersonaJobs,
@@ -25,7 +23,6 @@ import {
   IconGlobe,
   IconLi,
   IconMail,
-  IconSparkle,
   IconTg,
 } from "./_components/icons";
 import styles from "./page.module.css";
@@ -337,89 +334,6 @@ export default function MentorPage() {
         </div>
       </section>
 
-      {/* === Front vs Back === */}
-      <section className={styles.section} id="front-vs-back">
-        <div className={styles.secHead}>
-          <div>
-            <div className={styles.kicker}>§ 02</div>
-            <h2>
-              Фронтенд та <span className={styles.violet}>бекенд</span>
-            </h2>
-          </div>
-          <p className={styles.lede}>
-            Веб-розробник умовно ділиться на дві ролі. Я викладаю <strong>фронтенд</strong> — але
-            важливо знати, з чим він взаємодіє і де закінчується твоя зона відповідальності.
-          </p>
-        </div>
-
-        <div className={styles.split}>
-          <div className={`${styles.splitCard} ${styles.splitCardFront}`}>
-            <div className={styles.illoBg}>
-              <FrontIllo />
-            </div>
-            <div className={styles.roleTag}>{"// сторона користувача · браузер"}</div>
-            <h3>Фронтенд</h3>
-            <p>
-              <strong>Це я.</strong> Фронтенд-розробник створює повноцінні веб-сайти і додатки — не
-              лише «малює» UI, а й пише логіку, працює з формами, авторизацією, інтегрує API,
-              обробляє стан, валідацію, маршрутизацію, кеш, помилки. Це повноцінний інженер, що
-              відповідає за все, що користувач бачить і робить у браузері.
-            </p>
-            <ul className={styles.whatTheyDo}>
-              <li>Інтерфейс, верстка, респонсив</li>
-              <li>Форми, валідація, авторизація</li>
-              <li>Стан, бізнес-логіка у клієнті</li>
-              <li>Інтеграція з API (REST, GraphQL)</li>
-              <li>Standalone-додатки (PWA, SPA)</li>
-            </ul>
-            <div className={styles.stack}>
-              <span className={`${styles.chip} ${styles.chipRose}`}>HTML</span>
-              <span className={`${styles.chip} ${styles.chipRose}`}>CSS</span>
-              <span className={`${styles.chip} ${styles.chipRose}`}>JavaScript</span>
-              <span className={`${styles.chip} ${styles.chipRose}`}>TypeScript</span>
-              <span className={`${styles.chip} ${styles.chipRose}`}>React</span>
-            </div>
-          </div>
-
-          <div className={`${styles.splitCard} ${styles.splitCardBack}`}>
-            <div className={styles.illoBg}>
-              <BackIllo />
-            </div>
-            <div className={styles.roleTag}>{"// сторона сервера · backend"}</div>
-            <h3>Бекенд</h3>
-            <p>
-              Бекенд-розробник створює <strong>власний API з нуля</strong> — пише серверну логіку,
-              проектує базу даних, обробляє паролі та платежі, налаштовує безпеку, інфраструктуру,
-              моніторинг. Все, що відбувається <em>після</em> того, як користувач натиснув кнопку, —
-              його робота.
-            </p>
-            <ul className={styles.whatTheyDo}>
-              <li>API з нуля (REST / GraphQL)</li>
-              <li>Бази даних, схеми, міграції</li>
-              <li>Авторизація, токени, безпека</li>
-              <li>Платежі, інтеграції, фонові задачі</li>
-              <li>Інфраструктура, деплой, моніторинг</li>
-            </ul>
-            <div className={styles.stack}>
-              <span className={`${styles.chip} ${styles.chipViolet}`}>Node.js</span>
-              <span className={`${styles.chip} ${styles.chipViolet}`}>Python</span>
-              <span className={`${styles.chip} ${styles.chipViolet}`}>PostgreSQL</span>
-              <span className={`${styles.chip} ${styles.chipViolet}`}>Redis</span>
-              <span className={`${styles.chip} ${styles.chipViolet}`}>Docker</span>
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.splitNote}>
-          <IconSparkle />
-          <span>
-            Фронтенд усе одно може створювати повноцінні сайти, інтернет-магазини, сервіси та
-            додатки без глибоких знань бекенду —{" "}
-            <strong>за допомогою допоміжних сервісів</strong>, яких сьогодні величезна кількість.
-          </span>
-        </div>
-      </section>
-
       {/* === Roadmap (client) === */}
       <Roadmap />
 
@@ -427,7 +341,7 @@ export default function MentorPage() {
       <section className={styles.section} id="how">
         <div className={styles.secHead}>
           <div>
-            <div className={styles.kicker}>§ 04</div>
+            <div className={styles.kicker}>§ 03</div>
             <h2>
               Як <span className={styles.accent}>працюємо</span>
             </h2>
@@ -477,7 +391,7 @@ export default function MentorPage() {
       <section className={styles.section} id="pricing">
         <div className={styles.secHead}>
           <div>
-            <div className={styles.kicker}>§ 05</div>
+            <div className={styles.kicker}>§ 04</div>
             <h2>
               Скільки це <span className={styles.accent}>коштує</span>
             </h2>
@@ -551,7 +465,7 @@ export default function MentorPage() {
       <section className={styles.section} id="apply">
         <div className={styles.secHead}>
           <div>
-            <div className={styles.kicker}>§ 08</div>
+            <div className={styles.kicker}>§ 07</div>
             <h2>
               Залишити <span className={styles.accent}>заявку</span>
             </h2>
