@@ -3,8 +3,6 @@ import { FiCheckCircle, FiHelpCircle } from "react-icons/fi";
 import {
   LuBriefcase,
   LuGlobe,
-  LuMonitor,
-  LuServer,
   LuSparkles,
   LuSprout,
   LuTarget,
@@ -140,10 +138,6 @@ export const HeroIllo = () => (
     <P x={20} y={46} w={24} h={1} c="#A88090" />
   </svg>
 );
-
-export const FrontIllo = () => <LuMonitor size={64} color="var(--koty-accent)" />;
-
-export const BackIllo = () => <LuServer size={64} color="var(--koty-violet)" />;
 
 // === Persona icons (react-icons) ===
 export const PersonaZero = () => <LuSprout size="100%" />;

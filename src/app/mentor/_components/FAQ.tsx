@@ -10,7 +10,7 @@ export const FAQ = () => {
     <section className={styles.section} id="faq">
       <div className={styles.secHead}>
         <div>
-          <div className={styles.kicker}>§ 07</div>
+          <div className={styles.kicker}>§ 06</div>
           <h2>
             Часті <span className={styles.violet}>питання</span>
           </h2>

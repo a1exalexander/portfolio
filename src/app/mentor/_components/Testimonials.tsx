@@ -130,7 +130,7 @@ export const Testimonials = () => {
     <section className={styles.section} id="testimonials">
       <div className={styles.secHead}>
         <div>
-          <div className={styles.kicker}>§ 06</div>
+          <div className={styles.kicker}>§ 05</div>
           <h2>
             Що кажуть <span className={styles.violet}>студенти</span>
           </h2>
