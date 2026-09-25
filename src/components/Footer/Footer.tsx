@@ -6,6 +6,7 @@ import { HiOutlineMail } from 'react-icons/hi';
 import { RiPagesLine } from 'react-icons/ri';
 import { FiEdit3 } from 'react-icons/fi';
 
+import { QuickContact } from '../QuickContact';
 import { Tag } from '../Tag';
 import { ThemeSwitcher } from '../ThemeSwitcher';
 import styles from './Footer.module.css';
@@ -16,6 +17,7 @@ export const Footer = function Footer() {
 
   return (
     <footer className={styles.container}>
+      {pathname === '/' && <QuickContact />}
       <h2 className={styles.heading}>my links 🔗</h2>
       <div className={styles.list}>
         <Tag

@@ -1,7 +1,10 @@
 import { KotyMark } from "@/app/mentor/_components/illustrations";
+import { MENTOR_ENABLED } from "@/lib/features";
 import styles from "./MentorCallout.module.css";
 
 export const MentorCallout = function MentorCallout() {
+  if (!MENTOR_ENABLED) return null;
+
   return (
     <a href="/mentor" className={styles.mentorCallout}>
       <KotyMark className={styles.mentorCalloutLogo} />

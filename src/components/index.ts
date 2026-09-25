@@ -11,6 +11,7 @@ export * from './Certificate';
 export * from './Ticker';
 export * from './Strum';
 export * from './ThemeSwitcher';
+export * from './QuickContact';
 
 // Blog components
 export * from './Article';

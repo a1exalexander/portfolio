@@ -97,6 +97,7 @@ import cert9 from "../images/mate_python_basics_extended.png";
 import cert10 from "../images/mate_sql_basics.png";
 import wisealpha from "../images/wisealpha.jpg";
 import zone3000Icon from "../images/Zone3000_ico.png";
+import { MENTOR_ENABLED, SERVICES_ENABLED } from "@/lib/features";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -276,10 +277,12 @@ export default function Home() {
           </Paragraph>
 
           {/* === Mentor + Services Callouts === */}
-          <div className={styles.calloutRow}>
-            <MentorCallout />
-            <ServiceCallout />
-          </div>
+          {(MENTOR_ENABLED || SERVICES_ENABLED) && (
+            <div className={styles.calloutRow}>
+              {MENTOR_ENABLED && <MentorCallout />}
+              {SERVICES_ENABLED && <ServiceCallout />}
+            </div>
+          )}
 
           <Photo
             loading="eager"

@@ -1,0 +1,101 @@
+.container {
+  margin-bottom: 2.5rem;
+  padding: 1.2rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg-secondary);
+}
+
+.title {
+  margin: 0 0 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-text);
+}
+
+.hint {
+  font-weight: 400;
+  color: var(--color-text-secondary);
+}
+
+.row {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.input {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 0.7rem 1rem;
+  font: inherit;
+  font-size: 1.4rem;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  transition: border-color 0.2s ease-in-out;
+}
+
+.input::placeholder {
+  color: var(--color-text-tertiary);
+}
+
+.input:hover,
+.input:focus {
+  border-color: var(--color-border-strong);
+  outline: none;
+}
+
+.message {
+  flex-grow: 1.6;
+}
+
+.button {
+  flex-shrink: 0;
+  padding: 0.7rem 1.2rem;
+  font: inherit;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--color-text-inverse);
+  background-color: var(--color-text);
+  border: 1px solid var(--color-text);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.button:hover {
+  opacity: 0.85;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.error {
+  margin: 0.6rem 0 0;
+  font-size: 1.3rem;
+  color: var(--R400);
+}
+
+.sent {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--color-text);
+}
+
+@media (max-width: 600px) {
+  .row {
+    flex-direction: column;
+  }
+}
