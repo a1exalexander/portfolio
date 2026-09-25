@@ -1,3 +1,4 @@
+import { SERVICES_ENABLED } from "@/lib/features";
 import styles from "./ServiceCallout.module.css";
 
 const KotyMark = ({ className }: { className?: string }) => (
@@ -11,6 +12,8 @@ const KotyMark = ({ className }: { className?: string }) => (
 );
 
 export const ServiceCallout = function ServiceCallout() {
+  if (!SERVICES_ENABLED) return null;
+
   return (
     <a href="/services" className={styles.serviceCallout}>
       <KotyMark className={styles.serviceCalloutLogo} />
