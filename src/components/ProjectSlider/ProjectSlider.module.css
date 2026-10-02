@@ -53,7 +53,7 @@
     flex-direction: column;
     gap: 1.6rem;
     width: max-content;
-    padding: 1.2rem var(--gutter) 1.2rem var(--gutter);
+    padding: 0.4rem var(--gutter);
 }
 
 .root[data-seen='true'] .track {

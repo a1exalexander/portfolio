@@ -53,20 +53,8 @@ export const Project = function Project({
         customProps.target = '_blank';
     }
 
-    const isCurrentYear = time === new Date().getFullYear().toString();
-
     return (
-        <li className={clsx(styles.item, {[styles.isCurrentYear]: isCurrentYear}, status ? styles[status] : '', className)} style={style}>
-            {isCurrentYear && <>
-                <span className={styles.newTag}>new</span>
-                <span className={styles.newTag}>new</span>
-                <span className={styles.newTag}>new</span>
-                <span className={styles.newTag}>new</span>
-                <span className={styles.newTag}>new</span>
-                <span className={styles.newTag}>new</span>
-                <span className={styles.newTag}>new</span>
-                <span className={styles.newTag}>new</span>
-            </>}
+        <li className={clsx(styles.item, status ? styles[status] : '', className)} style={style}>
             <div className={styles.container}>
                 <div className={styles.tagList}>
                     <Project.Tag className={clsx(styles.status, styles.tagItem)}>
