@@ -120,6 +120,14 @@
     color: var(--color-link);
 }
 
+.logo {
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    margin-right: 0.6rem;
+    border-radius: var(--radius-sm);
+}
+
 .time {
     font-size: 1.2rem;
     color: var(--color-text-tertiary);

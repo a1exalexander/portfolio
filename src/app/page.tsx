@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { BiLogoReact, BiLogoTypescript } from "react-icons/bi";
-import { BsStripe } from "react-icons/bs";
+import { BsStripe, BsTerminal } from "react-icons/bs";
 import { DiBackbone, DiReact, DiRedis, DiStylus } from "react-icons/di";
 import { FaWix } from "react-icons/fa";
 import { FiEdit3 } from "react-icons/fi";
@@ -14,6 +14,7 @@ import {
   SiAuth0,
   SiCssmodules,
   SiDecapcms,
+  SiElectron,
   SiFastify,
   SiGithub,
   SiGraphql,
@@ -34,6 +35,7 @@ import {
   SiStrapi,
   SiStyledcomponents,
   SiTailwindcss,
+  SiTurborepo,
   SiSentry,
   SiPosthog,
   SiVite,
@@ -57,6 +59,7 @@ import {
   Paragraph,
   Photo,
   Project,
+  ProjectSlider,
   Tag,
   Ticker,
   Work,
@@ -85,6 +88,7 @@ import photoMerge2 from "../images/m2.jpg";
 import mavinx from "../images/mavinx.png";
 import mergeAcademy from "../images/merge-academy.ico";
 import merge from "../images/merge.png";
+import mysticalsLogo from "../images/mysticals.png";
 import namecheapIcon from "../images/namecheap.ico";
 import namecheap1 from "../images/nc1.jpeg";
 import cert4 from "../images/PR3.png";
@@ -361,6 +365,403 @@ export default function Home() {
           </MasonryGrid>
         </section>
 
+        <section id="my-projects" className={styles.section}>
+          <h2 className={styles.heading}>my projects 🚀</h2>
+          <Paragraph>
+            Projects that I made for myself, friends, relatives and world on a
+            free basis. My pet-projects are a blend of personal passion and
+            skill development. Explore more on my{" "}
+            <Tag
+              href="https://github.com/a1exalexander"
+              Icon={SiGithub}
+              iconColor="#080808"
+            >
+              GitHub
+            </Tag>
+            .
+          </Paragraph>
+          <Fullwidth Icon={GrProjects} title="Projects">
+            <ProjectSlider>
+              <Project
+                github="https://github.com/a1exalexander/mysticals"
+                npm="https://www.npmjs.com/package/mysticals"
+                logo={mysticalsLogo}
+                title="Mysticals"
+                time="2026"
+                status="production"
+                href="https://mysticals.sashkoratushnyi.com"
+                description="Open-source desktop & terminal calendar for multiple Google and CalDAV accounts, where every account stays isolated in its own box"
+                stack={[
+                  {
+                    name: "Electron",
+                    Icon: SiElectron,
+                    color: "#47848f",
+                    href: "https://www.electronjs.org/",
+                  },
+                  {
+                    name: "React",
+                    Icon: BiLogoReact,
+                    color: "#61dafb",
+                    href: "https://react.dev",
+                  },
+                  {
+                    name: "Ink",
+                    Icon: BsTerminal,
+                    color: "#080808",
+                    darkColor: "#ffffff",
+                    href: "https://github.com/vadimdemedes/ink",
+                  },
+                  {
+                    name: "Typescript",
+                    Icon: BiLogoTypescript,
+                    color: "#3178c6",
+                    href: "https://www.typescriptlang.org/",
+                  },
+                  {
+                    name: "Vite",
+                    Icon: SiVite,
+                    color: "#646cff",
+                    href: "https://vitejs.dev/",
+                  },
+                  {
+                    name: "Turborepo",
+                    Icon: SiTurborepo,
+                    color: "#ef4444",
+                    href: "https://turbo.build/",
+                  },
+                ]}
+              />
+              <Project
+                github="https://github.com/a1exalexander/volunteer-gang"
+                title="Volunteer Gang"
+                time="2026"
+                status="production"
+                href="https://www.vgang.com.ua"
+                description="Fundraising website for a Ukrainian volunteer team, with a branded Instagram template generator"
+                stack={[
+                  {
+                    name: "Astro",
+                    Icon: SiAstro,
+                    color: "#ff5d01",
+                    href: "https://astro.build/",
+                  },
+                  {
+                    name: "Typescript",
+                    Icon: BiLogoTypescript,
+                    color: "#3178c6",
+                    href: "https://www.typescriptlang.org/",
+                  },
+                  {
+                    name: "Decap CMS",
+                    Icon: SiDecapcms,
+                    color: "#ff0082",
+                    href: "https://decapcms.org/",
+                  },
+                  {
+                    name: "Netlify",
+                    Icon: SiNetlify,
+                    color: "#00c7b7",
+                    href: "https://www.netlify.com/",
+                  },
+                ]}
+              />
+              <Project
+                github="https://github.com/a1exalexander/arena-gym"
+                title="Arena Gym"
+                time="2026"
+                status="production"
+                href="https://www.arena-gym.best/"
+                description="Website for a CrossFit & MMA gym in Kremenchuk, Ukraine"
+                stack={[
+                  {
+                    name: "Astro",
+                    Icon: SiAstro,
+                    color: "#ff5d01",
+                    href: "https://astro.build/",
+                  },
+                  {
+                    name: "Decap CMS",
+                    Icon: SiDecapcms,
+                    color: "#ff0082",
+                    href: "https://decapcms.org/",
+                  },
+                  {
+                    name: "Netlify",
+                    Icon: SiNetlify,
+                    color: "#00c7b7",
+                    href: "https://www.netlify.com/",
+                  },
+                ]}
+              />
+              <Project
+                title="Flashcards"
+                time="2026"
+                status="production"
+                href="https://app.flashcards.best"
+                description="Cards for words learning"
+                stack={[
+                  {
+                    name: "React",
+                    Icon: BiLogoReact,
+                    color: "#61dafb",
+                    href: "https://react.dev",
+                  },
+                  {
+                    name: "Typescript",
+                    Icon: BiLogoTypescript,
+                    color: "#007acc",
+                    href: "https://www.typescriptlang.org/",
+                  },
+                  {
+                    name: "Vite",
+                    Icon: SiVite,
+                    color: "#646cff",
+                    href: "https://vitejs.dev/",
+                  },
+                  {
+                    name: "Astro",
+                    Icon: SiAstro,
+                    color: "#ff5d01",
+                    href: "https://astro.build/",
+                  },
+                  {
+                    name: "Tailwind",
+                    Icon: SiTailwindcss,
+                    color: "#38b2ac",
+                    href: "https://tailwindcss.com/",
+                  },
+                  {
+                    name: "Fastify",
+                    Icon: SiFastify,
+                    color: "#000000",
+                    darkColor: "#ffffff",
+                    href: "https://fastify.dev/",
+                  },
+                  {
+                    name: "Prisma",
+                    Icon: SiPrisma,
+                    color: "#2c3e50",
+                    darkColor: "#ffffff",
+                    href: "https://www.prisma.io/",
+                  },
+                  {
+                    name: "MongoDB",
+                    Icon: SiMongodb,
+                    color: "#47a248",
+                    href: "https://www.mongodb.com/",
+                  },
+                  {
+                    name: "Posthog",
+                    Icon: SiPosthog,
+                    color: "#f4b400",
+                    href: "https://posthog.com/",
+                  },
+                ]}
+              />
+              <Project
+                github="https://github.com/a1exalexander/polly"
+                title="Polly"
+                time="2025"
+                status="production"
+                href="https://polly-voting-app.vercel.app/"
+                description="Real-Time Task Estimation and Voting Platform"
+                stack={[
+                  {
+                    name: "React",
+                    Icon: BiLogoReact,
+                    color: "#61dafb",
+                    href: "https://react.dev",
+                  },
+                  {
+                    name: "Typescript",
+                    Icon: BiLogoTypescript,
+                    color: "#007acc",
+                    href: "https://www.typescriptlang.org/",
+                  },
+                  {
+                    name: "Next.js",
+                    Icon: TbBrandNextjs,
+                    color: "#080808",
+                    darkColor: "#ffffff",
+                    href: "https://nextjs.org/",
+                  },
+                  {
+                    name: "CSS modules",
+                    Icon: SiCssmodules,
+                    href: "https://github.com/css-modules/css-modules",
+                    color: "#000",
+                    darkColor: "#ffffff",
+                  },
+                  {
+                    name: "Supabase",
+                    Icon: RiSupabaseFill,
+                    color: "#37ac76",
+                    href: "https://supabase.com/",
+                  },
+                  {
+                    name: "Sentry",
+                    Icon: SiSentry,
+                    color: "#362d59",
+                    href: "https://sentry.io/",
+                  },
+                  {
+                    name: "Posthog",
+                    Icon: SiPosthog,
+                    color: "#f4b400",
+                    href: "https://posthog.com/",
+                  },
+                ]}
+              />
+              <Project
+                github="https://github.com/a1exalexander/svg-to-react"
+                title="svg-to-react"
+                time="2024"
+                npm="https://www.npmjs.com/package/@onlyredcats/svg-to-react"
+                status="production"
+                href="https://www.npmjs.com/package/@onlyredcats/svg-to-react"
+                description="CLI tool for generating React icons from SVG files"
+                stack={[
+                  {
+                    name: "Node.js",
+                    Icon: IoLogoNodejs,
+                    color: "#539e43",
+                    href: "https://nodejs.org/",
+                  },
+                  {
+                    name: "Javascript",
+                    Icon: SiJavascript,
+                    color: "#f7df1e",
+                    href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+                  },
+                ]}
+              />
+              <Project
+                github="https://github.com/a1exalexander/exchanger"
+                title="Exchanger"
+                time="2021"
+                status="production"
+                href="https://exchanger.in.ua"
+                description="Hryvnia to other currencies converter"
+                stack={[
+                  {
+                    name: "React",
+                    Icon: BiLogoReact,
+                    color: "#68dbfb",
+                    href: "https://react.dev",
+                  },
+                  {
+                    name: "Redux",
+                    Icon: TbBrandRedux,
+                    color: "#764abc",
+                    href: "https://react-redux.js.org/",
+                  },
+                  {
+                    name: "CSS modules",
+                    Icon: SiCssmodules,
+                    href: "https://github.com/css-modules/css-modules",
+                    color: "#000",
+                    darkColor: "#ffffff",
+                  },
+                ]}
+              />
+
+              <Project
+                github="https://github.com/a1exalexander/elevendogs"
+                title="Elevendogs"
+                time="2021"
+                status="production"
+                href="https://elevendogs.com.ua"
+                description="Barbershop website for my friend's business"
+                stack={[
+                  {
+                    name: "Next.js",
+                    Icon: TbBrandNextjs,
+                    color: "#080808",
+                    darkColor: "#ffffff",
+                    href: "https://nextjs.org/",
+                  },
+                  {
+                    name: "CSS modules",
+                    Icon: SiCssmodules,
+                    href: "https://github.com/css-modules/css-modules",
+                    color: "#000",
+                    darkColor: "#ffffff",
+                  },
+                ]}
+              />
+
+              <Project
+                github="https://github.com/a1exalexander/school23"
+                title="School 23"
+                time="2020"
+                status="production"
+                href="https://school23.vercel.app/"
+                description="Kremenchuk school website for my mom, who is a director"
+                stack={[
+                  {
+                    name: "Next.js",
+                    Icon: TbBrandNextjs,
+                    color: "#080808",
+                    darkColor: "#ffffff",
+                    href: "https://nextjs.org/",
+                  },
+                  {
+                    name: "Firebase",
+                    Icon: IoLogoFirebase,
+                    color: "#ffa82c",
+                    href: "https://firebase.google.com/",
+                  },
+                  {
+                    name: "SCSS",
+                    Icon: SiSass,
+                    color: "#c69",
+                    href: "https://sass-lang.com/",
+                  },
+                ]}
+              />
+
+              <Project
+                title="Keenly"
+                time="2020"
+                status="production"
+                href="https://keenly.shop/"
+                description="Online store for my aunt's business"
+                stack={[
+                  {
+                    name: "Wix",
+                    Icon: FaWix,
+                    color: "#000000",
+                    darkColor: "#ffffff",
+                    href: "https://wix.com",
+                  },
+                ]}
+              />
+
+              <Project
+                title="Merge Place"
+                time="2018"
+                status="production"
+                href="https://www.merge.place/"
+                description="My first website that I made by myself for a co-working in Kremenchuk, Ukraine."
+                maxWidth={250}
+                stack={[
+                  {
+                    name: "Vue 2",
+                    Icon: IoLogoVue,
+                    color: "#41b883",
+                    href: "https://v2.vuejs.org/",
+                  },
+                  {
+                    name: "SCSS",
+                    Icon: SiSass,
+                    color: "#c69",
+                    href: "https://sass-lang.com/",
+                  },
+                ]}
+              />
+            </ProjectSlider>
+          </Fullwidth>
+        </section>
         <section id="my-work" className={styles.section}>
           <h2 className={styles.heading}>my work 🗂️</h2>
           <Paragraph>
@@ -436,9 +837,8 @@ export default function Home() {
               />
             </MasonryGrid>
             <Fullwidth Icon={GrProjects} title="Projects">
-              <ul className={styles.projectsList}>
+              <ProjectSlider>
                 <Project
-                  className={styles.project}
                   title="Promtify"
                   time="2023"
                   description="AI templates builder. It's in-house project for Merge team. The development is conducted only by me."
@@ -489,7 +889,6 @@ export default function Home() {
                 />
 
                 <Project
-                  className={styles.project}
                   title="RelayPay"
                   time="2023"
                   description="Crypto payment solution. Worked as a small team. I was involved in architecture, management and development of complex issues."
@@ -532,7 +931,6 @@ export default function Home() {
                 />
 
                 <Project
-                  className={styles.project}
                   title="Merge Academy"
                   time="2022"
                   description="Web academy platform of Merge. I was involved in the development of the platform and also as a course author and teacher."
@@ -575,7 +973,6 @@ export default function Home() {
                 />
 
                 <Project
-                  className={styles.project}
                   title="Ember"
                   time="2022"
                   description="UK based finance management app. Worked in the client's team as a full-stack developer. Developed features and refactored a lot."
@@ -617,7 +1014,6 @@ export default function Home() {
                   ]}
                 />
                 <Project
-                  className={styles.project}
                   title="Spiral Blue"
                   time="2021"
                   description="Website for Australian based space tech company. I was involved in setting up the entire project, fully backend, partially frontend and also leading the team."
@@ -653,7 +1049,6 @@ export default function Home() {
                 />
 
                 <Project
-                  className={styles.project}
                   title="Noviscient"
                   time="2021"
                   description="Singapore based wealth management platform. I was engaged in frontend development independently, communicating directly with the backend (Python) dev."
@@ -695,7 +1090,6 @@ export default function Home() {
                 />
 
                 <Project
-                  className={styles.project}
                   title="Spotlyt"
                   time="2021"
                   description="Components library for data scientists from Poland-based company BrytLyt. I worked in the client's team and independently developed a UI library for their applications."
@@ -737,7 +1131,6 @@ export default function Home() {
                 />
 
                 <Project
-                  className={styles.project}
                   title="Vamp"
                   time="2020"
                   description="Kubernetes manager tool. I was involved as a frontend developer to add some new features."
@@ -766,7 +1159,6 @@ export default function Home() {
                 />
 
                 <Project
-                  className={styles.project}
                   title="Merge"
                   time="2020"
                   description="Website for the Merge agency. Actually, it's the 3rd or 4th version of the website."
@@ -803,7 +1195,6 @@ export default function Home() {
                 />
 
                 <Project
-                  className={styles.project}
                   title="Evello"
                   time="2020"
                   status="demo"
@@ -833,7 +1224,6 @@ export default function Home() {
                 />
 
                 <Project
-                  className={styles.project}
                   title="TokenPlace"
                   time="2019"
                   status="offline"
@@ -856,7 +1246,6 @@ export default function Home() {
                 />
 
                 <Project
-                  className={styles.project}
                   title="FundPlatform"
                   time="2018"
                   status="demo"
@@ -884,7 +1273,7 @@ export default function Home() {
                     },
                   ]}
                 />
-              </ul>
+              </ProjectSlider>
             </Fullwidth>
           </Work>
           <Divider />
@@ -1005,9 +1394,8 @@ export default function Home() {
               hiring frontend developers.
             </Paragraph>
             <Fullwidth Icon={GrProjects} title="Projects">
-              <ul className={styles.projectsList}>
+              <ProjectSlider>
                 <Project
-                  className={styles.project}
                   title="Generator"
                   time="2021"
                   status="offline"
@@ -1049,7 +1437,6 @@ export default function Home() {
                 />
 
                 <Project
-                  className={styles.project}
                   title="Wambla"
                   time="2019"
                   status="offline"
@@ -1070,367 +1457,9 @@ export default function Home() {
                     },
                   ]}
                 />
-              </ul>
+              </ProjectSlider>
             </Fullwidth>
           </Work>
-        </section>
-        <section id="my-projects" className={styles.section}>
-          <h2 className={styles.heading}>my projects 🚀</h2>
-          <Paragraph>
-            Projects that I made for myself, friends, relatives and world on a
-            free basis. My pet-projects are a blend of personal passion and
-            skill development. Explore more on my{" "}
-            <Tag
-              href="https://github.com/a1exalexander"
-              Icon={SiGithub}
-              iconColor="#080808"
-            >
-              GitHub
-            </Tag>
-            .
-          </Paragraph>
-          <Fullwidth Icon={GrProjects} title="Projects">
-            <ul className={styles.projectsList}>
-              <Project
-                className={styles.project}
-                github="https://github.com/a1exalexander/volunteer-gang"
-                title="Volunteer Gang"
-                time="2026"
-                status="production"
-                href="https://www.vgang.com.ua"
-                description="Fundraising website for a Ukrainian volunteer team, with a branded Instagram template generator"
-                stack={[
-                  {
-                    name: "Astro",
-                    Icon: SiAstro,
-                    color: "#ff5d01",
-                    href: "https://astro.build/",
-                  },
-                  {
-                    name: "Typescript",
-                    Icon: BiLogoTypescript,
-                    color: "#3178c6",
-                    href: "https://www.typescriptlang.org/",
-                  },
-                  {
-                    name: "Decap CMS",
-                    Icon: SiDecapcms,
-                    color: "#ff0082",
-                    href: "https://decapcms.org/",
-                  },
-                  {
-                    name: "Netlify",
-                    Icon: SiNetlify,
-                    color: "#00c7b7",
-                    href: "https://www.netlify.com/",
-                  },
-                ]}
-              />
-              <Project
-                className={styles.project}
-                github="https://github.com/a1exalexander/arena-gym"
-                title="Arena Gym"
-                time="2026"
-                status="production"
-                href="https://www.arena-gym.best/"
-                description="Website for a CrossFit & MMA gym in Kremenchuk, Ukraine"
-                stack={[
-                  {
-                    name: "Astro",
-                    Icon: SiAstro,
-                    color: "#ff5d01",
-                    href: "https://astro.build/",
-                  },
-                  {
-                    name: "Decap CMS",
-                    Icon: SiDecapcms,
-                    color: "#ff0082",
-                    href: "https://decapcms.org/",
-                  },
-                  {
-                    name: "Netlify",
-                    Icon: SiNetlify,
-                    color: "#00c7b7",
-                    href: "https://www.netlify.com/",
-                  },
-                ]}
-              />
-              <Project
-                className={styles.project}
-                title="Flashcards"
-                time="2026"
-                status="production"
-                href="https://app.flashcards.best"
-                description="Cards for words learning"
-                stack={[
-                  {
-                    name: "React",
-                    Icon: BiLogoReact,
-                    color: "#61dafb",
-                    href: "https://react.dev",
-                  },
-                  {
-                    name: "Typescript",
-                    Icon: BiLogoTypescript,
-                    color: "#007acc",
-                    href: "https://www.typescriptlang.org/",
-                  },
-                  {
-                    name: "Vite",
-                    Icon: SiVite,
-                    color: "#646cff",
-                    href: "https://vitejs.dev/",
-                  },
-                  {
-                    name: "Astro",
-                    Icon: SiAstro,
-                    color: "#ff5d01",
-                    href: "https://astro.build/",
-                  },
-                  {
-                    name: "Tailwind",
-                    Icon: SiTailwindcss,
-                    color: "#38b2ac",
-                    href: "https://tailwindcss.com/",
-                  },
-                  {
-                    name: "Fastify",
-                    Icon: SiFastify,
-                    color: "#000000",
-                    darkColor: "#ffffff",
-                    href: "https://fastify.dev/",
-                  },
-                  {
-                    name: "Prisma",
-                    Icon: SiPrisma,
-                    color: "#2c3e50",
-                    darkColor: "#ffffff",
-                    href: "https://www.prisma.io/",
-                  },
-                  {
-                    name: "MongoDB",
-                    Icon: SiMongodb,
-                    color: "#47a248",
-                    href: "https://www.mongodb.com/",
-                  },
-                  {
-                    name: "Posthog",
-                    Icon: SiPosthog,
-                    color: "#f4b400",
-                    href: "https://posthog.com/",
-                  },
-                ]}
-              />
-              <Project
-                className={styles.project}
-                github="https://github.com/a1exalexander/polly"
-                title="Polly"
-                time="2025"
-                status="production"
-                href="https://polly-voting-app.vercel.app/"
-                description="Real-Time Task Estimation and Voting Platform"
-                stack={[
-                  {
-                    name: "React",
-                    Icon: BiLogoReact,
-                    color: "#61dafb",
-                    href: "https://react.dev",
-                  },
-                  {
-                    name: "Typescript",
-                    Icon: BiLogoTypescript,
-                    color: "#007acc",
-                    href: "https://www.typescriptlang.org/",
-                  },
-                  {
-                    name: "Next.js",
-                    Icon: TbBrandNextjs,
-                    color: "#080808",
-                    darkColor: "#ffffff",
-                    href: "https://nextjs.org/",
-                  },
-                  {
-                    name: "CSS modules",
-                    Icon: SiCssmodules,
-                    href: "https://github.com/css-modules/css-modules",
-                    color: "#000",
-                    darkColor: "#ffffff",
-                  },
-                  {
-                    name: "Supabase",
-                    Icon: RiSupabaseFill,
-                    color: "#37ac76",
-                    href: "https://supabase.com/",
-                  },
-                  {
-                    name: "Sentry",
-                    Icon: SiSentry,
-                    color: "#362d59",
-                    href: "https://sentry.io/",
-                  },
-                  {
-                    name: "Posthog",
-                    Icon: SiPosthog,
-                    color: "#f4b400",
-                    href: "https://posthog.com/",
-                  },
-                ]}
-              />
-              <Project
-                className={styles.project}
-                github="https://github.com/a1exalexander/svg-to-react"
-                title="svg-to-react"
-                time="2024"
-                npm="https://www.npmjs.com/package/@onlyredcats/svg-to-react"
-                status="production"
-                href="https://www.npmjs.com/package/@onlyredcats/svg-to-react"
-                description="CLI tool for generating React icons from SVG files"
-                stack={[
-                  {
-                    name: "Node.js",
-                    Icon: IoLogoNodejs,
-                    color: "#539e43",
-                    href: "https://nodejs.org/",
-                  },
-                  {
-                    name: "Javascript",
-                    Icon: SiJavascript,
-                    color: "#f7df1e",
-                    href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
-                  },
-                ]}
-              />
-              <Project
-                className={styles.project}
-                github="https://github.com/a1exalexander/exchanger"
-                title="Exchanger"
-                time="2021"
-                status="production"
-                href="https://exchanger.in.ua"
-                description="Hryvnia to other currencies converter"
-                stack={[
-                  {
-                    name: "React",
-                    Icon: BiLogoReact,
-                    color: "#68dbfb",
-                    href: "https://react.dev",
-                  },
-                  {
-                    name: "Redux",
-                    Icon: TbBrandRedux,
-                    color: "#764abc",
-                    href: "https://react-redux.js.org/",
-                  },
-                  {
-                    name: "CSS modules",
-                    Icon: SiCssmodules,
-                    href: "https://github.com/css-modules/css-modules",
-                    color: "#000",
-                    darkColor: "#ffffff",
-                  },
-                ]}
-              />
-
-              <Project
-                className={styles.project}
-                github="https://github.com/a1exalexander/elevendogs"
-                title="Elevendogs"
-                time="2021"
-                status="production"
-                href="https://elevendogs.com.ua"
-                description="Barbershop website for my friend's business"
-                stack={[
-                  {
-                    name: "Next.js",
-                    Icon: TbBrandNextjs,
-                    color: "#080808",
-                    darkColor: "#ffffff",
-                    href: "https://nextjs.org/",
-                  },
-                  {
-                    name: "CSS modules",
-                    Icon: SiCssmodules,
-                    href: "https://github.com/css-modules/css-modules",
-                    color: "#000",
-                    darkColor: "#ffffff",
-                  },
-                ]}
-              />
-
-              <Project
-                className={styles.project}
-                github="https://github.com/a1exalexander/school23"
-                title="School 23"
-                time="2020"
-                status="production"
-                href="https://school23.vercel.app/"
-                description="Kremenchuk school website for my mom, who is a director"
-                stack={[
-                  {
-                    name: "Next.js",
-                    Icon: TbBrandNextjs,
-                    color: "#080808",
-                    darkColor: "#ffffff",
-                    href: "https://nextjs.org/",
-                  },
-                  {
-                    name: "Firebase",
-                    Icon: IoLogoFirebase,
-                    color: "#ffa82c",
-                    href: "https://firebase.google.com/",
-                  },
-                  {
-                    name: "SCSS",
-                    Icon: SiSass,
-                    color: "#c69",
-                    href: "https://sass-lang.com/",
-                  },
-                ]}
-              />
-
-              <Project
-                className={styles.project}
-                title="Keenly"
-                time="2020"
-                status="production"
-                href="https://keenly.shop/"
-                description="Online store for my aunt's business"
-                stack={[
-                  {
-                    name: "Wix",
-                    Icon: FaWix,
-                    color: "#000000",
-                    darkColor: "#ffffff",
-                    href: "https://wix.com",
-                  },
-                ]}
-              />
-
-              <Project
-                className={styles.project}
-                title="Merge Place"
-                time="2018"
-                status="production"
-                href="https://www.merge.place/"
-                description="My first website that I made by myself for a co-working in Kremenchuk, Ukraine."
-                maxWidth={250}
-                stack={[
-                  {
-                    name: "Vue 2",
-                    Icon: IoLogoVue,
-                    color: "#41b883",
-                    href: "https://v2.vuejs.org/",
-                  },
-                  {
-                    name: "SCSS",
-                    Icon: SiSass,
-                    color: "#c69",
-                    href: "https://sass-lang.com/",
-                  },
-                ]}
-              />
-            </ul>
-          </Fullwidth>
         </section>
         <section id="my-certificates" className={styles.section}>
           <h2 className={styles.heading}>my certificates 🎓</h2>
