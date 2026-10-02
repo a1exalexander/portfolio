@@ -5,6 +5,7 @@ export * from './Tag';
 export * from './Divider';
 export * from './Work';
 export * from './Project';
+export * from './ProjectSlider';
 export * from './Fullwidth';
 export * from './Footer';
 export * from './Certificate';

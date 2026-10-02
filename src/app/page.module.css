@@ -61,14 +61,6 @@
   padding-top: var(--SECTION_OFFSET);
 }
 
-.projectsList {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-}
-
 .certsList {
   left: -16px;
   width: 100vw;
@@ -95,18 +87,6 @@
 .certPadding {
   flex-shrink: 0;
   width: 70vw;
-}
-
-.project {
-  flex: 0 1 auto;
-  min-width: 160px;
-}
-
-@media (max-width: 768px) {
-  .project {
-    flex: 1 1 auto;
-    max-width: 100% !important;
-  }
 }
 
 .singleVerticalImage {

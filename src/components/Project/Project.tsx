@@ -1,4 +1,6 @@
 import clsx from 'clsx';
+import Image, { StaticImageData } from 'next/image';
+import { CSSProperties } from 'react';
 import { IconType } from 'react-icons';
 import { ImGithub } from 'react-icons/im';
 import { LuExternalLink } from 'react-icons/lu';
@@ -19,6 +21,8 @@ interface IProjectProps {
     npm?: string;
     stack: { Icon: IconType; name: string; color?: string; darkColor?: string; href: string }[];
     maxWidth?: number;
+    logo?: StaticImageData;
+    style?: CSSProperties;
 }
 
 const statusText: Record<ProjectStatusType, string> = {
@@ -39,6 +43,8 @@ export const Project = function Project({
     github,
     npm,
     maxWidth,
+    logo,
+    style,
 }: IProjectProps) {
     const CustomTag = href ? 'a' : 'div';
     const customProps: { href?: string; target?: string } = {};
@@ -47,20 +53,8 @@ export const Project = function Project({
         customProps.target = '_blank';
     }
 
-    const isCurrentYear = time === new Date().getFullYear().toString();
-
     return (
-        <li className={clsx(styles.item, {[styles.isCurrentYear]: isCurrentYear}, status ? styles[status] : '', className)}>
-            {isCurrentYear && <>
-                <span className={styles.newTag}>new</span>
-                <span className={styles.newTag}>new</span>
-                <span className={styles.newTag}>new</span>
-                <span className={styles.newTag}>new</span>
-                <span className={styles.newTag}>new</span>
-                <span className={styles.newTag}>new</span>
-                <span className={styles.newTag}>new</span>
-                <span className={styles.newTag}>new</span>
-            </>}
+        <li className={clsx(styles.item, status ? styles[status] : '', className)} style={style}>
             <div className={styles.container}>
                 <div className={styles.tagList}>
                     <Project.Tag className={clsx(styles.status, styles.tagItem)}>
@@ -89,6 +83,9 @@ export const Project = function Project({
                 </div>
                 <div className={styles.head}>
                     <CustomTag {...customProps} className={styles.title}>
+                        {logo ? (
+                            <Image src={logo} alt="" width={20} height={20} className={styles.logo} />
+                        ) : null}
                         {title}
                         {href ? <LuExternalLink className={styles.arrow} /> : null}
                     </CustomTag>
