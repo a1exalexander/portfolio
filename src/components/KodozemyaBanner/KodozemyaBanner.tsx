@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Manrope, Unbounded } from "next/font/google";
+import { Unbounded } from "next/font/google";
 import hero from "@/images/kodozemya/hero.webp";
 import styles from "./KodozemyaBanner.module.css";
 
@@ -10,16 +10,7 @@ const unbounded = Unbounded({
   variable: "--kz-font-display",
 });
 
-const manrope = Manrope({
-  subsets: ["latin", "cyrillic"],
-  weight: ["500", "700"],
-  display: "swap",
-  variable: "--kz-font-ui",
-});
-
-const KODOZEMYA_URL = "https://kodozemya.dev/?utm_source=portfolio&utm_medium=banner";
-
-const TOPICS = ["HTML", "CSS", "JavaScript", "React", "TypeScript", "Next.js", "AI"];
+const KODOZEMYA_URL = "https://kodozemya.dev/";
 
 /* Кодоземʼя brand mark, copied from fe-saga apps/app/src/components/logo.tsx. */
 const KodozemyaLogo = function KodozemyaLogo({ className }: { className?: string }) {
@@ -53,40 +44,22 @@ export const KodozemyaBanner = function KodozemyaBanner() {
       href={KODOZEMYA_URL}
       target="_blank"
       rel="noopener"
-      aria-label="Кодоземʼя: інтерактивний front-end підручник"
+      aria-label="Кодоземʼя: інтерактивний курс front-end розробки"
       data-ph-capture-attribute-banner="kodozemya"
-      className={`${styles.banner} ${unbounded.variable} ${manrope.variable}`}
+      className={`${styles.banner} ${unbounded.variable}`}
     >
       <div className={styles.copy}>
-        <span className={styles.chip}>
-          <span className={styles.chipStar} aria-hidden="true" />
-          Онлайн-курс front-end розробки
-        </span>
-
         <div className={styles.brand}>
           <KodozemyaLogo className={styles.logo} />
           <span className={styles.brandName}>Кодозем’я</span>
         </div>
 
         <p className={styles.title}>
-          Інтерактивний <span className={styles.nowrap}>front-end</span> підручник
+          Інтерактивний курс <span className={styles.nowrap}>front-end</span> розробки
         </p>
-
-        <p className={styles.lede}>
-          Курс для початківців у форматі RPG. Квести, випробування, арени з
-          живим ментором і досвід за кожен рядок коду.
-        </p>
-
-        <ul className={styles.topics}>
-          {TOPICS.map((topic) => (
-            <li key={topic} className={styles.topic}>
-              {topic}
-            </li>
-          ))}
-        </ul>
 
         <span className={styles.cta}>
-          Почати безкоштовно
+          Ознайомитись
           <span className={styles.ctaArrow} aria-hidden="true">
             →
           </span>
@@ -99,7 +72,7 @@ export const KodozemyaBanner = function KodozemyaBanner() {
           alt=""
           fill
           placeholder="blur"
-          sizes="(max-width: 720px) 100vw, 360px"
+          sizes="(max-width: 720px) 100vw, 300px"
           className={styles.artImage}
         />
       </div>
