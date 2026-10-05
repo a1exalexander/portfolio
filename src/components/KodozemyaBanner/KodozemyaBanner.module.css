@@ -1,0 +1,256 @@
+/*
+ * Кодоземʼя brand board. Colours, outline and drop are the platform's own
+ * (fe-saga apps/landing/src/styles/global.css), not the portfolio's tokens,
+ * so the banner looks the same in every portfolio theme.
+ */
+.banner {
+  --kz-parchment: oklch(0.938 0.05 88);
+  --kz-card: oklch(0.965 0.035 89);
+  --kz-ink: oklch(0.235 0.035 52);
+  --kz-muted: oklch(0.425 0.05 62);
+  --kz-primary: oklch(0.455 0.13 77);
+  --kz-gold: oklch(0.815 0.17 84);
+  --kz-gold-soft: oklch(0.925 0.095 88);
+  --kz-grass-soft: oklch(0.925 0.09 138);
+  --kz-accent: oklch(0.45 0.145 143);
+  --kz-pix: 3px;
+  --kz-pix-thin: 2px;
+  --kz-drop: 4px 4px 0 0 var(--kz-ink);
+  --kz-drop-hover: 7px 7px 0 0 var(--kz-ink);
+  --kz-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
+  gap: 0.75rem;
+  margin: 2rem 0;
+  padding: 0.75rem;
+  background: var(--kz-parchment);
+  border: var(--kz-pix) solid var(--kz-ink);
+  box-shadow: var(--kz-drop);
+  color: var(--kz-ink);
+  font-family: var(--kz-font-ui), system-ui, sans-serif;
+  text-decoration: none;
+  transition:
+    transform 0.25s var(--kz-ease),
+    box-shadow 0.25s var(--kz-ease);
+}
+
+.banner:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--kz-drop-hover);
+}
+
+.banner:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 0 var(--kz-ink);
+}
+
+.banner:focus-visible {
+  outline: 3px solid var(--kz-gold);
+  outline-offset: 4px;
+}
+
+/* ---------------------------------- Copy tile ---------------------------------- */
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.9rem;
+  padding: 1.5rem 1.5rem 1.6rem;
+  background: var(--kz-card);
+  border: var(--kz-pix-thin) solid var(--kz-ink);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.3rem 0.6rem;
+  background: var(--kz-grass-soft);
+  border: var(--kz-pix-thin) solid var(--kz-ink);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+/* A pixel star: a plus drawn from two bars. */
+.chipStar {
+  position: relative;
+  width: 9px;
+  height: 9px;
+  flex: none;
+  background:
+    linear-gradient(var(--kz-accent), var(--kz-accent)) center / 3px 100% no-repeat,
+    linear-gradient(var(--kz-accent), var(--kz-accent)) center / 100% 3px no-repeat;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  flex: none;
+  box-shadow: 3px 3px 0 0 var(--kz-ink);
+}
+
+.brandName {
+  font-family: var(--kz-font-display), system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--kz-primary);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--kz-font-display), system-ui, sans-serif;
+  font-size: clamp(1.45rem, 1.1rem + 1.4vw, 1.9rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  color: var(--kz-ink);
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.lede {
+  margin: 0;
+  max-width: 44ch;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--kz-muted);
+  text-wrap: pretty;
+}
+
+.topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.topic {
+  padding: 0.2rem 0.5rem;
+  background: var(--kz-parchment);
+  border: var(--kz-pix-thin) solid var(--kz-ink);
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.35rem;
+  padding: 0.75rem 1.15rem;
+  background: var(--kz-gold);
+  border: var(--kz-pix) solid var(--kz-ink);
+  box-shadow: var(--kz-drop);
+  font-family: var(--kz-font-display), system-ui, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--kz-ink);
+  transition:
+    transform 0.25s var(--kz-ease),
+    box-shadow 0.25s var(--kz-ease);
+}
+
+.ctaArrow {
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: transform 0.25s var(--kz-ease);
+}
+
+.banner:hover .ctaArrow {
+  transform: translateX(4px);
+}
+
+/* ---------------------------------- Art tile ----------------------------------- */
+
+.art {
+  position: relative;
+  min-height: 100%;
+  overflow: hidden;
+  border: var(--kz-pix-thin) solid var(--kz-ink);
+  background: var(--kz-gold-soft);
+}
+
+.artImage {
+  object-fit: cover;
+  object-position: 52% 45%;
+  transition: transform 0.6s var(--kz-ease);
+}
+
+.banner:hover .artImage {
+  transform: scale(1.04);
+}
+
+/* ---------------------------------- Themes ------------------------------------- */
+
+/* On a dark page an ink drop disappears, so the board casts gold instead. */
+:global([data-theme="dark"]) .banner,
+:global([data-theme="vhs"]) .banner {
+  --kz-drop: 4px 4px 0 0 var(--kz-gold);
+  --kz-drop-hover: 7px 7px 0 0 var(--kz-gold);
+}
+
+:global([data-theme="dark"]) .banner:active,
+:global([data-theme="vhs"]) .banner:active {
+  box-shadow: 2px 2px 0 0 var(--kz-gold);
+}
+
+:global([data-theme="dark"]) .cta,
+:global([data-theme="vhs"]) .cta {
+  box-shadow: 4px 4px 0 0 var(--kz-ink);
+}
+
+/* --------------------------------- Responsive ---------------------------------- */
+
+@media (max-width: 720px) {
+  .banner {
+    grid-template-columns: 1fr;
+  }
+
+  .art {
+    order: -1;
+    aspect-ratio: 16 / 9;
+    min-height: 0;
+  }
+
+  .artImage {
+    object-position: 50% 42%;
+  }
+
+  .copy {
+    padding: 1.25rem 1.1rem 1.35rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .banner,
+  .cta,
+  .ctaArrow,
+  .artImage {
+    transition: none;
+  }
+
+  .banner:hover,
+  .banner:hover .artImage,
+  .banner:hover .ctaArrow {
+    transform: none;
+  }
+}

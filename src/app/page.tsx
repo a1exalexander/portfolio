@@ -52,6 +52,7 @@ import { RoughNotation } from "react-rough-notation";
 import {
   Certificate,
   Divider,
+  KodozemyaBanner,
   Fullwidth,
   getAlt,
   MentorCallout,
@@ -287,6 +288,9 @@ export default function Home() {
               {SERVICES_ENABLED && <ServiceCallout />}
             </div>
           )}
+
+          {/* === Кодоземʼя promo banner === */}
+          <KodozemyaBanner />
 
           <Photo
             loading="eager"
