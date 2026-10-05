@@ -8,6 +8,7 @@ export * from './Project';
 export * from './ProjectSlider';
 export * from './Fullwidth';
 export * from './Footer';
+export * from './Header';
 export * from './Certificate';
 export * from './Ticker';
 export * from './Strum';

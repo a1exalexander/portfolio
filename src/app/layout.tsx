@@ -4,7 +4,7 @@ import { GeistSans } from 'geist/font/sans';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { PHProvider } from './providers';
 import { ThemeProvider } from '@/context';
-import { Footer } from '../components';
+import { Footer, Header } from '../components';
 import './globals.css';
 
 const GOOGLE_ADS_ID = 'AW-18213227098';
@@ -40,6 +40,7 @@ export default function RootLayout({
       <PHProvider>
         <ThemeProvider>
           <body className={GeistSans.className}>
+            <Header />
             {children}
             <Footer />
             <SpeedInsights />
