@@ -184,3 +184,12 @@
     color: var(--N0);
     background-color: var(--R400);
 }
+
+.ios {
+    color: var(--N0);
+    background-color: var(--B400);
+}
+
+.ios .projectTagIcon {
+    transform: translateY(-1px);
+}

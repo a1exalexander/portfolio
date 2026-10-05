@@ -10,6 +10,7 @@ import { IoLogoFirebase, IoLogoNodejs, IoLogoVue } from "react-icons/io5";
 import { RiSupabaseFill } from "react-icons/ri";
 import {
   SiAntdesign,
+  SiApple,
   SiAstro,
   SiAuth0,
   SiCssmodules,
@@ -37,6 +38,7 @@ import {
   SiTailwindcss,
   SiTurborepo,
   SiSentry,
+  SiSwift,
   SiPosthog,
   SiVite,
 } from "react-icons/si";
@@ -632,6 +634,36 @@ export default function Home() {
                     Icon: SiJavascript,
                     color: "#f7df1e",
                     href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+                  },
+                ]}
+              />
+              <Project
+                github="https://github.com/a1exalexander/exchanger"
+                appStore="https://apps.apple.com/ua/app/exchanger-rate-converter/id6816478659"
+                title="Exchanger iOS"
+                time="2026"
+                status="production"
+                href="https://apps.apple.com/ua/app/exchanger-rate-converter/id6816478659"
+                description="Native iOS currency converter with Monobank, NBU and mid-market rates"
+                stack={[
+                  {
+                    name: "Swift",
+                    Icon: SiSwift,
+                    color: "#f05138",
+                    href: "https://developer.apple.com/swift/",
+                  },
+                  {
+                    name: "SwiftUI",
+                    Icon: SiApple,
+                    color: "#000",
+                    darkColor: "#ffffff",
+                    href: "https://developer.apple.com/xcode/swiftui/",
+                  },
+                  {
+                    name: "Posthog",
+                    Icon: SiPosthog,
+                    color: "#f4b400",
+                    href: "https://posthog.com/",
                   },
                 ]}
               />
