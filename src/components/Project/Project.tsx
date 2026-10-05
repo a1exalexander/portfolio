@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import Image, { StaticImageData } from 'next/image';
 import { CSSProperties } from 'react';
 import { IconType } from 'react-icons';
+import { FaApple } from 'react-icons/fa';
 import { ImGithub } from 'react-icons/im';
 import { LuExternalLink } from 'react-icons/lu';
 import { SiNpm } from 'react-icons/si';
@@ -19,6 +20,7 @@ interface IProjectProps {
     description: string;
     github?: string;
     npm?: string;
+    appStore?: string;
     stack: { Icon: IconType; name: string; color?: string; darkColor?: string; href: string }[];
     maxWidth?: number;
     logo?: StaticImageData;
@@ -42,6 +44,7 @@ export const Project = function Project({
     status = 'offline',
     github,
     npm,
+    appStore,
     maxWidth,
     logo,
     style,
@@ -78,6 +81,16 @@ export const Project = function Project({
                             theme="npm"
                         >
                             npm
+                        </Project.Tag>
+                    ) : null}
+                    {appStore ? (
+                        <Project.Tag
+                            href={appStore}
+                            Icon={FaApple}
+                            className={styles.tagItem}
+                            theme="ios"
+                        >
+                            iOS app
                         </Project.Tag>
                     ) : null}
                 </div>
@@ -121,7 +134,7 @@ interface TagProps {
     children: string;
     href?: string;
     Icon?: IconType;
-    theme?: 'github' | 'npm';
+    theme?: 'github' | 'npm' | 'ios';
 }
 
 Project.Tag = function Tag({
