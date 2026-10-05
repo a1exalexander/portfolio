@@ -50,10 +50,11 @@ export const Project = function Project({
     style,
 }: IProjectProps) {
     const CustomTag = href ? 'a' : 'div';
-    const customProps: { href?: string; target?: string } = {};
+    const customProps: { href?: string; target?: string; rel?: string } = {};
     if (CustomTag === 'a') {
         customProps.href = href;
         customProps.target = '_blank';
+        customProps.rel = 'noopener noreferrer';
     }
 
     return (
@@ -95,7 +96,9 @@ export const Project = function Project({
                     ) : null}
                 </div>
                 <div className={styles.head}>
-                    <CustomTag {...customProps} className={styles.title}>
+                    <CustomTag
+                        {...customProps}
+                        className={clsx(styles.title, href && styles.titleLink)}>
                         {logo ? (
                             <Image src={logo} alt="" width={20} height={20} className={styles.logo} />
                         ) : null}
@@ -108,7 +111,7 @@ export const Project = function Project({
                     style={{ maxWidth: maxWidth ? `${maxWidth}px` : undefined }}
                     className={styles.description}>{description}</p>
                 <p className={styles.stack}>
-                    {stack.map(({ Icon, name, color, darkColor, href }) => {
+                    {stack.map(({ Icon, name, color, darkColor }) => {
                         return (
                             <Tag
                                 className={styles.tag}
@@ -117,7 +120,6 @@ export const Project = function Project({
                                 size="small"
                                 iconColor={color}
                                 darkIconColor={darkColor}
-                                href={href}
                             >
                                 {name}
                             </Tag>
@@ -156,6 +158,7 @@ Project.Tag = function Tag({
         <a
             href={href}
             target="_blank"
+            rel="noopener noreferrer"
             className={classNames}>
             {Icon ? <Icon className={styles.projectTagIcon} /> : null}
             {children}
