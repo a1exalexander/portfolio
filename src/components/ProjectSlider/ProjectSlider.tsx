@@ -17,6 +17,8 @@ interface ICardProps {
     maxWidth?: number;
 }
 
+const MIN_CARDS_FOR_TWO_ROWS = 5;
+
 // Card width follows the amount of content, so rows get a natural brick rhythm
 const getCardWidth = ({ description = '', stack = [] }: ICardProps) => {
     const stackLength = stack.reduce((sum, { name }) => sum + name.length + 4, 0);
@@ -41,10 +43,14 @@ export const ProjectSlider = function ProjectSlider({
             });
         });
 
-    const rows = [
-        cards.filter((_, index) => index % 2 === 0),
-        cards.filter((_, index) => index % 2 === 1),
-    ].filter((row) => row.length > 0);
+    // Few cards look sparse when split, so keep them in a single row
+    const rows =
+        cards.length < MIN_CARDS_FOR_TWO_ROWS
+            ? [cards]
+            : [
+                  cards.filter((_, index) => index % 2 === 0),
+                  cards.filter((_, index) => index % 2 === 1),
+              ];
 
     return (
         <SliderShell className={className} label={label} count={cards.length}>
