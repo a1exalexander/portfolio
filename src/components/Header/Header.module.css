@@ -158,13 +158,3 @@
     transition-duration: 0.01ms;
   }
 }
-
-/* VHS theme */
-:global([data-theme='vhs']) .nav[data-stuck='true'] {
-  border-color: color-mix(in srgb, var(--vhs-gold) 45%, transparent);
-}
-
-:global([data-theme='vhs']) .link:hover,
-:global([data-theme='vhs']) .link[aria-current='page'] {
-  color: var(--vhs-gold);
-}

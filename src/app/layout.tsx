@@ -17,11 +17,7 @@ const themeScript = `
 (function() {
   try {
     var stored = localStorage.getItem('portfolio-theme');
-    var theme = stored || 'system';
-    var resolved = theme;
-    if (theme === 'system') {
-      resolved = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
+    var resolved = stored === 'dark' ? 'dark' : 'light';
     document.documentElement.setAttribute('data-theme', resolved);
   } catch (e) {}
 })();
