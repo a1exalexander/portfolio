@@ -72,8 +72,9 @@ export const Header = function Header() {
         >
           <Link href="/" className={styles.home} aria-label="Home">
             <Image
-              src="/favicon-32x32.png"
+              src="/favicon.svg"
               alt=""
+              unoptimized
               width={32}
               height={32}
               className={styles.logo}
