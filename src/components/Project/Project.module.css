@@ -34,6 +34,7 @@
 
 .tagList {
     position: absolute;
+    z-index: 2;
     left: 0;
     top: 0;
     display: flex;
@@ -113,10 +114,27 @@
     color: var(--color-text);
 }
 
-.title:hover,
-.title:hover .arrow,
-.title:focus,
-.title:focus .arrow {
+/* Stretched link: the title anchor covers the whole card */
+.titleLink::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.titleLink:focus-visible {
+    outline: none;
+}
+
+.container:has(.titleLink:focus-visible) {
+    outline: 2px solid var(--color-link);
+    outline-offset: 2px;
+}
+
+.item:hover .titleLink,
+.item:hover .titleLink .arrow,
+.titleLink:focus-visible,
+.titleLink:focus-visible .arrow {
     color: var(--color-link);
 }
 
