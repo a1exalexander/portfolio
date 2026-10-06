@@ -58,8 +58,9 @@ export default async function BlogPostPage({ params }: PageProps) {
           <nav className={styles.nav} aria-label="Article navigation">
             <Link href="/" className={styles.homeLink} aria-label="Home">
               <Image
-                src="/favicon-32x32.png"
+                src="/favicon.svg"
                 alt=""
+                unoptimized
                 width={32}
                 height={32}
                 className={styles.logo}
