@@ -1,61 +1,43 @@
 'use client';
-import { useTheme, Theme } from '@/context';
+import { useTheme } from '@/context';
 import { useState, useEffect } from 'react';
-import { IoSunnyOutline, IoMoonOutline } from 'react-icons/io5';
-import { HiOutlineComputerDesktop } from 'react-icons/hi2';
-import { PiCassetteTapeBold } from 'react-icons/pi';
+import { IoSunny, IoMoon } from 'react-icons/io5';
 import styles from './ThemeSwitcher.module.css';
 
-const themes: { value: Theme; label: string; icon: React.ReactNode }[] = [
-  { value: 'light', label: 'Light', icon: <IoSunnyOutline /> },
-  { value: 'dark', label: 'Dark', icon: <IoMoonOutline /> },
-  { value: 'vhs', label: 'VHS', icon: <PiCassetteTapeBold /> },
-  { value: 'system', label: 'System', icon: <HiOutlineComputerDesktop /> },
-];
-
 export function ThemeSwitcher() {
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const { theme, toggleTheme } = useTheme();
+  const [ready, setReady] = useState(false);
 
+  // Enable motion only after the stored theme has been applied,
+  // so the thumb doesn't animate on first load.
   useEffect(() => {
-    setMounted(true);
+    let frame = requestAnimationFrame(() => {
+      frame = requestAnimationFrame(() => setReady(true));
+    });
+    return () => cancelAnimationFrame(frame);
   }, []);
 
-  if (!mounted) {
-    return (
-      <div className={styles.container}>
-        <div className={styles.tabs}>
-          {themes.map((t) => (
-            <button
-              key={t.value}
-              className={styles.tab}
-              aria-label={t.label}
-              disabled
-            >
-              <span className={styles.icon}>{t.icon}</span>
-            </button>
-          ))}
-        </div>
-      </div>
-    );
-  }
+  const isDark = theme === 'dark';
 
   return (
-    <div className={styles.container}>
-      <div className={styles.tabs} role="tablist" aria-label="Theme selection">
-        {themes.map((t) => (
-          <button
-            key={t.value}
-            role="tab"
-            aria-selected={theme === t.value}
-            aria-label={`${t.label} theme`}
-            className={`${styles.tab} ${theme === t.value ? styles.active : ''}`}
-            onClick={() => setTheme(t.value)}
-          >
-            <span className={styles.icon}>{t.icon}</span>
-          </button>
-        ))}
-      </div>
-    </div>
+    <button
+      type="button"
+      role="switch"
+      aria-checked={isDark}
+      aria-label="Dark theme"
+      title={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
+      className={styles.switch}
+      data-state={theme}
+      data-ready={ready}
+      onClick={toggleTheme}
+    >
+      <span className={styles.thumb} aria-hidden="true" />
+      <span className={`${styles.icon} ${styles.sun}`} aria-hidden="true">
+        <IoSunny />
+      </span>
+      <span className={`${styles.icon} ${styles.moon}`} aria-hidden="true">
+        <IoMoon />
+      </span>
+    </button>
   );
 }
