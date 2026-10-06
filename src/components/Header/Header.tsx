@@ -1,6 +1,13 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+} from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -19,6 +26,15 @@ export const Header = function Header() {
   const sentinelRef = useRef<HTMLDivElement>(null);
   const [isStuck, setIsStuck] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
+  const listRef = useRef<HTMLUListElement>(null);
+  const linkRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
+  const hasPositioned = useRef(false);
+  const [indicator, setIndicator] = useState({
+    x: 0,
+    width: 0,
+    visible: false,
+    instant: true,
+  });
 
   const isHidden =
     pathname?.startsWith('/mentor') || pathname?.startsWith('/services');
@@ -56,10 +72,48 @@ export const Header = function Header() {
     return () => observer.disconnect();
   }, [pathname]);
 
-  if (isHidden) return null;
-
   const isActive = (id: string) =>
     id === 'blog' ? pathname?.startsWith('/blog') : activeSection === id;
+  const activeId = links.find((link) => isActive(link.id))?.id ?? null;
+
+  const measure = useCallback(() => {
+    const el = activeId ? linkRefs.current[activeId] : null;
+    if (!el) {
+      setIndicator((prev) => ({ ...prev, visible: false }));
+      return;
+    }
+    // The first placement appears in place; later ones slide.
+    const instant = !hasPositioned.current;
+    hasPositioned.current = true;
+    setIndicator({
+      x: el.offsetLeft,
+      width: el.offsetWidth,
+      visible: true,
+      instant,
+    });
+  }, [activeId]);
+
+  useLayoutEffect(() => {
+    measure();
+  }, [measure, isHidden]);
+
+  useEffect(() => {
+    if (!indicator.instant || !indicator.visible) return;
+    const frame = requestAnimationFrame(() =>
+      setIndicator((prev) => ({ ...prev, instant: false }))
+    );
+    return () => cancelAnimationFrame(frame);
+  }, [indicator.instant, indicator.visible]);
+
+  useEffect(() => {
+    const list = listRef.current;
+    if (!list) return;
+    const observer = new ResizeObserver(() => measure());
+    observer.observe(list);
+    return () => observer.disconnect();
+  }, [measure, isHidden]);
+
+  if (isHidden) return null;
 
   return (
     <>
@@ -82,7 +136,20 @@ export const Header = function Header() {
             />
             <span className={styles.name}>Oleksandr Ratushnyi</span>
           </Link>
-          <ul className={styles.list}>
+          <ul ref={listRef} className={styles.list}>
+            <li
+              role="presentation"
+              aria-hidden="true"
+              className={styles.indicator}
+              data-visible={indicator.visible}
+              data-instant={indicator.instant}
+              style={
+                {
+                  '--x': `${indicator.x}px`,
+                  '--w': `${indicator.width}px`,
+                } as CSSProperties
+              }
+            />
             {links.map((link) => {
               // Next's client navigation drops the hash when coming from
               // another route, so section links do a full page load there.
@@ -92,6 +159,9 @@ export const Header = function Header() {
               return (
                 <li key={link.id}>
                   <LinkTag
+                    ref={(el: HTMLAnchorElement | null) => {
+                      linkRefs.current[link.id] = el;
+                    }}
                     href={link.href}
                     className={styles.link}
                     aria-current={isActive(link.id) ? 'page' : undefined}
