@@ -10,6 +10,7 @@ interface ISliderShellProps {
     className?: string;
     label: string;
     count: number;
+    itemName?: string;
 }
 
 const SPEED = 22; // px per second
@@ -21,6 +22,7 @@ export const SliderShell = function SliderShell({
     className,
     label,
     count,
+    itemName = 'projects',
 }: ISliderShellProps) {
     const rootRef = useRef<HTMLDivElement>(null);
     const viewportRef = useRef<HTMLDivElement>(null);
@@ -155,7 +157,7 @@ export const SliderShell = function SliderShell({
                     <LuChevronsRight className={styles.hintIcon} />
                     <span className={styles.hintTouch}>swipe</span>
                     <span className={styles.hintPointer}>scroll</span>
-                    &nbsp;· {count} projects
+                    &nbsp;· {count} {itemName}
                 </span>
                 <span className={styles.progress} aria-hidden="true">
                     <span className={styles.progressThumb} />
@@ -164,7 +166,7 @@ export const SliderShell = function SliderShell({
                     type="button"
                     className={styles.button}
                     onClick={() => scrollByPage(-1)}
-                    aria-label="Previous projects"
+                    aria-label={`Previous ${itemName}`}
                     data-dir="prev"
                 >
                     <LuChevronLeft />
@@ -173,7 +175,7 @@ export const SliderShell = function SliderShell({
                     type="button"
                     className={styles.button}
                     onClick={() => scrollByPage(1)}
-                    aria-label="Next projects"
+                    aria-label={`Next ${itemName}`}
                     data-dir="next"
                 >
                     <LuChevronRight />

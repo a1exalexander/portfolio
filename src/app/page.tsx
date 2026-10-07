@@ -61,6 +61,7 @@ import {
   Photo,
   Project,
   ProjectSlider,
+  CertificateSlider,
   Tag,
   Ticker,
   Work,
@@ -1494,34 +1495,28 @@ export default function Home() {
             completed.
           </Paragraph>
           <Fullwidth>
-            <div className={styles.certsList}>
-              <div className={styles.certPadding} />
+            <CertificateSlider>
               <Certificate
-                className={styles.certItem}
                 src={cert10}
                 backgroundColor="#ffffff"
                 alt={getAlt("SQL Basics (Mate academy)")}
               />
               <Certificate
-                className={styles.certItem}
                 src={cert9}
                 backgroundColor="#ffffff"
                 alt={getAlt("Python Basics Extended (Mate academy)")}
               />
               <Certificate
-                className={styles.certItem}
                 src={cert8}
                 backgroundColor="#ffffff"
                 alt={getAlt("Python Basics (Mate academy)")}
               />
               <Certificate
-                className={styles.certItem}
                 src={cert7}
                 backgroundColor="#ffffff"
                 alt={getAlt("Secure Coding Practices (Udemy)")}
               />
               <Certificate
-                className={styles.certItem}
                 src={cert6}
                 backgroundColor="#ffffff"
                 alt={getAlt(
@@ -1529,36 +1524,30 @@ export default function Home() {
                 )}
               />
               <Certificate
-                className={styles.certItem}
                 src={cert5}
                 backgroundColor="#f2f2f2"
                 alt={getAlt("Josh Comeau: CSS for JS devs")}
               />
               <Certificate
-                className={styles.certItem}
                 src={cert4}
                 backgroundColor="#3548fe"
                 alt={getAlt("Projector: Engineering Discovery")}
               />
               <Certificate
-                className={styles.certItem}
                 src={cert2}
                 backgroundColor="#100f14"
                 alt={getAlt("Projector: SQL")}
               />
               <Certificate
-                className={styles.certItem}
                 src={cert3}
                 backgroundColor="#100f14"
                 alt={getAlt("Projector: CTO")}
               />
               <Certificate
-                className={styles.certItem}
                 src={cert1}
                 alt={getAlt("Sololearn: SQL")}
               />
-              <div className={styles.certPadding} />
-            </div>
+            </CertificateSlider>
           </Fullwidth>
         </section>
       </main>
