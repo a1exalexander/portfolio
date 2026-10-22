@@ -523,9 +523,8 @@ export default function Home() {
               <Project
                 title="Flashcards"
                 time="2026"
-                status="production"
-                href="https://app.flashcards.best"
-                description="Cards for words learning"
+                status="offline"
+                description="Cards for words learning. No longer maintained"
                 stack={[
                   {
                     name: "React",

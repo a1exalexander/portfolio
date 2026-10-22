@@ -176,9 +176,8 @@ export const PROJECTS: CarouselProject[] = [
     year: "2026",
     company: "Особистий проєкт",
     companyTone: "maroon",
-    status: "live",
-    href: "https://www.flashcards.best",
-    description: "Картки для вивчення іноземних слів.",
+    status: "offline",
+    description: "Картки для вивчення іноземних слів. Проєкт більше не підтримується.",
     stack: ["React", "TypeScript", "Astro", "Prisma"],
   },
   {
